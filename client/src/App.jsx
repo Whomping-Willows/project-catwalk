@@ -1,18 +1,19 @@
+/* eslint-disable import/extensions */
+/* eslint-disable class-methods-use-this */
 import React from 'react';
-import axios from 'axios';
 import api from './api/index.js';
-
 
 class App extends React.Component {
   testAPI() {
     api.reviewsGETtest();
     api.questionsGETtest();
+    api.productGETtest();
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.testAPI} />
+        <button type="submit" aria-label="get data" onClick={this.testAPI} />
       </div>
     );
   }
