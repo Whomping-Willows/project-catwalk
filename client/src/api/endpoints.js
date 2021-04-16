@@ -11,28 +11,23 @@ const apiCountParam = 5;
 const apiCountParamStr = `/?count=${apiCountParam}`;
 
 // Required ID of the Product requested
-const apiProductId = 1;
+const apiProductId = 18078;
 
 /// ///////////////////////////////////////////////
 // ENDPOINTS /////////////////////////////////////
 /// ///////////////////////////////////////////////
 
-const apiRoot = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
-
-// Retrieves the list of products
-// uses page and count params
-const apiListProduct = '/products';
-
-// Returns the id's of products related to the product specified.
-const apiGetListInfo = `/products/${apiProductId}`;
-
-export default {
-  apiRoot,
-  apiListProduct,
-  apiGetListInfo,
-  apiProductId,
-  apiPageParam,
-  apiPageParamStr,
-  apiCountParam,
-  apiCountParamStr,
+const end = {
+  root: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld',
+  // Retrieves the list of products
+  // uses page and count params
+  listProducts: '/products',
+  // Returns the id's of products related to the product specified.
+  listInfo: `/products/${apiProductId}`,
+  // Returns the all styles available for the given product.
+  productStyles: `/products/${apiProductId}/styles`,
+  // Returns the id's of products related to the product specified.
+  relatedProducts: `/products/${apiProductId}/related`,
 };
+
+export default end;
