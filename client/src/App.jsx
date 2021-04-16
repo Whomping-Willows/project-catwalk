@@ -13,7 +13,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button type="submit" aria-label="get data" onClick={this.testAPI}>Test API</button>
+        <span className="header">
+          <h1>Project Catwalk</h1>
+        </span>
+        <div>
+          <button className="button" type="submit" aria-label="get data" onClick={this.testAPI}>TEST API</button>
+        </div>
       </div>
     );
   }
