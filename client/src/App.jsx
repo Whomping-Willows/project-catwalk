@@ -5,15 +5,15 @@ import api from './api/index.js';
 
 class App extends React.Component {
   testAPI() {
-    api.reviewsGETtest();
-    api.questionsGETtest();
-    api.productGETtest();
+    api.getRequest(`${apiRoot}${reviewsEndp}${params}`);
+    api.getRequest(`${apiRoot}${productsEndp}/18078/styles`);
+    api.getRequest(`${apiRoot}/qa/questions/${params}`);
   }
 
   render() {
     return (
       <div>
-        <button type="submit" aria-label="get data" onClick={this.testAPI}>Test API</button>
+        <button type="submit" aria-label="get data from API" onClick={this.testAPI}>Test API</button>
       </div>
     );
   }

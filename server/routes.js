@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 
 const router = express.Router();
@@ -6,11 +7,16 @@ const GITHUB_API_KEY = require('./config.js');
 
 // API ROUTES /////////////////////////////////
 const apiRoot = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld';
-const reviewsEndpoint = '/reviews/';
-const params = '?product_id=18078';
+
+const reviewsEndp = '/reviews';
+
+// Retrieves the list of products
+const productsEndp = '/products';
+
+const params = '/?product_id=18078';
 
 router.get('/api/reviews', (req, res) => {
-  axios.get(`${apiRoot}${reviewsEndpoint}${params}`, {
+  axios.get(`${apiRoot}${reviewsEndp}${params}`, {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
@@ -18,7 +24,7 @@ router.get('/api/reviews', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      throw (err);
     });
 });
 
@@ -31,12 +37,12 @@ router.get('/api/questions', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      throw (err);
     });
 });
 
 router.get('/api/products', (req, res) => {
-  axios.get(`${apiRoot}/products/18078/styles`, {
+  axios.get(`${apiRoot}${productsEndp}/18078/styles`, {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
@@ -44,7 +50,7 @@ router.get('/api/products', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      throw (err);
     });
 });
 
