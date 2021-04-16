@@ -20,3 +20,5 @@ workflows:
   main:
     jobs:
       - build_and_save
+
+      # ./node_modules/.bin
