@@ -21,4 +21,4 @@ workflows:
     jobs:
       - build_and_save
 
-      # ./node_modules/.bin  --collectCoverage=true
+      # ./node_modules/.bin
