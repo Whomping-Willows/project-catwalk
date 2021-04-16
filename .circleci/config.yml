@@ -14,8 +14,8 @@ jobs:
       - store_artifacts:
           path: /coverage
 # Orchestrate or schedule a set of jobs
-# workflows:
-#   version: 2
-#   main:
-#     jobs:
-#       - build_and_save
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build_and_save
