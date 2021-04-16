@@ -8,6 +8,7 @@ const getRequest = (endpoint) => {
     },
   })
     .then((response) => {
+      console.log('endpoint: ', endpoint);
       console.log(response.data);
     })
     .catch((err) => {

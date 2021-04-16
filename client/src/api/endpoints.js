@@ -1,9 +1,9 @@
 // STATE VARIABLES ///////////////////////////////////
 
-const page = 0;
+const page = 1;
 const count = 5;
 // Changes the sort order of reviews to be based on "newest", "helpful", or "relevant"
-const sort = 'relevant';
+const sort = 'helpful';
 const productId = 18078;
 const questionsId = 114290;
 
@@ -20,7 +20,7 @@ const end = {
   root: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld',
   // Retrieves the list of products
   // uses page and count params
-  listProducts: '/products',
+  listProducts: `/products${apiPageQuery}&${apiCountQuery}`,
   // Returns the id's of products related to the product specified.
   listInfo: `/products/${productId}`,
   // Returns the all styles available for the given product.
@@ -30,13 +30,13 @@ const end = {
   // Returns a list of reviews for a particular product.
   // This list does not include any reported reviews.
   // uses page, count, sort, product_id
-  reviews: `/reviews/${apiPageQuery}&${apiCountQuery}&${apiSortQuery}&${apiProductIdQuery}`,
+  reviews: `/reviews/${apiProductIdQuery}`,
   // Returns review metadata for a given product.
   reviewsMeta: `/reviews/meta/${apiProductIdQuery}`,
   // Retrieves a list of questions for a particular product.
   // This list does not include any reported questions.
   // uses productId, page and count
-  listQuestions: `/qa/questions/${productId}&${page}&${count}`,
+  listQuestions: `/qa/questions${apiProductIdQuery}&${apiPageQuery}&${apiCountQuery}`,
   // Returns answers for a given question.
   // This list does not include any reported answers.
   // uses page and count
