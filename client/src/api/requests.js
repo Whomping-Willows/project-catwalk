@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const getRequest = (endpoint) => {
   axios.get('/api', {
-    header: {
+    headers: {
       endpoint,
     },
   })

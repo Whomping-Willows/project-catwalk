@@ -9,7 +9,7 @@ class App extends React.Component {
     api.getRequest(`${end.root}${end.productStyles}`);
     api.getRequest(`${end.root}${end.relatedProducts}`);
     api.getRequest(`${end.root}${end.reviewsMeta}`);
-    api.getRequest(`${end.root}/qa/questions/${params}`);
+    api.getRequest(`${end.root}${end.answersList}`);
   }
 
   render() {

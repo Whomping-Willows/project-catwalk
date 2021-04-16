@@ -1,21 +1,17 @@
 // STATE VARIABLES ///////////////////////////////////
-const page = 1;
-const count = 5;
-const productId = 18078;
 
+const page = 0;
+const count = 5;
 // Changes the sort order of reviews to be based on "newest", "helpful", or "relevant"
 const sort = 'relevant';
+const productId = 18078;
+const questionsId = 114290;
 
 // PARAM QUERY STRINGS ///////////////////////////////
 
-// Selects the page of results to return. Default 1
 const apiPageQuery = `?page=${page}`;
-
-// Specifies how many results per page to return. Default 5
 const apiCountQuery = `?count=${count}`;
-
 const apiSortQuery = `?sort=${sort}`;
-
 const apiProductIdQuery = `?product_id=${productId}`;
 
 // ENDPOINTS /////////////////////////////////////
@@ -36,7 +32,15 @@ const end = {
   // uses page, count, sort, product_id
   reviews: `/reviews/${apiPageQuery}&${apiCountQuery}&${apiSortQuery}&${apiProductIdQuery}`,
   // Returns review metadata for a given product.
-  reviewsMeta: `reviews/meta/${productId}`,
+  reviewsMeta: `/reviews/meta/${apiProductIdQuery}`,
+  // Retrieves a list of questions for a particular product.
+  // This list does not include any reported questions.
+  // uses productId, page and count
+  listQuestions: `/qa/questions/${productId}&${page}&${count}`,
+  // Returns answers for a given question.
+  // This list does not include any reported answers.
+  // uses page and count
+  answersList: `/qa/questions/${questionsId}/answers`,
 };
 
 export default end;
