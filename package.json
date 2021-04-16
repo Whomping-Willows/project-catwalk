@@ -17,6 +17,7 @@
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "jest-diff": "^26.6.2",
     "live-server": "^1.2.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
