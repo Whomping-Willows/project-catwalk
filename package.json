@@ -4,7 +4,7 @@
   "description": "A front-end e-commerce application",
   "main": "index.js",
   "scripts": {
-    "test": "jest --collectCoverage=true --passWithNoTests",
+    "test": "jest --collectCoverage=true",
     "start": "nodemon ./server/index.js",
     "start-react": "webpack --config ./webpack.config.js --mode development -w"
   },
