@@ -4,7 +4,7 @@
   "description": "A front-end e-commerce application",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest ./node_modules/.bin",
     "start": "nodemon ./server/index.js",
     "start-react": "webpack --config ./webpack.config.js --mode development -w"
   },
