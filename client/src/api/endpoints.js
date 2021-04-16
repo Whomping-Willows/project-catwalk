@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // STATE VARIABLES ///////////////////////////////////
 
 const page = 1;
