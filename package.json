@@ -8,6 +8,10 @@
     "start": "nodemon ./server/index.js",
     "start-react": "webpack --config ./webpack.config.js --mode development -w"
   },
+  "keywords": [
+    "testing",
+    "test"
+  ],
   "dependencies": {
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
