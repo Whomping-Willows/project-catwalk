@@ -1,4 +1,7 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.jsx';
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
