@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: "Run jest and collect coverage reports"
-          command: jest --collectCoverage=true
+          command: jest ./node_modules/.bin --collectCoverage=true
       - store_artifacts:
           path: /coverage
 # Orchestrate or schedule a set of jobs
