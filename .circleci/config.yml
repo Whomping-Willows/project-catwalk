@@ -4,21 +4,20 @@ version: 2.1
 # orbs:
 #   # Declare a dependency on the welcome-orb
 #   welcome: circleci/welcome-orb@0.4.1
-jobs:
-  build_and_save:
-    docker:
-    - image: circleci/node:10.0-browsers
-    steps:
-      - checkout
-      - run: npm install
-      - run:
-        name: "Run jest and collect coverage reports"
-        command: jest --collectCoverage=true
-      - store_artifacts:
-          path: /coverage
+
 # Orchestrate or schedule a set of jobs
 workflows:
   version: 2
   main:
     jobs:
-      - build_and_save
+      build_and_save:
+        docker:
+          - image: circleci/node:10.0-browsers
+      steps:
+        - checkout
+        - run: npm install
+        - run:
+            name: "Run jest and collect coverage reports"
+            command: jest --collectCoverage=true
+        - store_artifacts:
+            path: /coverage
