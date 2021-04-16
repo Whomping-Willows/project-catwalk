@@ -10,7 +10,6 @@ jobs:
       - image: circleci/node:10.0-browsers
     steps:
       - checkout
-      - run: npm install
       - run:
           name: "Run jest and collect coverage reports"
           command: jest --collectCoverage=true
