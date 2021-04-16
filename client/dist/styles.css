@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+
+/* Header */
+
+.header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 150px;
+  width: 100%;
+  background-color: #515151;
+}
+
+/* Title */
+h1 {
+  position: absolute;
+  width: 686px;
+  height: 78px;
+  left: 34px;
+  top: 34px;
+
+  font-family: Unica One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 60px;
+  line-height: 71px;
+
+  color: #E5E5E5;
+}
+
+
+/* Buttons */
+#testbutton {
+  position: absolute;
+  display: inline-block;
+  top: 200px;
+  left: 30px;
+}
+
+.button {
+  border-color:  #393939;
+  border-width: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #393939;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
