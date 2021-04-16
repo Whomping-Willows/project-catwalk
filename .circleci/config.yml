@@ -7,10 +7,9 @@ orbs:
 jobs:
   build_and_save:
     docker:
-    - image: circleci/golang:latest
+    - image: circleci/node:10.0-browsers
     steps:
       - checkout
-      - run: make build
       - run: npm install
       - run:
         name: "Run jest and collect coverage reports"
