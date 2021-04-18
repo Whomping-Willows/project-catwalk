@@ -3,6 +3,7 @@
 import React from 'react';
 import api from './api/requests.js';
 import end from './api/endpoints.js';
+import Reviews from './components/review/Reviews.jsx';
 
 class App extends React.Component {
   testAPI() {
@@ -24,6 +25,7 @@ class App extends React.Component {
         </span>
         <div>
           <button className="button" id="testbutton" type="submit" aria-label="get data from API" onClick={this.testAPI}>TEST API</button>
+          <Reviews />
         </div>
       </div>
     );

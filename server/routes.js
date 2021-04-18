@@ -19,4 +19,34 @@ router.get('/api', (req, res) => {
     });
 });
 
+// NOT YET WORKING, JUST PLACEHOLDER
+router.post('/api', (req, res) => {
+  console.log(req.headers.endpoint);
+  axios.post(req.headers.endpoint, {
+    headers: { Authorization: GITHUB_API_KEY },
+  })
+    .then((response) => {
+      console.log(response.data);
+      res.send(response.data);
+    })
+    .catch((err) => {
+      throw (err);
+    });
+});
+
+// NOT YET WORKING, JUST PLACEHOLDER
+router.put('/api', (req, res) => {
+  console.log(req.headers.endpoint);
+  axios.put(req.headers.endpoint, {
+    headers: { Authorization: GITHUB_API_KEY },
+  })
+    .then((response) => {
+      console.log(response.data);
+      res.send(response.data);
+    })
+    .catch((err) => {
+      throw (err);
+    });
+});
+
 module.exports = router;
