@@ -23,7 +23,7 @@ class App extends React.Component {
         <span className="header">
           <h1>Project Catwalk</h1>
         </span>
-        <div>
+        <div className="appContainer">
           <button className="button" id="testbutton" type="submit" aria-label="get data from API" onClick={this.testAPI}>TEST API</button>
           <Reviews />
         </div>

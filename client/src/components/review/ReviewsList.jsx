@@ -4,7 +4,7 @@ import ReviewsSort from './ReviewsSort.jsx';
 import ReviewsItem from './ReviewsItem.jsx';
 
 const ReviewsList = () => (
-  <div className="reviews">
+  <div id="reviewsList">
     <ReviewsSort />
     <ReviewsItem />
   </div>

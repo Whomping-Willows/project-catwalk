@@ -4,6 +4,13 @@ body {
   font-size: 16px;
 }
 
+/* Main container for 4 widgets */
+.appContainer {
+  display: grid;
+  width: 1000px;
+  grid-template-rows: 200px 720px 720px 720px 720px;
+  grid-template-columns: 100px 25% 25% 25% 25% 100px;
+}
 
 /* Header */
 
@@ -33,6 +40,13 @@ h1 {
   color: #E5E5E5;
 }
 
+/* For widget titles */
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: darkgrey;
+}
+
 
 /* Buttons */
 #testbutton {
@@ -51,4 +65,32 @@ h1 {
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+}
+
+/* REVIEWS SECTION */
+
+.reviews {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 2;
+  grid-column-end: 7;
+  display: grid;
+  grid-template-rows: 100px auto 100px;
+  grid-template-columns: 33% 67%;
+}
+
+#reviewsBreakdown {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: blue;
+}
+
+#reviewsList {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  background-color: red;
 }

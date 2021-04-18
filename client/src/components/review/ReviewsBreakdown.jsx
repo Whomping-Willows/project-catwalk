@@ -5,7 +5,7 @@ import ReviewsFilterBlock from './ReviewsFilterBlock.jsx';
 import ReviewsCharBlock from './ReviewsCharBlock.jsx';
 
 const ReviewsBreakdown = () => (
-  <div className="reviews">
+  <div id="reviewsBreakdown">
     <ReviewsSummary />
     <ReviewsFilterBlock />
     <ReviewsCharBlock />

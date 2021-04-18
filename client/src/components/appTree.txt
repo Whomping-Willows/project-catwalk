@@ -16,13 +16,13 @@ App
     |   |   |
     |   |   |__FilterBar
     |   |
-    |   |__CharacteristicsBlock
+    |   |__CharBlock
     |       |
     |       |__Characteristics
     |
     |__List
     |   |
-    |   |__SortBar
+    |   |__Sort
     |   |
     |   |__ReviewItem
     |       |

@@ -6,6 +6,7 @@ import ReviewsForm from './ReviewsForm.jsx';
 
 const Reviews = () => (
   <div className="reviews">
+    <h2>RATINGS & REVIEWS</h2>
     <ReviewsBreakdown />
     <ReviewsList />
     <ReviewsForm />
