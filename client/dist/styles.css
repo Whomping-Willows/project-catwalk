@@ -8,8 +8,8 @@ body {
 .appContainer {
   display: grid;
   width: 1000px;
-  grid-template-rows: 200px 720px 720px 720px 720px;
-  grid-template-columns: 100px 25% 25% 25% 25% 100px;
+  grid-template-rows: 200px 720px 720px 720px 720px 100px;
+  grid-template-columns: 100px 800px 100px;
 }
 
 /* Header */
@@ -67,13 +67,102 @@ h2 {
   font-size: 16px;
 }
 
+/* PRODUCT SECTION */
+
+.product {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-rows: auto 200px;
+  grid-template-columns: 100px 530px 270px 100px;
+}
+
+#productGallery {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: blue;
+}
+
+#productStyles {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 5;
+  background-color: red;
+}
+
+#productDescription {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  background-color: yellow;
+}
+
+/* RELATED SECTION */
+
+.related {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-rows: 50px 300px 50px 300px;
+}
+
+#relatedProductsTitle {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#relatedProducts {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: blue;
+}
+
+#relatedOutfitsTitle {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#relatedOutfit {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: red;
+}
+
+/* QUESTIONS SECTION */
+
+.question {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-rows: 50px 100px 480px 100px;
+  background-color: yellow;
+}
+
 /* REVIEWS SECTION */
 
 .reviews {
   grid-row-start: 5;
   grid-row-end: 6;
   grid-column-start: 2;
-  grid-column-end: 7;
+  grid-column-end: 3;
   display: grid;
   grid-template-rows: 100px auto 100px;
   grid-template-columns: 33% 67%;
