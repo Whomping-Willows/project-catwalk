@@ -19,14 +19,12 @@ const formatDate = (string) => {
 
 const ReviewsItem = () => (
   <div id="reviewItem">
-    <div id="reviewItemSubTitle">
-      <div id="reviewSubTitleStars">STARS GO HERE</div>
-      <div id="reviewSubTitleUserDate">
-        {reviewsData.results[2].reviewer_name}
-        ,
-        {' '}
-        {formatDate(reviewsData.results[2].date)}
-      </div>
+    <div id="reviewSubTitleStars">[STARS GO HERE]</div>
+    <div id="reviewSubTitleUserDate">
+      {reviewsData.results[2].reviewer_name}
+      ,
+      {' '}
+      {formatDate(reviewsData.results[2].date)}
     </div>
     <h3 id="reviewTitle">{reviewsData.results[2].summary}</h3>
     <p id="reviewBody">{reviewsData.results[2].body}</p>

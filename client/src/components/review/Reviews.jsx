@@ -36,13 +36,13 @@ export const reviewsData = {
     {
       review_id: 289038,
       rating: 2,
-      summary: 'a',
-      recommend: false,
-      response: null,
-      body: 'aaaaaa',
+      summary: 'This product was amazing, I bought every style!',
+      recommend: true,
+      response: "We're so happy that you enjoyed our product. This is definitely a favorite for many!",
+      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut interdum metus. Nunc eget lacinia ex. Duis elementum efficitur eros, eget maximus risus porttitor vitae. Integer sit amet nisl eget sapien sagittis dapibus. Suspendisse gravida sit non.',
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
-      helpfulness: 0,
+      helpfulness: 18,
       photos: [Array],
     },
     {

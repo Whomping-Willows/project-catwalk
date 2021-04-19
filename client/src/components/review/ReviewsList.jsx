@@ -6,7 +6,14 @@ import ReviewsItem from './ReviewsItem.jsx';
 const ReviewsList = () => (
   <div id="reviewsList">
     <ReviewsSort />
-    <ReviewsItem />
+    <div id="reviewsAll">
+      <ReviewsItem />
+      <ReviewsItem />
+    </div>
+    <div id="reviewsListButtons">
+      <button type="button" id="reviewsLoadMore">MORE REVIEWS</button>
+      <button type="button" id="reviewsAdd">ADD A REVIEW</button>
+    </div>
   </div>
 );
 

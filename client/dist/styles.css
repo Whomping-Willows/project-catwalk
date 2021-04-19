@@ -44,7 +44,22 @@ h1 {
 h2 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  color: darkgrey;
+  color: darkslategrey;
+  font-weight: 400;
+}
+
+/* For bold titles (not product title) */
+h3 {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: darkslategrey;
+  font-weight: bold;
+}
+
+p {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: darkslategrey
 }
 
 
@@ -56,15 +71,17 @@ h2 {
   left: 30px;
 }
 
-.button {
-  border-color:  #393939;
+button {
+  border-color:  393939;
   border-width: 1px;
   font-family: Arial, Helvetica, sans-serif;
   color: #393939;
-  padding: 10px 15px;
+  padding: 20px;
+  margin: 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  background-color: white;
 }
 
 /* PRODUCT SECTION */
@@ -164,26 +181,29 @@ h2 {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 100px auto 100px;
+  grid-template-rows: 50px auto 100px;
   grid-template-columns: 33% 67%;
+  padding: 10px;
 }
 
 #reviewsBreakdown {
   grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 2;
-  background-color: blue;
+  border-width: 2px;
+  border-color:darkgrey
 }
 
 #reviewsList {
   grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-end: 4;
   grid-column-start: 2;
   grid-column-end: 3;
-  background-color: red;
+  border-width: 2px;
+  border-color: darkgrey;
   display: grid;
-  grid-template-rows: 50px auto 100px;
+  grid-template-rows: 50px 600px 100px;
 }
 
 #reviewsSort {
@@ -193,21 +213,28 @@ h2 {
   border-color: darkgrey;
 }
 
-#reviewItem {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  border-bottom: 2px;
-  border-color: darkgrey;
-  display: grid;
-  grid-template-rows: 30px 30px auto 30px 30px 30px;
-  grid-template-columns: auto 300px;
-}
-
-#reviewItemSubTitle {
-  grid-row-start: 1;
-  grid-row-end: 2;
+#reviewsListButtons {
+  grid-row-start: 3;
+  grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+#reviewsAll {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#reviewItem {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-color: darkgrey;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto;
+  grid-template-columns: auto 300px;
+  margin: 10px;
 }
 
 #reviewSubTitleStars {
@@ -215,6 +242,7 @@ h2 {
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
+  font-size: 12px;
 }
 
 #reviewSubTitleUserDate {
@@ -223,29 +251,46 @@ h2 {
   grid-column-start: 2;
   grid-column-end: 3;
   font-size: 10px;
+  text-align: right;
+  color: darkgrey;
 }
 
 #reviewTitle {
   grid-row-start: 2;
   grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 #reviewBody {
   grid-row-start: 3;
   grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 #reviewIsRec {
   grid-row-start: 4;
   grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 #reviewResponse {
   grid-row-start: 5;
   grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: lightgray;
+  color: #515151;
+  padding: 10px;
 }
 
 #reviewHelpfulness {
     grid-row-start: 6;
     grid-row-end: 7;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-size: 10px;
+    padding: 10px;
   }
