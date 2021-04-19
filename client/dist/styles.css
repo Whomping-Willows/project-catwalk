@@ -202,6 +202,8 @@ button {
 }
 
 #reviewsSummary {
+  grid-row-start: 1;
+  grid-row-end: 3;
   display: grid;
   grid-template-rows: auto, 30px;
   grid-template-columns: auto, auto;
@@ -231,6 +233,93 @@ button {
 #reviewsSumRec {
   grid-row-start: 2;
   grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#reviewsFilterBlock {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-columns: 50px auto;
+}
+
+#reviews5Label {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviews5Data {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviews4Label {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviews4Data {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviews3Label {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviews3Data {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviews2Label {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviews2Data {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviews1Label {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviews1Data {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviewsCharBlock {
+  grid-row-start: 4;
+  grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
 }
