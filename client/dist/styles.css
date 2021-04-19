@@ -247,6 +247,13 @@ button {
   grid-template-columns: 50px auto;
 }
 
+#reviews5Stars {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 #reviews5Label {
   grid-row-start: 1;
   grid-row-end: 2;
@@ -258,6 +265,13 @@ button {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviews4Stars {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
   grid-column-end: 3;
 }
 
@@ -275,6 +289,13 @@ button {
   grid-column-end: 3;
 }
 
+#reviews3Stars {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 #reviews3Label {
   grid-row-start: 3;
   grid-row-end: 4;
@@ -289,6 +310,13 @@ button {
   grid-column-end: 3;
 }
 
+#reviews2Stars {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 #reviews2Label {
   grid-row-start: 4;
   grid-row-end: 5;
@@ -300,6 +328,13 @@ button {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#reviews1Stars {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
   grid-column-end: 3;
 }
 
