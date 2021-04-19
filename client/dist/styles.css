@@ -57,7 +57,7 @@ h3 {
 }
 
 p {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: darkslategrey
 }
@@ -199,14 +199,17 @@ button {
   border-color:darkgrey;
   display: grid;
   grid-template-rows: 100px 30px auto auto;
+  margin-right: 10px;
 }
 
 #reviewsSummary {
   grid-row-start: 1;
   grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
   display: grid;
-  grid-template-rows: auto, 30px;
-  grid-template-columns: auto, auto;
+  grid-template-rows: auto 30px;
+  grid-template-columns: auto 150px;
 }
 
 #reviewsSumNum {
@@ -217,8 +220,6 @@ button {
   font-size: 64px;
   font-weight: bold;
   color: darkslategray;
-  float: left;
-  padding: 10px;
 }
 
 #reviewsSumStars {
@@ -227,7 +228,7 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   font-size: 12px;
-  margin: 2em;
+  margin-top: 10px;
 }
 
 #reviewsSumRec {
@@ -235,6 +236,7 @@ button {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 3;
+  display: block;
 }
 
 #reviewsFilterBlock {
@@ -245,13 +247,7 @@ button {
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   grid-template-columns: 50px auto;
-}
-
-#reviews5Stars {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  margin-right: 10px;
 }
 
 #reviews5Label {
@@ -265,13 +261,6 @@ button {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
-  grid-column-end: 3;
-}
-
-#reviews4Stars {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 1;
   grid-column-end: 3;
 }
 
@@ -289,13 +278,6 @@ button {
   grid-column-end: 3;
 }
 
-#reviews3Stars {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
 #reviews3Label {
   grid-row-start: 3;
   grid-row-end: 4;
@@ -310,13 +292,6 @@ button {
   grid-column-end: 3;
 }
 
-#reviews2Stars {
-  grid-row-start: 4;
-  grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
 #reviews2Label {
   grid-row-start: 4;
   grid-row-end: 5;
@@ -328,13 +303,6 @@ button {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 2;
-  grid-column-end: 3;
-}
-
-#reviews1Stars {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 1;
   grid-column-end: 3;
 }
 
@@ -368,6 +336,7 @@ button {
   border-color: darkgrey;
   display: grid;
   grid-template-rows: 50px 600px 100px;
+  margin-left: 20px;
 }
 
 #reviewsSort {
