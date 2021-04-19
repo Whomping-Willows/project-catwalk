@@ -21,11 +21,27 @@ const ReviewsItem = () => (
   <div id="reviewItem">
     <div id="reviewItemSubTitle">
       <div id="reviewSubTitleStars">STARS GO HERE</div>
-      <div id="reviewSubTitleDate">{formatDate(reviewsData.results[2].date)}</div>
+      <div id="reviewSubTitleUserDate">
+        {reviewsData.results[2].reviewer_name}
+        ,
+        {' '}
+        {formatDate(reviewsData.results[2].date)}
+      </div>
     </div>
     <h3 id="reviewTitle">{reviewsData.results[2].summary}</h3>
     <p id="reviewBody">{reviewsData.results[2].body}</p>
+    {reviewsData.results[0].recommend
+      && <p id="reviewIsRec">I recommend this product</p>}
+    {reviewsData.results[2].response
+      && (
+      <div id="reviewResponse">
+        <h2>Response: </h2>
+        <p>{reviewsData.results[2].response}</p>
+      </div>
+      )}
+    <div id="reviewHelpfulness">Helpful? Yes(0) No(0) | Report</div>
   </div>
+
 );
 
 export default ReviewsItem;

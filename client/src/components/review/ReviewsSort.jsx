@@ -2,7 +2,7 @@
 import React from 'react';
 
 const ReviewsSort = () => (
-  <div className="reviews" />
+  <div id="reviewsSort" />
 );
 
 export default ReviewsSort;
