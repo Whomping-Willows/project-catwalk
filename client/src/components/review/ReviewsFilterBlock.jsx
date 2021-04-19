@@ -7,7 +7,7 @@ const ReviewsFilterBlock = () => (
     <div id="reviews5Stars">
       <p id="reviews5Label">5 Stars</p>
       <div id="reviews5Data">
-        <HSBar height={10} data={[{ value: 7, color: 'green' }, { value: 3, color: 'lightgrey' }]} className="reviewsBar" />
+        <HSBar height={10} width={50} data={[{ value: 7, color: 'green' }, { value: 3, color: 'lightgrey' }]} className="reviewsBar" />
       </div>
     </div>
     <div id="reviews4Stars">
