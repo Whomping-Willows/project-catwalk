@@ -33,8 +33,8 @@ const ReviewsItem = () => (
     {reviewsData.results[2].response
       && (
       <div id="reviewResponse">
-        <h2>Response: </h2>
-        <p>{reviewsData.results[2].response}</p>
+        <p id="reviewResponseTitle">Response: </p>
+        <p id="reviewResponseBody">{reviewsData.results[2].response}</p>
       </div>
       )}
     <div id="reviewHelpfulness">Helpful? Yes(0) No(0) | Report</div>
