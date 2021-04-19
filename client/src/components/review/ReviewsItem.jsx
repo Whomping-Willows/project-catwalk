@@ -29,7 +29,12 @@ const ReviewsItem = () => (
     <h3 id="reviewTitle">{reviewsData.results[2].summary}</h3>
     <p id="reviewBody">{reviewsData.results[2].body}</p>
     {reviewsData.results[0].recommend
-      && <p id="reviewIsRec">I recommend this product</p>}
+      && (
+      <div>
+        <i className="fas fa-check" />
+        <p id="reviewIsRec">I recommend this product</p>
+      </div>
+      )}
     {reviewsData.results[2].response
       && (
       <div id="reviewResponse">
@@ -37,7 +42,7 @@ const ReviewsItem = () => (
         <p id="reviewResponseBody">{reviewsData.results[2].response}</p>
       </div>
       )}
-    <div id="reviewHelpfulness">Helpful? Yes(0) No(0) | Report</div>
+    <div id="reviewHelpfulness">Helpful?  Yes(0)  No(0)  |  Report</div>
   </div>
 
 );

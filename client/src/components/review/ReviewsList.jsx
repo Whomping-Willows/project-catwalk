@@ -12,7 +12,10 @@ const ReviewsList = () => (
     </div>
     <div id="reviewsListButtons">
       <button type="button" id="reviewsLoadMore">MORE REVIEWS</button>
-      <button type="button" id="reviewsAdd">ADD A REVIEW</button>
+      <button type="button" id="reviewsAdd">
+        ADD A REVIEW
+        <i className="fas fa-plus" id="reviewsAddPlus" />
+      </button>
     </div>
   </div>
 );

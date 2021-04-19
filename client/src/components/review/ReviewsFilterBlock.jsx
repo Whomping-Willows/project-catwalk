@@ -2,7 +2,7 @@
 import React from 'react';
 
 const ReviewsFilterBlock = () => (
-  <div className="reviews" />
+  <div id="reviewsFilterBlock" />
 );
 
 export default ReviewsFilterBlock;

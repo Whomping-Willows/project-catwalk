@@ -2,7 +2,7 @@
 import React from 'react';
 
 const ReviewsCharBlock = () => (
-  <div className="reviews" />
+  <div id="reviewsCharBlock" />
 );
 
 export default ReviewsCharBlock;
