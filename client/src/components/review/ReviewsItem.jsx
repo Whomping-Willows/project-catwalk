@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import { reviewsData } from './Reviews.jsx';
 
 const formatDate = (string) => {
   let formatted = '';
@@ -17,29 +16,29 @@ const formatDate = (string) => {
   return formatted;
 };
 
-const ReviewsItem = () => (
+const ReviewsItem = (props) => (
   <div id="reviewItem">
     <div id="reviewSubTitleStars">[STARS GO HERE]</div>
     <div id="reviewSubTitleUserDate">
-      {reviewsData.results[2].reviewer_name}
+      {props.reviewsProductData.results[2].reviewer_name}
       ,
       {' '}
-      {formatDate(reviewsData.results[2].date)}
+      {formatDate(props.reviewsProductData.results[2].date)}
     </div>
-    <h3 id="reviewTitle">{reviewsData.results[2].summary}</h3>
-    <p id="reviewBody">{reviewsData.results[2].body}</p>
-    {reviewsData.results[0].recommend
+    <h3 id="reviewTitle">{props.reviewsProductData.results[2].summary}</h3>
+    <p id="reviewBody">{props.reviewsProductData.results[2].body}</p>
+    {props.reviewsProductData.results[0].recommend
       && (
       <div>
         <i className="fas fa-check" />
         <p id="reviewIsRec">I recommend this product</p>
       </div>
       )}
-    {reviewsData.results[2].response
+    {props.reviewsProductData.results[2].response
       && (
       <div id="reviewResponse">
         <p id="reviewResponseTitle">Response: </p>
-        <p id="reviewResponseBody">{reviewsData.results[2].response}</p>
+        <p id="reviewResponseBody">{props.reviewsProductData.results[2].response}</p>
       </div>
       )}
     <div id="reviewHelpfulness">Helpful?  Yes(0)  No(0)  |  Report</div>

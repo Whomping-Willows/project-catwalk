@@ -3,12 +3,12 @@ import React from 'react';
 import ReviewsSort from './ReviewsSort.jsx';
 import ReviewsItem from './ReviewsItem.jsx';
 
-const ReviewsList = () => (
+const ReviewsList = (props) => (
   <div id="reviewsList">
     <ReviewsSort />
     <div id="reviewsAll">
-      <ReviewsItem />
-      <ReviewsItem />
+      <ReviewsItem reviewsProductData={props.reviewsProductData}/>
+      <ReviewsItem reviewsProductData={props.reviewsProductData}/>
     </div>
     <div id="reviewsListButtons">
       <button type="button" id="reviewsLoadMore">MORE REVIEWS</button>
