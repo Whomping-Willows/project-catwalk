@@ -1,4 +1,6 @@
-App
+App [MANAGE: productId, page]
+|
+|__Stars [MANAGE: cumulative review score per productId]
 |
 |__Product
 |
@@ -22,7 +24,7 @@ App
     |
     |__AskQuestionForm
 |
-|__Reviews [STATE NEEDED: produtId, page]
+|__Reviews [MANAGE: all review data | STATE NEEDED: produtId, page]
     |
     |__Breakdown
     |   |
@@ -48,7 +50,7 @@ App
     |       |
     |       |__Sub3, etc.
     |
-    |__Form
+    |__Form [MANAGE ADD NEW REVIEW STATE HERE]
         |
         |__Sub1
         |
