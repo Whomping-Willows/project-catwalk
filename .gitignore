@@ -1,5 +1,8 @@
 ## private APIs
+<<<<<<< HEAD
 client/config.js
+=======
+>>>>>>> 0554403a61591f1f3e03c2deeafd7ca6f52163ca
 server/config.js
 
 ## node modules
