@@ -10,14 +10,14 @@ import Reviews from './components/review/Reviews.jsx';
 
 class App extends React.Component {
   testAPI() {
-    api.getRequest(`${end.listProducts}`);
-    api.getRequest(`${end.listInfo}`);
-    api.getRequest(`${end.productStyles}`);
-    api.getRequest(`${end.relatedProducts}`);
-    api.getRequest(`${end.reviews}`);
-    api.getRequest(`${end.reviewsMeta}`);
-    api.getRequest(`${end.listQuestions}`);
-    api.getRequest(`${end.answersList}`);
+    api.getRequest(end.listProducts);
+    api.getRequest(end.listInfo);
+    api.getRequest(end.productStyles);
+    api.getRequest(end.relatedProducts);
+    api.getRequest(end.reviews);
+    api.getRequest(end.reviewsMeta);
+    api.getRequest(end.listQuestions);
+    api.getRequest(end.answersList);
   }
 
   render() {

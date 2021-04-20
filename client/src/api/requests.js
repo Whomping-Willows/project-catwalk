@@ -12,7 +12,7 @@ const getRequest = (endpoint) => {
       console.log(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.error('From requests: ', err);
     });
 };
 
@@ -29,16 +29,16 @@ const postRequest = (endpoint) => {
       console.log(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.error('From requests: ', err);
     });
 };
 
 // NOT YET WORKING, JUST PLACEHOLDER
 const putRequest = (endpoint) => {
+  console.log('Endpoint param from client requests: ', endpoint);
   axios.put('/api', {
     headers: {
       endpoint,
-      data: [],
     },
   })
     .then((response) => {
@@ -46,8 +46,8 @@ const putRequest = (endpoint) => {
       console.log(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.error('From requests: ', err);
     });
 };
 
-export default { getRequest, postRequest, putRequest };
+export default { getRequest, putRequest, postRequest };
