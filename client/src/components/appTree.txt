@@ -5,6 +5,22 @@ App
 |__Related
 |
 |__Questions
+    |
+    |__SearchForm
+    |
+    |__QAList
+    |   |
+    |   |__QAListItem
+    |       |
+    |       |__AnswerList
+    |           |
+    |           |__AnswerListItem
+    |           |
+    |           |__SubmitAnswerForm
+    |               |
+    |               |__UploadPhotosForm
+    |
+    |__AskQuestionForm
 |
 |__Reviews [STATE NEEDED: produtId, page]
     |
