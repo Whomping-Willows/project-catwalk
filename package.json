@@ -13,19 +13,16 @@
     "test"
   ],
   "dependencies": {
-<<<<<<< HEAD
     "@types/jest": "^26.0.22",
-=======
     "@fortawesome/fontawesome-free": "^5.15.3",
->>>>>>> 0554403a61591f1f3e03c2deeafd7ca6f52163ca
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "chokidar": "^2.1.8",
     "express": "^4.17.1",
     "jest-diff": "^26.6.2",
     "live-server": "^1.2.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "~16.12",
+    "react-dom": "~16.12",
     "react-horizontal-stacked-bar-chart": "^8.15.2",
     "yarn": "^1.22.10"
   },
