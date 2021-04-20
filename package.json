@@ -16,6 +16,7 @@
     "@types/jest": "^26.0.22",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
+    "chokidar": "^2.1.8",
     "express": "^4.17.1",
     "jest-diff": "^26.6.2",
     "live-server": "^1.2.1",

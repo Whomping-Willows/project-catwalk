@@ -1,5 +1,6 @@
 ## private APIs
 client/config.js
+server/config.js
 
 ## node modules
 
