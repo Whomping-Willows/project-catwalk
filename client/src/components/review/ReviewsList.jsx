@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React from 'react';
 import ReviewsSort from './ReviewsSort.jsx';
@@ -7,8 +9,8 @@ const ReviewsList = (props) => (
   <div id="reviewsList">
     <ReviewsSort />
     <div id="reviewsAll">
-      <ReviewsItem reviewsProductData={props.reviewsProductData}/>
-      <ReviewsItem reviewsProductData={props.reviewsProductData}/>
+      <ReviewsItem reviewsProductData={props.reviewsProductData} />
+      <ReviewsItem reviewsProductData={props.reviewsProductData} />
     </div>
     <div id="reviewsListButtons">
       <button type="button" id="reviewsLoadMore">MORE REVIEWS</button>
