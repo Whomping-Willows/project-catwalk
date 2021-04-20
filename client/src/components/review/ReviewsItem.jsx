@@ -8,8 +8,6 @@
 /* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
-import end from '../../api/endpoints.js';
-import api from '../../api/requests.js';
 
 const formatDate = (string) => {
   let formatted = '';
@@ -30,13 +28,13 @@ const ReviewsItem = (props) => {
   const { apiEndpoints, putRequest } = useContext(ApiContext);
 
   const putHelpfulness = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
-    api.putRequest(end.reviewsHelpful);
+    console.log('Endpoint param from ReviewsItem ', apiEndpoints.reviewsHelpful);
+    putRequest(apiEndpoints.reviewsHelpful);
   };
 
   const putReportReview = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
-    api.putRequest(end.reviewsReport);
+    console.log('Endpoint param from ReviewsItem ', apiEndpoints.reviewsReport);
+    putRequest(apiEndpoints.reviewsReport);
   };
 
   return (

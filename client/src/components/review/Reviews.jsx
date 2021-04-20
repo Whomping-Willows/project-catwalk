@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ApiContext } from '../../contexts/api.context.jsx';
 import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewsForm from './ReviewsForm.jsx';
@@ -90,9 +91,16 @@ const Reviews = () => {
   const [reviewsProductData, setReviewsProductData] = useState(reviewsData);
   const [reviewsMetaData, setReviewsMetaData] = useState(rmetaData);
 
+  const { productId, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest } = useContext(ApiContext);
+  const testChangeProductId = () => {
+    console.log('clicked change product id button');
+    setProductId(18079);
+  };
+
   return (
     <div className="reviews">
       <h2>RATINGS & REVIEWS</h2>
+      <button className="button" id="testbutton2" type="submit" aria-label="get a new productId" onClick={testChangeProductId}>Change Product Id</button>
       <ReviewsBreakdown
         reviewsProductData={reviewsProductData}
         reviewsMetaData={reviewsMetaData}
@@ -101,7 +109,10 @@ const Reviews = () => {
         reviewsProductData={reviewsProductData}
         reviewsMetaData={reviewsMetaData}
       />
-      <ReviewsForm reviewsProductData={reviewsProductData} />
+      <ReviewsForm
+        reviewsProductData={reviewsProductData}
+        reviewsMetaData={reviewsMetaData}
+      />
     </div>
   );
 };
