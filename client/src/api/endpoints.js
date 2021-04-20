@@ -40,7 +40,7 @@ const end = {
   reviewsHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/helpful`,
   // Updates a review to show it was reported.
   // This action does not delete the review, but it will not be returned in the above GET request.
-  reviewsReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${apiReviewIdQuery}/report`,
+  reviewsReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`,
   // Retrieves a list of questions for a particular product.
   // This list does not include any reported questions.
   // uses productId, page and count

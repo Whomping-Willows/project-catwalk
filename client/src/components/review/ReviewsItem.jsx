@@ -56,14 +56,18 @@ const ReviewsItem = (props) => {
         <p id="reviewResponseBody">{props.reviewsProductData.results[2].response}</p>
       </div>
       )}
-      <div id="reviewHelpfulness">
+      <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <p onClick={putHelpfulness}>
-          Yes(
-          {props.reviewsProductData.results[2].helpfulness}
-          ) |
-        </p>
-        <p onClick={putReportReview}>  Report</p>
+        <a href="javascript:void(0)" >
+          <p onClick={putHelpfulness} className="reviewHelpP">
+              Yes (
+            {props.reviewsProductData.results[2].helpfulness}
+            ) |
+          </p>
+        </a>
+        <a href="javascript:void(0)" >
+          <p onClick={putReportReview} className="reviewHelpP">  Report</p>
+        </a>
       </div>
     </div>
   );

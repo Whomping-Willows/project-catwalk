@@ -16,12 +16,11 @@ const getRequest = (endpoint) => {
     });
 };
 
-// NOT YET WORKING, JUST PLACEHOLDER
-const postRequest = (endpoint) => {
-  axios.post('/api', {
+const putRequest = (endpoint) => {
+  console.log('Endpoint param from client requests: ', endpoint);
+  axios.put('/api', {
     headers: {
       endpoint,
-      data: [],
     },
   })
     .then((response) => {
@@ -34,11 +33,11 @@ const postRequest = (endpoint) => {
 };
 
 // NOT YET WORKING, JUST PLACEHOLDER
-const putRequest = (endpoint) => {
-  console.log('Endpoint param from client requests: ', endpoint);
-  axios.put('/api', {
+const postRequest = (endpoint) => {
+  axios.post('/api', {
     headers: {
       endpoint,
+      data: [],
     },
   })
     .then((response) => {
