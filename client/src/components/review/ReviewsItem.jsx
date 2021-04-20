@@ -43,7 +43,7 @@ const ReviewsItem = (props) => (
         <p id="reviewResponseBody">{props.reviewsProductData.results[2].response}</p>
       </div>
       )}
-    <div id="reviewHelpfulness">Helpful?  Yes(0)  No(0)  |  Report</div>
+    <div id="reviewHelpfulness">Helpful?  Yes({props.reviewsProductData.results[2].helpfulness}) |  Report</div>
   </div>
 
 );

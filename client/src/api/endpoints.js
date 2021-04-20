@@ -21,27 +21,27 @@ const end = {
   root: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld',
   // Retrieves the list of products
   // uses page and count params
-  listProducts: `/products${apiPageQuery}&${apiCountQuery}`,
+  listProducts: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products${apiPageQuery}&${apiCountQuery}`,
   // Returns the id's of products related to the product specified.
-  listInfo: `/products/${productId}`,
+  listInfo: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${productId}`,
   // Returns the all styles available for the given product.
-  productStyles: `/products/${productId}/styles`,
+  productStyles: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${productId}/styles`,
   // Returns the id's of products related to the product specified.
-  relatedProducts: `/products/${productId}/related`,
+  relatedProducts: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${productId}/related`,
   // Returns a list of reviews for a particular product.
   // This list does not include any reported reviews.
   // uses page, count, sort, product_id
-  reviews: `/reviews/${apiProductIdQuery}`,
+  reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${apiProductIdQuery}`,
   // Returns review metadata for a given product.
-  reviewsMeta: `/reviews/meta/${apiProductIdQuery}`,
+  reviewsMeta: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta/${apiProductIdQuery}`,
   // Retrieves a list of questions for a particular product.
   // This list does not include any reported questions.
   // uses productId, page and count
-  listQuestions: `/qa/questions${apiProductIdQuery}&${apiPageQuery}&${apiCountQuery}`,
+  listQuestions: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions${apiProductIdQuery}&${apiPageQuery}&${apiCountQuery}`,
   // Returns answers for a given question.
   // This list does not include any reported answers.
   // uses page and count
-  answersList: `/qa/questions/${questionsId}/answers`,
+  answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionsId}/answers`,
 };
 
 export default end;
