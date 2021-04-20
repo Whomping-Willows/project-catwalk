@@ -12,8 +12,8 @@ jobs:
       - checkout
       - run: yarn install --ignore-engines
       - run: yarn test
-      - store_artifacts:
-          path: /coverage
+      # - store_artifacts:
+      #     path: /coverage
 # Orchestrate or schedule a set of jobs
 workflows:
   version: 2
