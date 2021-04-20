@@ -10,17 +10,6 @@ import Reviews from './components/review/Reviews.jsx';
 
 class App extends React.Component {
   testAPI() {
-<<<<<<< HEAD
-    // api.getRequest('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/18078');
-    api.getRequest(`${end.root}${end.listProducts}`);
-    api.getRequest(`${end.root}${end.listInfo}`);
-    api.getRequest(`${end.root}${end.productStyles}`);
-    api.getRequest(`${end.root}${end.relatedProducts}`);
-    api.getRequest(`${end.root}${end.reviews}`);
-    api.getRequest(`${end.root}${end.reviewsMeta}`);
-    api.getRequest(`${end.root}${end.listQuestions}`);
-    api.getRequest(`${end.root}${end.answersList}`);
-=======
     api.getRequest(end.listProducts);
     api.getRequest(end.listInfo);
     api.getRequest(end.productStyles);
@@ -29,7 +18,6 @@ class App extends React.Component {
     api.getRequest(end.reviewsMeta);
     api.getRequest(end.listQuestions);
     api.getRequest(end.answersList);
->>>>>>> 0554403a61591f1f3e03c2deeafd7ca6f52163ca
   }
 
   render() {
