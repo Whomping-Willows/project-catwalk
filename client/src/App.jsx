@@ -6,6 +6,7 @@ import end from './api/endpoints.js';
 
 class App extends React.Component {
   testAPI() {
+    // api.getRequest('https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/18078');
     api.getRequest(`${end.root}${end.listProducts}`);
     api.getRequest(`${end.root}${end.listInfo}`);
     api.getRequest(`${end.root}${end.productStyles}`);
