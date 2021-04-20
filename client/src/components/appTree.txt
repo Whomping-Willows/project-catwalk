@@ -1,0 +1,43 @@
+App
+|
+|__Product
+|
+|__Related
+|
+|__Questions
+|
+|__Reviews [STATE NEEDED: produtId, page]
+    |
+    |__Breakdown
+    |   |
+    |   |__Summary
+    |   |
+    |   |__FilterBlock
+    |   |   |
+    |   |   |__FilterBar
+    |   |
+    |   |__CharBlock
+    |       |
+    |       |__Characteristics
+    |
+    |__List
+    |   |
+    |   |__Sort
+    |   |
+    |   |__ReviewItem
+    |       |
+    |       |__Sub1
+    |       |
+    |       |__Sub2
+    |       |
+    |       |__Sub3, etc.
+    |
+    |__Form
+        |
+        |__Sub1
+        |
+        |__Sub2
+        |
+        |__Sub3
+
+
