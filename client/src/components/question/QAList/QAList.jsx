@@ -22,3 +22,9 @@ import React from 'react';
 //     }
 //   }
 // ]
+
+const QAList = () => (
+  <ul />
+);
+
+export default QAList;

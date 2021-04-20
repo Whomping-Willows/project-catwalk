@@ -175,6 +175,7 @@ h2 {
   height: 31px;
   padding-right: 13px;
   color: #515151;
+  z-index: 1;
   /* background-color: aqua; */
 }
 

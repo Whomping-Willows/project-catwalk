@@ -134,6 +134,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./client/src/components/question/AskQuestionForm.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/question/AskQuestionForm.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar AskQuestionForm = function AskQuestionForm() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, \"Don't see the answer you're looking for?\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    type: \"submit\"\n  }, \"ASK YOUR QUESTION\"));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (AskQuestionForm);\n\n//# sourceURL=webpack:///./client/src/components/question/AskQuestionForm.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/question/QAList/QAList.jsx":
+/*!**********************************************************!*\
+  !*** ./client/src/components/question/QAList/QAList.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n // State:\n// product_name: // need from props is not in the get data\n// product_id: '18078' // number/string issue\n// results: [\n//   {\n//     asker_name: \"cleopatra\"\n//     question_body: \"Can I wash it?\"\n//     question_date: \"2018-02-08T00:00:00.000Z\"\n//     question_helpfulness: 27\n//     question_id: 114290\n//     answers: {\n//       1082146: {\n//         answerer_name: \"ceasar\"\n//         body: \"It says not to\"\n//         date: \"2018-03-08T00:00:00.000Z\"\n//         helpfulness: 1\n//         id: 1082146\n//         photos: []\n//       }\n//     }\n//   }\n// ]\n\nvar QAList = function QAList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"ul\", null);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (QAList);\n\n//# sourceURL=webpack:///./client/src/components/question/QAList/QAList.jsx?");
+
+/***/ }),
+
 /***/ "./client/src/components/question/Question.jsx":
 /*!*****************************************************!*\
   !*** ./client/src/components/question/Question.jsx ***!
@@ -142,7 +166,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* eslint-disable import/extensions */\n\n\nvar Question = function Question() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"question\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h2\", null, \"QUESTIONS & ANSWERS\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"form\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n    className: \"searchForm\",\n    type: \"text\",\n    value: \"HAVE A QUESTION? SEARCH FOR ANSWERS\"\n  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: \"fas fa-search\"\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Question);\n\n//# sourceURL=webpack:///./client/src/components/question/Question.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _SearchForm_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchForm.jsx */ \"./client/src/components/question/SearchForm.jsx\");\n/* harmony import */ var _QAList_QAList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./QAList/QAList.jsx */ \"./client/src/components/question/QAList/QAList.jsx\");\n/* harmony import */ var _AskQuestionForm_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AskQuestionForm.jsx */ \"./client/src/components/question/AskQuestionForm.jsx\");\n/* eslint-disable import/extensions */\n\n\n\n\n\nvar Question = function Question() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"question\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h2\", null, \"QUESTIONS & ANSWERS\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchForm_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_QAList_QAList_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    type: \"submit\"\n  }, \"MORE ANSWERED QUESTIONS\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AskQuestionForm_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Question);\n\n//# sourceURL=webpack:///./client/src/components/question/Question.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/question/SearchForm.jsx":
+/*!*******************************************************!*\
+  !*** ./client/src/components/question/SearchForm.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nvar SearchForm = function SearchForm() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"form\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n    className: \"searchForm\",\n    type: \"text\",\n    value: \"HAVE A QUESTION? SEARCH FOR ANSWERS\"\n  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"i\", {\n    className: \"fas fa-search\"\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (SearchForm);\n\n//# sourceURL=webpack:///./client/src/components/question/SearchForm.jsx?");
 
 /***/ }),
 

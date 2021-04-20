@@ -1,21 +1,18 @@
 /* eslint-disable import/extensions */
 import React from 'react';
+import SearchForm from './SearchForm.jsx';
+import QAList from './QAList/QAList.jsx';
+import AskQuestionForm from './AskQuestionForm.jsx';
 
 const Question = () => (
   <div className="question">
     <h2>QUESTIONS & ANSWERS</h2>
-
-    <form>
-      <input
-        className="searchForm"
-        type="text"
-        value="HAVE A QUESTION? SEARCH FOR ANSWERS"
-      />
-    </form>
-    <i
-      className="fas fa-search"
-    />
-
+    <SearchForm />
+    <QAList />
+    <button type="submit">
+      MORE ANSWERED QUESTIONS
+    </button>
+    <AskQuestionForm />
   </div>
 );
 
