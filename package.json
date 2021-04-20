@@ -9,12 +9,14 @@
     "start-react": "webpack --config ./webpack.config.js --mode development -w"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "live-server": "^1.2.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-horizontal-stacked-bar-chart": "^8.15.2",
     "yarn": "^1.22.10"
   },
   "devDependencies": {

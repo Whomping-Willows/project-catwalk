@@ -2,7 +2,7 @@
 import React from 'react';
 
 const ReviewsForm = () => (
-  <div className="reviews" />
+  <div />
 );
 
 export default ReviewsForm;
