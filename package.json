@@ -21,8 +21,8 @@
     "express": "^4.17.1",
     "jest-diff": "^26.6.2",
     "live-server": "^1.2.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "~16.12",
+    "react-dom": "~16.12",
     "react-horizontal-stacked-bar-chart": "^8.15.2",
     "yarn": "^1.22.10"
   },
