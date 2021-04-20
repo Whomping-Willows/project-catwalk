@@ -7,6 +7,22 @@ App [MANAGE: productId, page]
 |__Related
 |
 |__Questions
+    |
+    |__SearchForm
+    |
+    |__QAList
+    |   |
+    |   |__QAListItem
+    |       |
+    |       |__AnswerList
+    |           |
+    |           |__AnswerListItem
+    |           |
+    |           |__SubmitAnswerForm
+    |               |
+    |               |__UploadPhotosForm
+    |
+    |__AskQuestionForm
 |
 |__Reviews [MANAGE: all review data | STATE NEEDED: produtId, page]
     |
