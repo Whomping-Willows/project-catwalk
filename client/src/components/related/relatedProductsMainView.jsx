@@ -10,8 +10,8 @@ const RelatedProductsMainView = (props) => {
 
   useEffect(() => {
 console.log('I only run one');
-const getRelatedProductsId = async() => {
-  const data = await api.getRequest(`${end.root}${end.relatedProducts}`);
+const getRelatedProductsId = () => {
+  const data = api.getRequest(end.relatedProducts);
 }
 getRelatedProductsId();
   }, [productId])

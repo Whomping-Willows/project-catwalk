@@ -5,17 +5,10 @@ const router = express.Router();
 const axios = require('axios');
 const GITHUB_API_KEY = require('./config.js');
 
-<<<<<<< HEAD
-
-router.get('/api', (req, res) => {
-  console.log('this is hearder', req.headers);
-  console.log(req.headers.endpoint);
-=======
 const noData = {};
 
 router.get('/api', (req, res) => {
   console.log('From router get req ', req.headers.endpoint);
->>>>>>> 0554403a61591f1f3e03c2deeafd7ca6f52163ca
   axios.get(req.headers.endpoint, {
     headers: { Authorization: GITHUB_API_KEY },
   })

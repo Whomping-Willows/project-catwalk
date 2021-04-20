@@ -3,14 +3,11 @@
 import React from 'react';
 import api from './api/requests.js';
 import end from './api/endpoints.js';
-<<<<<<< HEAD
-import RelatedProductsMainView from './components/related/relatedProductsMainView.jsx'
-=======
+import RelatedProductsMainView from './components/related/relatedProductsMainView.jsx';
 import Product from './components/product/Product.jsx';
 import Related from './components/related/Related.jsx';
 import Question from './components/question/Question.jsx';
 import Reviews from './components/review/Reviews.jsx';
->>>>>>> 0554403a61591f1f3e03c2deeafd7ca6f52163ca
 
 class App extends React.Component {
   testAPI() {
