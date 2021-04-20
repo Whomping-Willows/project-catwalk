@@ -7,7 +7,7 @@ import ReviewsItem from './ReviewsItem.jsx';
 
 const ReviewsList = (props) => (
   <div id="reviewsList">
-    <ReviewsSort />
+    <ReviewsSort reviewsMetaData={props.reviewsMetaData} />
     <div id="reviewsAll">
       <ReviewsItem reviewsProductData={props.reviewsProductData} />
       <ReviewsItem reviewsProductData={props.reviewsProductData} />

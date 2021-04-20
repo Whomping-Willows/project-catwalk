@@ -72,14 +72,35 @@ const reviewsData = {
   ],
 };
 
+const rmetaData = {
+  product_id: '18078',
+  ratings: {
+    1: '5', 2: '11', 3: '5', 4: '8', 5: '16', 6: '1',
+  },
+  recommended: { false: '24', true: '22' },
+  characteristics: {
+    Fit: { id: 60618, value: '2.3125000000000000' },
+    Length: { id: 60619, value: '2.5000000000000000' },
+    Comfort: { id: 60620, value: '2.6250000000000000' },
+    Quality: { id: 60621, value: '2.6250000000000000' },
+  },
+};
+
 const Reviews = () => {
   const [reviewsProductData, setReviewsProductData] = useState(reviewsData);
+  const [reviewsMetaData, setReviewsMetaData] = useState(rmetaData);
 
   return (
     <div className="reviews">
       <h2>RATINGS & REVIEWS</h2>
-      <ReviewsBreakdown reviewsProductData={reviewsProductData} />
-      <ReviewsList reviewsProductData={reviewsProductData} />
+      <ReviewsBreakdown
+        reviewsProductData={reviewsProductData}
+        reviewsMetaData={reviewsMetaData}
+      />
+      <ReviewsList
+        reviewsProductData={reviewsProductData}
+        reviewsMetaData={reviewsMetaData}
+      />
       <ReviewsForm reviewsProductData={reviewsProductData} />
     </div>
   );

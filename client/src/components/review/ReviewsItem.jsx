@@ -1,3 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-script-url */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
@@ -58,14 +63,14 @@ const ReviewsItem = (props) => {
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <a href="javascript:void(0)" >
+        <a href="javascript:void(0)">
           <p onClick={putHelpfulness} className="reviewHelpP">
-              Yes (
+            Yes (
             {props.reviewsProductData.results[2].helpfulness}
             ) |
           </p>
         </a>
-        <a href="javascript:void(0)" >
+        <a href="javascript:void(0)">
           <p onClick={putReportReview} className="reviewHelpP">  Report</p>
         </a>
       </div>
