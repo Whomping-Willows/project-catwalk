@@ -9,8 +9,9 @@ const ReviewsList = (props) => (
   <div id="reviewsList">
     <ReviewsSort reviewsMetaData={props.reviewsMetaData} />
     <div id="reviewsAll">
-      <ReviewsItem reviewsProductData={props.reviewsProductData} />
-      <ReviewsItem reviewsProductData={props.reviewsProductData} />
+      {props.reviewsProductData.results.map((review) =>
+      <ReviewsItem key={review.review_id}/>
+      )}
     </div>
     <div id="reviewsListButtons">
       <button type="button" id="reviewsLoadMore">MORE REVIEWS</button>

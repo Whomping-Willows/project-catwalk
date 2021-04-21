@@ -13,9 +13,9 @@ const metaDefault = {
     Fit: { id: 60618, value: '2.6111111111111111' },
     Length: { id: 60619, value: '2.7777777777777778' },
     Comfort: { id: 60620, value: '2.8888888888888889' },
-    Quality: { id: 60621, value: '2.7647058823529412' }
-  }
-}
+    Quality: { id: 60621, value: '2.7647058823529412' },
+  },
+};
 
 const productDataDefault = {
   product: '18078',
@@ -32,7 +32,7 @@ const productDataDefault = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'user',
       helpfulness: 2,
-      photos: []
+      photos: [],
     },
     {
       review_id: 289052,
