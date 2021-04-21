@@ -10,7 +10,7 @@ export const ApiContext = createContext();
 export const ApiProvider = (props) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(1);
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(10);
   const [sort, setSort] = useState('helpful');
   const [productId, setProductId] = useState(18078);
   const [questionsId, setQuestionsId] = useState(114290);
@@ -72,7 +72,7 @@ export const ApiProvider = (props) => {
       });
   };
 
-  const putRequest = (endpoint, callback) => {
+  const putRequest = (endpoint) => {
     console.log('Endpoint param from client requests: ', endpoint);
     axios.put('/api', {
       headers: {
@@ -82,7 +82,6 @@ export const ApiProvider = (props) => {
       .then((response) => {
         console.log('endpoint: ', endpoint);
         console.log(response.data);
-        callback(response.data);
       })
       .catch((err) => {
         console.error('From requests: ', err);
@@ -109,7 +108,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
     }}
     >
       {props.children}
