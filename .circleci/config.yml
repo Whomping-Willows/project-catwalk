@@ -20,9 +20,9 @@ jobs:
       - run: yarn install --ignore-engines
       #store dependencies to speed future circleci processes
       - save_cache:
-          paths:
-            - node_modules
-              key: v1-dependencies-{{ checksum "package.json"}}
+        paths:
+          - node_modules
+            key: v1-dependencies-{{ checksum "package.json"}}
       - run: yarn test
       # - store_artifacts:
       #     path: /coverage
