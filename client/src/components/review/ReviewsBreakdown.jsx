@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
 /* eslint-disable guard-for-in */
