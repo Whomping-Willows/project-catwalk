@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 
-const ReviewsForm = () => (
+const ReviewsForm = (props) => (
   <div />
 );
 
