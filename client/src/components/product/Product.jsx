@@ -16,7 +16,7 @@ const Product = () => {
   useEffect(() => {
     getRequest(end.productStyles, setProductStyleData);
     getRequest(end.listInfo, setProductProductData);
-  });
+  }, []);
 
   return (
     <div className="product">
