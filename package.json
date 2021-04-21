@@ -13,8 +13,8 @@
     "test"
   ],
   "dependencies": {
-    "@types/jest": "^26.0.22",
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "@types/jest": "^26.0.22",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "chokidar": "^2.1.8",
