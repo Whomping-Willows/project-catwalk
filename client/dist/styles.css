@@ -192,14 +192,19 @@ button {
   padding-left: 15px;
   border: solid;
   border-width: 1px;
-  color: #515151;
+  color: #393939;
   border-color: #515151;
+  align-content: space-around;
 }
 
 #searchInput {
   border: none;
+  width: 90%;
   grid-column-start: 1;
   grid-column-end: 4;
+  font-size: 16px;
+  padding: 0px;
+  color: #393939;
 }
 
 #searchButton {
