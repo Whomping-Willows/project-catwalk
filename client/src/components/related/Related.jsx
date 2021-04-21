@@ -1,20 +1,22 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import RelatedProductsList from './RelatedProductsList.jsx';
 import YourOutFitList from './YourOutFitList.jsx';
-import api from '../../api/requests.js';
-import end from '../../api/endpoints.js';
+import {ApiContext} from '../../contexts/api.context.jsx';
+
 
 const Related = () => {
   //const [ProductId, setProductId] = useState();
   const [RelatedProductsId, setRelatedProductsId] = useState([]);
+
+  const { end, getRequest } = useContext(ApiContext);
   console.log('my data', RelatedProductsId);
   console.log('I run with every render');
 
   useEffect(() => {
     console.log('I only run one');
     const getRelatedProductsId = () => {
-      api.getRequest(end.relatedProducts, setRelatedProductsId);
+      getRequest(end.relatedProducts, setRelatedProductsId);
       // console.log('data after request', data);
       // setRelatedProductsId(data);
     };

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../api/requests.js';
-import end from '../../api/endpoints.js';
+
 
 const RelatedProductsList = () => {
   return (
