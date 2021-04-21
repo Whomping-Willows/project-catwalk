@@ -7,13 +7,26 @@ welcome: circleci/welcome-orb@0.4.1
 jobs:
   build_and_save:
     docker:
-      - image: circleci/node:10.0-browsers
+      - image: circleci/node:10.19.0-browsers
     steps:
+      # grab code from github
       - checkout
+      # load stored dependencies
+      - restore_cache:
+        keys:
+          -v1-dependencies-{{ checksum "package.json"}}
+          -v1-dependencies
+      # setup yarn and run test suite
       - run: yarn install --ignore-engines
+      #store dependencies to speed future circleci processes
+      - save_cache:
+          paths:
+            - node_modules
+            key: v1-dependensies-{{ checksum "package.json"}}
       - run: yarn test
       # - store_artifacts:
       #     path: /coverage
+
 # Orchestrate or schedule a set of jobs
 workflows:
   version: 2
