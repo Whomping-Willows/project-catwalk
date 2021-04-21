@@ -177,24 +177,23 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px 60px 480px 80px;
+  grid-template-rows: 50px 70px 480px 80px;
   /* background-color: yellow; */
   grid-template-columns: 40% 40% auto;
   padding: 10px;
 }
 
-#searchForm {
+#searchContainer {
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 4;
-  width: 95%;
+  width: 100%;
   padding-left: 15px;
   border: solid;
   border-width: 1px;
   color: #393939;
   border-color: #515151;
-  align-content: space-around;
 }
 
 #searchInput {
@@ -209,7 +208,7 @@ button {
 
 #searchButton {
   border: none;
-  padding: 0;
+  padding-top: 5px;
   width: 50px;
   height: 50px;
 }

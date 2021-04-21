@@ -1,8 +1,8 @@
 import React from 'react';
 
 const SearchForm = () => (
-  <div id="searchForm">
-    <form>
+  <div id="searchContainer">
+    <form id="searchForm">
       <input
         id="searchInput"
         type="text"
