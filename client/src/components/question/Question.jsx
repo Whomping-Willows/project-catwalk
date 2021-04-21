@@ -9,7 +9,10 @@ const Question = () => (
     <h2>QUESTIONS & ANSWERS</h2>
     <SearchForm />
     <QAList />
-    <button type="submit">
+    <button
+      id="moreAnsweredQuestions"
+      type="submit"
+    >
       MORE ANSWERED QUESTIONS
     </button>
     <AskQuestionForm />

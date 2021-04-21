@@ -1,17 +1,25 @@
 import React from 'react';
 
 const SearchForm = () => (
-  <div>
+  <div id="searchForm">
     <form>
       <input
-        className="searchForm"
+        id="searchInput"
         type="text"
-        value="HAVE A QUESTION? SEARCH FOR ANSWERS"
+        value=""
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS"
       />
+      <button
+        type="submit"
+        id="searchButton"
+      >
+        <i
+          className="fas fa-search"
+          id="searchAddIcon"
+        />
+      </button>
     </form>
-    <i
-      className="fas fa-search"
-    />
+
   </div>
 );
 
