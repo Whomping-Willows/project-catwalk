@@ -25,16 +25,16 @@ const formatDate = (string) => {
 };
 
 const ReviewsItem = (props) => {
-  const { apiEndpoints, putRequest } = useContext(ApiContext);
+  const { end, putRequest } = useContext(ApiContext);
 
   const putHelpfulness = () => {
-    console.log('Endpoint param from ReviewsItem ', apiEndpoints.reviewsHelpful);
-    putRequest(apiEndpoints.reviewsHelpful);
+    console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
+    putRequest(end.reviewsHelpful, null);
   };
 
   const putReportReview = () => {
-    console.log('Endpoint param from ReviewsItem ', apiEndpoints.reviewsReport);
-    putRequest(apiEndpoints.reviewsReport);
+    console.log('Endpoint param from ReviewsItem ', end.reviewsReport);
+    putRequest(end.reviewsReport, null);
   };
 
   return (
