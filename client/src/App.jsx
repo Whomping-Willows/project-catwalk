@@ -3,7 +3,6 @@
 import React from 'react';
 import api from './api/requests.js';
 import end from './api/endpoints.js';
-import RelatedProductsMainView from './components/related/relatedProductsMainView.jsx';
 import Product from './components/product/Product.jsx';
 import Related from './components/related/Related.jsx';
 import Question from './components/question/Question.jsx';
@@ -33,10 +32,6 @@ class App extends React.Component {
           <Related />
           <Question />
           <Reviews />
-        </div>
-        <div>
-          <h3>Related Products List</h3>
-          <RelatedProductsMainView />
         </div>
       </div>
     );

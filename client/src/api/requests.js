@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 
-const getRequest = (endpoint) => {
+const getRequest = (endpoint, callback) => {
   axios.get('/api', {
     headers: {
       endpoint,
@@ -10,6 +10,7 @@ const getRequest = (endpoint) => {
     .then((response) => {
       console.log('endpoint: ', endpoint);
       console.log(response.data);
+      callback(response.data);
     })
     .catch((err) => {
       console.error('From requests: ', err);

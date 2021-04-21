@@ -58,4 +58,28 @@ App [MANAGE: productId, page]
         |
         |__Sub3
 
-
+|
+|__Related  [MANAGE: state:productId]
+    |
+    |__RelatedProductsList(component)
+    |   |
+    |   |__RelatedProductCard (component)
+    |       |
+    |       |__(ProductId)
+    |       |__(ProductCategory)
+    |       |__(ProductName)
+    |       |__(ProductImage)
+    |       |__(ProductRating)
+    |       |__(ProductPrice)
+    |       |
+    |       |__ComparisonModal (component)
+    |
+    |__YourOutFitList (component)
+        |
+        |__OutFitCard (component)
+            |__(ProductId)
+            |__(ProductCategory)
+            |__(ProductName)
+            |__(ProductImage)
+            |__(ProductRating)
+            |__(ProductPrice)
