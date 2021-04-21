@@ -3,6 +3,7 @@ import React from 'react';
 const SearchForm = () => (
   <div id="searchContainer">
     <form id="searchForm">
+      <
       <input
         id="searchInput"
         type="text"
