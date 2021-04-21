@@ -26,7 +26,10 @@ const ReviewsList = (props) => {
         ))}
       </div>
       <div id="reviewsListButtons">
-        <button type="button" id="reviewsLoadMore" onClick={addTwo}>MORE REVIEWS</button>
+        {props.reviewsProductData.results.length > 2 && props.reviewsProductData.results.length !== reviewsInList.length
+          && (
+          <button type="button" id="reviewsLoadMore" onClick={addTwo}>MORE REVIEWS</button>
+          )}
         <button type="button" id="reviewsAdd">
           ADD A REVIEW
           <i className="fas fa-plus" id="reviewsAddPlus" />
