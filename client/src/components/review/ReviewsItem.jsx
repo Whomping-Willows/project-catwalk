@@ -6,9 +6,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React from 'react';
-import end from '../../api/endpoints.js';
-import api from '../../api/requests.js';
+import React, { useContext } from 'react';
+import { ApiContext } from '../../contexts/api.context.jsx';
 
 const formatDate = (string) => {
   let formatted = '';
@@ -26,14 +25,16 @@ const formatDate = (string) => {
 };
 
 const ReviewsItem = (props) => {
+  const { end, putRequest } = useContext(ApiContext);
+
   const putHelpfulness = () => {
     console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
-    api.putRequest(end.reviewsHelpful);
+    putRequest(end.reviewsHelpful, null);
   };
 
   const putReportReview = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
-    api.putRequest(end.reviewsReport);
+    console.log('Endpoint param from ReviewsItem ', end.reviewsReport);
+    putRequest(end.reviewsReport, null);
   };
 
   return (
