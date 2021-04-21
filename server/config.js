@@ -1,3 +1,3 @@
-const GITHUB_API_KEY = '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';
+const GITHUB_API_KEY = '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';
 
 module.exports = GITHUB_API_KEY;
