@@ -1,10 +1,23 @@
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { ApiContext } from '../../contexts/api.context.jsx';
 import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import ReviewsForm from './ReviewsForm.jsx';
 
-const reviewsData = {
+const metaDefault = {
+  product_id: '18078',
+  ratings: { '1': '5', '2': '11', '3': '5', '4': '8', '5': '18', '6': '1' },
+  recommended: { false: '24', true: '24' },
+  characteristics: {
+    Fit: { id: 60618, value: '2.6111111111111111' },
+    Length: { id: 60619, value: '2.7777777777777778' },
+    Comfort: { id: 60620, value: '2.8888888888888889' },
+    Quality: { id: 60621, value: '2.7647058823529412' }
+  }
+}
+
+const productDataDefault = {
   product: '18078',
   page: 0,
   count: 5,
@@ -19,7 +32,19 @@ const reviewsData = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'user',
       helpfulness: 2,
-      photos: [],
+      photos: []
+    },
+    {
+      review_id: 289052,
+      rating: 5,
+      summary: 'its working',
+      recommend: true,
+      response: null,
+      body: 'ITS ALIVE! MY BEAUTIFUL CREATION IS ALIVE!',
+      date: '2021-03-13T00:00:00.000Z',
+      reviewer_name: 'ITS WORKING',
+      helpfulness: 0,
+      photos: []
     },
     {
       review_id: 289043,
@@ -31,19 +56,7 @@ const reviewsData = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
       helpfulness: 0,
-      photos: [Array],
-    },
-    {
-      review_id: 289038,
-      rating: 2,
-      summary: 'This product was amazing, I bought every style!',
-      recommend: true,
-      response: "We're so happy that you enjoyed our product. This is definitely a favorite for many!",
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut interdum metus. Nunc eget lacinia ex. Duis elementum efficitur eros, eget maximus risus porttitor vitae. Integer sit amet nisl eget sapien sagittis dapibus. Suspendisse gravida sit non.',
-      date: '2021-03-13T00:00:00.000Z',
-      reviewer_name: 'Taylor Smart',
-      helpfulness: 18,
-      photos: [Array],
+      photos: [Array]
     },
     {
       review_id: 289034,
@@ -55,7 +68,7 @@ const reviewsData = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
       helpfulness: 0,
-      photos: [Array],
+      photos: [Array]
     },
     {
       review_id: 289033,
@@ -67,28 +80,21 @@ const reviewsData = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
       helpfulness: 0,
-      photos: [Array],
-    },
-  ],
-};
-
-const rmetaData = {
-  product_id: '18078',
-  ratings: {
-    1: '5', 2: '11', 3: '5', 4: '8', 5: '16', 6: '1',
-  },
-  recommended: { false: '24', true: '22' },
-  characteristics: {
-    Fit: { id: 60618, value: '2.3125000000000000' },
-    Length: { id: 60619, value: '2.5000000000000000' },
-    Comfort: { id: 60620, value: '2.6250000000000000' },
-    Quality: { id: 60621, value: '2.6250000000000000' },
-  },
-};
+      photos: [Array]
+    }
+  ]
+}
 
 const Reviews = () => {
-  const [reviewsProductData, setReviewsProductData] = useState(reviewsData);
-  const [reviewsMetaData, setReviewsMetaData] = useState(rmetaData);
+  const [reviewsProductData, setReviewsProductData] = useState(productDataDefault);
+  const [reviewsMetaData, setReviewsMetaData] = useState(metaDefault);
+
+  const { end, getRequest } = useContext(ApiContext);
+
+  useEffect(() => {
+    getRequest(end.reviews, setReviewsProductData);
+    getRequest(end.reviewsMeta, setReviewsMetaData);
+  }, []);
 
   return (
     <div className="reviews">
@@ -101,7 +107,10 @@ const Reviews = () => {
         reviewsProductData={reviewsProductData}
         reviewsMetaData={reviewsMetaData}
       />
-      <ReviewsForm reviewsProductData={reviewsProductData} />
+      <ReviewsForm
+        reviewsProductData={reviewsProductData}
+        reviewsMetaData={reviewsMetaData}
+      />
     </div>
   );
 };
