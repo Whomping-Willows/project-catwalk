@@ -26,7 +26,8 @@ const ReviewsList = (props) => {
         ))}
       </div>
       <div id="reviewsListButtons">
-        {props.reviewsProductData.results.length > 2 && props.reviewsProductData.results.length !== reviewsInList.length
+        {props.reviewsProductData.results.length > 2 &&
+        props.reviewsProductData.results.length !== reviewsInList.length
           && (
           <button type="button" id="reviewsLoadMore" onClick={addTwo}>MORE REVIEWS</button>
           )}
