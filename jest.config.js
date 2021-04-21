@@ -1,6 +1,3 @@
-export CODECOV_TOKEN="16541393-da0d-4a9d-be90-5e533482eab7"
-bash <(curl -s https://codecov.io/bash)
-
 /*
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/en/configuration.html
