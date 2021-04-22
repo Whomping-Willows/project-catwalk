@@ -178,7 +178,6 @@ button {
   grid-column-end: 3;
   display: grid;
   grid-template-rows: 50px 70px 480px 80px;
-  /* background-color: yellow; */
   grid-template-columns: 40% 40% auto;
   padding: 10px;
 }
@@ -188,34 +187,56 @@ button {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 4;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-template-rows: 70px;
   width: 100%;
-  padding-left: 15px;
   border: solid;
   border-width: 1px;
   color: #393939;
   border-color: #515151;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#searchForm {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 #searchInput {
   border: none;
-  width: 90%;
+  float: left;
+  width: 85%;
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 2;
   font-size: 16px;
-  padding: 0px;
+  padding: 24px;
   color: #393939;
 }
 
 #searchButton {
+  grid-column-start: 2;
+  grid-column-end: 3;
   border: none;
-  padding-top: 5px;
-  width: 50px;
-  height: 50px;
+  height: 68px;
+  padding: 20px 20px 0 20px;
+  margin: 0;
+
 }
 
 #searchAddIcon {
   float: right;
-  height: 31px;
+  height: 30px;
+  margin: 0;
   color: #515151;
 }
 

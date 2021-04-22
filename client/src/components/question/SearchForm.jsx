@@ -3,7 +3,9 @@ import React from 'react';
 const SearchForm = () => (
   <div id="searchContainer">
     <form id="searchForm">
-      <
+      <label>
+        <span className="visually-hidden">Have a question? Search for Answers</span>
+      </label>
       <input
         id="searchInput"
         type="text"
@@ -20,7 +22,6 @@ const SearchForm = () => (
         />
       </button>
     </form>
-
   </div>
 );
 
