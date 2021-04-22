@@ -401,7 +401,7 @@ button {
   grid-column-end: 3;
 }
 
-.reviewsChar {
+.reviewsCharBlock {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 1;
@@ -424,15 +424,14 @@ button {
   width: 33%;
 }
 
-#reviewsSizeDiv {
-  grid-column-start: 1;
-  grid-column-end: 3;
+.reviewsCharDiv {
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: 10px auto 10px auto 10px auto 10px auto 10px;
+  margin-bottom: 30px;
 }
 
-#size {
+#charPointer {
   margin: 0;
   z-index: 2;
   position: relative;
@@ -473,7 +472,7 @@ button {
   grid-row-end: 3;
 }
 
-#reviewsSizeData {
+.reviewsCharData {
   grid-column-start: 1;
   grid-column-end: 10;
   grid-row-start: 2;
@@ -482,7 +481,7 @@ button {
   margin-bottom: 10px;
 }
 
-#reviewsSizeTable {
+.reviewsCharTable {
   grid-column-start: 1;
   grid-column-end: 10;
   table-layout: fixed ;

@@ -3,33 +3,33 @@
 import React from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 
-const ReviewsSize = (props) => {
-  const sizeValue = Number(props.metaData.characteristics.Size.value).toFixed(1);
+const ReviewsLength = (props) => {
+  const lengthValue = Number(props.metaData.characteristics.Length.value).toFixed(1);
 
   return (
     <div className="reviewsCharDiv">
-      <p className="reviewsLabel">Size</p>
-      {sizeValue < 1.5 && (
+      <p className="reviewsLabel">Length</p>
+      {lengthValue < 1.5 && (
       <div id="reviewsChar1">
         <i className="fa fa-caret-down fa-lg" id="charPointer" aria-hidden="true" />
       </div>
       )}
-      {sizeValue >= 1.5 && sizeValue < 2.5 && (
+      {lengthValue >= 1.5 && lengthValue < 2.5 && (
       <div id="reviewsChar2">
         <i className="fa fa-caret-down fa-lg" id="charPointer" aria-hidden="true" />
       </div>
       )}
-      {sizeValue >= 2.5 && sizeValue < 3.5 && (
+      {lengthValue >= 2.5 && lengthValue < 3.5 && (
       <div id="reviewsChar3">
         <i className="fa fa-caret-down fa-lg" id="charPointer" aria-hidden="true" />
       </div>
       )}
-      {sizeValue >= 3.5 && sizeValue < 4.5 && (
+      {lengthValue >= 3.5 && lengthValue < 4.5 && (
       <div id="reviewsChar4">
         <i className="fa fa-caret-down fa-lg" id="charPointer" aria-hidden="true" />
       </div>
       )}
-      {sizeValue >= 4.5 && (
+      {lengthValue >= 4.5 && (
       <div id="reviewsChar5">
         <i className="fa fa-caret-down fa-lg" id="charPointer" aria-hidden="true" />
       </div>
@@ -48,4 +48,4 @@ const ReviewsSize = (props) => {
   );
 };
 
-export default ReviewsSize;
+export default ReviewsLength;

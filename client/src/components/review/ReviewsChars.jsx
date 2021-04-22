@@ -1,10 +1,20 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import ReviewsSize from './ReviewsSize.jsx';
+import ReviewsComfort from './ReviewsComfort.jsx';
+import ReviewsWidth from './ReviewsWidth.jsx';
+import ReviewsQuality from './ReviewsQuality.jsx';
+import ReviewsLength from './ReviewsLength.jsx';
+import ReviewsFit from './ReviewsFit.jsx';
 
 const ReviewsChars = (props) => (
-  <div className="reviewsChar">
-    <ReviewsSize metaData={props.metaData} />
+  <div className="reviewsCharBlock">
+    {props.metaData.characteristics.Size && (<ReviewsSize metaData={props.metaData} />)}
+    {props.metaData.characteristics.Comfort && (<ReviewsComfort metaData={props.metaData} />)}
+    {props.metaData.characteristics.Width && (<ReviewsWidth metaData={props.metaData} />)}
+    {props.metaData.characteristics.Quality && (<ReviewsQuality metaData={props.metaData} />)}
+    {props.metaData.characteristics.Length && (<ReviewsLength metaData={props.metaData} />)}
+    {props.metaData.characteristics.Fit && (<ReviewsFit metaData={props.metaData} />)}
   </div>
 );
 
