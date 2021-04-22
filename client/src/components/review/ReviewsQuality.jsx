@@ -39,9 +39,9 @@ const ReviewsQuality = (props) => {
       </div>
       <table className="reviewsCharTable">
         <tr>
-          <td className="reviewsFilterLabel" id="reviewsCharLeft">Too Small</td>
-          <td className="reviewsFilterLabel" id="reviewsCharMiddle">Perfect</td>
-          <td className="reviewsFilterLabel" id="reviewsCharRight">Too Big</td>
+          <td className="reviewsFilterLabel" id="reviewsCharLeft">Poor</td>
+          <td className="reviewsFilterLabel" id="reviewsCharMiddle">Ok</td>
+          <td className="reviewsFilterLabel" id="reviewsCharRight">Great</td>
         </tr>
       </table>
     </div>

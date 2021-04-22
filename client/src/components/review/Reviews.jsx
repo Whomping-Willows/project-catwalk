@@ -88,6 +88,7 @@ const productDataDefault = {
 const Reviews = () => {
   const [reviewsProductData, setReviewsProductData] = useState(productDataDefault);
   const [reviewsMetaData, setReviewsMetaData] = useState(metaDefault);
+  const [reviewsFilter, setReviewsFilter] = useState({ rating: 'all' });
 
   const { end, getRequest } = useContext(ApiContext);
 
@@ -102,10 +103,14 @@ const Reviews = () => {
       <ReviewsBreakdown
         reviewsProductData={reviewsProductData}
         reviewsMetaData={reviewsMetaData}
+        filter={reviewsFilter}
+        setFilter={setReviewsFilter}
       />
       <ReviewsList
         reviewsProductData={reviewsProductData}
         reviewsMetaData={reviewsMetaData}
+        filter={reviewsFilter}
+        setFilter={setReviewsFilter}
       />
       <ReviewsForm
         reviewsProductData={reviewsProductData}

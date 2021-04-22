@@ -1,4 +1,7 @@
+/* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import ReviewsSize from './ReviewsSize.jsx';
 import ReviewsComfort from './ReviewsComfort.jsx';
