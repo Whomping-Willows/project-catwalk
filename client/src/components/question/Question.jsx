@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import SearchForm from './SearchForm.jsx';
 import QAList from './QAList/QAList.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
@@ -15,6 +15,15 @@ const Question = () => (
     >
       MORE ANSWERED QUESTIONS
     </button>
+    <div id="askYourQuestion">
+      <h3>
+        Don&apos;t see the answer you&apos;re looking for?
+      </h3>
+      <button type="submit">
+        ASK YOUR QUESTION
+        <i className="fas fa-plus" id="reviewsAddPlus" />
+      </button>
+    </div>
     <AskQuestionForm />
   </div>
 );
