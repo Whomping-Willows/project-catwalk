@@ -33,10 +33,20 @@ router.put('/api', (req, res) => {
     });
 });
 
-request(app)
-  .get('/api')
-  .expect('Content-Type', /json/)
-  .expect(200)
-  .end((err, res) => {
-    if (err) throw err;
-  });
+test('Get request', () => {
+  request(app)
+    .get('/api')
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err;
+    });
+});
+
+test('Put request', () => {
+  request(app)
+    .put('/api')
+    .expect(200)
+    .end((err, res) => {
+      if (err) throw err;
+    });
+});
