@@ -1,15 +1,9 @@
-/* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
+import Ratings from 'react-ratings-declarative';
 import { ApiContext } from '../contexts/api.context.jsx';
 import getReviewsAvg from '../helpers/getReviewsAvg.js';
-import Product from './product/Product.jsx';
-import Related from './related/Related.jsx';
-import Question from './question/Question.jsx';
-import Reviews from './review/Reviews.jsx';
 
 const Stars = () => {
-  const [currentProduct, setCurrentProduct] = useState();
-  const [currentStyles, setCurrentStyles] = useState();
   const [reviewScore, setReviewScore] = useState();
 
   const { getRequest, end } = useContext(ApiContext);
@@ -20,35 +14,38 @@ const Stars = () => {
   };
 
   useEffect(() => {
-    getRequest(end.listInfo, setCurrentProduct);
-    getRequest(end.productStyles, setCurrentStyles);
     getRequest(end.reviewsMeta, createReviewsScore);
   }, []);
 
   return (
-    <div className="appContainer">
-      <Product
-        currentProduct={currentProduct}
-        setCurrentProduct={setCurrentProduct}
-        currentStyles={currentStyles}
-        setCurrentStyles={setCurrentStyles}
-        reviewScore={reviewScore}
-      />
-      <Related
-        currentProduct={currentProduct}
-        setCurrentProduct={setCurrentProduct}
-        currentStyles={currentStyles}
-        setCurrentStyles={setCurrentStyles}
-        reviewScore={reviewScore}
-      />
-      <Question
-        reviewScore={reviewScore}
-      />
-      <Reviews
-        reviewScore={reviewScore}
-      />
-    </div>
+    <Ratings
+      rating={reviewScore}
+      widgetDimensions="15px"
+      widgetSpacings="1px"
+    >
+      <Ratings.Widget />
+      <Ratings.Widget />
+      <Ratings.Widget />
+      <Ratings.Widget />
+      <Ratings.Widget />
+    </Ratings>
   );
 };
 
 export default Stars;
+
+// EXAMPLE TO EDIT STARS
+// return (
+//   <Ratings
+//     rating={reviewScore}
+//     widgetDimensions="10px"
+//     widgetSpacings="2px"
+//   >
+//     <Ratings.Widget widgetRatedColor="green" />
+//     <Ratings.Widget widgetSpacing="30px" widgetDimension="15px" />
+//     <Ratings.Widget widgetRatedColor="black" />
+//     <Ratings.Widget widgetRatedColor="rebeccapurple" />
+//     <Ratings.Widget />
+//   </Ratings>
+// );
+// FROM HERE: https://github.com/ekeric13/react-ratings-declarative

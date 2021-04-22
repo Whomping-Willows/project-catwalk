@@ -8,6 +8,7 @@
 /* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import ReviewsStars from './ReviewsStars.jsx';
 
 const formatDate = (string) => {
   let formatted = '';
@@ -39,7 +40,9 @@ const ReviewsItem = (props) => {
 
   return (
     <div id="reviewItem">
-      <div id="reviewSubTitleStars">[STARS GO HERE]</div>
+      <div id="reviewSubTitleStars">
+        <ReviewsStars rating={props.review.rating} />
+      </div>
       <div id="reviewSubTitleUserDate">
         {props.review.reviewer_name}
         ,

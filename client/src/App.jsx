@@ -5,7 +5,7 @@ import React from 'react';
 // import api from './api/requests.js';
 // import end from './api/endpoints.js';
 import { ApiProvider } from './contexts/api.context.jsx';
-import Stars from './components/Stars.jsx';
+import API from './components/API.jsx';
 
 const App = () => (
   <ApiProvider>
@@ -13,7 +13,7 @@ const App = () => (
       <span className="header">
         <h1>Project Catwalk</h1>
       </span>
-      <Stars />
+      <API />
     </div>
   </ApiProvider>
 );
