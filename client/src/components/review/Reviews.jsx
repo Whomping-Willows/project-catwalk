@@ -7,7 +7,9 @@ import ReviewsForm from './ReviewsForm.jsx';
 
 const metaDefault = {
   product_id: '18078',
-  ratings: { '1': '5', '2': '11', '3': '5', '4': '8', '5': '18', '6': '1' },
+  ratings: {
+    1: '5', 2: '11', 3: '5', 4: '8', 5: '18', 6: '1',
+  },
   recommended: { false: '24', true: '24' },
   characteristics: {
     Fit: { id: 60618, value: '2.6111111111111111' },
@@ -44,7 +46,7 @@ const productDataDefault = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'ITS WORKING',
       helpfulness: 0,
-      photos: []
+      photos: [],
     },
     {
       review_id: 289043,
@@ -56,7 +58,7 @@ const productDataDefault = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
       helpfulness: 0,
-      photos: [Array]
+      photos: [Array],
     },
     {
       review_id: 289034,
@@ -68,7 +70,7 @@ const productDataDefault = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
       helpfulness: 0,
-      photos: [Array]
+      photos: [Array],
     },
     {
       review_id: 289033,
@@ -80,10 +82,10 @@ const productDataDefault = {
       date: '2021-03-13T00:00:00.000Z',
       reviewer_name: 'Taylor Smart',
       helpfulness: 0,
-      photos: [Array]
-    }
-  ]
-}
+      photos: [Array],
+    },
+  ],
+};
 
 const Reviews = () => {
   const [reviewsProductData, setReviewsProductData] = useState(productDataDefault);
