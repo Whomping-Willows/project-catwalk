@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import Ratings from 'react-ratings-declarative';
 import { ApiContext } from '../contexts/api.context.jsx';
