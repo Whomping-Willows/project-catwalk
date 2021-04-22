@@ -259,6 +259,12 @@ button {
   padding: 10px;
 }
 
+.reviewsLabel {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: darkslategrey
+}
+
 #reviewsBreakdown {
   grid-row-start: 2;
   grid-row-end: 4;
@@ -268,7 +274,6 @@ button {
   border-color:darkgrey;
   display: grid;
   grid-template-rows: 100px 30px 200px auto;
-  margin-right: 10px;
 }
 
 #reviewsSummary {
@@ -316,12 +321,14 @@ button {
   display: grid;
   grid-template-rows: 30px 30px 30px 30px 30px;
   grid-template-columns: 50px auto;
-  margin-right: 10px;
   margin-top: 20px;
 }
 
 .reviewsFilterLabel {
-  margin: 0px;
+  margin: 0 0 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: darkslategrey
 }
 
 #reviews5Label {
@@ -394,15 +401,93 @@ button {
   grid-column-end: 3;
 }
 
-#reviewsCharBlock {
+.reviewsChar {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
   margin-top: 20px;
+}
+
+#reviewsCharLeft {
+  text-align: left;
+  width: 33%;
+}
+
+#reviewsCharMiddle {
+  text-align: center;
+  width: 33%;
+}
+
+#reviewsCharRight {
+  text-align: right;
+  width: 33%;
+}
+
+#reviewsSizeDiv {
+  grid-column-start: 1;
+  grid-column-end: 3;
   display: grid;
-  grid-template-rows: 30px 30px 30px;
-  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 10px auto 10px auto 10px auto 10px auto 10px;
+}
+
+#size {
+  margin: 0;
+  z-index: 2;
+  position: relative;
+}
+
+#reviewsChar1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar2 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar3 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar4 {
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar5 {
+  grid-column-start: 9;
+  grid-column-end: 10;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsSizeData {
+  grid-column-start: 1;
+  grid-column-end: 10;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+#reviewsSizeTable {
+  grid-column-start: 1;
+  grid-column-end: 10;
+  table-layout: fixed ;
+  width: 100%;
+  margin: 0;
 }
 
 #reviewsList {
@@ -414,7 +499,7 @@ button {
   border-color: darkgrey;
   display: grid;
   grid-template-rows: 50px 600px 100px;
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 #reviewsSort {

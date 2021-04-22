@@ -6,7 +6,7 @@ import React from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import getNumOfReviews from '../../helpers/getNumOfReviews.js';
 
-const ReviewsFilterBlock = (props) => {
+const ReviewsFilter = (props) => {
   const percentFor = (data, num) => {
     const total = getNumOfReviews(data);
     const forNum = Number(data.ratings[num]);
@@ -14,11 +14,11 @@ const ReviewsFilterBlock = (props) => {
     return ((forNum / total) * 100).toFixed(0);
   };
 
-  const reviews5For = Number(percentFor(props.reviewsMetaData, 5));
-  const reviews4For = Number(percentFor(props.reviewsMetaData, 4));
-  const reviews3For = Number(percentFor(props.reviewsMetaData, 3));
-  const reviews2For = Number(percentFor(props.reviewsMetaData, 2));
-  const reviews1For = Number(percentFor(props.reviewsMetaData, 1));
+  const reviews5For = Number(percentFor(props.metaData, 5));
+  const reviews4For = Number(percentFor(props.metaData, 4));
+  const reviews3For = Number(percentFor(props.metaData, 3));
+  const reviews2For = Number(percentFor(props.metaData, 2));
+  const reviews1For = Number(percentFor(props.metaData, 1));
 
   return (
     <div id="reviewsFilterBlock">
@@ -46,4 +46,4 @@ const ReviewsFilterBlock = (props) => {
   );
 };
 
-export default ReviewsFilterBlock;
+export default ReviewsFilter;

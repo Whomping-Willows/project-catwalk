@@ -19,11 +19,11 @@ const getPercentStr = (metaData) => {
 
 const ReviewsSummary = (props) => (
   <div id="reviewsSummary">
-    <div id="reviewsSumNum">{getReviewsAvg(props.reviewsMetaData)}</div>
+    <div id="reviewsSumNum">{getReviewsAvg(props.metaData)}</div>
     <div id="reviewsSumStars">[STARS GO HERE]</div>
     <div id="reviewsSumRec">
       <p>
-        {getPercentStr(props.reviewsMetaData)}
+        {getPercentStr(props.metaData)}
         {' '}
         of reviews recommend this product
       </p>
