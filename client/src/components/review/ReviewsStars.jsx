@@ -1,4 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React from 'react';
 import Ratings from 'react-ratings-declarative';
 
 const ReviewsStars = (props) => (

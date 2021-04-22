@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
@@ -15,9 +18,7 @@ const ReviewsList = (props) => {
   const [reviews1, setReviews1] = useState(props.reviewsProductData.results.filter((review) => review.rating === 1));
 
   const addTwo = () => {
-    console.log('button clicked');
     const newList = props.reviewsProductData.results.slice(0, index);
-    console.log('NewList ', newList);
     setReviewsInList(newList);
     setIndex(index + 2);
   };
