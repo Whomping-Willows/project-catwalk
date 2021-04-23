@@ -19,14 +19,16 @@ const QAList = (props) => {
 
   return (
     <div id="qaListContainer">
-      <ul id="qaList">
-        {rendered.map((question) => (
-          <li key={question.question_id}>
-            Q:
-            {` ${question.question_body}`}
-          </li>
-        ))}
-      </ul>
+      <div id="qaListScroll">
+        <ul id="qaList">
+          {rendered.map((question) => (
+            <li key={question.question_id}>
+              Q:
+              {` ${question.question_body}`}
+            </li>
+          ))}
+        </ul>
+      </div>
       <button
         id="moreAnsweredQuestions"
         type="submit"
