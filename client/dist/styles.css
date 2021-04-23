@@ -345,6 +345,13 @@ button {
   align-self: flex-end;
 }
 
+.moreAnswersButton {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
 #questionFormContainer {
   grid-row-start: 3;
   grid-row-end: 4;

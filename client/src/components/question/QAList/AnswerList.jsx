@@ -6,7 +6,7 @@ const AnswerList = ({ answers }) => {
 
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
-  const [rendered, setRendered] = useState(allAnswers.slice(0, 2));
+  const [rendered, setRendered] = useState(allAnswers.slice(0, 4));
 
   const seeMoreAnswersClick = () => {
     if (index === 2) {
@@ -65,6 +65,7 @@ const AnswerList = ({ answers }) => {
   if (rendered && (rendered.length < allAnswers.length)) {
     seeMoreAnswers = (
       <button
+        className="moreAnswersButton"
         type="submit"
         onClick={seeMoreAnswersClick}
       >
@@ -74,6 +75,7 @@ const AnswerList = ({ answers }) => {
   } else if (rendered.length === allAnswers.length && allAnswers.length > 2) {
     seeMoreAnswers = (
       <button
+        className="moreAnswersButton"
         type="submit"
         onClick={seeMoreAnswersClick}
       >
