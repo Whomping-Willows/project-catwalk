@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 const request = require('supertest');
 const express = require('express');
 const axios = require('axios');
@@ -33,20 +35,18 @@ router.put('/api', (req, res) => {
     });
 });
 
-test('Get request', () => {
-  request(app)
-    .get('/api')
-    .expect(200)
-    .end((err, res) => {
-      if (err) throw err;
-    });
-});
+describe("App-wide API tests", () => {
 
-test('Put request', () => {
-  request(app)
-    .put('/api')
-    .expect(200)
-    .end((err, res) => {
-      if (err) throw err;
-    });
+  it("should performa a get request", async () => {
+    await request(app)
+      .get('/api')
+      .expect("Content-Type", /json/)
+      .expect(200);
+  });
+
+  it("should performa a put request", async () => {
+    await request(app)
+      .put('/api')
+      .expect(200);
+  });
 });

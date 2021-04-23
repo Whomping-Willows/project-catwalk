@@ -1,4 +1,5 @@
 import React from 'react';
+import 'regenerator-runtime/runtime';
 import { render } from '@testing-library/react';
 import { ApiProvider } from '../client/src/contexts/api.context.jsx';
 
