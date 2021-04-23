@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ApiContext } from '../../../contexts/api.context.jsx';
 
-// State:
-// product_name: // need from props is not in the get data
-// product_id: '18078' // number/string issue
-// results: [
-//   {
-//     asker_name: "cleopatra"
-//     question_body: "Can I wash it?"
-//     question_date: "2018-02-08T00:00:00.000Z"
-//     question_helpfulness: 27
-//     question_id: 114290
-//     answers: {
-//       1082146: {
-//         answerer_name: "ceasar"
-//         body: "It says not to"
-//         date: "2018-03-08T00:00:00.000Z"
-//         helpfulness: 1
-//         id: 1082146
-//         photos: []
-//       }
-//     }
-//   }
-// ]
+const QAList = (props) => {
+  const [index, setIndex] = useState(4);
+  let rendered = props.qaList.slice(0, index);
+
+  console.log('RENDERED', rendered);
+
+  const moreQuestionsClick = () => {
+    if (index === 4) {
+      setIndex(6);
+      rendered = props.qaList.slice(0, index);
+    } else if (index === 6) {
+      setIndex(props.qaList.length);
+      rendered = props.qaList;
+    }
+  };
+
+  return (
+    <div id="qaListContainer">
+      <ul id="qaList">
+        {rendered.map((question) => (
+          <li key={question.question_id}>
+            Q:
+            {` ${question.question_body}`}
+          </li>
+        ))}
+      </ul>
+      <button
+        id="moreAnsweredQuestions"
+        type="submit"
+        onClick={moreQuestionsClick}
+      >
+        MORE ANSWERED QUESTIONS
+      </button>
+    </div>
+  );
+};
+
+export default QAList;
