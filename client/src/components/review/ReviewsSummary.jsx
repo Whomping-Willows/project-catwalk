@@ -3,6 +3,7 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 import React from 'react';
+import Stars from '../Stars.jsx';
 import getReviewsAvg from '../../helpers/getReviewsAvg.js';
 
 const getPercentStr = (metaData) => {
@@ -19,11 +20,13 @@ const getPercentStr = (metaData) => {
 
 const ReviewsSummary = (props) => (
   <div id="reviewsSummary">
-    <div id="reviewsSumNum">{getReviewsAvg(props.reviewsMetaData)}</div>
-    <div id="reviewsSumStars">[STARS GO HERE]</div>
+    <div id="reviewsSumNum">{getReviewsAvg(props.metaData)}</div>
+    <div id="reviewsSumStars">
+      <Stars />
+    </div>
     <div id="reviewsSumRec">
       <p>
-        {getPercentStr(props.reviewsMetaData)}
+        {getPercentStr(props.metaData)}
         {' '}
         of reviews recommend this product
       </p>

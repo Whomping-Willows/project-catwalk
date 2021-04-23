@@ -8,6 +8,7 @@
 /* eslint-disable import/extensions */
 import React, { useContext } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import ReviewsStars from './ReviewsStars.jsx';
 
 const formatDate = (string) => {
   let formatted = '';
@@ -39,27 +40,29 @@ const ReviewsItem = (props) => {
 
   return (
     <div id="reviewItem">
-      <div id="reviewSubTitleStars">[STARS GO HERE]</div>
+      <div id="reviewSubTitleStars">
+        <ReviewsStars rating={props.review.rating} />
+      </div>
       <div id="reviewSubTitleUserDate">
-        {props.reviewsProductData.results[2].reviewer_name}
+        {props.review.reviewer_name}
         ,
         {' '}
-        {formatDate(props.reviewsProductData.results[2].date)}
+        {formatDate(props.review.date)}
       </div>
-      <h3 id="reviewTitle">{props.reviewsProductData.results[2].summary}</h3>
-      <p id="reviewBody">{props.reviewsProductData.results[2].body}</p>
-      {props.reviewsProductData.results[0].recommend
+      <h3 id="reviewTitle">{props.review.summary}</h3>
+      <p id="reviewBody">{props.review.body}</p>
+      {props.review.recommend
       && (
       <div>
         <i className="fas fa-check" />
         <p id="reviewIsRec">I recommend this product</p>
       </div>
       )}
-      {props.reviewsProductData.results[2].response
+      {props.review.response
       && (
       <div id="reviewResponse">
         <p id="reviewResponseTitle">Response: </p>
-        <p id="reviewResponseBody">{props.reviewsProductData.results[2].response}</p>
+        <p id="reviewResponseBody">{props.review.response}</p>
       </div>
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
@@ -67,7 +70,7 @@ const ReviewsItem = (props) => {
         <a href="javascript:void(0)">
           <p onClick={putHelpfulness} className="reviewHelpP">
             Yes (
-            {props.reviewsProductData.results[2].helpfulness}
+            {props.review.helpfulness}
             ) |
           </p>
         </a>
