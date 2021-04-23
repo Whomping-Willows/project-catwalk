@@ -53,9 +53,9 @@ const ReviewsItem = (props) => {
       <p id="reviewBody">{props.review.body}</p>
       {props.review.recommend
       && (
-      <div>
+      <div id="reviewIsRecDiv">
         <i className="fas fa-check" />
-        <p id="reviewIsRec">I recommend this product</p>
+        <div id="reviewIsRec">I recommend this product</div>
       </div>
       )}
       {props.review.response
