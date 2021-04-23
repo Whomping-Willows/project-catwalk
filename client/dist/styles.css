@@ -753,6 +753,11 @@ button {
   margin: 20px 0px 20px 0px;
   padding: 0;
   display: inline;
+  border-style: none;
+  border-color: white;
+  border-width: 0;
+  border-image: none;
+  box-sizing: unset;
 }
 .button3 {
   width: 500px;

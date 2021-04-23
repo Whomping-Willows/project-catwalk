@@ -67,16 +67,15 @@ const ReviewsItem = (props) => {
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <a href="javascript:void(0)">
-          <p onClick={putHelpfulness} className="reviewHelpP">
-            Yes (
-            {props.review.helpfulness}
-            ) |
-          </p>
-        </a>
-        <a href="javascript:void(0)">
-          <p onClick={putReportReview} className="reviewHelpP">  Report</p>
-        </a>
+        <button type="button" onClick={putHelpfulness} className="reviewHelpP">
+          Yes (
+          {props.review.helpfulness}
+          ) |
+        </button>
+        <button type="button" onClick={putReportReview} className="reviewHelpP">
+          {' '}
+          Report
+        </button>
       </div>
     </div>
   );

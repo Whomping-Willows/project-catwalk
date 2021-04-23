@@ -38,11 +38,13 @@ const ReviewsComfort = (props) => {
         <HSBar position="relative" z-index="-1" height={10} data={[{ value: 20, color: 'lightgrey' }, { value: 2, color: 'white' }, { value: 20, color: 'lightgrey' }, { value: 2, color: 'white' }, { value: 20, color: 'lightgrey' }]} className="reviewsBar" />
       </div>
       <table className="reviewsCharTable">
-        <tr>
-          <td className="reviewsCharLabel" id="reviewsCharLeft">Uncomfortable</td>
-          <td className="reviewsCharLabel" id="reviewsCharMiddle">Ok</td>
-          <td className="reviewsCharLabel" id="reviewsCharRight">Perfect</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td className="reviewsCharLabel" id="reviewsCharLeft">Uncomfortable</td>
+            <td className="reviewsCharLabel" id="reviewsCharMiddle">Ok</td>
+            <td className="reviewsCharLabel" id="reviewsCharRight">Perfect</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

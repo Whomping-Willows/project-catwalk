@@ -97,7 +97,6 @@ const Reviews = () => {
   const [filter2, setFilter2] = useState('off');
   const [filter1, setFilter1] = useState('off');
 
-
   const { end, getRequest } = useContext(ApiContext);
 
   useEffect(() => {
