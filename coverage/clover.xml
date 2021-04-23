@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619203350465" clover="3.2.0">
-  <project timestamp="1619203350465" name="All files">
+<coverage generated="1619207044866" clover="3.2.0">
+  <project timestamp="1619207044866" name="All files">
     <metrics statements="264" coveredstatements="2" conditionals="133" coveredconditionals="0" methods="82" coveredmethods="0" elements="479" coveredelements="2" complexity="0" loc="264" ncloc="264" packages="10" files="41" classes="41"/>
     <package name="src">
       <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -177,12 +177,12 @@
         <line num="17" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
       </file>
-      <file name="relatedProductsList.jsx" path="/Users/kim/Google Drive/Hack Reactor/3. Juniors/Repos/project-catwalk/client/src/components/related/relatedProductsList.jsx">
+      <file name="RelatedProductsList.jsx" path="/Users/kim/Google Drive/Hack Reactor/3. Juniors/Repos/project-catwalk/client/src/components/related/RelatedProductsList.jsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
       </file>
-      <file name="yourOutFitList.jsx" path="/Users/kim/Google Drive/Hack Reactor/3. Juniors/Repos/project-catwalk/client/src/components/related/yourOutFitList.jsx">
+      <file name="YourOutFitList.jsx" path="/Users/kim/Google Drive/Hack Reactor/3. Juniors/Repos/project-catwalk/client/src/components/related/YourOutFitList.jsx">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>

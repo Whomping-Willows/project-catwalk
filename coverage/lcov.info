@@ -342,7 +342,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:client/src/components/related/relatedProductsList.jsx
+SF:client/src/components/related/RelatedProductsList.jsx
 FN:3,(anonymous_0)
 FNF:1
 FNH:0
@@ -355,7 +355,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:client/src/components/related/yourOutFitList.jsx
+SF:client/src/components/related/YourOutFitList.jsx
 FN:3,(anonymous_0)
 FNF:1
 FNH:0
