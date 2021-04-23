@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-
-const RelatedProductsList = () => {
-  return (
-    <div>
-      {/* <h1>Related Products List</h1> */}
-    </div>
-  );
-};
+const RelatedProductsList = () => (
+  <div>
+    {/* <h1>Related Products List</h1> */}
+  </div>
+);
 
 export default RelatedProductsList;
