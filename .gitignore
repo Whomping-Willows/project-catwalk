@@ -2,6 +2,8 @@
 server/config.js
 
 ## node modules
-
-## TBD
 node_modules
+
+## Jest coverage
+coverage
+## TBD
