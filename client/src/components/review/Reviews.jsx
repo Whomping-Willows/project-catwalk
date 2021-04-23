@@ -90,7 +90,7 @@ const productDataDefault = {
 const Reviews = () => {
   const [reviewsProductData, setReviewsProductData] = useState(productDataDefault);
   const [reviewsMetaData, setReviewsMetaData] = useState(metaDefault);
-  const [reviewsFilter, setReviewsFilter] = useState({ rating: 'all' });
+  const [reviewsFilter, setReviewsFilter] = useState([]);
 
   const { end, getRequest } = useContext(ApiContext);
 

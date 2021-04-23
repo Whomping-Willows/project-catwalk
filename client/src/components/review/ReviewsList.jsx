@@ -27,22 +27,22 @@ const ReviewsList = (props) => {
     <div id="reviewsList">
       <ReviewsSort reviewsMetaData={props.reviewsMetaData} />
       <div id="reviewsAll">
-        {props.filter.rating === 'all' && reviewsInList.map((review) => (
+        {props.filter.length === 0 && reviewsInList.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
         ))}
-        {props.filter.rating === 5 && reviews5.map((review) => (
+        {props.filter.includes(5) && reviews5.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
         ))}
-        {props.filter.rating === 4 && reviews4.map((review) => (
+        {props.filter.includes(4) && reviews4.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
         ))}
-        {props.filter.rating === 3 && reviews3.map((review) => (
+        {props.filter.includes(3) && reviews3.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
         ))}
-        {props.filter.rating === 2 && reviews2.map((review) => (
+        {props.filter.includes(2) && reviews2.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
         ))}
-        {props.filter.rating === 1 && reviews1.map((review) => (
+        {props.filter.includes(1) && reviews1.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
         ))}
       </div>
