@@ -26,8 +26,10 @@ const QAListItem = ({ question }) => {
         Q:
         {` ${question.question_body}`}
       </h3>
-
       {helpful}
+      <AnswerList
+        answers={question.answers}
+      />
     </li>
   );
 };
