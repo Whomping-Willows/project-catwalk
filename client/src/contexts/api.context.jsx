@@ -48,7 +48,7 @@ export const ApiProvider = (props) => {
     // Retrieves a list of questions for a particular product.
     // This list does not include any reported questions.
     // uses productId, page and count
-    listQuestions: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions${apiProductIdQuery}&page=${page}&count=${count}`,
+    listQuestions: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${apiProductIdQuery}&count=${count}`,
     // Returns answers for a given question.
     // This list does not include any reported answers.
     // uses page and count
