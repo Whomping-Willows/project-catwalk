@@ -3,6 +3,8 @@ import React from 'react';
 const AskQuestionForm = () => {
   const productName = 'Camo Onesie';
   // use api context product name
+
+  // post question, email and name to api
   return (
     <div id="questionFormContainer">
       <h2>
