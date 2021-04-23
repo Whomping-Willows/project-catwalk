@@ -1,10 +1,9 @@
-import React, { useState, } from 'react';
+import React, { useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 
 const QAList = (props) => {
   const [index, setIndex] = useState(4);
   let rendered = props.qaList.slice(0, index);
-
 
   console.log('RENDERED', rendered);
 
@@ -22,7 +21,10 @@ const QAList = (props) => {
     <div id="qaListContainer">
       <ul id="qaList">
         {rendered.map((question) => (
-          <li key={question.question_id}>{question.question_body}</li>
+          <li key={question.question_id}>
+            Q:
+            {` ${question.question_body}`}
+          </li>
         ))}
       </ul>
       <button

@@ -295,8 +295,13 @@ button {
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
+  list-style-type: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  color: darkslategray;
+  font-weight: bold;
+
+
 }
 
 #moreAnsweredQuestions {
