@@ -231,7 +231,7 @@ button {
   grid-column-start: 1;
   grid-column-end: 4;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 85% auto;
   grid-template-rows: 70px;
   width: 100%;
   border: solid;
@@ -258,7 +258,7 @@ button {
 #searchInput {
   border: none;
   float: left;
-  width: 85%;
+  width: 80%;
   grid-column-start: 1;
   grid-column-end: 2;
   font-size: 16px;
@@ -290,31 +290,51 @@ button {
   grid-column-end: 4;
   display: grid;
   grid-template-rows: 480px 100px;
-  grid-template-columns: 40% 40% auto;
+  grid-template-columns: 50% 50%;
 }
 
 #qaListScroll {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 3;
   overflow-y: scroll;
 }
 
-#qaList {
+/* #qaList {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 4;
   list-style-type: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: darkslategray;
-  font-weight: bold;
+
+} */
+
+.QAListItem {
+  list-style-type: none;
+  grid-row-start: span 1;
+  grid-column-start: span 2;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 75% 25%;
+
+  margin: 10px;
+  margin-bottom: 30px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-color: darkgrey;
 }
+
 #questionHelpful {
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-row-start: 2 span 1;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  font-size: 10px;
+  padding: 10px;
+  color: darkslategray;
+  font-weight: normal;
+  margin: 20px 0px 20px 0px;
+  padding: 0;
 }
 
 #moreAnsweredQuestions {

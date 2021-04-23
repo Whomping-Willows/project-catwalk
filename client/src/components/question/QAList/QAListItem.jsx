@@ -4,20 +4,29 @@ import AnswerList from './AnswerList.jsx';
 const QAListItem = ({ question }) => {
   const helpful = (
     <div id="questionHelpful">
-      <p>Helpful?</p>
-      <p>Yes</p>
-      <p>
-        {` (
-        ${question.question_helpfulness}
-        )`}
-      </p>
+      Helpful?
+      <a href="javascript:void(0)"
+      >
+        <div
+          // onClick={putHelpfulness} className=""
+        >
+          Yes (
+            {question.question_helpfulness}
+          ) |
+        </div>
+      </a>
     </div>
   );
 
   return (
-    <li key={question.question_id}>
-      Q:
-      {` ${question.question_body}`}
+    <li key={question.question_id}
+      className="QAListItem"
+    >
+      <h3>
+        Q:
+        {` ${question.question_body}`}
+      </h3>
+
       {helpful}
     </li>
   );
