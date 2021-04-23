@@ -39,9 +39,9 @@ const ReviewsFit = (props) => {
       </div>
       <table className="reviewsCharTable">
         <tr>
-          <td className="reviewsFilterLabel" id="reviewsCharLeft">Tight</td>
-          <td className="reviewsFilterLabel" id="reviewsCharMiddle">Perfect</td>
-          <td className="reviewsFilterLabel" id="reviewsCharRight">Loose</td>
+          <td className="reviewsCharLabel" id="reviewsCharLeft">Tight</td>
+          <td className="reviewsCharLabel" id="reviewsCharMiddle">Perfect</td>
+          <td className="reviewsCharLabel" id="reviewsCharRight">Loose</td>
         </tr>
       </table>
     </div>
