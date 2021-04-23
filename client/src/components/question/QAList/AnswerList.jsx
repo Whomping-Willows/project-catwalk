@@ -6,19 +6,16 @@ const AnswerList = ({ answers }) => {
 
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
-  const [rendered, setRendered] = useState(allAnswers.slice(0, index));
+  const [rendered, setRendered] = useState(allAnswers.slice(0, 2));
 
   const seeMoreAnswersClick = () => {
     if (index === 2) {
       setIndex(4);
     } else if (index === 4) {
       setIndex(allAnswers.length);
+    } else if (index === allAnswers.length) {
+      setIndex(2);
     }
-    setRendered(allAnswers.slice(0, index));
-  };
-
-  const collapseAnswersClick = () => {
-    setIndex(2);
     setRendered(allAnswers.slice(0, index));
   };
 
@@ -71,16 +68,16 @@ const AnswerList = ({ answers }) => {
         type="submit"
         onClick={seeMoreAnswersClick}
       >
-        See More Answers
+        SEE MORE ANSWERS
       </button>
     );
   } else if (rendered.length === allAnswers.length && allAnswers.length > 2) {
     seeMoreAnswers = (
       <button
         type="submit"
-        onClick={collapseAnswersClick}
+        onClick={seeMoreAnswersClick}
       >
-        Collapse Answers
+        COLLAPSE ANSWERS
       </button>
     );
   } else {
