@@ -1,23 +1,12 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import 'regenerator-runtime/runtime';
 
 const request = require('supertest');
 const app = require('../server/index.js');
-const GITHUB_API_KEY = require('../server/config.js');
-// const express = require('express');
 
-// const app = express();
-
-// app.get('/api', (req, res) => {
-//   res.status(200).json({ name: 'john' });
-// });
-
-// app.put('/api', (req, res) => {
-//   res.status(200).json({ name: 'john' });
-// });
 const getEndpoint = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/18078/styles';
 const putEndpoint = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/289038/helpful';
-// const getObject = { headers: { Authorization: GITHUB_API_KEY } };
-// const noData = {};
 
 describe('App-wide server tests', () => {
   it('should performa a get request', (done) => {
