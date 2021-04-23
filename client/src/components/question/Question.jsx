@@ -44,9 +44,9 @@ const Question = () => {
         qaList={questionsMeta.results}
       />
       <div id="askYourQuestion">
-        <h3>
+        <label id="askQuestionLabel">
           Don&apos;t see the answer you&apos;re looking for?
-        </h3>
+        </label>
         <button type="submit">
           ASK YOUR QUESTION
           <i className="fas fa-plus" id="reviewsAddPlus" />

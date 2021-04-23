@@ -220,7 +220,7 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px 70px 480px 80px;
+  grid-template-rows: 50px 70px 480px 100px;
   grid-template-columns: 40% 40% auto;
   padding: 10px;
 }
@@ -289,9 +289,10 @@ button {
   grid-column-start: 1;
   grid-column-end: 4;
   display: grid;
-  grid-template-rows: 480px 80px;
+  grid-template-rows: 480px 100px;
   grid-template-columns: 40% 40% auto;
 }
+
 #qaListScroll {
   grid-row-start: 1;
   grid-row-end: 2;
@@ -311,6 +312,10 @@ button {
   color: darkslategray;
   font-weight: bold;
 }
+#questionHelpful {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
 
 #moreAnsweredQuestions {
   grid-row-start: 2;
@@ -323,8 +328,14 @@ button {
 #questionFormContainer {
   grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#askQuestionLabel {
+  font-weight: bold;
+  color: darkslategray;
+  font-size: 14px;
 }
 
 #askYourQuestion {
