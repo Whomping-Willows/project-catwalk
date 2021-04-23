@@ -416,10 +416,9 @@ button {
   box-sizing: unset;
   text-align: left;
   margin: 0;
-  appearance: checkbox;
 }
 
-.filterBar2 {
+.filterBarOn {
   grid-column-start: 1;
   grid-column-end: 3;
   padding: 5px;
@@ -430,6 +429,7 @@ button {
   box-sizing: unset;
   text-align: left;
   margin: 0;
+  background-color: rgb(233, 222, 222);
 }
 
 
