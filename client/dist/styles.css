@@ -259,6 +259,12 @@ button {
   padding: 10px;
 }
 
+.reviewsLabel {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: darkslategrey
+}
+
 #reviewsBreakdown {
   grid-row-start: 2;
   grid-row-end: 4;
@@ -268,7 +274,6 @@ button {
   border-color:darkgrey;
   display: grid;
   grid-template-rows: 100px 30px 200px auto;
-  margin-right: 10px;
 }
 
 #reviewsSummary {
@@ -316,19 +321,68 @@ button {
   display: grid;
   grid-template-rows: 30px 30px 30px 30px 30px;
   grid-template-columns: 50px auto;
-  margin-right: 10px;
   margin-top: 20px;
+  align-items: center;
+}
+
+.filterBar {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 5px;
+  border-style: none;
+  border-color: white;
+  border-width: 0;
+  border-image: none;
+  box-sizing: unset;
+  text-align: left;
+  margin: 0;
+  appearance: checkbox;
+}
+
+.filterBar2 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 5px;
+  border-style: none;
+  border-color: white;
+  border-width: 0;
+  border-image: none;
+  box-sizing: unset;
+  text-align: left;
+  margin: 0;
+}
+
+
+.filterBar:hover {
+  background-color: rgb(233, 222, 222);
+  border-style: none;
+  border-color: white;
+  border-width: 0;
+  box-sizing: unset;
+  border-image: none;
+}
+
+.filterBar:focus {
+  border-style: none;
+  border-color: white;
+  border-width: 0;
+  background-color: rgb(233, 222, 222);
+  box-sizing: unset;
+  border-image: none;
 }
 
 .reviewsFilterLabel {
-  margin: 0px;
+  margin: 0 0 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: darkslategrey;
+  text-decoration: underline;
+  display: inline;
 }
 
 #reviews5Label {
   grid-row-start: 1;
   grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 #reviews5Data {
@@ -336,13 +390,13 @@ button {
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 3;
+  width: 80%;
+  float: right;
 }
 
 #reviews4Label {
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 #reviews4Data {
@@ -350,13 +404,13 @@ button {
   grid-row-end: 3;
   grid-column-start: 2;
   grid-column-end: 3;
+  width: 80%;
+  float: right;
 }
 
 #reviews3Label {
   grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 #reviews3Data {
@@ -364,13 +418,13 @@ button {
   grid-row-end: 4;
   grid-column-start: 2;
   grid-column-end: 3;
+  width: 80%;
+  float: right;
 }
 
 #reviews2Label {
   grid-row-start: 4;
   grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 #reviews2Data {
@@ -378,13 +432,13 @@ button {
   grid-row-end: 5;
   grid-column-start: 2;
   grid-column-end: 3;
+  width: 80%;
+  float: right;
 }
 
 #reviews1Label {
   grid-row-start: 5;
   grid-row-end: 6;
-  grid-column-start: 1;
-  grid-column-end: 2;
 }
 
 #reviews1Data {
@@ -392,17 +446,96 @@ button {
   grid-row-end: 6;
   grid-column-start: 2;
   grid-column-end: 3;
+  width: 80%;
+  float: right;
 }
 
-#reviewsCharBlock {
+.reviewsCharBlock {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
   margin-top: 20px;
+}
+
+#reviewsCharLeft {
+  text-align: left;
+  width: 33%;
+}
+
+#reviewsCharMiddle {
+  text-align: center;
+  width: 33%;
+}
+
+#reviewsCharRight {
+  text-align: right;
+  width: 33%;
+}
+
+.reviewsCharDiv {
   display: grid;
-  grid-template-rows: 30px 30px 30px;
-  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 10px auto 10px auto 10px auto 10px auto 10px;
+  margin-bottom: 30px;
+}
+
+#charPointer {
+  margin: 0;
+  z-index: 2;
+  position: relative;
+}
+
+#reviewsChar1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar2 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar3 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar4 {
+  grid-column-start: 7;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#reviewsChar5 {
+  grid-column-start: 9;
+  grid-column-end: 10;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.reviewsCharData {
+  grid-column-start: 1;
+  grid-column-end: 10;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.reviewsCharTable {
+  grid-column-start: 1;
+  grid-column-end: 10;
+  table-layout: fixed ;
+  width: 100%;
+  margin: 0;
 }
 
 #reviewsList {
@@ -414,7 +547,7 @@ button {
   border-color: darkgrey;
   display: grid;
   grid-template-rows: 50px 600px 100px;
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 #reviewsSort {
@@ -443,6 +576,7 @@ button {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 3;
+  overflow-y: scroll;
 }
 
 #reviewItem {
