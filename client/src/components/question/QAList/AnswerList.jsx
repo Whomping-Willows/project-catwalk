@@ -20,13 +20,13 @@ const AnswerList = ({ answers }) => {
   };
 
   const putAnswerHelpfulness = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answersHelpful);
-    putRequest(end.answersHelpful, null);
+    console.log('Endpoint param from AnswerListItem ', end.answerHelpful);
+    putRequest(end.answerHelpful, null);
   };
 
   const putReportAnswer = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answersReport);
-    putRequest(end.answersReport, null);
+    console.log('Endpoint param from AnswerListItem ', end.answerReport);
+    putRequest(end.answerReport, null);
   };
 
   const answerList = rendered && (rendered.length > 0)

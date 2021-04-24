@@ -3,12 +3,27 @@ import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerList from './AnswerList.jsx';
 
 const QAListItem = ({ question }) => {
-  const { putRequest, postRequest, questionId, setQuestionId, end } = useContext(ApiContext);
+  const {
+    getRequest, putRequest, setQuestionId, end,
+  } = useContext(ApiContext);
 
-  const putQuestionHelpfulness = (questionId) => {
-    console.log('Endpoint param from QAListItem ', end.QuestionsHelpful);
-    setQuestionId(questionId);
-    putRequest(end.QuestionsHelpful, null);
+  const setQuestionPromise = () => new Promise((resolve, reject) => {
+    if (question.question_id) {
+      resolve(setQuestionId(question.question_id));
+    } else {
+      reject('error');
+    }
+  });
+
+  const putQuestionHelpfulness = () => {
+    // console.log('Endpoint param from QAListItem ', end.questionHelpful);
+
+    setQuestionPromise()
+      .then(putRequest(end.questionHelpful))
+      .then(getRequest(end.listQuestions, () => {
+        // need to re-render question
+      }))
+      .catch();
   };
 
   const helpful = (
@@ -18,8 +33,8 @@ const QAListItem = ({ question }) => {
         type="submit"
         className="helpfulButton"
         onClick={
-          () => { putQuestionHelpfulness(question.question_id); }
-        }
+          putQuestionHelpfulness
+          }
         // className=""
       >
         <div>
@@ -36,7 +51,8 @@ const QAListItem = ({ question }) => {
   };
 
   return (
-    <li key={question.question_id}
+    <li
+      key={question.question_id}
       className="QAListItem"
     >
       <h3 style={questionStyle}>

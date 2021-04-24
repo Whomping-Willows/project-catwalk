@@ -13,9 +13,8 @@ export const ApiProvider = (props) => {
   const [count, setCount] = useState(100);
   const [sort, setSort] = useState('helpful');
   const [productId, setProductId] = useState(18078);
-  const [questionsId, setQuestionsId] = useState(114290);
-  const [reviewId, setReviewId] = useState(289038);
   const [questionId, setQuestionId] = useState(114290);
+  const [reviewId, setReviewId] = useState(289038);
   const [answerId, setAnswerId] = useState(1082146);
 
   // QUERY STRINGS AS VARIABLES
@@ -54,13 +53,18 @@ export const ApiProvider = (props) => {
     // Returns answers for a given question.
     // This list does not include any reported answers.
     // uses page and count
-    questionsHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/helpful`,
+    addQuestion: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
 
+    questionHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/helpful`,
+
+    questionReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/report`,
+
+    // post to this endpoint to add answer
     answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/answers`,
 
-    answersHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+    answerHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
 
-    answersReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
 
   };
 
@@ -117,7 +121,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, questionId, setQuestionId, answerId, setAnswerId
+      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, questionId, setQuestionId, answerId, setAnswerId,
     }}
     >
       {props.children}
