@@ -1,16 +1,28 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 
 const ProductStyles = (props) => {
   const temp = null;
 
-  const syleData = null;
+  const styleData = props.styles.results;
+
   const fontSizing = {
     fontSize: 16,
   };
 
+  const styleSelectors = styleData.map((data) => (
+    <img
+      className="styleOption"
+      key={data.style_id}
+      alt={data.name}
+      src={data.photos[0].thumbnail_url}
+    />
+  ));
+
   return (
     <div className="productStyles">
-      <div>
+      <div id="productPrice">
         <p>Price</p>
       </div>
       <p style={fontSizing}>
@@ -18,15 +30,12 @@ const ProductStyles = (props) => {
           Style
           {' > '}
         </b>
-        SELECTED STYLE
+        {/* {SELECTED STYLE} */}
       </p>
       <div>
-        <form>
-          <input className="styleOption" id="sytle0" />
-          <input className="styleOption" id="sytle1" />
-          <input className="styleOption" id="sytle2" />
-          <input className="styleOption" id="sytle3" />
-        </form>
+        <div className="styleSelector">
+          {styleSelectors}
+        </div>
       </div>
       <form className="sizingForm">
         <input id="sizeSelector" type="text" value="SELECT SIZE" />
