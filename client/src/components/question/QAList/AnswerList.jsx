@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
+import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({ answers }) => {
-  const { putRequest, postRequest, answerId, setAnswerId, end } = useContext(ApiContext);
-
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
   const [rendered, setRendered] = useState(allAnswers.slice(0, index));
@@ -19,57 +18,12 @@ const AnswerList = ({ answers }) => {
     setRendered(allAnswers.slice(0, index));
   };
 
-  const putAnswerHelpfulness = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answerHelpful);
-    putRequest(end.answerHelpful, null);
-  };
-
-  const putReportAnswer = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answerReport);
-    putRequest(end.answerReport, null);
-  };
-
   const answerList = rendered && (rendered.length > 0)
     ? rendered.map((answerId) => (
-      <li
+      <AnswerListItem
         key={answerId}
-      >
-        A:
-        {' '}
-        {answers[answerId].body}
-        {' '}
-        by
-        {' '}
-        {answers[answerId].answerer_name}
-        {' '}
-        -
-        {' '}
-        {answers[answerId].date}
-        <div className="questionHelpful">
-          Helpful?
-          <button
-            className="helpfulButton"
-            type="submit"
-            onClick={putAnswerHelpfulness}
-          >
-            <div
-              className="questionHelpful"
-            >
-              Yes (
-              {answers[answerId].helpfulness}
-              ) |
-            </div>
-          </button>
-        </div>
-        <button
-          className="helpfulButton"
-          type="submit"
-          onClick={putReportAnswer}
-        >
-          {' '}
-          Report
-        </button>
-      </li>
+        answer={answers[answerId]}
+      />
     ))
     : null;
 
@@ -91,14 +45,9 @@ const AnswerList = ({ answers }) => {
     </button>
   ) : null;
 
-  const listStyle = {
-    listStyleType: 'none',
-    paddingLeft: 5,
-  };
-
   return (
     <div>
-      <ul style={listStyle}>
+      <ul id="answerList">
         {answerList}
       </ul>
       {seeMoreAnswers}

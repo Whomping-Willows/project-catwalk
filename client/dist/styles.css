@@ -341,8 +341,78 @@ button {
   text-decoration: underline;
   font-size: 10px;
   color: darkslategray;
-  margin: 13px;
+  margin: 13px 5px;
   padding: 0;
+}
+
+#answerList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.answerListItem {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 30px 100px auto;
+  margin: 5px;
+}
+#answerTag {
+  grid-row-start: span 1;
+  grid-column-start: span 1;
+  font-size: 16px;
+  font-weight: bold;
+  color: darkslategray;
+  margin: 5px;
+  width: 20px;
+  display: inline-block;
+}
+
+#answerBody {
+  grid-row-start: span 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  margin: 5px;
+}
+
+#answerNameDate {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  color: rgb(169, 169, 169);
+  margin: 5px;
+}
+
+#answerHelpfulButton {
+  margin: 5px;
+  margin-right: 0;
+}
+
+.answerHelpful {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 2;
+  margin: 5px;
+  margin-right: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: darkslategray;
+}
+
+#answerReport {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 3;
+  width: 40px;
+  margin: 5px 0;
+}
+
+.moreAnswersButton {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  margin-left: 30px;
+  color: darkslategray
 }
 
 #moreAnsweredQuestions {
@@ -352,14 +422,6 @@ button {
   grid-column-end: 2;
   align-self: flex-end;
 }
-
-.moreAnswersButton {
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-
 
 #questionFormContainer {
   grid-row-start: 3;

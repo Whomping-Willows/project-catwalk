@@ -4,7 +4,7 @@
   "description": "A front-end e-commerce application",
   "main": "index.js",
   "scripts": {
-    "test": "jest --collectCoverage=true",
+    "test": "jest --ci --coverage",
     "start": "nodemon ./server/index.js",
     "start-react": "webpack --config ./webpack.config.js --mode development -w"
   },
@@ -29,7 +29,7 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.15",
+    "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.12.13",
     "@testing-library/dom": "^7.30.3",
