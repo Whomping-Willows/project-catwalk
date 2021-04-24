@@ -15,6 +15,8 @@ export const ApiProvider = (props) => {
   const [productId, setProductId] = useState(18078);
   const [questionsId, setQuestionsId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
+  const [questionId, setQuestionId] = useState(114290);
+  const [answerId, setAnswerId] = useState(1082146);
 
   // QUERY STRINGS AS VARIABLES
   const apiPageQuery = `?page=${page}`;
@@ -52,7 +54,14 @@ export const ApiProvider = (props) => {
     // Returns answers for a given question.
     // This list does not include any reported answers.
     // uses page and count
-    answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionsId}/answers`,
+    questionsHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/helpful`,
+
+    answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/answers`,
+
+    answersHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+
+    answersReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+
   };
 
   // HTTP REQUESTS AS FUNCTIONS
@@ -108,7 +117,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, questionId, setQuestionId, answerId, setAnswerId
     }}
     >
       {props.children}

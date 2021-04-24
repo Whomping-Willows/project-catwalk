@@ -1,28 +1,45 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerList from './AnswerList.jsx';
 
 const QAListItem = ({ question }) => {
+  const { putRequest, postRequest, questionId, setQuestionId, end } = useContext(ApiContext);
+
+  const putQuestionHelpfulness = (questionId) => {
+    console.log('Endpoint param from QAListItem ', end.QuestionsHelpful);
+    setQuestionId(questionId);
+    putRequest(end.QuestionsHelpful, null);
+  };
+
   const helpful = (
-    <div id="questionHelpful">
+    <div className="questionHelpful">
       Helpful?
-      <a href="javascript:void(0)"
+      <button
+        type="submit"
+        className="helpfulButton"
+        onClick={
+          () => { putQuestionHelpfulness(question.question_id); }
+        }
+        // className=""
       >
-        <div
-          // onClick={putHelpfulness} className=""
-        >
+        <div>
           Yes (
-            {question.question_helpfulness}
+          {question.question_helpfulness}
           ) |
         </div>
-      </a>
+      </button>
     </div>
   );
+
+  const questionStyle = {
+    margin: 10,
+  };
 
   return (
     <li key={question.question_id}
       className="QAListItem"
     >
-      <h3>
+      <h3 style={questionStyle}>
         Q:
         {` ${question.question_body}`}
       </h3>

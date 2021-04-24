@@ -2,11 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 
 const AnswerList = ({ answers }) => {
-  const { postRequest, end } = useContext(ApiContext);
+  const { putRequest, postRequest, answerId, setAnswerId, end } = useContext(ApiContext);
 
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
-  const [rendered, setRendered] = useState(allAnswers.slice(0, 4));
+  const [rendered, setRendered] = useState(allAnswers.slice(0, index));
 
   const seeMoreAnswersClick = () => {
     if (index === 2) {
@@ -19,21 +19,21 @@ const AnswerList = ({ answers }) => {
     setRendered(allAnswers.slice(0, index));
   };
 
-  const report = (
-    <a href="javascript:void(0)">
-      <p
-      // onClick={putReportReview}
-        className="answerReport"
-      >
-        {' '}
-        Report
-      </p>
-    </a>
-  );
+  const putAnswerHelpfulness = () => {
+    console.log('Endpoint param from AnswerListItem ', end.answersHelpful);
+    putRequest(end.answersHelpful, null);
+  };
+
+  const putReportAnswer = () => {
+    console.log('Endpoint param from AnswerListItem ', end.answersReport);
+    putRequest(end.answersReport, null);
+  };
 
   const answerList = rendered && (rendered.length > 0)
     ? rendered.map((answerId) => (
-      <li key={answerId}>
+      <li
+        key={answerId}
+      >
         A:
         {' '}
         {answers[answerId].body}
@@ -45,50 +45,60 @@ const AnswerList = ({ answers }) => {
         -
         {' '}
         {answers[answerId].date}
-        <div id="questionHelpful">
+        <div className="questionHelpful">
           Helpful?
-          <a href="javascript:void(0)">
-            <div>
+          <button
+            className="helpfulButton"
+            type="submit"
+            onClick={putAnswerHelpfulness}
+          >
+            <div
+              className="questionHelpful"
+            >
               Yes (
               {answers[answerId].helpfulness}
               ) |
             </div>
-          </a>
+          </button>
         </div>
-        {report}
+        <button
+          className="helpfulButton"
+          type="submit"
+          onClick={putReportAnswer}
+        >
+          {' '}
+          Report
+        </button>
       </li>
     ))
     : null;
 
-  let seeMoreAnswers;
+  let seeMoreAnswersText;
 
   if (rendered && (rendered.length < allAnswers.length)) {
-    seeMoreAnswers = (
-      <button
-        className="moreAnswersButton"
-        type="submit"
-        onClick={seeMoreAnswersClick}
-      >
-        SEE MORE ANSWERS
-      </button>
-    );
+    seeMoreAnswersText = 'SEE MORE ANSWERS';
   } else if (rendered.length === allAnswers.length && allAnswers.length > 2) {
-    seeMoreAnswers = (
-      <button
-        className="moreAnswersButton"
-        type="submit"
-        onClick={seeMoreAnswersClick}
-      >
-        COLLAPSE ANSWERS
-      </button>
-    );
-  } else {
-    seeMoreAnswers = null;
+    seeMoreAnswersText = 'COLLAPSE ANSWERS';
   }
+
+  const seeMoreAnswers = rendered ? (
+    <button
+      className="moreAnswersButton"
+      type="submit"
+      onClick={seeMoreAnswersClick}
+    >
+      {seeMoreAnswersText}
+    </button>
+  ) : null;
+
+  const listStyle = {
+    listStyleType: 'none',
+    paddingLeft: 5,
+  };
 
   return (
     <div>
-      <ul>
+      <ul style={listStyle}>
         {answerList}
       </ul>
       {seeMoreAnswers}
