@@ -5,8 +5,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
+// import Modal from 'react-bootstrap/Modal';
+// import '../../../dist/modalsonly/css/bootstrap.css';
 import ReviewsSort from './ReviewsSort.jsx';
 import ReviewsItem from './ReviewsItem.jsx';
+import ReviewsForm from './ReviewsForm.jsx';
 
 const ReviewsList = (props) => {
   const [reviewsInList, setReviewsInList] = useState(props.reviewsProductData.results.slice(0, 2));
@@ -21,6 +24,16 @@ const ReviewsList = (props) => {
     const newList = props.reviewsProductData.results.slice(0, index);
     setReviewsInList(newList);
     setIndex(index + 2);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const showModal = () => {
+    setIsOpen(true);
+  };
+
+  const hideModal = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -57,10 +70,22 @@ const ReviewsList = (props) => {
           && (
           <button type="button" id="reviewsLoadMore" onClick={addTwo}>MORE REVIEWS</button>
           )}
-        <button type="button" id="reviewsAdd">
+        <button type="button" id="reviewsAdd" onClick={showModal}>
           ADD A REVIEW
           <i className="fas fa-plus" id="reviewsAddPlus" />
         </button>
+        {/* <Modal show={isOpen} onHide={hideModal} size="lg" id="reviewsModal">
+          <Modal.Header>
+            <Modal.Title>Hi</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+          </Modal.Body>
+          <Modal.Footer>
+            <button type="button" onClick={hideModal}>Cancel</button>
+            <button type="submit">Submit</button>
+          </Modal.Footer>
+        </Modal> */}
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
@@ -13,6 +14,7 @@ export const ApiProvider = (props) => {
   const [count, setCount] = useState(100);
   const [sort, setSort] = useState('relevance');
   const [productId, setProductId] = useState(18078);
+  const [productName, setProductName] = useState('Camo Onesie');
   const [questionsId, setQuestionsId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
 
@@ -108,7 +110,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
     }}
     >
       {props.children}
