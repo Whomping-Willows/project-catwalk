@@ -25,12 +25,14 @@ const API = () => {
         && (
         <>
           <Product
+            loading={loading}
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
             setCurrentStyles={setCurrentStyles}
           />
           <Related
+
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}

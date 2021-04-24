@@ -10,15 +10,37 @@ import ProductStars from './productStars.jsx';
 import ProductStyles from './productStyles.jsx';
 import ProductCart from './productCart.jsx';
 
-const Product = (props) => (
-  <div className="product">
-    <ProductGallery />
-    <ProductStars />
-    <ProductName product={props.currentProduct} />
-    <ProductStyles styles={props.currentStyles} />
-    <ProductCart />
-    <ProductDescription />
-  </div>
-);
+const Product = (props) => {
+  const temp = null;
+
+  const [selectedStyle, setSelectedStyle] = useState(props.currentStyles.results[0].style_id);
+
+  // useEffect(() => {
+  //   setSelectedStyle(props.currentStyles.results[0].style_id);
+  // });
+
+  return (
+    <div className="product">
+      {!props.loading
+        && (
+        <>
+          <ProductGallery
+            styles={props.currentStyles}
+            selectedStyle={selectedStyle}
+          />
+          <ProductStars />
+          <ProductName product={props.currentProduct} />
+          <ProductStyles
+            styles={props.currentStyles}
+            selectedStyle={selectedStyle}
+            setSelectedStyle={setSelectedStyle}
+          />
+          <ProductCart />
+          <ProductDescription />
+        </>
+        )}
+    </div>
+  );
+};
 
 export default Product;

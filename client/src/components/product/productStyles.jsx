@@ -1,15 +1,24 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import Select from 'react-select';
 
 const ProductStyles = (props) => {
-  const temp = null;
-
   const styleData = props.styles.results;
+  const sizeOptions = [];
+  const quantityOptions = [];
 
   const fontSizing = {
     fontSize: 16,
   };
+
+  const styleName = styleData.map((data) => {
+    // console.log('StyleName conditional: ', data.name);
+    if (data.style_id === props.selectedStyle) {
+      return (<p id="styleName" key={data.style_id} style={fontSizing}>{data.name}</p>);
+    }
+    return null;
+  });
 
   const styleSelectors = styleData.map((data) => (
     <img
@@ -20,26 +29,29 @@ const ProductStyles = (props) => {
     />
   ));
 
+
   return (
     <div className="productStyles">
       <div id="productPrice">
         <p>Price</p>
       </div>
-      <p style={fontSizing}>
-        <b>
-          Style
-          {' > '}
-        </b>
-        {/* {SELECTED STYLE} */}
-      </p>
+      <span className="styleNameContainer">
+        <p id="styleStyle" style={fontSizing}>
+          <b>
+            Style
+            {' > '}
+          </b>
+        </p>
+        {styleName}
+      </span>
       <div>
         <div className="styleSelector">
           {styleSelectors}
         </div>
       </div>
       <form className="sizingForm">
-        <input id="sizeSelector" type="text" value="SELECT SIZE" />
-        <input id="quantitySelector" type="integer" value="1" />
+        <Select id="sizeSelector" options={sizeOptions} />
+        <Select id="quantitySelector" options={quantityOptions} />
       </form>
     </div>
   );

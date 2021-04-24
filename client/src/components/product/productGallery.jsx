@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 const ProductGallery = (props) => {
+  const temp = null;
 
   return (
     <div className="productGallery" />
