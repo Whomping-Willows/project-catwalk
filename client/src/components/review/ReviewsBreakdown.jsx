@@ -7,14 +7,18 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import ReviewsSummary from './ReviewsSummary.jsx';
-import ReviewsFilterBlock from './ReviewsFilterBlock.jsx';
-import ReviewsCharBlock from './ReviewsCharBlock.jsx';
+import ReviewsFilter from './ReviewsFilter.jsx';
+import ReviewsChars from './ReviewsChars.jsx';
 
 const ReviewsBreakdown = (props) => (
   <div id="reviewsBreakdown">
-    <ReviewsSummary reviewsMetaData={props.reviewsMetaData} />
-    <ReviewsFilterBlock reviewsMetaData={props.reviewsMetaData} />
-    <ReviewsCharBlock reviewsMetaData={props.reviewsMetaData} />
+    <ReviewsSummary metaData={props.reviewsMetaData} />
+    <ReviewsFilter
+      metaData={props.reviewsMetaData}
+      filter={props.filter}
+      setFilter={props.setFilter}
+    />
+    <ReviewsChars metaData={props.reviewsMetaData} />
   </div>
 );
 

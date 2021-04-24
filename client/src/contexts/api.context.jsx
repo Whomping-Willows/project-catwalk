@@ -9,12 +9,13 @@ export const ApiContext = createContext();
 
 export const ApiProvider = (props) => {
   // PARAM VARIABLES AS STATE
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(10);
+  const [page, setPage] = useState(0);
+  const [count, setCount] = useState(100);
   const [sort, setSort] = useState('helpful');
   const [productId, setProductId] = useState(18078);
-  const [questionsId, setQuestionsId] = useState(114290);
+  const [questionId, setQuestionId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
+  const [answerId, setAnswerId] = useState(1082146);
 
   // QUERY STRINGS AS VARIABLES
   const apiPageQuery = `?page=${page}`;
@@ -27,7 +28,7 @@ export const ApiProvider = (props) => {
     root: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld',
     // Retrieves the list of products
     // uses page and count params
-    listProducts: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products${apiPageQuery}&${apiCountQuery}`,
+    listProducts: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products?page=${page}&count=${count}`,
     // Returns the id's of products related to the product specified.
     listInfo: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/products/${productId}`,
     // Returns the all styles available for the given product.
@@ -37,7 +38,7 @@ export const ApiProvider = (props) => {
     // Returns a list of reviews for a particular product.
     // This list does not include any reported reviews.
     // uses page, count, sort, product_id
-    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${apiProductIdQuery}`,
+    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&product_id=${productId}`,
     // Returns review metadata for a given product.
     reviewsMeta: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta/${apiProductIdQuery}`,
     // Updates a review to show it was found helpful.
@@ -52,7 +53,19 @@ export const ApiProvider = (props) => {
     // Returns answers for a given question.
     // This list does not include any reported answers.
     // uses page and count
-    answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionsId}/answers`,
+    addQuestion: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+
+    questionHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/helpful`,
+
+    questionReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/report`,
+
+    // post to this endpoint to add answer
+    answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/answers`,
+
+    answerHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+
+    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+
   };
 
   // HTTP REQUESTS AS FUNCTIONS
@@ -108,7 +121,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, questionId, setQuestionId, answerId, setAnswerId,
     }}
     >
       {props.children}

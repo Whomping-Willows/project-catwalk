@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
+import QAListItem from './QAListItem.jsx'
 
-const QAList = (props) => {
+const QAList = ({qaList}) => {
   const [index, setIndex] = useState(4);
-  let rendered = props.qaList.slice(0, index);
-
-  console.log('RENDERED', rendered);
+  let rendered = qaList.slice(0, index);
 
   const moreQuestionsClick = () => {
     if (index === 4) {
       setIndex(6);
-      rendered = props.qaList.slice(0, index);
+      rendered = qaList.slice(0, index);
     } else if (index === 6) {
-      setIndex(props.qaList.length);
-      rendered = props.qaList;
+      setIndex(qaList.length);
+      rendered = qaList;
     }
   };
 
   return (
     <div id="qaListContainer">
-      <ul id="qaList">
-        {rendered.map((question) => (
-          <li key={question.question_id}>
-            Q:
-            {` ${question.question_body}`}
-          </li>
-        ))}
-      </ul>
+      <div id="qaListScroll">
+        <ul id="qaList">
+          {rendered.map((question) => (
+            <QAListItem question={question} />
+          ))}
+        </ul>
+      </div>
       <button
         id="moreAnsweredQuestions"
         type="submit"
