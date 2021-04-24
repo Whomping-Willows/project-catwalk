@@ -11,7 +11,7 @@ export const ApiProvider = (props) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(100);
-  const [sort, setSort] = useState('helpful');
+  const [sort, setSort] = useState('relevance');
   const [productId, setProductId] = useState(18078);
   const [questionsId, setQuestionsId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
@@ -37,7 +37,7 @@ export const ApiProvider = (props) => {
     // Returns a list of reviews for a particular product.
     // This list does not include any reported reviews.
     // uses page, count, sort, product_id
-    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&product_id=${productId}`,
+    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&sort=${sort}&product_id=${productId}`,
     // Returns review metadata for a given product.
     reviewsMeta: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta/${apiProductIdQuery}`,
     // Updates a review to show it was found helpful.

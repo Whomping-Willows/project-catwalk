@@ -25,7 +25,12 @@ const ReviewsList = (props) => {
 
   return (
     <div id="reviewsList">
-      <ReviewsSort reviewsMetaData={props.reviewsMetaData} />
+      <ReviewsSort
+        reviewData={props.reviewsProductData}
+        reviewsMetaData={props.reviewsMetaData}
+        reviewsInList={reviewsInList}
+        setReviewsInList={setReviewsInList}
+      />
       <div id="reviewsAll">
         {props.filter.length === 0 && reviewsInList.map((review) => (
           <ReviewsItem key={review.review_id} review={review} />
