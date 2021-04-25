@@ -1,11 +1,13 @@
 import React from 'react';
+import Stars from '../Stars.jsx';
 
 const ProductStars = (props) => {
   const temp = null;
 
   return (
     <div className="productStars">
-      <h2>Stars will go here.</h2>
+      <Stars id="productStars" />
+      <p id="reviewLink">Read all reviews</p>
     </div>
   );
 };

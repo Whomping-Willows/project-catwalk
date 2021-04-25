@@ -5,13 +5,45 @@ import Select from 'react-select';
 
 const ProductStyles = (props) => {
   const styleData = props.styles.results;
-  const sizeOptions = [];
+  const sizeOptions = [
+    { value: 'XS', label: 'XS' },
+    { value: 'S', label: 'S' },
+    { value: 'M', label: 'M' },
+    { value: 'L', label: 'L' },
+    { value: 'XL', label: 'XL' },
+  ];
   const quantityOptions = [];
 
   const fontSizing = {
     fontSize: 16,
   };
+  const priceSet = () => {
+    const price = `$${styleData[0].original_price}`;
+    const salePrice = `$${styleData[0].sale_price}`;
+    if (styleData.sale_price) {
+      return (
+        <>
+          <p id="productSalePrice">
+            {salePrice}
+          </p>
+          <p id="productOrigPrice">
+            {price}
+          </p>
+        </>
+      );
+    }
+    return (
+      <p id="productOrigPrice">
+        {price}
+      </p>
+    );
+  };
 
+  const price = (
+    <>
+      {priceSet()}
+    </>
+  );
   const styleName = styleData.map((data) => {
     // console.log('StyleName conditional: ', data.name);
     if (data.style_id === props.selectedStyle) {
@@ -29,11 +61,10 @@ const ProductStyles = (props) => {
     />
   ));
 
-
   return (
     <div className="productStyles">
       <div id="productPrice">
-        <p>Price</p>
+        {price}
       </div>
       <span className="styleNameContainer">
         <p id="styleStyle" style={fontSizing}>
@@ -49,10 +80,10 @@ const ProductStyles = (props) => {
           {styleSelectors}
         </div>
       </div>
-      <form className="sizingForm">
+      <from className="sizingForm">
         <Select id="sizeSelector" options={sizeOptions} />
         <Select id="quantitySelector" options={quantityOptions} />
-      </form>
+      </from>
     </div>
   );
 };

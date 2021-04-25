@@ -32,7 +32,6 @@ const API = () => {
             setCurrentStyles={setCurrentStyles}
           />
           <Related
-
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
