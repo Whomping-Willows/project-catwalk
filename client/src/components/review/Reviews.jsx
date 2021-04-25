@@ -129,10 +129,6 @@ const Reviews = () => {
         filter={reviewsFilter}
         setFilter={setReviewsFilter}
       />
-      <ReviewsForm
-        reviewsProductData={reviewsProductData}
-        reviewsMetaData={reviewsMetaData}
-      />
     </div>
   );
 };

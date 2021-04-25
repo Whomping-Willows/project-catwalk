@@ -876,7 +876,10 @@ button {
   grid-template-columns: 40% 60%;
   padding: 10px;
   margin: 0 100px 0 100px;
+  background-color: white;
+  width: 600px
 }
+
 
 #reviewsFormTitleDiv {
   grid-row-start: 1;
