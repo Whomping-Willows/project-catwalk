@@ -241,8 +241,25 @@ const ReviewsForm = (props) => {
         )}
       </div>
       <div className="reviewsFormBorder" id="reviewsFormSum">
-        <label htmlFor="summary" className="reviewsFormLabelsSm" />
-        <input type="text" className="reviewsFormInput" id="summary" />
+        <label htmlFor="summary" className="reviewsFormLabelsMain">Reviews Summary</label>
+        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="summary" value="Example: Best purchase ever!" />
+      </div>
+      <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormBody">
+        <label htmlFor="body" className="reviewsFormLabelsMain" id="reviewsFormBodyTitle">Reviews Body</label>
+        <input type="text" minLength="50" maxLength="1000" className="reviewsFormLabelsSm" id="body" value="Why did you like the product or not?" />
+      </div>
+      <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormName">
+        <label htmlFor="nickname" className="reviewsFormLabelsMain">What is your nickname?</label>
+        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="nickname" value="Example: jackson11!" />
+        <p className="reviewsFormLabelsSm" id="disclaimer">For privacy reasons, do not use your full name or email address</p>
+      </div>
+      <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormEmail">
+        <label htmlFor="email" className="reviewsFormLabelsMain">What is your email?</label>
+        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="email" value=" jackson11@email.com" />
+        <p className="reviewsFormLabelsSm" id="disclaimer">For authentication reasons, you will not be emailed</p>
+      </div>
+      <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormSubmit">
+        <button type="submit" id="reviewsSubmit">Submit Review</button>
       </div>
     </form>
 

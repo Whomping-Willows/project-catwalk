@@ -930,6 +930,7 @@ button {
 .reviewsFormLabelsSm {
   font-family:Arial, Helvetica, sans-serif;
   font-size: 12px;
+  font-weight: normal;
   color: darkslategrey;
   display: inline;
   margin-left: 10px;
@@ -1098,4 +1099,73 @@ button {
   grid-row-end: 7;
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+#summary {
+  width: 350px;
+}
+
+#reviewsFormBody {
+  grid-row-start: 7;
+  grid-row-end: 9;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#reviewsFormBodyTitle {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: block;
+}
+
+#body {
+  grid-row-start: 8;
+  grid-row-end: 9;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 500px;
+  height: 150px;
+  line-height: 150px;
+  font-weight: normal;
+  margin-top: 10px;
+  padding:0 5px;
+}
+
+#reviewsFormName {
+  grid-row-start: 9;
+  grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#nickname {
+  width: 320px;
+}
+
+#disclaimer {
+  display: block;
+}
+
+#reviewsFormEmail {
+  grid-row-start: 10;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#email {
+  width: 350px;
+}
+
+#reviewsFormSubmit {
+  grid-row-start: 11;
+  grid-row-end: 12;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#reviewsSubmit {
+  margin-left: 200px;
 }
