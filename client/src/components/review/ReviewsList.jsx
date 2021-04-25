@@ -78,9 +78,9 @@ const ReviewsList = (props) => {
       </div>
       <div id="reviewsListButtons">
         {props.reviewsProductData.results.length > 2
-        && props.reviewsProductData.results.length !== reviewsInList.length
+          && props.reviewsProductData.results.length !== reviewsInList.length
           && (
-          <button type="button" id="reviewsLoadMore" onClick={addTwo}>MORE REVIEWS</button>
+            <button type="button" id="reviewsLoadMore" onClick={addTwo}>MORE REVIEWS</button>
           )}
         <button type="button" id="reviewsAdd" onClick={handleOpen}>
           ADD A REVIEW
@@ -94,7 +94,11 @@ const ReviewsList = (props) => {
           container={() => document.getElementById('reviews')}
           className={classes.reviewsModal}
         >
-          <ReviewsForm reviewsMetaData={props.reviewsMetaData} />
+          <ReviewsForm
+            reviewsMetaData={props.reviewsMetaData}
+            handleClose={handleClose}
+            setOpen={setOpen}
+          />
         </Modal>
       </div>
     </div>

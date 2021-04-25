@@ -75,7 +75,6 @@ export const ApiProvider = (props) => {
   };
 
   const putRequest = (endpoint) => {
-    console.log('Endpoint param from client requests: ', endpoint);
     axios.put('/api', {
       headers: {
         endpoint,
@@ -83,15 +82,15 @@ export const ApiProvider = (props) => {
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
+        console.log('status code ', response.status);
+        console.log('statusText ', response.statusText);
       })
       .catch((err) => {
         console.error('From requests: ', err);
       });
   };
 
-  // NOT YET WORKING, JUST PLACEHOLDER
   const postRequest = (endpoint, data) => {
-    console.log('I got here');
     axios.post('/api', {
       headers: {
         endpoint,

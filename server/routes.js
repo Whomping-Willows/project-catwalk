@@ -13,7 +13,7 @@ router.get('/api', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
-      console.log('Successful get req ', response.data);
+      console.log('Successful router get req');
       res.send(response.data);
     })
     .catch((err) => {
@@ -27,7 +27,7 @@ router.put('/api', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
-      console.log('Successful router put req ', response.data);
+      console.log('Successful router put req ', response.status, ' ', response.statusText);
       res.send(response.data);
     })
     .catch((err) => {
@@ -35,7 +35,6 @@ router.put('/api', (req, res) => {
     });
 });
 
-// NOT YET WORKING, JUST PLACEHOLDER
 router.post('/api', (req, res) => {
   console.log('Post endpoint ', req.body.headers.endpoint);
   console.log('Post data ', req.body.headers.data);

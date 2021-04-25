@@ -29,12 +29,10 @@ const ReviewsItem = (props) => {
   const { end, putRequest } = useContext(ApiContext);
 
   const putHelpfulness = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
     putRequest(end.reviewsHelpful, null);
   };
 
   const putReportReview = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsReport);
     putRequest(end.reviewsReport, null);
   };
 

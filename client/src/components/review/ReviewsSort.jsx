@@ -34,6 +34,7 @@ const ReviewsSort = (props) => {
             relevance
             <i className="fa fa-caret-down" id="sortCaret" />
           </div>
+
           <div className="dropdown-content">
             <div role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>relevance</div>
             <div role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>newest</div>

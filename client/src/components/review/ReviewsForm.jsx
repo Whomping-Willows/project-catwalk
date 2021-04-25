@@ -123,6 +123,7 @@ const ReviewsForm = (props) => {
   };
 
   const postReview = () => {
+    props.setOpen(false);
     postRequest(endpoint, bodyForPost);
   };
 
