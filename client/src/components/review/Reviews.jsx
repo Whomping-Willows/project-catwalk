@@ -3,7 +3,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
 import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
-import ReviewsForm from './ReviewsForm.jsx';
 
 const metaDefault = {
   product_id: '18078',
@@ -105,7 +104,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="reviews">
+    <div id="reviews">
       <h2>RATINGS & REVIEWS</h2>
       <ReviewsBreakdown
         reviewsProductData={reviewsProductData}

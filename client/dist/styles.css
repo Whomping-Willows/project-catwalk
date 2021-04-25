@@ -328,7 +328,7 @@ button {
 
 /* REVIEWS SECTION */
 
-.reviews {
+#reviews {
   grid-row-start: 5;
   grid-row-end: 6;
   grid-column-start: 2;
@@ -874,10 +874,11 @@ button {
   display: grid;
   grid-template-rows: auto auto auto 50px auto auto auto auto auto auto auto auto auto;
   grid-template-columns: 40% 60%;
-  padding: 10px;
-  margin: 0 100px 0 100px;
+  padding: 50px;
+  margin: 100px;
   background-color: white;
-  width: 600px
+  width: 600px;
+  overflow-y: scroll;
 }
 
 

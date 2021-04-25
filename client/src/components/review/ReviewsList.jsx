@@ -6,6 +6,7 @@
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import { Modal } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import ReviewsSort from './ReviewsSort.jsx';
 import ReviewsItem from './ReviewsItem.jsx';
 import ReviewsForm from './ReviewsForm.jsx';
@@ -33,6 +34,19 @@ const ReviewsList = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const useStyles = makeStyles({
+    reviewsModal: {
+      position:'absolute',
+      top:'10%',
+      left:'10%',
+      overflow:'scroll',
+      height:'100%',
+      display:'block'
+    },
+  });
+
+  const classes = useStyles();
 
   return (
     <div id="reviewsList">
@@ -77,9 +91,11 @@ const ReviewsList = (props) => {
           onClose={handleClose}
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
+          container={() => document.getElementById('reviews')}
+          className={classes.reviewsModal}
         >
           <ReviewsForm reviewsMetaData={props.reviewsMetaData} />
-        </Modal>
+        </Modal >
       </div>
     </div>
   );
