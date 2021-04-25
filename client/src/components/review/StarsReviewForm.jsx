@@ -1,17 +1,16 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import Ratings from 'react-ratings-declarative';
 
-const StarsReviewForm = () => {
-  const [rating, setRating] = useState(0);
+const StarsReviewForm = (props) => {
   const updateRating = (newRating) => {
-    setRating(newRating);
+    props.setRating(newRating);
   };
 
   return (
     <Ratings
-      rating={rating}
+      rating={props.rating}
       changeRating={updateRating}
       widgetDimensions="15px"
       widgetSpacings="1px"

@@ -47,6 +47,8 @@ export const ApiProvider = (props) => {
     // Updates a review to show it was reported.
     // This action does not delete the review, but it will not be returned in the above GET request.
     reviewsReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`,
+    // Adds a review for the given product.
+    reviewsAdd: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
     // Retrieves a list of questions for a particular product.
     // This list does not include any reported questions.
     // uses productId, page and count
@@ -65,8 +67,6 @@ export const ApiProvider = (props) => {
       },
     })
       .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log(response.data);
         callback(response.data);
       })
       .catch((err) => {
@@ -83,7 +83,6 @@ export const ApiProvider = (props) => {
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
-        console.log(response.data);
       })
       .catch((err) => {
         console.error('From requests: ', err);
@@ -91,17 +90,17 @@ export const ApiProvider = (props) => {
   };
 
   // NOT YET WORKING, JUST PLACEHOLDER
-  const postRequest = (endpoint, callback) => {
+  const postRequest = (endpoint, data) => {
+    console.log('I got here');
     axios.post('/api', {
       headers: {
         endpoint,
-        data: [],
+        data,
       },
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
         console.log(response.data);
-        callback(response.data);
       })
       .catch((err) => {
         console.error('From requests: ', err);
@@ -110,7 +109,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest,
     }}
     >
       {props.children}

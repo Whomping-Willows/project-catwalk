@@ -37,8 +37,9 @@ router.put('/api', (req, res) => {
 
 // NOT YET WORKING, JUST PLACEHOLDER
 router.post('/api', (req, res) => {
-  console.log(req.headers.endpoint);
-  axios.post(req.headers.endpoint, noData, {
+  console.log('Post endpoint ', req.body.headers.endpoint);
+  console.log('Post data ', req.body.headers.data);
+  axios.post(req.body.headers.endpoint, req.body.headers.data, {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {

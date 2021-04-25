@@ -10,7 +10,10 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import StarsReviewForm from './StarsReviewForm.jsx';
 
 const ReviewsForm = (props) => {
-  const { productName } = useContext(ApiContext);
+  const {
+    productId, productName, postRequest, end,
+  } = useContext(ApiContext);
+
   const [sizeDescription, setSizeDescription] = useState('none selected');
   const [widthDescription, setWidthDescription] = useState('none selected');
   const [comfortDescription, setComfortDescription] = useState('none selected');
@@ -18,7 +21,16 @@ const ReviewsForm = (props) => {
   const [lengthDescription, setLengthDescription] = useState('none selected');
   const [fitDescription, setFitDescription] = useState('none selected');
 
+  const [rating, setRating] = useState(0);
+  const [summary, setSummary] = useState('Example: Best purchase ever!');
+  const [body, setBody] = useState('Why did you like the product or not?');
+  const [recommend, setRecommend] = useState();
+  const [name, setName] = useState('Example: jackson11!');
+  const [email, setEmail] = useState('jackson11@email.com');
+  const [characteristics, setCharacteristics] = useState({});
+
   const chars = props.reviewsMetaData.characteristics;
+
   const charsDescriptions = {
     size: {
       1: 'A size too small',
@@ -67,24 +79,57 @@ const ReviewsForm = (props) => {
   const setDescription = (e) => {
     const charName = e.target.name;
     const charValue = Number(e.target.value);
+    const oldChar = characteristics;
+
     if (charName === 'size') {
       setSizeDescription(charsDescriptions[charName][charValue]);
+      oldChar[chars.Size.id] = charValue;
+      setCharacteristics(oldChar);
     } else if (charName === 'width') {
       setWidthDescription(charsDescriptions[charName][charValue]);
+      oldChar[chars.Width.id] = charValue;
+      setCharacteristics(oldChar);
     } else if (charName === 'comfort') {
       setComfortDescription(charsDescriptions[charName][charValue]);
+      oldChar[chars.Comfort.id] = charValue;
+      setCharacteristics(oldChar);
     } else if (charName === 'quality') {
       setQualityDescription(charsDescriptions[charName][charValue]);
+      oldChar[chars.Quality.id] = charValue;
+      setCharacteristics(oldChar);
     } else if (charName === 'length') {
       setLengthDescription(charsDescriptions[charName][charValue]);
+      oldChar[chars.Length.id] = charValue;
+      setCharacteristics(oldChar);
     } else if (charName === 'fit') {
       setFitDescription(charsDescriptions[charName][charValue]);
+      oldChar[chars.Fit.id] = charValue;
+      setCharacteristics(oldChar);
     }
+  };
+
+  const endpoint = end.reviewsAdd;
+
+  const bodyForPost = {
+    product_id: productId,
+    rating,
+    summary,
+    body,
+    recommend,
+    name,
+    email,
+    photo: [],
+    characteristics,
+  };
+
+  const postReview = () => {
+    postRequest(endpoint, bodyForPost);
   };
 
   return (
 
     <form className="reviewsForm">
+
       <div id="reviewsFormTitleDiv">
         <h2 id="reviewsFormTitle">Write Your Review</h2>
         <h3 className="reviewsFormSub">
@@ -92,19 +137,22 @@ const ReviewsForm = (props) => {
           {` ${productName}`}
         </h3>
       </div>
+
       <div className="reviewsFormBorder" id="reviewsOverallRatingDiv">
         <h3 className="reviewsFormLabelsMain" id="overallRatingStars">Overall Rating</h3>
-        <StarsReviewForm id="overallRatingStars" />
+        <StarsReviewForm id="overallRatingStars" required="true" rating={rating} setRating={setRating} />
       </div>
+
       <div className="reviewsFormBorder" id="reviewsFormRecDiv">
-        <>
-          <h3 className="reviewsFormLabelsMain">Do you recommend this product?</h3>
-        </>
+        <h3 className="reviewsFormLabelsMain">Do you recommend this product?</h3>
+
         <label htmlFor="ReviewsYes" className="reviewsFormLabelsSm">Yes</label>
-        <input type="radio" id="ReviewsYes" value="Yes" name="recommend" />
+        <input type="radio" id="ReviewsYes" value="Yes" name="recommend" onClick={() => setRecommend(true)} />
+
         <label htmlFor="ReviewsNo" className="reviewsFormLabelsSm">No</label>
-        <input type="radio" id="ReviewsNo" value="No" name="recommend" />
+        <input type="radio" id="ReviewsNo" value="No" name="recommend" onClick={() => setRecommend(false)} />
       </div>
+
       <div className="reviewsFormBorder" id="reviewsFormCharTitle">Please rate the following factors of this product based on your experience:</div>
       <div id="reviewsFormCharDiv">
 
@@ -240,27 +288,33 @@ const ReviewsForm = (props) => {
           </div>
         )}
       </div>
+
       <div className="reviewsFormBorder" id="reviewsFormSum">
         <label htmlFor="summary" className="reviewsFormLabelsMain">Reviews Summary</label>
-        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="summary" value="Example: Best purchase ever!" />
+        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="summary" value={summary} onChange={(e) => setSummary(e.target.value)} />
       </div>
+
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormBody">
         <label htmlFor="body" className="reviewsFormLabelsMain" id="reviewsFormBodyTitle">Reviews Body</label>
-        <input type="text" minLength="50" maxLength="1000" className="reviewsFormLabelsSm" id="body" value="Why did you like the product or not?" />
+        <input type="text" minLength="50" maxLength="1000" className="reviewsFormLabelsSm" id="body" value={body} onChange={(e) => setBody(e.target.value)} />
       </div>
+
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormName">
         <label htmlFor="nickname" className="reviewsFormLabelsMain">What is your nickname?</label>
-        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="nickname" value="Example: jackson11!" />
+        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="nickname" value={name} onChange={(e) => setName(e.target.value)} />
         <p className="reviewsFormLabelsSm" id="disclaimer">For privacy reasons, do not use your full name or email address</p>
       </div>
+
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormEmail">
         <label htmlFor="email" className="reviewsFormLabelsMain">What is your email?</label>
-        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="email" value=" jackson11@email.com" />
+        <input type="text" maxLength="60" className="reviewsFormLabelsSm" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <p className="reviewsFormLabelsSm" id="disclaimer">For authentication reasons, you will not be emailed</p>
       </div>
+
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormSubmit">
-        <button type="submit" id="reviewsSubmit">Submit Review</button>
+        <button type="button" id="reviewsSubmit" onClick={postReview}>Submit Review</button>
       </div>
+
     </form>
 
   );

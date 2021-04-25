@@ -37,12 +37,12 @@ const ReviewsList = (props) => {
 
   const useStyles = makeStyles({
     reviewsModal: {
-      position:'absolute',
-      top:'10%',
-      left:'10%',
-      overflow:'scroll',
-      height:'100%',
-      display:'block'
+      position: 'absolute',
+      top: '10%',
+      left: '10%',
+      overflow: 'scroll',
+      height: '100%',
+      display: 'block',
     },
   });
 
@@ -95,7 +95,7 @@ const ReviewsList = (props) => {
           className={classes.reviewsModal}
         >
           <ReviewsForm reviewsMetaData={props.reviewsMetaData} />
-        </Modal >
+        </Modal>
       </div>
     </div>
   );

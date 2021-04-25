@@ -1131,10 +1131,11 @@ button {
   grid-column-end: 3;
   width: 500px;
   height: 150px;
-  line-height: 150px;
   font-weight: normal;
   margin-top: 10px;
   padding:0 5px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 #reviewsFormName {
