@@ -4,7 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ReviewsSort from './ReviewsSort.jsx';
@@ -20,6 +20,19 @@ const ReviewsList = (props) => {
   const [reviews2, setReviews2] = useState(props.reviewsProductData.results.filter((review) => review.rating === 2));
   const [reviews1, setReviews1] = useState(props.reviewsProductData.results.filter((review) => review.rating === 1));
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setReviews5(props.reviewsProductData.results.filter((review) => review.rating === 5));
+    setReviews4(props.reviewsProductData.results.filter((review) => review.rating === 4));
+    setReviews3(props.reviewsProductData.results.filter((review) => review.rating === 3));
+    setReviews2(props.reviewsProductData.results.filter((review) => review.rating === 2));
+    setReviews1(props.reviewsProductData.results.filter((review) => review.rating === 1));
+  }, [props.reviewsProductData]);
+
+  console.log('Typeof rating in my most recent ', reviewsInList[0].rating, typeof reviewsInList[0].rating);
+  if (reviewsInList.length > 20) {
+    console.log('Typeof rating in the one that shows up ', reviewsInList[16].rating, typeof reviewsInList[16].rating);
+  }
 
   const addTwo = () => {
     const newList = props.reviewsProductData.results.slice(0, index);
