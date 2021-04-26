@@ -8,7 +8,7 @@ body {
 .appContainer {
   display: grid;
   width: 1000px;
-  grid-template-rows: 200px 720px 720px 720px 720px 100px;
+  grid-template-rows: 200px 720px 350px 720px 720px 100px;
   grid-template-columns: 100px 800px 100px;
 }
 
@@ -358,7 +358,7 @@ button :hover {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px 300px 50px 300px;
+  grid-template-rows: 50px auto;
 }
 
 #relatedProductsTitle {
@@ -373,22 +373,94 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
-  background-color: blue;
+  margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: 200px 50px;
 }
 
-#relatedOutfitsTitle {
-  grid-row-start: 3;
-  grid-row-end: 4;
+#related1 {
+  grid-row-start: 1;
+  grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
 }
 
-#relatedOutfit {
-  grid-row-start: 4;
-  grid-row-end: 5;
+.relatedPic1 {
+  grid-row-start: 1;
+  grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  background-color: red;
+}
+
+.relatedInfo1 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#related2 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.relatedPic2 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.relatedInfo2 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#related3 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.relatedPic3 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.relatedInfo3 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+#related4 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.relatedPic4 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.relatedInfo4 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 4;
+  grid-column-end: 5;
 }
 
 /* QUESTIONS SECTION */
