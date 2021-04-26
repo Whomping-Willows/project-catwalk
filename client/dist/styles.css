@@ -213,12 +213,14 @@ button {
 #styleStyle {
   grid-column-start: 1;
   grid-column-end: 2;
+  font-size: 16px;
 }
 
 #styleName {
   grid-column-start: 2;
   grid-column-end: 3;
   margin-left: 10px;
+  font-size: 16px;
 }
 
 .styleOption {
@@ -265,10 +267,14 @@ button {
 }
 
 #productSalePrice {
-
+  font-size: 16px;
 }
 
 #productOrigPrice {
+  text-decoration-line: line-through;
+}
+
+#productPrice {
   font-size: 16px;
 }
 

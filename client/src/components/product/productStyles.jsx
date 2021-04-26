@@ -5,6 +5,13 @@ import Select from 'react-select';
 
 const ProductStyles = (props) => {
   const styleData = props.styles.results;
+
+  const [selectedSize, setSize] = useState();
+
+  const [handleSizeChange] = useState(() => () => {
+    setSize(selectedSize);
+  });
+
   const sizeOptions = [
     { value: 'XS', label: 'XS' },
     { value: 'S', label: 'S' },
@@ -14,9 +21,8 @@ const ProductStyles = (props) => {
   ];
   const quantityOptions = [];
 
-  const fontSizing = {
-    fontSize: 16,
-  };
+  // const quantCalc = styleData
+
   const priceSet = () => {
     const price = `$${styleData[0].original_price}`;
     const salePrice = `$${styleData[0].sale_price}`;
@@ -33,7 +39,7 @@ const ProductStyles = (props) => {
       );
     }
     return (
-      <p id="productOrigPrice">
+      <p id="productPrice">
         {price}
       </p>
     );
@@ -47,7 +53,7 @@ const ProductStyles = (props) => {
   const styleName = styleData.map((data) => {
     // console.log('StyleName conditional: ', data.name);
     if (data.style_id === props.selectedStyle) {
-      return (<p id="styleName" key={data.style_id} style={fontSizing}>{data.name}</p>);
+      return (<p id="styleName" key={data.style_id}>{data.name}</p>);
     }
     return null;
   });
@@ -67,7 +73,7 @@ const ProductStyles = (props) => {
         {price}
       </div>
       <span className="styleNameContainer">
-        <p id="styleStyle" style={fontSizing}>
+        <p id="styleStyle">
           <b>
             Style
             {' > '}
@@ -81,8 +87,16 @@ const ProductStyles = (props) => {
         </div>
       </div>
       <from className="sizingForm">
-        <Select id="sizeSelector" options={sizeOptions} />
-        <Select id="quantitySelector" options={quantityOptions} />
+        <Select
+          id="sizeSelector"
+          options={sizeOptions}
+          placeholder="SELECT SIZE"
+          onChange={handleSizeChange}
+        />
+        <Select
+          id="quantitySelector"
+          options={quantityOptions}
+        />
       </from>
     </div>
   );
