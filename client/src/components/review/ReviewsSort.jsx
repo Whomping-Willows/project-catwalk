@@ -36,9 +36,9 @@ const ReviewsSort = (props) => {
           </div>
 
           <div className="dropdown-content">
-            <div role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>relevance</div>
-            <div role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>newest</div>
-            <div role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>helpfulness</div>
+            <div role="button" className="dropdown-label" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>relevance</div>
+            <div role="button" className="dropdown-label" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>newest</div>
+            <div role="button" className="dropdown-label" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>helpfulness</div>
           </div>
         </div>
       </div>
