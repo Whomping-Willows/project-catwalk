@@ -112,6 +112,34 @@ button {
   display: grid;
   grid-template-rows: 50% 50%;
   grid-template-columns: 20% 20% 20% 20% 20%;
+  justify-content: center;
+}
+
+#mainImage {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  height: 520px;
+  width: 620px;
+}
+
+.sideGallery {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  overflow-y: scroll;
+  width: 100px;
+  height: 66%;
+}
+
+.sideImage {
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 .productStars {
@@ -119,6 +147,21 @@ button {
   grid-row-end: 2;
   grid-column-start: 4;
   grid-column-end: 6;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 25% auto;
+  align-items: center;
+}
+
+#productStars {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviewLink {
+  float: left;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .productName {
@@ -161,6 +204,23 @@ button {
   align-items: center;
 }
 
+.styleNameContainer {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 15% auto;
+}
+
+#styleStyle {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#styleName {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: 10px;
+}
+
 .styleOption {
   grid-row-start: 3;
   grid-row-end: 4;
@@ -187,11 +247,14 @@ button {
   width: 60%;
   margin-right: 20px;
   margin-bottom: 12.5px;
+  display: inline-block;
 }
 
 #quantitySelector {
-  width: 25%;
+  width: 30%;
   margin-bottom: 12.5px;
+  display: inline-block;
+  border-color: black;
 }
 
 #productPrice {
@@ -201,11 +264,44 @@ button {
   grid-column-end: 2;
 }
 
+#productSalePrice {
+
+}
+
+#productOrigPrice {
+  font-size: 16px;
+}
+
 .productCart {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 4;
   grid-column-end: 6;
+}
+
+
+#addToBag {
+  width: 75%;
+  height: 50px;
+  float: left;
+}
+
+#addToCartText{
+  position: relative;
+  top: -12.5px;
+  left: -10px;
+}
+
+#favorite {
+  width: 50px;
+  height: 50px;
+  float: right;
+}
+
+#favoriteStar {
+  position: relative;
+  top: -12.5px;
+  left: -12.5px;
 }
 
 .productDescription {
@@ -214,10 +310,42 @@ button {
   grid-column-start: 2;
   grid-column-end: 5;
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 15% auto;
+  grid-template-columns: 32.5% 32.5% 2.5% 32.5%;
 }
 
+#productSlogan {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#productDesc {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#productVertLine {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  height: 60%;
+  width: 2px;
+  background-color: gray;
+}
+
+#featureList {
+  margin-top: 10px;
+}
+
+#productCheck {
+  position: relative;
+  top: -5px;
+}
 
 /* RELATED SECTION */
 
