@@ -20,8 +20,9 @@ const QAListItem = ({ question }) => {
 
     setQuestionPromise()
       .then(putRequest(end.questionHelpful))
-      .then(getRequest(end.listQuestions, () => {
+      .then(getRequest(end.questionHelpful, (response) => {
         // need to re-render question
+        console.log(response);
       }))
       .catch();
   };

@@ -92,6 +92,9 @@ button {
   background-color: white;
 }
 
+button :hover {
+  cursor: pointer;
+}
 /* PRODUCT SECTION */
 
 .product {
@@ -321,7 +324,6 @@ button {
   height: 65px;
   padding: 15px 20px 0 20px;
   margin: 0;
-
 }
 
 #searchAddIcon {
@@ -471,6 +473,10 @@ button {
   align-self: flex-end;
 }
 
+.moreAnswersButton :hover {
+  cursor: pointer;
+}
+
 #questionFormContainer {
   grid-row-start: 3;
   grid-row-end: 4;
@@ -490,6 +496,9 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   align-self: flex-end;
+}
+#askYourQuestion :hover {
+  cursor: pointer;
 }
 
 /* REVIEWS SECTION */

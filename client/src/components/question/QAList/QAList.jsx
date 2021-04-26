@@ -1,8 +1,9 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { ApiContext } from '../../../contexts/api.context.jsx';
-import QAListItem from './QAListItem.jsx'
+import QAListItem from './QAListItem.jsx';
 
-const QAList = ({qaList}) => {
+function QAList({ qaList }) {
   const [index, setIndex] = useState(4);
   let rendered = qaList.slice(0, index);
 
@@ -34,6 +35,6 @@ const QAList = ({qaList}) => {
       </button>
     </div>
   );
-};
+}
 
 export default QAList;
