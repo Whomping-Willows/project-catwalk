@@ -92,6 +92,9 @@ button {
   background-color: white;
 }
 
+button :hover {
+  cursor: pointer;
+}
 /* PRODUCT SECTION */
 
 .product {
@@ -101,7 +104,7 @@ button {
   grid-column-end: 4;
   display: grid;
   grid-template-rows: 5% 15% auto 10% 200px;
-  grid-template-columns: 100px 530px 270px 100px;
+  grid-template-columns: 100px 520px 20px 260px 100px;
 }
 
 .productGallery {
@@ -109,67 +112,243 @@ button {
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
-  background-color: blue;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  justify-content: center;
+}
+
+#mainImage {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  height: 520px;
+  width: 620px;
+}
+
+.sideGallery {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  overflow-y: scroll;
+  width: 100px;
+  height: 66%;
+}
+
+.sideImage {
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 .productStars {
   grid-row-start: 1;
   grid-row-end: 2;
-  grid-column-start: 3;
-  grid-column-end: 5;
-  background-color: green;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 25% auto;
+  align-items: center;
+}
+
+#productStars {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#reviewLink {
+  float: left;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .productName {
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 3;
-  grid-column-end: 5;
-  background-color: purple;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  display: grid;
+  grid-template-rows: 40% auto;
+  grid-template-columns: auto;
+}
+
+#productCategory {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 16px;
+  margin: 0px;
+}
+
+#productName {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: 20px;
+  margin: 0px;
+}
+
+.styleSelector {
+  display: inline;
+  margin-top: 5px;
 }
 
 .productStyles {
   grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 3;
-  grid-column-end: 5;
-  background-color: red;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  display: grid;
+  grid-template-rows: 10% 20% auto 20%;
+  grid-template-columns: auto;
+  align-items: center;
+}
+
+.styleNameContainer {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 15% auto;
+}
+
+#styleStyle {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#styleName {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-left: 10px;
+}
+
+.styleOption {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: inline;
+  border-Width: 1;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.sizingForm {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  align-items: center;
+}
+
+#sizeSelector {
+  width: 60%;
+  margin-right: 20px;
+  margin-bottom: 12.5px;
+  display: inline-block;
+}
+
+#quantitySelector {
+  width: 30%;
+  margin-bottom: 12.5px;
+  display: inline-block;
+  border-color: black;
+}
+
+#productPrice {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#productSalePrice {
+
+}
+
+#productOrigPrice {
+  font-size: 16px;
 }
 
 .productCart {
   grid-row-start: 4;
   grid-row-end: 5;
-  grid-column-start: 3;
-  grid-column-end: 5;
-  background-color: brown;
+  grid-column-start: 4;
+  grid-column-end: 6;
+}
+
+
+#addToBag {
+  width: 75%;
+  height: 50px;
+  float: left;
+}
+
+#addToCartText{
+  position: relative;
+  top: -12.5px;
+  left: -10px;
+}
+
+#favorite {
+  width: 50px;
+  height: 50px;
+  float: right;
+}
+
+#favoriteStar {
+  position: relative;
+  top: -12.5px;
+  left: -12.5px;
 }
 
 .productDescription {
   grid-row-start: 5;
   grid-row-end: 6;
   grid-column-start: 2;
+  grid-column-end: 5;
+  display: grid;
+  grid-template-rows: 15% auto;
+  grid-template-columns: 32.5% 32.5% 2.5% 32.5%;
+}
+
+#productSlogan {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#productDesc {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#productVertLine {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
   grid-column-end: 4;
-  background-color: yellow;
+  height: 60%;
+  width: 2px;
+  background-color: gray;
 }
 
-.styleOption {
-  border-Width: 1;
-  width: 50px;
-  height: 50px;
-  background-color: grey;
-  border-radius: 25px;
-  margin-left: 10px;
-  margin-bottom: 10px;
+#featureList {
+  margin-top: 10px;
 }
 
-.sizingForm {
-  position: absolute;
-  bottom: 5;
+#productCheck {
+  position: relative;
+  top: -5px;
 }
-
-/* #sizeSelector {
-
-} */
 
 /* RELATED SECTION */
 
@@ -220,7 +399,7 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px 70px 480px 80px;
+  grid-template-rows: 50px 70px 480px 100px;
   grid-template-columns: 40% 40% auto;
   padding: 10px;
 }
@@ -231,7 +410,7 @@ button {
   grid-column-start: 1;
   grid-column-end: 4;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 85% auto;
   grid-template-rows: 70px;
   width: 100%;
   border: solid;
@@ -258,7 +437,7 @@ button {
 #searchInput {
   border: none;
   float: left;
-  width: 85%;
+  width: 80%;
   grid-column-start: 1;
   grid-column-end: 2;
   font-size: 16px;
@@ -270,10 +449,9 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   border: none;
-  height: 68px;
-  padding: 20px 20px 0 20px;
+  height: 65px;
+  padding: 15px 20px 0 20px;
   margin: 0;
-
 }
 
 #searchAddIcon {
@@ -287,35 +465,157 @@ button {
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-rows: 480px 100px;
+  grid-template-columns: 50% 50%;
+}
+
+#qaListScroll {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
   grid-column-end: 3;
+  overflow-y: scroll;
 }
 
 #qaList {
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
   list-style-type: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  padding: 0;
+}
+
+.QAListItem {
+  list-style-type: none;
+  grid-row-start: span 1;
+  grid-column-start: span 2;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 75% 25%;
+  margin-bottom: 10px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-color: darkgrey;
+}
+
+.questionHelpful {
+  grid-row-start: 2 span 1;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: block;
+  font-size: 10px;
+  padding: 0px;
   color: darkslategray;
+  font-weight: normal;
+  margin: 0px;
+  padding: 0;
+}
+
+.helpfulButton {
+  border: none;
+  text-decoration: underline;
+  font-size: 10px;
+  color: darkslategray;
+  margin: 13px 5px;
+  padding: 0;
+}
+
+#answerList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.answerListItem {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 30px 100px auto;
+  margin: 5px;
+}
+#answerTag {
+  grid-row-start: span 1;
+  grid-column-start: span 1;
+  font-size: 16px;
   font-weight: bold;
+  color: darkslategray;
+  margin: 5px;
+  width: 20px;
+  display: inline-block;
+}
 
+#answerBody {
+  grid-row-start: span 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  margin: 5px;
+}
 
+#answerNameDate {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  color: rgb(169, 169, 169);
+  margin: 5px;
+}
+
+#answerHelpfulButton {
+  margin: 5px;
+  margin-right: 0;
+}
+
+.answerHelpful {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 2;
+  margin: 5px;
+  margin-right: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: darkslategray;
+}
+
+#answerReport {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 3;
+  width: 40px;
+  margin: 5px 0;
+}
+
+.moreAnswersButton {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  margin-left: 30px;
+  color: darkslategray
 }
 
 #moreAnsweredQuestions {
-  grid-row-start: 4;
-  grid-row-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
   align-self: flex-end;
 }
+
+.moreAnswersButton :hover {
+  cursor: pointer;
+}
+
 #questionFormContainer {
   grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#askQuestionLabel {
+  font-weight: bold;
+  color: darkslategray;
+  font-size: 14px;
 }
 
 #askYourQuestion {
@@ -324,6 +624,9 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   align-self: flex-end;
+}
+#askYourQuestion :hover {
+  cursor: pointer;
 }
 
 /* REVIEWS SECTION */
