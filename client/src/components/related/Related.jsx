@@ -2,8 +2,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useContext } from 'react';
-import RelatedProductsList from './RelatedProductsList.jsx';
-import YourOutFitList from './YourOutFitList.jsx';
+import RelatedProductsList from './relatedProductsList.jsx';
+import YourOutFitList from './yourOutFitList.jsx';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
 const Related = () => {
