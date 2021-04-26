@@ -92,6 +92,9 @@ button {
   background-color: white;
 }
 
+button :hover {
+  cursor: pointer;
+}
 /* PRODUCT SECTION */
 
 .product {
@@ -396,7 +399,7 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px 70px 480px 80px;
+  grid-template-rows: 50px 70px 480px 100px;
   grid-template-columns: 40% 40% auto;
   padding: 10px;
 }
@@ -407,7 +410,7 @@ button {
   grid-column-start: 1;
   grid-column-end: 4;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 85% auto;
   grid-template-rows: 70px;
   width: 100%;
   border: solid;
@@ -434,7 +437,7 @@ button {
 #searchInput {
   border: none;
   float: left;
-  width: 85%;
+  width: 80%;
   grid-column-start: 1;
   grid-column-end: 2;
   font-size: 16px;
@@ -446,10 +449,9 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   border: none;
-  height: 68px;
-  padding: 20px 20px 0 20px;
+  height: 65px;
+  padding: 15px 20px 0 20px;
   margin: 0;
-
 }
 
 #searchAddIcon {
@@ -463,35 +465,157 @@ button {
   grid-row-start: 3;
   grid-row-end: 5;
   grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-rows: 480px 100px;
+  grid-template-columns: 50% 50%;
+}
+
+#qaListScroll {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
   grid-column-end: 3;
+  overflow-y: scroll;
 }
 
 #qaList {
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
   list-style-type: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  padding: 0;
+}
+
+.QAListItem {
+  list-style-type: none;
+  grid-row-start: span 1;
+  grid-column-start: span 2;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 75% 25%;
+  margin-bottom: 10px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-color: darkgrey;
+}
+
+.questionHelpful {
+  grid-row-start: 2 span 1;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: block;
+  font-size: 10px;
+  padding: 0px;
   color: darkslategray;
+  font-weight: normal;
+  margin: 0px;
+  padding: 0;
+}
+
+.helpfulButton {
+  border: none;
+  text-decoration: underline;
+  font-size: 10px;
+  color: darkslategray;
+  margin: 13px 5px;
+  padding: 0;
+}
+
+#answerList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.answerListItem {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 30px 100px auto;
+  margin: 5px;
+}
+#answerTag {
+  grid-row-start: span 1;
+  grid-column-start: span 1;
+  font-size: 16px;
   font-weight: bold;
+  color: darkslategray;
+  margin: 5px;
+  width: 20px;
+  display: inline-block;
+}
 
+#answerBody {
+  grid-row-start: span 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  margin: 5px;
+}
 
+#answerNameDate {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  color: rgb(169, 169, 169);
+  margin: 5px;
+}
+
+#answerHelpfulButton {
+  margin: 5px;
+  margin-right: 0;
+}
+
+.answerHelpful {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 2;
+  margin: 5px;
+  margin-right: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: darkslategray;
+}
+
+#answerReport {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 3;
+  width: 40px;
+  margin: 5px 0;
+}
+
+.moreAnswersButton {
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px;
+  margin-left: 30px;
+  color: darkslategray
 }
 
 #moreAnsweredQuestions {
-  grid-row-start: 4;
-  grid-row-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
   align-self: flex-end;
 }
+
+.moreAnswersButton :hover {
+  cursor: pointer;
+}
+
 #questionFormContainer {
   grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+#askQuestionLabel {
+  font-weight: bold;
+  color: darkslategray;
+  font-size: 14px;
 }
 
 #askYourQuestion {
@@ -500,6 +624,9 @@ button {
   grid-column-start: 2;
   grid-column-end: 3;
   align-self: flex-end;
+}
+#askYourQuestion :hover {
+  cursor: pointer;
 }
 
 /* REVIEWS SECTION */
