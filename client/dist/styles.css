@@ -8,7 +8,7 @@ body {
 .appContainer {
   display: grid;
   width: 1000px;
-  grid-template-rows: 200px 720px 720px 720px 1540px 100px;
+  grid-template-rows: 200px 720px 720px 720px 720px 100px;
   grid-template-columns: 100px 800px 100px;
 }
 
@@ -697,6 +697,14 @@ button {
 
 }
 
+.dropdown:hover .dropdown-content {
+  display: block;
+  height: 200px;
+  z-index: 100;
+  background-color: pink;
+  overflow: auto;
+}
+
 .dropdown-content a {
   float: none;
   padding: 12px 16px;
@@ -706,11 +714,10 @@ button {
   height: 100px;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-label:hover {
   display: block;
-  height: 200px;
+  z-index: 100;
 }
-
 
 #reviewsListButtons {
   margin-top: 20px;
