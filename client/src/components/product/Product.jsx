@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
@@ -16,7 +17,7 @@ const Product = () => {
   useEffect(() => {
     getRequest(end.productStyles, setProductStyleData);
     getRequest(end.listInfo, setProductProductData);
-  },[]);
+  }, []);
 
   return (
     <div className="product">

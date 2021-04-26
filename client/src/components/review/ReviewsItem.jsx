@@ -29,12 +29,10 @@ const ReviewsItem = (props) => {
   const { end, putRequest } = useContext(ApiContext);
 
   const putHelpfulness = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsHelpful);
     putRequest(end.reviewsHelpful, null);
   };
 
   const putReportReview = () => {
-    console.log('Endpoint param from ReviewsItem ', end.reviewsReport);
     putRequest(end.reviewsReport, null);
   };
 
@@ -53,9 +51,9 @@ const ReviewsItem = (props) => {
       <p id="reviewBody">{props.review.body}</p>
       {props.review.recommend
       && (
-      <div>
+      <div id="reviewIsRecDiv">
         <i className="fas fa-check" />
-        <p id="reviewIsRec">I recommend this product</p>
+        <div id="reviewIsRec">I recommend this product</div>
       </div>
       )}
       {props.review.response
@@ -67,16 +65,15 @@ const ReviewsItem = (props) => {
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <a href="javascript:void(0)">
-          <p onClick={putHelpfulness} className="reviewHelpP">
-            Yes (
-            {props.review.helpfulness}
-            ) |
-          </p>
-        </a>
-        <a href="javascript:void(0)">
-          <p onClick={putReportReview} className="reviewHelpP">  Report</p>
-        </a>
+        <button type="button" onClick={putHelpfulness} className="reviewHelpP">
+          Yes (
+          {props.review.helpfulness}
+          ) |
+        </button>
+        <button type="button" onClick={putReportReview} className="reviewHelpP">
+          {' '}
+          Report
+        </button>
       </div>
     </div>
   );

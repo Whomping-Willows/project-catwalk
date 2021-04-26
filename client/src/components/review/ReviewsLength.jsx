@@ -38,11 +38,13 @@ const ReviewsLength = (props) => {
         <HSBar position="relative" z-index="-1" height={10} data={[{ value: 20, color: 'lightgrey' }, { value: 2, color: 'white' }, { value: 20, color: 'lightgrey' }, { value: 2, color: 'white' }, { value: 20, color: 'lightgrey' }]} className="reviewsBar" />
       </div>
       <table className="reviewsCharTable">
-        <tr>
-          <td className="reviewsFilterLabel" id="reviewsCharLeft">Runs Short</td>
-          <td className="reviewsFilterLabel" id="reviewsCharMiddle">Perfect</td>
-          <td className="reviewsFilterLabel" id="reviewsCharRight">Runs Long</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td className="reviewsCharLabel" id="reviewsCharLeft">Runs Short</td>
+            <td className="reviewsCharLabel" id="reviewsCharMiddle">Perfect</td>
+            <td className="reviewsCharLabel" id="reviewsCharRight">Runs Long</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

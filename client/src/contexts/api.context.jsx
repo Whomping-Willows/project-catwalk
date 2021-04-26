@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
@@ -11,8 +12,9 @@ export const ApiProvider = (props) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(100);
-  const [sort, setSort] = useState('helpful');
+  const [sort, setSort] = useState('relevance');
   const [productId, setProductId] = useState(18078);
+  const [productName, setProductName] = useState('Camo Onesie');
   const [questionsId, setQuestionsId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
 
@@ -37,7 +39,7 @@ export const ApiProvider = (props) => {
     // Returns a list of reviews for a particular product.
     // This list does not include any reported reviews.
     // uses page, count, sort, product_id
-    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&product_id=${productId}`,
+    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&sort=${sort}&product_id=${productId}`,
     // Returns review metadata for a given product.
     reviewsMeta: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta/${apiProductIdQuery}`,
     // Updates a review to show it was found helpful.
@@ -45,6 +47,8 @@ export const ApiProvider = (props) => {
     // Updates a review to show it was reported.
     // This action does not delete the review, but it will not be returned in the above GET request.
     reviewsReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`,
+    // Adds a review for the given product.
+    reviewsAdd: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
     // Retrieves a list of questions for a particular product.
     // This list does not include any reported questions.
     // uses productId, page and count
@@ -63,8 +67,6 @@ export const ApiProvider = (props) => {
       },
     })
       .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log(response.data);
         callback(response.data);
       })
       .catch((err) => {
@@ -73,7 +75,6 @@ export const ApiProvider = (props) => {
   };
 
   const putRequest = (endpoint) => {
-    console.log('Endpoint param from client requests: ', endpoint);
     axios.put('/api', {
       headers: {
         endpoint,
@@ -81,25 +82,24 @@ export const ApiProvider = (props) => {
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
-        console.log(response.data);
+        console.log('status code ', response.status);
+        console.log('statusText ', response.statusText);
       })
       .catch((err) => {
         console.error('From requests: ', err);
       });
   };
 
-  // NOT YET WORKING, JUST PLACEHOLDER
-  const postRequest = (endpoint, callback) => {
+  const postRequest = (endpoint, data) => {
     axios.post('/api', {
       headers: {
         endpoint,
-        data: [],
+        data,
       },
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
         console.log(response.data);
-        callback(response.data);
       })
       .catch((err) => {
         console.error('From requests: ', err);
@@ -108,7 +108,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest,
     }}
     >
       {props.children}
