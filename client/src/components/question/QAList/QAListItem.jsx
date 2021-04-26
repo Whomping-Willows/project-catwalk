@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerList from './AnswerList.jsx';
@@ -53,7 +55,6 @@ const QAListItem = ({ question }) => {
 
   return (
     <li
-      key={question.question_id}
       className="QAListItem"
     >
       <h3 style={questionStyle}>

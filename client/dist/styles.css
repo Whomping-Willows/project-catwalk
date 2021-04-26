@@ -605,13 +605,6 @@ button :hover {
   cursor: pointer;
 }
 
-#questionFormContainer {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 4;
-  grid-column-end: 5;
-}
-
 #askQuestionLabel {
   font-weight: bold;
   color: darkslategray;
@@ -625,8 +618,24 @@ button :hover {
   grid-column-end: 3;
   align-self: flex-end;
 }
+
 #askYourQuestion :hover {
   cursor: pointer;
+}
+
+#questionFormContainer {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  /* grid-template-columns: 40% 60%; */
+  padding: 50px;
+  margin: 100px;
+  background-color: white;
+  width: 600px;
+  overflow-y: scroll;
 }
 
 /* REVIEWS SECTION */

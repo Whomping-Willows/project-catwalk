@@ -16,7 +16,7 @@ const API = () => {
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
     getRequest(end.productStyles, setCurrentStyles);
-    setTimeout(() => { setLoading(false); }, 1000);
+    setTimeout(() => { setLoading(false); }, 2000);
   }, []);
 
   return (

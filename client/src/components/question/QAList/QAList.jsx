@@ -22,7 +22,10 @@ function QAList({ qaList }) {
       <div id="qaListScroll">
         <ul id="qaList">
           {rendered.map((question) => (
-            <QAListItem question={question} />
+            <QAListItem
+              key={question.question_id}
+              question={question}
+            />
           ))}
         </ul>
       </div>
