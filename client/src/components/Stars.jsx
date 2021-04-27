@@ -7,7 +7,7 @@ import getReviewsAvg from '../helpers/getReviewsAvg.js';
 const Stars = () => {
   const [reviewScore, setReviewScore] = useState();
 
-  const { getRequest, end } = useContext(ApiContext);
+  const { productId, getRequest, end } = useContext(ApiContext);
 
   const createReviewsScore = (metaData) => {
     const score = Number(getReviewsAvg(metaData));
@@ -16,7 +16,7 @@ const Stars = () => {
 
   useEffect(() => {
     getRequest(end.reviewsMeta, createReviewsScore);
-  }, []);
+  }, [productId]);
 
   return (
     <Ratings
