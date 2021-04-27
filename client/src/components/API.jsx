@@ -9,17 +9,24 @@ import Reviews from './review/Reviews.jsx';
 const API = () => {
   const [currentProduct, setCurrentProduct] = useState();
   const [currentStyles, setCurrentStyles] = useState();
-  const [loading, setLoading] = useState(true);
 
   const {
-    getRequest, end, productId, setProductId,
+    getRequest, end, productId, setProductId, setProductName,
   } = useContext(ApiContext);
+
 
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
     getRequest(end.productStyles, setCurrentStyles);
-    setTimeout(() => { setLoading(false); }, 1000);
   }, [productId]);
+
+  useEffect(() => {
+    console.log('This is current Product ', currentProduct);
+    if (currentProduct) {
+      console.log('This is setProductName', setProductName);
+      setProductName(currentProduct.name);
+    }
+  }, [currentProduct]);
 
   const handleRelatedChange = (e) => {
     const newId = e.target.name;
@@ -31,13 +38,13 @@ const API = () => {
       {currentProduct && currentStyles
         && (
         <>
-          <Product
+          {/* <Product
             loading={loading}
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
             setCurrentStyles={setCurrentStyles}
-          />
+          /> */}
           <Related
             currentProduct={currentProduct}
             handleRelatedChange={handleRelatedChange}
