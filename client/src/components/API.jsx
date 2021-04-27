@@ -11,17 +11,24 @@ const API = () => {
   const [currentStyles, setCurrentStyles] = useState();
   const [loading, setLoading] = useState(true);
 
-  const { getRequest, end } = useContext(ApiContext);
+  const {
+    getRequest, end, productId, setProductId,
+  } = useContext(ApiContext);
 
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
     getRequest(end.productStyles, setCurrentStyles);
-    setTimeout(() => { setLoading(false); }, 2000);
-  }, []);
+    setTimeout(() => { setLoading(false); }, 1000);
+  }, [productId]);
+
+  const handleRelatedChange = (e) => {
+    const newId = e.target.name;
+    setProductId(newId);
+  };
 
   return (
     <div className="appContainer">
-      {!loading
+      {currentProduct && currentStyles
         && (
         <>
           <Product
@@ -33,9 +40,7 @@ const API = () => {
           />
           <Related
             currentProduct={currentProduct}
-            setCurrentProduct={setCurrentProduct}
-            currentStyles={currentStyles}
-            setCurrentStyles={setCurrentStyles}
+            handleRelatedChange={handleRelatedChange}
           />
           <Question />
           <Reviews />
