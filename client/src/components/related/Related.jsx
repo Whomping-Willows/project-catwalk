@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
@@ -16,7 +18,7 @@ const Related = (props) => {
   const [related4, setRelated4] = useState();
   const [related4Styles, setRelated4Styles] = useState();
 
-  const { end, getRequest } = useContext(ApiContext);
+  const { end, getRequest, productId } = useContext(ApiContext);
 
   const relatedCallback = (data) => {
     setRelatedProductsIds(data);
@@ -41,84 +43,139 @@ const Related = (props) => {
 
   useEffect(() => {
     getRequest(end.relatedProducts, relatedCallback);
-  }, []);
+  }, [productId]);
 
   return (
     <div className="related">
       {relatedProductsIds && (
-      <>
-        <h2 id="relatedProductsTitle">RELATED PRODUCTS</h2>
-        <div id="relatedProducts">
-          {related1 && related1Styles && (
-            <div id="related1">
-              <img
-                className="relatedImg"
-                id="relatedPic1"
-                alt={related1.name}
-                name={related1.id}
-                onClick={props.handleRelatedChange}
-                onKeyDown={props.handleRelatedChange}
-                src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
-              />
-              <div id="relatedInfo1">
-                <h3 className="relatedInfo">{related1.name}</h3>
-                <p className="relatedInfo">{`$${related1.default_price}`}</p>
+        <>
+          <h2 id="relatedProductsTitle">RELATED PRODUCTS</h2>
+          <div id="relatedProducts">
+            {related1 && related1Styles && (
+              <div id="related1">
+                {related1Styles.results[0].photos[0].thumbnail_url === null && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic1"
+                    alt={related1.name}
+                    name={related1.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
+                  />
+                )}
+                {related1Styles.results[0].photos[0].thumbnail_url && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic1"
+                    alt={related1.name}
+                    name={related1.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src={related1Styles.results[0].photos[0].thumbnail_url}
+                  />
+                )}
+                <div id="relatedInfo1">
+                  <h3 className="relatedInfo">{related1.name}</h3>
+                  <p className="relatedInfo">{`$${related1.default_price}`}</p>
+                </div>
               </div>
-            </div>
-          )}
-          {related2 && related2Styles && (
-            <div id="related2">
-              <img
-                className="relatedImg"
-                id="relatedPic1"
-                alt={related2.name}
-                name={related2.id}
-                onClick={props.handleRelatedChange}
-                onKeyDown={props.handleRelatedChange}
-                src={related2Styles.results[0].photos[0].thumbnail_url}
-              />
-              <div id="relatedInfo2">
-                <h3 className="relatedInfo">{related2.name}</h3>
-                <p className="relatedInfo">{`$${related2.default_price}`}</p>
+            )}
+
+            {related2 && related2Styles && (
+              <div id="related2">
+                {related2Styles.results[1].photos[0].thumbnail_url === null && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic2"
+                    alt={related2.name}
+                    name={related2.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
+                  />
+                )}
+                {related2Styles.results[1].photos[0].thumbnail_url && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic2"
+                    alt={related2.name}
+                    name={related2.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src={related2Styles.results[1].photos[0].thumbnail_url}
+                  />
+                )}
+                <div id="relatedInfo2">
+                  <h3 className="relatedInfo">{related2.name}</h3>
+                  <p className="relatedInfo">{`$${related2.default_price}`}</p>
+                </div>
               </div>
-            </div>
-          )}
-          {related3 && related3Styles && (
-            <div id="related3">
-              <img
-                className="relatedImg"
-                id="relatedPic1"
-                alt={related3.name}
-                name={related3.id}
-                onClick={props.handleRelatedChange}
-                onKeyDown={props.handleRelatedChange}
-                src={related3Styles.results[0].photos[0].thumbnail_url}
-              />
-              <div id="relatedInfo3">
-                <h3 className="relatedInfo">{related3.name}</h3>
-                <p className="relatedInfo">{`$${related3.default_price}`}</p>
+            )}
+
+            {related3 && related3Styles && (
+              <div id="related3">
+                {related3Styles.results[2].photos[0].thumbnail_url === null && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic3"
+                    alt={related3.name}
+                    name={related3.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
+                  />
+                )}
+                {related3Styles.results[2].photos[0].thumbnail_url && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic3"
+                    alt={related3.name}
+                    name={related3.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src={related3Styles.results[2].photos[0].thumbnail_url}
+                  />
+                )}
+                <div id="relatedInfo3">
+                  <h3 className="relatedInfo">{related3.name}</h3>
+                  <p className="relatedInfo">{`$${related3.default_price}`}</p>
+                </div>
               </div>
-            </div>
-          )}
-          {related4 && related4Styles && (
-            <div id="related4">
-              <img
-                className="relatedImg"
-                id="relatedPic1"
-                alt={related4.name}
-                name={related4.id}
-                onClick={props.handleRelatedChange}
-                onKeyDown={props.handleRelatedChange}
-                src={related4Styles.results[0].photos[0].thumbnail_url}
-              />
-              <div id="relatedInfo4">
-                <h3 className="relatedInfo">{related4.name}</h3>
-                <p className="relatedInfo">{`$${related4.default_price}`}</p>
+            )}
+
+            {related4 && related4Styles && (
+              <div id="related4">
+                {related4Styles.results[3].photos[0].thumbnail_url === null && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic4"
+                    alt={related4.name}
+                    name={related4.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
+                  />
+                )}
+                {related4Styles.results[3].photos[0].thumbnail_url && (
+                  <img
+                    className="relatedImg"
+                    id="relatedPic4"
+                    alt={related4.name}
+                    name={related4.id}
+                    onClick={props.handleRelatedChange}
+                    onKeyDown={props.handleRelatedChange}
+                    src={related4Styles.results[3].photos[0].thumbnail_url}
+                  />
+                )}
+                <div id="relatedInfo4">
+                  <h3 className="relatedInfo">{related4.name}</h3>
+                  <p className="relatedInfo">{`$${related4.default_price}`}</p>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-      </>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
