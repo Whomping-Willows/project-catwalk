@@ -21,7 +21,7 @@ const API = () => {
 
   return (
     <div className="appContainer">
-      {!loading
+      {currentProduct && currentStyles
         && (
         <>
           <Product

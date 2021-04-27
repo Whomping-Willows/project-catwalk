@@ -20,10 +20,11 @@ const AnswerList = ({ answers }) => {
 
   const answerList = rendered && (rendered.length > 0)
     ? rendered.map((answerId) => (
-      <AnswerListItem
-        key={answerId}
-        answer={answers[answerId]}
-      />
+      // <AnswerListItem
+      //   key={answerId}
+      //   answer={answers[answerId]}
+      // />
+      <></>
     ))
     : null;
 

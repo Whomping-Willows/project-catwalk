@@ -79,6 +79,8 @@ export const ApiProvider = (props) => {
       },
     })
       .then((response) => {
+        console.log('endpoint: ', endpoint);
+        console.log(response.data);
         callback(response.data);
       })
       .catch((err) => {
