@@ -1,24 +1,39 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
-import formatDate from '../../../helpers/formatDate.js'
+import formatDate from '../../../helpers/formatDate.js';
 
 const AnswerListItem = ({ answer }) => {
   const {
     putRequest, setAnswerId, end,
   } = useContext(ApiContext);
 
-  const putAnswerHelpfulness = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answerHelpful);
+  const [helpful, setHelpful] = useState(false);
+  const [report, setReport] = useState(false);
+
+  useEffect(() => {
     putRequest(end.answerHelpful, null);
+  }, [helpful]);
+
+  const putAnswerHelpfulness = () => {
+    setAnswerId(answer.id);
+    setHelpful(true);
+    // re-render
   };
 
-  const putReportAnswer = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answerReport);
+  useEffect(() => {
     putRequest(end.answerReport, null);
+  }, [report]);
+
+  const putReportAnswer = () => {
+    setAnswerId(answer.id);
+    setReport(true);
+    // re-render
   };
 
   // const seller = answer.answerer_name === 'seller' ? <p id="seller">SELLER</p> : null;
-  // console.log('GRAHAM', answer);
+
   return answer ? (
     <li className="answerListItem">
       <p id="answerTag">A:</p>
@@ -41,7 +56,7 @@ const AnswerListItem = ({ answer }) => {
           id="answerHelpfulButton"
           className="helpfulButton"
           type="submit"
-          onClick={putAnswerHelpfulness}
+          onClick={!helpful ? putAnswerHelpfulness : null}
         >
           <div
             className="questionHelpful"

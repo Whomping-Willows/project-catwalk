@@ -68,7 +68,7 @@ export const ApiProvider = (props) => {
 
     answerHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
 
-    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/report`,
 
   };
 

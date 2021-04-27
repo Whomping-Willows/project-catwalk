@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../../contexts/api.context.jsx';
@@ -12,6 +10,8 @@ const QAListItem = ({ question }) => {
   const {
     questionId, getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
+
+  const [helpfulness, setHelpfulness] = useState(0);
 
   const [open, setOpen] = useState(false);
 
@@ -40,26 +40,23 @@ const QAListItem = ({ question }) => {
 
   const classes = useStyles();
 
-  const setQuestionPromise = () => new Promise((resolve, reject) => {
-    if (question.question_id) {
-      resolve(setQuestionId(question.question_id));
-    } else {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      reject('error');
-    }
-  });
+  // const setQuestionPromise = () => new Promise((resolve, reject) => {
+  //   if (question.question_id) {
+  //     resolve(setQuestionId(question.question_id));
+  //   } else {
+  //     reject('error');
+  //   }
+  // });
+  useEffect(() => {
+    putRequest(end.questionHelpful);
+  }, [questionId]);
+
+  // useEffect(() => {
+  //   getRequest(end.questionHelpful,
+  // }, [helpfulness]);
 
   const putQuestionHelpfulness = () => {
-    // console.log('Endpoint param from QAListItem ', end.questionHelpful);
-
-    setQuestionPromise()
-      .then(putRequest(end.questionHelpful))
-      .then(getRequest(end.questionHelpful, (response) => {
-        // need to re-render question
-        // eslint-disable-next-line no-console
-        console.log(response);
-      }))
-      .catch();
+    setQuestionId(question.question_id);
   };
 
   const helpful = (
