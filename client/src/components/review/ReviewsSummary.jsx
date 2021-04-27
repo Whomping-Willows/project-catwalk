@@ -20,23 +20,23 @@ const getPercentStr = (metaData) => {
 
 const ReviewsSummary = (props) => (
   <div id="reviewsSummary">
-    {props.productData.results && (
-    <div id="reviewsSumNum">{getReviewsAvg(props.metaData)}</div>
+    {props.productData.results.length > 0 && (
+      <div id="reviewsSumNum">{getReviewsAvg(props.metaData)}</div>
     )}
-      {!props.productData.results && (
-    <div id="reviewsSumNum">0</div>
+    {!props.productData.results.length && (
+      <div id="reviewsSumNum">0</div>
     )}
     <div id="reviewsSumStars">
       <Stars />
     </div>
-    {props.productData.results && (
-    <div id="reviewsSumRec">
-      <p>
-        {getPercentStr(props.metaData)}
-        {' '}
-        of reviews recommend this product
-      </p>
-    </div>
+    {props.productData.results.length > 0 && (
+      <div id="reviewsSumRec">
+        <p>
+          {getPercentStr(props.metaData)}
+          {' '}
+          of reviews recommend this product
+        </p>
+      </div>
     )}
   </div>
 );
