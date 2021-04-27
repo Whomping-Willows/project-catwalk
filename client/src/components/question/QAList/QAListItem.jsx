@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../../contexts/api.context.jsx';
@@ -10,12 +10,17 @@ import AddAnswerForm from './AddAnswerForm.jsx';
 
 const QAListItem = ({ question }) => {
   const {
-    getRequest, putRequest, setQuestionId, end,
+    questionId, getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
+
 
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (e) => {
+    console.log('1st', question.question_id);
+    e.preventDefault();
+    setQuestionId(question.question_id);
+    console.log('2nd', questionId);
     setOpen(true);
   };
 
@@ -40,13 +45,10 @@ const QAListItem = ({ question }) => {
     if (question.question_id) {
       resolve(setQuestionId(question.question_id));
     } else {
+      // eslint-disable-next-line prefer-promise-reject-errors
       reject('error');
     }
   });
-
-  const handleQuestionListItemClick = () => {
-    setQuestionId(question.question_id);
-  };
 
   const putQuestionHelpfulness = () => {
     // console.log('Endpoint param from QAListItem ', end.questionHelpful);
@@ -103,6 +105,7 @@ const QAListItem = ({ question }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
+          question_id={question.question_id}
           question_body={question.question_body}
           handleClose={handleClose}
         />
@@ -111,9 +114,9 @@ const QAListItem = ({ question }) => {
   );
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <li
       className="QAListItem"
-      onClick={handleQuestionListItemClick}
     >
       <h3 style={questionStyle}>
         Q:

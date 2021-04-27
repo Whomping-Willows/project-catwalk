@@ -21,7 +21,7 @@ const AnswerList = ({ answers }) => {
 
   const answerList = rendered && (rendered.length > 0)
     ? rendered.map((answerId) => {
-      console.log('rendered', rendered);
+      // console.log(answers[answerId]);
       return (
       <AnswerListItem
         key={answerId}

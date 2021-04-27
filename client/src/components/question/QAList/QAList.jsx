@@ -16,6 +16,7 @@ function QAList({ qaList }) {
       rendered = qaList;
     }
   };
+  // console.log(rendered);
 
   return (
     <div id="qaListContainer">
