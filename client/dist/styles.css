@@ -494,7 +494,7 @@ button :hover {
   grid-column-start: span 2;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 75% 25%;
+  grid-template-columns: 70% 15% 15%;
   margin-bottom: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -502,9 +502,6 @@ button :hover {
 }
 
 .questionHelpful {
-  grid-row-start: 2 span 1;
-  grid-column-start: 2;
-  grid-column-end: 3;
   display: block;
   font-size: 10px;
   padding: 0px;
@@ -515,12 +512,23 @@ button :hover {
 }
 
 .helpfulButton {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
   border: none;
   text-decoration: underline;
   font-size: 10px;
   color: darkslategray;
   margin: 13px 5px;
   padding: 0;
+}
+
+#addAnswerButton {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 4;
 }
 
 #answerList {
