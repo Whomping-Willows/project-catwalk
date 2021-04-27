@@ -12,7 +12,7 @@ export const ApiProvider = (props) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(100);
-  const [sort, setSort] = useState('relevance');
+  const [sort, setSort] = useState('helpful');
   const [productId, setProductId] = useState(18078);
   const [questionId, setQuestionId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
@@ -120,7 +120,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, questionId, setQuestionId, answerId, setAnswerId,
+      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, questionId, setQuestionId, answerId, sort, setAnswerId,
     }}
     >
       {props.children}
