@@ -494,7 +494,7 @@ button :hover {
   grid-column-start: span 2;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 70% 15% 15%;
+  grid-template-columns: 75% 15% 11%;
   margin-bottom: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -631,14 +631,13 @@ button :hover {
   cursor: pointer;
 }
 
-#questionFormContainer {
+.qaFormContainer {
   grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
   grid-template-rows: auto auto auto auto auto;
-  /* grid-template-columns: 40% 60%; */
   padding: 50px;
   margin: 100px;
   background-color: white;
@@ -648,10 +647,24 @@ button :hover {
   justify-content: flex-start;
 }
 
-#questionBody {
+.qaFormBody {
   width: 500px;
   height: 200px;
+}
 
+#answerformBody {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#answerFormName {
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+#answerFormEmail {
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 /* REVIEWS SECTION */

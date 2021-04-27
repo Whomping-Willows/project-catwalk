@@ -43,7 +43,7 @@ const AskQuestionForm = ({ handleClose }) => {
           <p>Your Question: (1000 characters max) </p>
         </label>
         <input
-          id="questionBody"
+          className="qaFormBody"
           name="body"
           type="text"
           value={body}
@@ -57,7 +57,7 @@ const AskQuestionForm = ({ handleClose }) => {
           <p>Nickname: &quot;Example:jackson11!&quot;</p>
         </label>
         <input
-          id="askerName"
+          className="qaFormName"
           name="name"
           type="text"
           value={name}
@@ -66,12 +66,12 @@ const AskQuestionForm = ({ handleClose }) => {
           required
         />
         <label
-          htmlFor="questioEmail"
+          htmlFor="questionEmail"
         >
           <p>Email:</p>
         </label>
         <input
-          id="questionEmail"
+          className="qaFormEmail"
           name="email"
           type="text"
           value={email}

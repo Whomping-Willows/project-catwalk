@@ -44,6 +44,10 @@ const QAListItem = ({ question }) => {
     }
   });
 
+  const handleQuestionListItemClick = () => {
+    setQuestionId(question.question_id);
+  };
+
   const putQuestionHelpfulness = () => {
     // console.log('Endpoint param from QAListItem ', end.questionHelpful);
 
@@ -51,6 +55,7 @@ const QAListItem = ({ question }) => {
       .then(putRequest(end.questionHelpful))
       .then(getRequest(end.questionHelpful, (response) => {
         // need to re-render question
+        // eslint-disable-next-line no-console
         console.log(response);
       }))
       .catch();
@@ -65,7 +70,6 @@ const QAListItem = ({ question }) => {
         onClick={
           putQuestionHelpfulness
           }
-        // className=""
       >
         <div>
           Yes (
@@ -99,6 +103,7 @@ const QAListItem = ({ question }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
+          question_body={question.question_body}
           handleClose={handleClose}
         />
       </Modal>
@@ -108,6 +113,7 @@ const QAListItem = ({ question }) => {
   return (
     <li
       className="QAListItem"
+      onClick={handleQuestionListItemClick}
     >
       <h3 style={questionStyle}>
         Q:

@@ -1,85 +1,91 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 
-const AddAnswerForm = ({ handleClose }) => {
+const AddAnswerForm = ({ question_body,handleClose }) => {
   const {
-    productName, productId, postRequest, end,
+    productNamegit , postRequest, end,
   } = useContext(ApiContext);
 
-  const [body, setQuestionBody] = useState();
-  const [name, setAskerName] = useState();
+  const [body, setAnswerBody] = useState();
+  const [name, setAnswererName] = useState();
   const [email, setEmail] = useState();
+  const [photos, setPhotos] = useState([]);
 
   const postData = {
     body,
     name,
     email,
-    product_id: productId,
+    photos,
   };
 
-  const handleAskQuestionSubmit = (e) => {
+  const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
-    postRequest(end.addQuestion, postData);
+    postRequest(end.answersList, postData);
     // need a promise and alert that it has been submitted.
 
     handleClose();
   };
 
   return (
-    <div id="questionFormContainer">
+    <div className="qaFormContainer">
       <h2>
-        Ask Your Question About
-        {` '${productName}' ` }
-        Here
+        Submit your answer for:
+        <h3>{` '${productName}' : ${question_body}` }</h3>
       </h2>
       <form>
-        <label
-          htmlFor="questionBody"
-        >
-          <p>Your Question: (1000 characters max) </p>
-        </label>
-        <input
-          id="questionBody"
-          name="body"
-          type="text"
-          value={body}
-          onChange={(e) => setQuestionBody(e.target.value)}
-          maxLength="1000"
-          required
-        />
-        <label
-          htmlFor="askerName"
-        >
-          <p>Nickname: &quot;Example:jackson11!&quot;</p>
-        </label>
-        <input
-          id="askerName"
-          name="name"
-          type="text"
-          value={name}
-          onChange={(e) => { setAskerName(e.target.value); }}
-          maxLength="60"
-          required
-        />
-        <label
-          htmlFor="questioEmail"
-        >
-          <p>Email:</p>
-        </label>
-        <input
-          id="questionEmail"
-          name="email"
-          type="text"
-          value={email}
-          onChange={(e) => { setEmail(e.target.value); }}
-          maxLength="60"
-          required
-        />
-        <h3>For authentication reasons, you will not be emailed</h3>
+        <div id="answerFormBody">
+          <label
+            htmlFor="answerFormBody"
+          >
+            <p>Your Answer: (1000 characters max) </p>
+          </label>
+          <input
+            className="qaFormBody"
+            name="body"
+            type="text"
+            value={body}
+            onChange={(e) => setAnswerBody(e.target.value)}
+            maxLength="1000"
+            required
+          />
+        </div>
+        <div id="answerFormName">
+          <label
+            htmlFor="answererName"
+          >
+            <p>Nickname: &quot;Example:jackson11!&quot;</p>
+          </label>
+          <input
+            className="qaFormName"
+            name="name"
+            type="text"
+            value={name}
+            onChange={(e) => { setAnswererName(e.target.value); }}
+            maxLength="60"
+            required
+          />
+        </div>
+        <div id="answerFormEmail">
+          <label
+            htmlFor="answererEmail"
+          >
+            <p>Email:</p>
+          </label>
+          <input
+            className="qaFormEmail"
+            name="email"
+            type="text"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); }}
+            maxLength="60"
+            required
+          />
+        </div>
         <button
           type="submit"
-          onClick={handleAskQuestionSubmit}
+          onClick={handleAddAnswerSubmit}
         >
           SUBMIT
         </button>
