@@ -123,7 +123,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest, questionId, setQuestionId, answerId, sort, setAnswerId,
+      productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest, questionId, setQuestionId, answerId, sort, setAnswerId,
     }}
     >
       {props.children}
