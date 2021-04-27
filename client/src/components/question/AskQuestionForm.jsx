@@ -10,18 +10,20 @@ const AskQuestionForm = ({ handleClose }) => {
     productName, productId, postRequest, end,
   } = useContext(ApiContext);
 
-  const [question_body, setQuestionBody] = useState();
-  const [asker_name, setAskerName] = useState();
+  const [body, setQuestionBody] = useState();
+  const [name, setAskerName] = useState();
   const [email, setEmail] = useState();
 
-  const handleAskQuestionSubmit = () => {
-    postRequest(end.addQuestion, {
-      product_id: productId,
-      asker_name,
-      question_body,
-      question_date,
-      email,
-    });
+  const postData = {
+    body,
+    name,
+    email,
+    product_id: productId,
+  };
+
+  const handleAskQuestionSubmit = (e) => {
+    e.preventDefault();
+    postRequest(end.addQuestion, postData);
     // need a promise and alert that it has been submitted.
 
     handleClose();
@@ -36,41 +38,40 @@ const AskQuestionForm = ({ handleClose }) => {
       </h2>
       <form>
         <label
-          htmlFor="askQuestion"
+          htmlFor="questionBody"
         >
-          Your Question:
+          <p>Your Question: (1000 characters max) </p>
         </label>
         <input
           id="questionBody"
-          name="questionBody"
+          name="body"
           type="text"
-          value={question_body}
+          value={body}
           onChange={(e) => setQuestionBody(e.target.value)}
-          placeholder="(1000 characters max)"
           maxLength="1000"
           required
         />
         <label
-          htmlFor="asker_name"
+          htmlFor="askerName"
         >
-          Nickname: &quot;Example:jackson11!&quot;
+          <p>Nickname: &quot;Example:jackson11!&quot;</p>
         </label>
         <input
-          id="asker_name"
-          name="asker_name"
+          id="askerName"
+          name="name"
           type="text"
-          value={asker_name}
+          value={name}
           onChange={(e) => { setAskerName(e.target.value); }}
           maxLength="60"
           required
         />
         <label
-          htmlFor="question-email"
+          htmlFor="questioEmail"
         >
-          Email:
+          <p>Email:</p>
         </label>
         <input
-          id="question-email"
+          id="questionEmail"
           name="email"
           type="text"
           value={email}

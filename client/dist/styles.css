@@ -636,6 +636,14 @@ button :hover {
   background-color: white;
   width: 600px;
   overflow-y: scroll;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+#questionBody {
+  width: 500px;
+  height: 200px;
+
 }
 
 /* REVIEWS SECTION */
