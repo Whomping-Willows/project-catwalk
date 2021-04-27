@@ -124,9 +124,6 @@ const ReviewsForm = (props) => {
 
   const postReview = () => {
     props.setOpen(false);
-    console.log(bodyForPost);
-    console.log(postRequest);
-    console.log(typeof postRequest);
     postRequest(endpoint, bodyForPost);
   };
 

@@ -31,14 +31,14 @@ const dummyData = {
 };
 
 const Question = () => {
-  const { getRequest, end } = useContext(ApiContext);
+  const { getRequest, end, productId } = useContext(ApiContext);
 
   const [questionsMeta, setQuestionsMeta] = useState(dummyData);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getRequest(end.listQuestions, setQuestionsMeta);
-  }, []);
+  }, [productId]);
 
   const handleOpen = () => {
     setOpen(true);
