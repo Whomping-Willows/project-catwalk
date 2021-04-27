@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
@@ -13,8 +14,10 @@ export const ApiProvider = (props) => {
   const [count, setCount] = useState(100);
   const [sort, setSort] = useState('helpful');
   const [productId, setProductId] = useState(18078);
-  const [questionsId, setQuestionsId] = useState(114290);
+  const [productName, setProductName] = useState('Camo Onesie');
+  const [questionId, setQuestionId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
+  const [answerId, setAnswerId] = useState(1082146);
 
   // QUERY STRINGS AS VARIABLES
   const apiPageQuery = `?page=${page}`;
@@ -37,7 +40,7 @@ export const ApiProvider = (props) => {
     // Returns a list of reviews for a particular product.
     // This list does not include any reported reviews.
     // uses page, count, sort, product_id
-    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&product_id=${productId}`,
+    reviews: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews?count=${count}&sort=${sort}&product_id=${productId}`,
     // Returns review metadata for a given product.
     reviewsMeta: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/meta/${apiProductIdQuery}`,
     // Updates a review to show it was found helpful.
@@ -45,6 +48,8 @@ export const ApiProvider = (props) => {
     // Updates a review to show it was reported.
     // This action does not delete the review, but it will not be returned in the above GET request.
     reviewsReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/report`,
+    // Adds a review for the given product.
+    reviewsAdd: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
     // Retrieves a list of questions for a particular product.
     // This list does not include any reported questions.
     // uses productId, page and count
@@ -52,7 +57,19 @@ export const ApiProvider = (props) => {
     // Returns answers for a given question.
     // This list does not include any reported answers.
     // uses page and count
-    answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionsId}/answers`,
+    addQuestion: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+
+    questionHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/helpful`,
+
+    questionReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/report`,
+
+    // post to this endpoint to add answer
+    answersList: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${questionId}/answers`,
+
+    answerHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+
+    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+
   };
 
   // HTTP REQUESTS AS FUNCTIONS
@@ -73,7 +90,6 @@ export const ApiProvider = (props) => {
   };
 
   const putRequest = (endpoint) => {
-    console.log('Endpoint param from client requests: ', endpoint);
     axios.put('/api', {
       headers: {
         endpoint,
@@ -81,25 +97,24 @@ export const ApiProvider = (props) => {
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
-        console.log(response.data);
+        console.log('status code ', response.status);
+        console.log('statusText ', response.statusText);
       })
       .catch((err) => {
         console.error('From requests: ', err);
       });
   };
 
-  // NOT YET WORKING, JUST PLACEHOLDER
-  const postRequest = (endpoint, callback) => {
+  const postRequest = (endpoint, data) => {
     axios.post('/api', {
       headers: {
         endpoint,
-        data: [],
+        data,
       },
     })
       .then((response) => {
         console.log('endpoint: ', endpoint);
         console.log(response.data);
-        callback(response.data);
       })
       .catch((err) => {
         console.error('From requests: ', err);
@@ -108,7 +123,7 @@ export const ApiProvider = (props) => {
 
   return (
     <ApiContext.Provider value={{
-      productId, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest,
+      productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest, questionId, setQuestionId, answerId, sort, setAnswerId,
     }}
     >
       {props.children}

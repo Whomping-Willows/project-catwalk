@@ -9,30 +9,43 @@ import Reviews from './review/Reviews.jsx';
 const API = () => {
   const [currentProduct, setCurrentProduct] = useState();
   const [currentStyles, setCurrentStyles] = useState();
+  const [loading, setLoading] = useState(true);
 
-  const { getRequest, end } = useContext(ApiContext);
+  const {
+    getRequest, end, productId, setProductId,
+  } = useContext(ApiContext);
 
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
     getRequest(end.productStyles, setCurrentStyles);
-  }, []);
+    setTimeout(() => { setLoading(false); }, 1000);
+  }, [productId]);
+
+  const handleRelatedChange = (e) => {
+    const newId = e.target.name;
+    setProductId(newId);
+  };
 
   return (
     <div className="appContainer">
-      <Product
-        currentProduct={currentProduct}
-        setCurrentProduct={setCurrentProduct}
-        currentStyles={currentStyles}
-        setCurrentStyles={setCurrentStyles}
-      />
-      <Related
-        currentProduct={currentProduct}
-        setCurrentProduct={setCurrentProduct}
-        currentStyles={currentStyles}
-        setCurrentStyles={setCurrentStyles}
-      />
-      <Question />
-      <Reviews />
+      {currentProduct && currentStyles
+        && (
+        <>
+          <Product
+            loading={loading}
+            currentProduct={currentProduct}
+            setCurrentProduct={setCurrentProduct}
+            currentStyles={currentStyles}
+            setCurrentStyles={setCurrentStyles}
+          />
+          <Related
+            currentProduct={currentProduct}
+            handleRelatedChange={handleRelatedChange}
+          />
+          <Question />
+          <Reviews />
+        </>
+        )}
     </div>
   );
 };

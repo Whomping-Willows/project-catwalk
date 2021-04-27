@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 
 const ProductCart = (props) => {
@@ -5,9 +6,13 @@ const ProductCart = (props) => {
 
   return (
     <div className="productCart">
-      <form>
-        <input id="addToBag" value="ADD TO BAG" />
-        <input id="favorite" value="star graphic" />
+      <form id="productCart">
+        <button id="addToBag" type="submit">
+          <i id="addToCartText">ADD TO BAG</i>
+        </button>
+        <button id="favorite" type="submit">
+          <i className="far fa-star" id="favoriteStar" />
+        </button>
       </form>
     </div>
   );
