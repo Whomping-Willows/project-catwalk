@@ -84,7 +84,7 @@ const Related = (props) => {
 
             {related2 && related2Styles && (
               <div id="related2">
-                {related2Styles.results[1].photos[0].thumbnail_url === null && (
+                {related2Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
                     id="relatedPic2"
@@ -95,7 +95,7 @@ const Related = (props) => {
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
-                {related2Styles.results[1].photos[0].thumbnail_url && (
+                {related2Styles.results[0].photos[0].thumbnail_url && (
                   <img
                     className="relatedImg"
                     id="relatedPic2"
@@ -103,7 +103,7 @@ const Related = (props) => {
                     name={related2.id}
                     onClick={props.handleRelatedChange}
                     onKeyDown={props.handleRelatedChange}
-                    src={related2Styles.results[1].photos[0].thumbnail_url}
+                    src={related2Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}
                 <div id="relatedInfo2">
@@ -115,7 +115,7 @@ const Related = (props) => {
 
             {related3 && related3Styles && (
               <div id="related3">
-                {related3Styles.results[2].photos[0].thumbnail_url === null && (
+                {related3Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
                     id="relatedPic3"
@@ -126,7 +126,7 @@ const Related = (props) => {
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
-                {related3Styles.results[2].photos[0].thumbnail_url && (
+                {related3Styles.results[0].photos[0].thumbnail_url && (
                   <img
                     className="relatedImg"
                     id="relatedPic3"
@@ -134,7 +134,7 @@ const Related = (props) => {
                     name={related3.id}
                     onClick={props.handleRelatedChange}
                     onKeyDown={props.handleRelatedChange}
-                    src={related3Styles.results[2].photos[0].thumbnail_url}
+                    src={related3Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}
                 <div id="relatedInfo3">
@@ -146,7 +146,7 @@ const Related = (props) => {
 
             {related4 && related4Styles && (
               <div id="related4">
-                {related4Styles.results[3].photos[0].thumbnail_url === null && (
+                {related4Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
                     id="relatedPic4"
@@ -157,7 +157,7 @@ const Related = (props) => {
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
-                {related4Styles.results[3].photos[0].thumbnail_url && (
+                {related4Styles.results[0].photos[0].thumbnail_url && (
                   <img
                     className="relatedImg"
                     id="relatedPic4"
@@ -165,7 +165,7 @@ const Related = (props) => {
                     name={related4.id}
                     onClick={props.handleRelatedChange}
                     onKeyDown={props.handleRelatedChange}
-                    src={related4Styles.results[3].photos[0].thumbnail_url}
+                    src={related4Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}
                 <div id="relatedInfo4">

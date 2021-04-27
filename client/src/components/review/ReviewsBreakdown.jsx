@@ -14,6 +14,7 @@ const ReviewsBreakdown = (props) => (
   <div id="reviewsBreakdown">
     <ReviewsSummary
       metaData={props.reviewsMetaData}
+      productData={props.reviewsProductData}
     />
     <ReviewsFilter
       metaData={props.reviewsMetaData}
