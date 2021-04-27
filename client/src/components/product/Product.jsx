@@ -11,7 +11,7 @@ import ProductStyles from './productStyles.jsx';
 import ProductCart from './productCart.jsx';
 
 const Product = (props) => {
-  const [selectedStyle, setSelectedStyle] = useState(props.currentStyles.results[0].style_id);
+  const [selectedStyle, setStyle] = useState(props.currentStyles.results[0].style_id);
 
   // useEffect(() => {
   //   setSelectedStyle(props.currentStyles.results[0].style_id);
@@ -19,7 +19,7 @@ const Product = (props) => {
 
   return (
     <div className="product">
-      {!props.loading
+      {props.currentStyles && props.currentProduct
         && (
         <>
           <ProductGallery
@@ -33,7 +33,7 @@ const Product = (props) => {
           <ProductStyles
             styles={props.currentStyles}
             selectedStyle={selectedStyle}
-            setSelectedStyle={setSelectedStyle}
+            setSelectedStyle={setStyle}
           />
           <ProductCart />
           <ProductDescription
