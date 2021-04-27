@@ -31,6 +31,7 @@ const ReviewsSummary = (props) => (
         of reviews recommend this product
       </p>
     </div>
+
   </div>
 );
 

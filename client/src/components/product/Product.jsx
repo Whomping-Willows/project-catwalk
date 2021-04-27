@@ -1,12 +1,8 @@
-
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React, { useState, useContext, useEffect } from 'react';
-import { ApiContext } from '../../contexts/api.context.jsx';
+import React, { useState } from 'react';
+// import { ApiContext } from '../../contexts/api.context.jsx';
 import ProductDescription from './productDescription.jsx';
 import ProductGallery from './productGallery.jsx';
 import ProductName from './productName.jsx';
@@ -16,17 +12,6 @@ import ProductCart from './productCart.jsx';
 
 const Product = (props) => {
   const [selectedStyle, setSelectedStyle] = useState(props.currentStyles.results[0].style_id);
-
-
-  // useEffect(() => {
-  //   setSelectedStyle(props.currentStyles.results[0].style_id);
-  // });
-
-
-  useEffect(() => {
-    getRequest(end.productStyles, setProductStyleData);
-    getRequest(end.listInfo, setProductProductData);
-  }, []);
 
   // useEffect(() => {
   //   setSelectedStyle(props.currentStyles.results[0].style_id);

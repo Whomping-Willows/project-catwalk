@@ -12,7 +12,9 @@ import ReviewsChars from './ReviewsChars.jsx';
 
 const ReviewsBreakdown = (props) => (
   <div id="reviewsBreakdown">
-    <ReviewsSummary metaData={props.reviewsMetaData} />
+    <ReviewsSummary
+      metaData={props.reviewsMetaData}
+    />
     <ReviewsFilter
       metaData={props.reviewsMetaData}
       filter={props.filter}
