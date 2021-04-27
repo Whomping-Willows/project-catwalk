@@ -63,36 +63,28 @@ const Question = () => {
 
   return (
     <div className="question">
-      <h2>QUESTIONS & ANSWERS</h2>
-      <SearchForm />
-      <QAList
-        qaList={questionsMeta.results}
-      />
-      <div id="askYourQuestion">
-        <label id="askQuestionLabel">
-          Don&apos;t see the answer you&apos;re looking for?
-        </label>
-        <button
-          className="button"
-          type="submit"
-          onClick={handleOpen}
-        >
-          ASK YOUR QUESTION
-          <i className="fas fa-plus" id="reviewsAddPlus" />
-        </button>
-      </div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        container={() => document.getElementById('question')}
-        className={classes.askQuestionModal}
-      >
-        <AskQuestionForm
-          handleClose={handleClose}
-        />
-      </Modal>
+      {questionsMeta && (
+        <>
+          <h2>QUESTIONS & ANSWERS</h2>
+          <SearchForm />
+          <QAList
+            qaList={questionsMeta.results}
+          />
+          <div id="askYourQuestion">
+            <label id="askQuestionLabel">
+              Don&apos;t see the answer you&apos;re looking for?
+            </label>
+            <button
+              className="button"
+              type="submit"
+            >
+              ASK YOUR QUESTION
+              <i className="fas fa-plus" id="reviewsAddPlus" />
+            </button>
+          </div>
+          <AskQuestionForm />
+        </>
+      )}
     </div>
   );
 };

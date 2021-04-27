@@ -15,7 +15,9 @@ const ReviewsFilter = (props) => {
   const percentFor = (data, num) => {
     const total = getNumOfReviews(data);
     const forNum = Number(data.ratings[num]);
-
+    if (!forNum) {
+      return 0;
+    }
     return ((forNum / total) * 100).toFixed(0);
   };
 
