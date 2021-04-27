@@ -17,12 +17,12 @@ const Reviews = () => {
   const [filter2, setFilter2] = useState('off');
   const [filter1, setFilter1] = useState('off');
 
-  const { end, getRequest } = useContext(ApiContext);
+  const { end, getRequest, productId } = useContext(ApiContext);
 
   useEffect(() => {
     getRequest(end.reviews, setReviewsProductData);
     getRequest(end.reviewsMeta, setReviewsMetaData);
-  }, []);
+  }, [productId]);
 
   return (
     <div id="reviews">
