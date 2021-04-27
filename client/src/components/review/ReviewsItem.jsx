@@ -7,9 +7,9 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
-import { ApiContext } from '../../contexts/api.context.jsx';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { ApiContext } from '../../contexts/api.context.jsx';
 import ReviewsStars from './ReviewsStars.jsx';
 import formatDate from '../../helpers/formatDate.js';
 

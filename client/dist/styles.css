@@ -1264,6 +1264,7 @@ button :hover {
   height: 45px;
   margin: 5px;
   padding-bottom: 5px;
+  position: absolute;
 }
 
 .reviewsModalImgDiv {
@@ -1615,9 +1616,51 @@ button :hover {
   word-break: break-all;
 }
 
-#reviewsFormName {
+#reviewsFormPhoto {
   grid-row-start: 9;
   grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#reviewsPhotoTitle {
+  display: block;
+}
+
+#reviewsPhotoSub {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: block;
+  word-break: break-all;
+}
+
+#reviewsAddPhotos {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: inline;
+  height: auto;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  color: #2f4f4f;
+}
+
+#reviewsAddPhotosModal {
+  padding: 50px;
+  margin: 150px;
+  background-color: white;
+  width: 400px;
+}
+
+#reviewsUploadedPhotos {
+  height: 50px;
+  width: 50px;
+}
+
+#reviewsFormName {
+  grid-row-start: 10;
+  grid-row-end: 11;
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -1631,8 +1674,8 @@ button :hover {
 }
 
 #reviewsFormEmail {
-  grid-row-start: 10;
-  grid-row-end: 11;
+  grid-row-start: 11;
+  grid-row-end: 12;
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -1642,8 +1685,8 @@ button :hover {
 }
 
 #reviewsFormSubmit {
-  grid-row-start: 11;
-  grid-row-end: 12;
+  grid-row-start: 12;
+  grid-row-end: 13;
   grid-column-start: 1;
   grid-column-end: 3;
 }
