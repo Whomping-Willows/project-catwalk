@@ -27,6 +27,7 @@ router.put('/api', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
+      console.log('Response from put ', response);
       console.log('Successful router put req ', response.status, ' ', response.statusText);
       res.send(response.data);
     })

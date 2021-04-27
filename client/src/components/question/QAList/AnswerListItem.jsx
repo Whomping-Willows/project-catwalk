@@ -3,7 +3,7 @@ import { ApiContext } from '../../../contexts/api.context.jsx';
 
 const AnswerListItem = ({ answer }) => {
   const {
-    putRequest, postRequest, setAnswerId, end,
+    putRequest, setAnswerId, end,
   } = useContext(ApiContext);
 
   const formatDate = (string) => {
@@ -31,9 +31,9 @@ const AnswerListItem = ({ answer }) => {
     putRequest(end.answerReport, null);
   };
 
-  const seller = answer.answerer_name === 'seller' ? <p id="seller">'SELLER'</p> : null;
-
-  return (
+  // const seller = answer.answerer_name === 'seller' ? <p id="seller">SELLER</p> : null;
+  // console.log('GRAHAM', answer);
+  return answer ? (
     <li className="answerListItem">
       <p id="answerTag">A:</p>
       {' '}
@@ -46,7 +46,7 @@ const AnswerListItem = ({ answer }) => {
         {' '}
         -
         {' '}
-        {seller}
+        {/* {seller} */}
         {formatDate(answer.date)}
       </p>
       <div className="answerHelpful">
@@ -76,7 +76,7 @@ const AnswerListItem = ({ answer }) => {
         Report
       </button>
     </li>
-  );
+  ) : null;
 };
 
 export default AnswerListItem;
