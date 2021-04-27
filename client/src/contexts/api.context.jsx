@@ -14,6 +14,7 @@ export const ApiProvider = (props) => {
   const [count, setCount] = useState(100);
   const [sort, setSort] = useState('helpful');
   const [productId, setProductId] = useState(18078);
+  const [productName, setProductName] = useState('Camo Onesie');
   const [questionId, setQuestionId] = useState(114290);
   const [reviewId, setReviewId] = useState(289038);
   const [answerId, setAnswerId] = useState(1082146);

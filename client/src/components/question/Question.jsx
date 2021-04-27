@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
+import { Modal } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import SearchForm from './SearchForm.jsx';
 import QAList from './QAList/QAList.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
@@ -31,10 +34,32 @@ const Question = () => {
   const { getRequest, end } = useContext(ApiContext);
 
   const [questionsMeta, setQuestionsMeta] = useState(dummyData);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getRequest(end.listQuestions, setQuestionsMeta);
   }, []);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const useStyles = makeStyles({
+    askQuestionModal: {
+      position: 'absolute',
+      top: '10%',
+      left: '10%',
+      overflow: 'scroll',
+      height: '100%',
+      display: 'block',
+    },
+  });
+
+  const classes = useStyles();
 
   return (
     <div className="question">
