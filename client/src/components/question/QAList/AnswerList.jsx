@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
+/* eslint-disable no-plusplus */
 import React, { useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({ answers, setAnswers }) => {
-  // console.log(answers);
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
   const [rendered, setRendered] = useState(allAnswers.slice(0, index));

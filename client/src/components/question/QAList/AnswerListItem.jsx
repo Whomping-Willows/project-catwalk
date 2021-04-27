@@ -19,23 +19,18 @@ const AnswerListItem = ({ answer, updateHelpfulness }) => {
       });
   }, [helpful]);
 
-  const putAnswerHelpfulness = () => {
+  const updatePutRequest = (callback) => {
     setAnswerId(answer.id);
-    setHelpful(true);
-    // re-render
+    callback(true);
   };
 
   useEffect(() => {
     putRequest(end.answerReport, null);
   }, [report]);
 
-  const putReportAnswer = () => {
-    setAnswerId(answer.id);
-    setReport(true);
-    // re-render
-  };
-
   // const seller = answer.answerer_name === 'seller' ? <p id="seller">SELLER</p> : null;
+
+  const styles = helpful ? { textDecoration: 'none' } : null;
 
   return answer ? (
     <li className="answerListItem">
@@ -56,10 +51,12 @@ const AnswerListItem = ({ answer, updateHelpfulness }) => {
       <div className="answerHelpful">
         Helpful?
         <button
+          style={styles}
           id="answerHelpfulButton"
           className="helpfulButton"
           type="submit"
-          onClick={!helpful ? putAnswerHelpfulness : null}
+          onClick={!helpful ? () => { updatePutRequest(setHelpful);
+          } : null}
         >
           <div
             className="questionHelpful"
@@ -74,7 +71,9 @@ const AnswerListItem = ({ answer, updateHelpfulness }) => {
         id="answerReport"
         className="helpfulButton"
         type="submit"
-        onClick={putReportAnswer}
+        onClick={() => {
+          updatePutRequest(setReport);
+        }}
       >
         {' '}
         Report

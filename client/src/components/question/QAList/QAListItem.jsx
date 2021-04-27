@@ -17,10 +17,8 @@ const QAListItem = ({ question }) => {
   const [answers, setAnswers] = useState(question.answers);
 
   const handleOpen = (e) => {
-    console.log('1st', question.question_id);
     e.preventDefault();
     setQuestionId(question.question_id);
-    console.log('2nd', questionId);
     setOpen(true);
   };
 
@@ -41,20 +39,9 @@ const QAListItem = ({ question }) => {
 
   const classes = useStyles();
 
-  // const setQuestionPromise = () => new Promise((resolve, reject) => {
-  //   if (question.question_id) {
-  //     resolve(setQuestionId(question.question_id));
-  //   } else {
-  //     reject('error');
-  //   }
-  // });
   useEffect(() => {
     putRequest(end.questionHelpful);
   }, [questionId]);
-
-  // useEffect(() => {
-  //   getRequest(end.questionHelpful,
-  // }, [helpfulness]);
 
   const putQuestionHelpfulness = () => {
     setQuestionId(question.question_id);
