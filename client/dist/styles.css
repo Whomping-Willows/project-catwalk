@@ -191,11 +191,6 @@ button :hover {
   margin: 0px;
 }
 
-.styleSelector {
-  display: inline;
-  margin-top: 5px;
-}
-
 .productStyles {
   grid-row-start: 3;
   grid-row-end: 4;
@@ -216,12 +211,30 @@ button :hover {
 #styleStyle {
   grid-column-start: 1;
   grid-column-end: 2;
+  font-size: 16px;
 }
 
 #styleName {
   grid-column-start: 2;
   grid-column-end: 3;
   margin-left: 10px;
+  font-size: 16px;
+}
+
+.styleSelector {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: inline;
+  margin-top: 5px;
+}
+
+.styleCheck {
+  z-index: 9998!important;
+  position: absolute;
+  top: -70px;
+  left: 50%;
 }
 
 .styleOption {
@@ -230,12 +243,24 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 2;
   display: inline;
+  position: relative;
+}
+
+.iconWrapper {
+  position: absolute;
+  top: -70px;
+  left: 70px;
+}
+
+.styleImage {
+  display: inline-block;
   border-Width: 1;
   width: 70px;
   height: 70px;
   border-radius: 35px;
   margin-bottom: 10px;
   margin-right: 10px;
+  background-size: cover;
 }
 
 .sizingForm {
@@ -268,10 +293,15 @@ button :hover {
 }
 
 #productSalePrice {
-
+  font-size: 16px;
+  color: red;
 }
 
 #productOrigPrice {
+  text-decoration-line: line-through;
+}
+
+#productPrice {
   font-size: 16px;
 }
 
