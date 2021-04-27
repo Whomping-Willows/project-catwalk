@@ -22,17 +22,13 @@ const ReviewsList = (props) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    setReviewsInList(props.reviewsProductData.results.slice(0, 2));
     setReviews5(props.reviewsProductData.results.filter((review) => review.rating === 5));
     setReviews4(props.reviewsProductData.results.filter((review) => review.rating === 4));
     setReviews3(props.reviewsProductData.results.filter((review) => review.rating === 3));
     setReviews2(props.reviewsProductData.results.filter((review) => review.rating === 2));
     setReviews1(props.reviewsProductData.results.filter((review) => review.rating === 1));
   }, [props.reviewsProductData]);
-
-  console.log('Typeof rating in my most recent ', reviewsInList[0].rating, typeof reviewsInList[0].rating);
-  if (reviewsInList.length > 20) {
-    console.log('Typeof rating in the one that shows up ', reviewsInList[16].rating, typeof reviewsInList[16].rating);
-  }
 
   const addTwo = () => {
     const newList = props.reviewsProductData.results.slice(0, index);
@@ -61,6 +57,21 @@ const ReviewsList = (props) => {
 
   const classes = useStyles();
 
+  const changeSort = (e) => {
+    const option = e.target.innerHTML;
+    const reviewsRelevant = props.reviewsProductData.results.slice();
+
+    if (option === 'relevance') {
+      setReviewsInList(reviewsRelevant);
+    } else if (option === 'helpfulness') {
+      const reveiwsHelpful = reviewsRelevant.sort((a, b) => b.helpfulness - a.helpfulness);
+      setReviewsInList(reveiwsHelpful);
+    } else if (option === 'newest') {
+      const reveiwsNewest = reviewsRelevant.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setReviewsInList(reveiwsNewest);
+    }
+  };
+
   return (
     <div id="reviewsList">
       <ReviewsSort
@@ -68,6 +79,7 @@ const ReviewsList = (props) => {
         reviewsMetaData={props.reviewsMetaData}
         reviewsInList={reviewsInList}
         setReviewsInList={setReviewsInList}
+        changeSort={changeSort}
       />
       <div id="reviewsAll">
         {props.filter.length === 0 && reviewsInList.map((review) => (

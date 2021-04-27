@@ -1,24 +1,29 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import React from 'react';
+import React, { useState } from 'react';
 import getNumOfReviews from '../../helpers/getNumOfReviews.js';
 
 const ReviewsSort = (props) => {
-  const changeSort = (e) => {
+  const [showOptions, setShowOptions] = useState(false);
+  const [currentSort, setCurrentSort] = useState('relevance');
+
+  const changeSort2 = (e) => {
     const option = e.target.innerHTML;
-    if (option === 'relevance') {
-      const reviewsRelevant = props.reviewData.results.slice();
-      props.setReviewsInList(reviewsRelevant);
-    } else if (option === 'helpfulness') {
-      const reveiwsHelpfulList = props.reviewData.results.sort((a, b) => b.helpfulness - a.helpfulness);
-      props.setReviewsInList(reveiwsHelpfulList);
-    } else if (option === 'newest') {
-      const reveiwsNewest = props.reviewData.results.sort((a, b) => new Date(b.date) - new Date(a.date));
-      props.setReviewsInList(reveiwsNewest);
-    }
+    props.changeSort(e);
+    setCurrentSort(option);
+    setShowOptions(false);
+  };
+
+  const handleHover = () => {
+    setShowOptions(true);
+  };
+
+  const handleLeave = () => {
+    setShowOptions(false);
   };
 
   return (
@@ -29,21 +34,55 @@ const ReviewsSort = (props) => {
         reviews, sorted by
       </h3>
       <div className="reviewsSortMenuDiv">
-        <div className="dropdown">
-          <div className="dropbtn">
-            relevance
-            <i className="fa fa-caret-down" id="sortCaret" />
+        {!showOptions && (
+          <div className="noDropdown" onMouseOver={handleHover} onFocus={handleHover}>
+            <div className="dropbtn">
+              {currentSort}
+              <i className="fa fa-caret-down" id="sortCaret" />
+            </div>
           </div>
-
-          <div className="dropdown-content">
-            <div className="dropdown-label" role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>relevance</div>
-            <div className="dropdown-label" role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>newest</div>
-            <div className="dropdown-label" role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>helpfulness</div>
+        )}
+        {showOptions && (
+          <div className="dropdown">
+            <div className="dropbtn">
+              {currentSort}
+              <i className="fa fa-caret-down" id="sortCaret" />
+            </div>
+            <div className="dropdown-content" onMouseOver={handleHover} onMouseLeave={handleLeave} onFocus={handleLeave}>
+              <div className="dropdown-label" role="navigation" onClick={changeSort2} onKeyDown={changeSort2}>relevance</div>
+              <div className="dropdown-label" role="navigation" onClick={changeSort2} onKeyDown={changeSort2}>newest</div>
+              <div className="dropdown-label" role="navigation" onClick={changeSort2} onKeyDown={changeSort2}>helpfulness</div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default ReviewsSort;
+
+// DROPDOWN VIA CSS
+// return (
+//   <div id="reviewsSort">
+//     <h3 id="sortTitle">
+//       {getNumOfReviews(props.reviewsMetaData)}
+//       {' '}
+//       reviews, sorted by
+//     </h3>
+//     <div className="reviewsSortMenuDiv">
+//       <div className="dropdown">
+//         <div className="dropbtn">
+//           relevance
+//           <i className="fa fa-caret-down" id="sortCaret" />
+//         </div>
+
+//         <div className="dropdown-content">
+//           <div className="dropdown-label" role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>relevance</div>
+//           <div className="dropdown-label" role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>newest</div>
+//           <div className="dropdown-label" role="button" tabIndex={0} onClick={changeSort} onKeyDown={changeSort}>helpfulness</div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// );

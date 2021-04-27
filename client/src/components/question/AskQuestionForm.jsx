@@ -1,12 +1,36 @@
-import React from 'react';
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useContext, useState } from 'react';
+import { ApiContext } from '../../contexts/api.context.jsx';
 
-const AskQuestionForm = () => {
-  const productName = 'Camo Onesie';
-  // use api context product name
+const AskQuestionForm = ({ handleClose }) => {
+  const {
+    productName, productId, postRequest, end,
+  } = useContext(ApiContext);
 
-  // post question, email and name to api
+  const [body, setQuestionBody] = useState();
+  const [name, setAskerName] = useState();
+  const [email, setEmail] = useState();
+
+  const postData = {
+    body,
+    name,
+    email,
+    product_id: productId,
+  };
+
+  const handleAskQuestionSubmit = (e) => {
+    e.preventDefault();
+    postRequest(end.addQuestion, postData);
+    // need a promise and alert that it has been submitted.
+
+    handleClose();
+  };
+
   return (
-    <div id="questionFormContainer">
+    <div className="qaFormContainer">
       <h2>
         Ask Your Question About
         {` '${productName}' ` }
@@ -14,45 +38,55 @@ const AskQuestionForm = () => {
       </h2>
       <form>
         <label
-          htmlFor="question"
+          htmlFor="questionBody"
         >
-          *Your Question:
+          <p>Your Question: (1000 characters max) </p>
         </label>
         <input
-          id="question"
-          name="question"
+          className="qaFormBody"
+          name="body"
           type="text"
-          value=""
-          placeholder="(1000 characters max)"
+          value={body}
+          onChange={(e) => setQuestionBody(e.target.value)}
+          maxLength="1000"
+          required
         />
         <label
-          htmlFor="question-nickname"
+          htmlFor="askerName"
         >
-          *Nickname: "Example:jackson11!"
+          <p>Nickname: &quot;Example:jackson11!&quot;</p>
         </label>
         <input
-          id="question-nickname"
-          name="nickname"
+          className="qaFormName"
+          name="name"
           type="text"
-          value=""
+          value={name}
+          onChange={(e) => { setAskerName(e.target.value); }}
+          maxLength="60"
+          required
         />
         <label
-          htmlFor="question-email"
+          htmlFor="questionEmail"
         >
-          *Email:
+          <p>Email:</p>
         </label>
         <input
-          id="question-email"
+          className="qaFormEmail"
           name="email"
           type="text"
-          value=""
+          value={email}
+          onChange={(e) => { setEmail(e.target.value); }}
+          maxLength="60"
+          required
         />
         <h3>For authentication reasons, you will not be emailed</h3>
-        <button type="submit">
+        <button
+          type="submit"
+          onClick={handleAskQuestionSubmit}
+        >
           SUBMIT
         </button>
       </form>
-
     </div>
   );
 };
