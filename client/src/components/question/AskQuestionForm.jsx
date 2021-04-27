@@ -30,7 +30,7 @@ const AskQuestionForm = ({ handleClose }) => {
   };
 
   return (
-    <div id="questionFormContainer">
+    <div className="qaFormContainer">
       <h2>
         Ask Your Question About
         {` '${productName}' ` }
