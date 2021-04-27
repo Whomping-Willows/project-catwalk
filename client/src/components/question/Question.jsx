@@ -31,14 +31,14 @@ const dummyData = {
 };
 
 const Question = () => {
-  const { getRequest, end } = useContext(ApiContext);
+  const { getRequest, end, productId } = useContext(ApiContext);
 
   const [questionsMeta, setQuestionsMeta] = useState(dummyData);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getRequest(end.listQuestions, setQuestionsMeta);
-  }, []);
+  }, [productId]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -77,12 +77,24 @@ const Question = () => {
             <button
               className="button"
               type="submit"
+              onClick={handleOpen}
             >
               ASK YOUR QUESTION
               <i className="fas fa-plus" id="reviewsAddPlus" />
             </button>
           </div>
-          <AskQuestionForm />
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            container={() => document.getElementById('question')}
+            className={classes.askQuestionModal}
+          >
+            <AskQuestionForm
+            handleClose={handleClose}
+            />
+          </Modal>
         </>
       )}
     </div>

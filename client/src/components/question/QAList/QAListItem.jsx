@@ -13,7 +13,6 @@ const QAListItem = ({ question }) => {
     questionId, getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
 
-
   const [open, setOpen] = useState(false);
 
   const handleOpen = (e) => {
