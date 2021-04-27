@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 import formatDate from '../../../helpers/formatDate.js';
 
-const AnswerListItem = ({ answer }) => {
+const AnswerListItem = ({ answer, updateHelpfulness }) => {
   const {
     putRequest, setAnswerId, end,
   } = useContext(ApiContext);
@@ -13,7 +13,10 @@ const AnswerListItem = ({ answer }) => {
   const [report, setReport] = useState(false);
 
   useEffect(() => {
-    putRequest(end.answerHelpful, null);
+    putRequest(end.answerHelpful, null)
+      .then(() => {
+        updateHelpfulness(answer.id);
+      });
   }, [helpful]);
 
   const putAnswerHelpfulness = () => {

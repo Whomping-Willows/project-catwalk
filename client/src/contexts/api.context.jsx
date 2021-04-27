@@ -90,7 +90,7 @@ export const ApiProvider = (props) => {
   };
 
   const putRequest = (endpoint) => {
-    axios.put('/api', {
+    return axios.put('/api', {
       headers: {
         endpoint,
       },

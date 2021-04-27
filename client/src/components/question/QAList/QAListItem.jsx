@@ -14,6 +14,7 @@ const QAListItem = ({ question }) => {
   const [helpfulness, setHelpfulness] = useState(0);
 
   const [open, setOpen] = useState(false);
+  const [answers, setAnswers] = useState(question.answers);
 
   const handleOpen = (e) => {
     console.log('1st', question.question_id);
@@ -121,7 +122,8 @@ const QAListItem = ({ question }) => {
       {helpful}
       {addAnswer}
       <AnswerList
-        answers={question.answers}
+        answers={answers}
+        setAnswers={setAnswers}
       />
     </li>
   );

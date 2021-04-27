@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerListItem from './AnswerListItem.jsx';
 
-const AnswerList = ({ answers }) => {
+const AnswerList = ({ answers, setAnswers }) => {
   // console.log(answers);
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
   const [rendered, setRendered] = useState(allAnswers.slice(0, index));
+
+  // const addNewAnswer = (answer) => {
+
+  //   setRendered([...rendered, answer]);
+  // };
+
+  const updateHelpfulness = (answerId) => {
+    const updatedAnswers = { ...answers };
+    updatedAnswers[answerId].helpfulness++;
+    setAnswers(updatedAnswers);
+  };
 
   const seeMoreAnswersClick = () => {
     if (index === 2) {
@@ -26,6 +37,7 @@ const AnswerList = ({ answers }) => {
         <AnswerListItem
           key={answerId}
           answer={answers[answerId]}
+          updateHelpfulness={updateHelpfulness}
         />
       );
 })
