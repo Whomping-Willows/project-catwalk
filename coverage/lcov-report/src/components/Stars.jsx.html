@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">77.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">77.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,34 +111,40 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,58 +173,61 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
+import Ratings from 'react-ratings-declarative';
 import { ApiContext } from '../contexts/api.context.jsx';
 import getReviewsAvg from '../helpers/getReviewsAvg.js';
-import Product from './product/Product.jsx';
-import Related from './related/Related.jsx';
-import Question from './question/Question.jsx';
-import Reviews from './review/Reviews.jsx';
 &nbsp;
-const Stars = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-  const [currentProduct, setCurrentProduct] = <span class="cstat-no" title="statement not covered" >useState();</span>
-  const [currentStyles, setCurrentStyles] = <span class="cstat-no" title="statement not covered" >useState();</span>
-  const [reviewScore, setReviewScore] = <span class="cstat-no" title="statement not covered" >useState();</span>
+const Stars = () =&gt; {
+  const [reviewScore, setReviewScore] = useState(0);
 &nbsp;
-  const { getRequest, end } = <span class="cstat-no" title="statement not covered" >useContext(ApiContext);</span>
+  const { productId, getRequest, end } = useContext(ApiContext);
 &nbsp;
-  const createReviewsScore = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(m</span>etaData) =&gt; {</span>
+  const createReviewsScore = <span class="fstat-no" title="function not covered" >(m</span>etaData) =&gt; {
     const score = <span class="cstat-no" title="statement not covered" >Number(getReviewsAvg(metaData));</span>
 <span class="cstat-no" title="statement not covered" >    setReviewScore(score);</span>
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    getRequest(end.listInfo, setCurrentProduct);</span>
-<span class="cstat-no" title="statement not covered" >    getRequest(end.productStyles, setCurrentStyles);</span>
-<span class="cstat-no" title="statement not covered" >    getRequest(end.reviewsMeta, createReviewsScore);</span>
-  }, []);
+  useEffect(() =&gt; {
+    getRequest(end.reviewsMeta, createReviewsScore);
+  }, [productId]);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="appContainer"&gt;
-      &lt;Product
-        currentProduct={currentProduct}
-        setCurrentProduct={setCurrentProduct}
-        currentStyles={currentStyles}
-        setCurrentStyles={setCurrentStyles}
-        reviewScore={reviewScore}
-      /&gt;
-      &lt;Related
-        currentProduct={currentProduct}
-        setCurrentProduct={setCurrentProduct}
-        currentStyles={currentStyles}
-        setCurrentStyles={setCurrentStyles}
-        reviewScore={reviewScore}
-      /&gt;
-      &lt;Question
-        reviewScore={reviewScore}
-      /&gt;
-      &lt;Reviews
-        reviewScore={reviewScore}
-      /&gt;
+  return (
+    &lt;div&gt;
+      {reviewScore &amp;&amp; (
+<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;Ratings</span>
+          rating={reviewScore}
+          widgetDimensions="15px"
+          widgetSpacings="1px"
+        &gt;
+          &lt;Ratings.Widget /&gt;
+          &lt;Ratings.Widget /&gt;
+          &lt;Ratings.Widget /&gt;
+          &lt;Ratings.Widget /&gt;
+          &lt;Ratings.Widget /&gt;
+        &lt;/Ratings&gt;
+&nbsp;
+      )}
     &lt;/div&gt;
   );
 };
 &nbsp;
 export default Stars;
+&nbsp;
+// EXAMPLE TO EDIT STARS
+// return (
+//   &lt;Ratings
+//     rating={reviewScore}
+//     widgetDimensions="10px"
+//     widgetSpacings="2px"
+//   &gt;
+//     &lt;Ratings.Widget widgetRatedColor="green" /&gt;
+//     &lt;Ratings.Widget widgetSpacing="30px" widgetDimension="15px" /&gt;
+//     &lt;Ratings.Widget widgetRatedColor="black" /&gt;
+//     &lt;Ratings.Widget widgetRatedColor="rebeccapurple" /&gt;
+//     &lt;Ratings.Widget /&gt;
+//   &lt;/Ratings&gt;
+// );
+// FROM HERE: https://github.com/ekeric13/react-ratings-declarative
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -226,7 +235,7 @@ export default Stars;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Apr 23 2021 11:55:28 GMT-0600 (Mountain Daylight Time)
+                at Tue Apr 27 2021 17:55:42 GMT-0600 (Mountain Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
