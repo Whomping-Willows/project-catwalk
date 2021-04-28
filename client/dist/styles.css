@@ -521,14 +521,17 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 4;
-  display: grid;
-  grid-template-columns: 85% auto;
-  grid-template-rows: 70px;
-  width: 100%;
   border: solid;
   border-width: 1px;
   color: #393939;
   border-color: #515151;
+}
+
+#searchForm {
+  display: grid;
+  grid-template-columns: 90% auto;
+  grid-template-rows: 68px;
+  width: 100%;
 }
 
 .visually-hidden {
@@ -539,17 +542,12 @@ button :hover {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+  height: 0px;
 }
 
-#searchForm {
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-#searchInput {
+#searchQuery {
   border: none;
   float: left;
-  width: 80%;
   grid-column-start: 1;
   grid-column-end: 2;
   font-size: 16px;
@@ -558,18 +556,16 @@ button :hover {
 }
 
 #searchButton {
-  grid-column-start: 2;
-  grid-column-end: 3;
   border: none;
-  height: 65px;
-  padding: 15px 20px 0 20px;
+  padding: 0;
   margin: 0;
 }
 
 #searchAddIcon {
-  float: right;
-  height: 30px;
-  margin: 0;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  height: 20px;
+  padding: 20px 25px 18px 15px;
   color: #515151;
 }
 
