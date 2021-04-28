@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import QAListItem from './QAListItem.jsx';
 

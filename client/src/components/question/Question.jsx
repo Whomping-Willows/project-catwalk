@@ -8,27 +8,27 @@ import QAList from './QAList/QAList.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
-const dummyData = {
-  results: [
-    {
-      asker_name: 'cleopatra',
-      question_body: 'Can I wash it?',
-      question_date: '2018-02-08T00:00:00.000Z',
-      question_helpfulness: 27,
-      question_id: 114290,
-      answers: {
-        1082146: {
-          answerer_name: 'ceasar',
-          body: 'It says not to',
-          date: '2018-03-08T00:00:00.000Z',
-          helpfulness: 1,
-          id: 1082146,
-          photos: [],
-        },
-      },
-    },
-  ],
-};
+// const dummyData = {
+//   results: [
+//     {
+//       asker_name: 'cleopatra',
+//       question_body: 'Can I wash it?',
+//       question_date: '2018-02-08T00:00:00.000Z',
+//       question_helpfulness: 27,
+//       question_id: 114290,
+//       answers: {
+//         1082146: {
+//           answerer_name: 'ceasar',
+//           body: 'It says not to',
+//           date: '2018-03-08T00:00:00.000Z',
+//           helpfulness: 1,
+//           id: 1082146,
+//           photos: [],
+//         },
+//       },
+//     },
+//   ],
+// };
 
 const Question = () => {
   const { getRequest, end, productId } = useContext(ApiContext);
@@ -39,8 +39,8 @@ const Question = () => {
 
   useEffect(() => {
     getRequest(end.listQuestions, setQuestionsMeta).then(() => {
-        setLoading(false);
-      });
+      setLoading(false);
+    });
   }, [productId]);
 
   const handleOpen = () => {
@@ -95,7 +95,7 @@ const Question = () => {
             className={classes.askQuestionModal}
           >
             <AskQuestionForm
-            handleClose={handleClose}
+              handleClose={handleClose}
             />
           </Modal>
         </>

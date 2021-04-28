@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 import formatDate from '../../../helpers/formatDate.js';
 
-const AnswerListItem = ({ answer, updateHelpfulness, removeReportedAnswer, setAnswers }) => {
+const AnswerListItem = ({ answer, updateHelpfulness, setAnswers }) => {
   const {
     putRequest, getRequest, setAnswerId, end,
   } = useContext(ApiContext);
@@ -64,7 +64,8 @@ const AnswerListItem = ({ answer, updateHelpfulness, removeReportedAnswer, setAn
           id="answerHelpfulButton"
           className="helpfulButton"
           type="submit"
-          onClick={!helpful ? () => { updatePutRequest(setHelpful);
+          onClick={!helpful ? () => {
+            updatePutRequest(setHelpful);
           } : null}
         >
           <div
