@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
@@ -8,8 +6,11 @@ import ReviewsBreakdown from './ReviewsBreakdown.jsx';
 import ReviewsList from './ReviewsList.jsx';
 
 const Reviews = () => {
+  // DATA FROM THE API
   const [reviewsProductData, setReviewsProductData] = useState();
   const [reviewsMetaData, setReviewsMetaData] = useState();
+
+  // FILTER CONTROLS FOR SELECTING IN BREAKDOWN AND DISPLAYING IN LIST
   const [reviewsFilter, setReviewsFilter] = useState([]);
   const [filter5, setFilter5] = useState('off');
   const [filter4, setFilter4] = useState('off');
@@ -17,6 +18,7 @@ const Reviews = () => {
   const [filter2, setFilter2] = useState('off');
   const [filter1, setFilter1] = useState('off');
 
+  // API REQUEST FUNCTIONS FROM CONTEXT
   const { end, getRequest, productId } = useContext(ApiContext);
 
   useEffect(() => {

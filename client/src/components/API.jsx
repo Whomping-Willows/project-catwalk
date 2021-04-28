@@ -35,12 +35,12 @@ const API = () => {
       {currentProduct && currentStyles
         && (
         <>
-          <Product
+          {/* <Product
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
             setCurrentStyles={setCurrentStyles}
-          />
+          /> */}
           <Related
             currentProduct={currentProduct}
             handleRelatedChange={handleRelatedChange}
