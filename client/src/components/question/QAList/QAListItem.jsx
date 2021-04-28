@@ -50,7 +50,7 @@ const QAListItem = ({ question, setQuestions }) => {
       putRequest(end.questionHelpful)
         .then(() => {
           getRequest(end.listQuestions, (questions) => {
-            setQuestions(questions.results);
+            // setQuestions(questions.results);
           });
         });
     }

@@ -33,11 +33,14 @@ const dummyData = {
 const Question = () => {
   const { getRequest, end, productId } = useContext(ApiContext);
 
-  const [questionsMeta, setQuestionsMeta] = useState(dummyData);
+  const [questionsMeta, setQuestionsMeta] = useState();
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getRequest(end.listQuestions, setQuestionsMeta);
+    getRequest(end.listQuestions, setQuestionsMeta).then(() => {
+        setLoading(false);
+      });
   }, [productId]);
 
   const handleOpen = () => {
@@ -61,7 +64,7 @@ const Question = () => {
 
   const classes = useStyles();
 
-  return (
+  return !loading ? (
     <div className="question">
       {questionsMeta && (
         <>
@@ -98,6 +101,8 @@ const Question = () => {
         </>
       )}
     </div>
+  ) : (
+    <h2>LOADING...</h2>
   );
 };
 

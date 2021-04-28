@@ -16,8 +16,6 @@ function QAList({ qaList }) {
     }
   };
 
-
-
   return (
     <div id="qaListContainer">
       <div id="qaListScroll">

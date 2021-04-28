@@ -74,14 +74,17 @@ export const ApiProvider = (props) => {
 
   // HTTP REQUESTS AS FUNCTIONS
   const getRequest = (endpoint, callback) => {
-    axios.get('/api', {
+    return axios.get('/api', {
       headers: {
         endpoint,
       },
     })
       .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log(response.data);
+        // console.log('endpoint: ', endpoint);
+        // console.log(response.data);
+        if (endpoint === end.listQuestions) {
+          console.log(response.data.results);
+        }
         callback(response.data);
       })
       .catch((err) => {
@@ -95,9 +98,9 @@ export const ApiProvider = (props) => {
     },
   })
     .then((response) => {
-      console.log('endpoint: ', endpoint);
-      console.log('status code ', response.status);
-      console.log('statusText ', response.statusText);
+      // console.log('endpoint: ', endpoint);
+      // console.log('status code ', response.status);
+      // console.log('statusText ', response.statusText);
     })
     .catch((err) => {
       console.error('From requests: ', err);
@@ -111,8 +114,8 @@ export const ApiProvider = (props) => {
       },
     })
       .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log(response.data);
+        // console.log('endpoint: ', endpoint);
+        // console.log(response.data);
       })
       .catch((err) => {
         console.error('From requests: ', err);
