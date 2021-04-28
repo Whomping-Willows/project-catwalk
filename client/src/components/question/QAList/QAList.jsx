@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import QAListItem from './QAListItem.jsx';
+import SearchForm from '../SearchForm.jsx';
 
 function QAList({ qaList }) {
   const [questions, setQuestions] = useState(qaList);
@@ -36,19 +37,25 @@ function QAList({ qaList }) {
   ) : null;
 
   return (
-    <div id="qaListContainer">
-      <div id="qaListScroll">
-        <ul id="qaList">
-          {rendered.map((question) => (
-            <QAListItem
-              key={question.question_id}
-              setQuestions={setQuestions}
-              question={question}
-            />
-          ))}
-        </ul>
+    <div id="qaContainer">
+      <SearchForm
+        questions={questions}
+        setRendered={setRendered}
+      />
+      <div id="qaListContainer">
+        <div id="qaListScroll">
+          <ul id="qaList">
+            {rendered.map((question) => (
+              <QAListItem
+                key={question.question_id}
+                setQuestions={setQuestions}
+                question={question}
+              />
+            ))}
+          </ul>
+        </div>
+        {seeMoreQuestions}
       </div>
-      {seeMoreQuestions}
     </div>
   );
 }

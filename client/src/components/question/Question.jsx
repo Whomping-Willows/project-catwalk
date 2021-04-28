@@ -69,7 +69,7 @@ const Question = () => {
       {questionsMeta && (
         <>
           <h2>QUESTIONS & ANSWERS</h2>
-          <SearchForm />
+          {/* <SearchForm /> */}
           <QAList
             qaList={questionsMeta.results}
           />

@@ -1,28 +1,30 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
-import { ApiContext } from '../../contexts/api.context.jsx';
 
-const SearchForm = () => {
-  const { getRequest, end, productId } = useContext(ApiContext);
-  const [questionList, setQuestionList] = useState();
-  // const [loading, setLoading] = useState(true);
+const SearchForm = ({ questions, setRendered }) => {
   const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    getRequest(end.listQuestions, setQuestionList).then(() => {
-      setLoading(false);
-    });
-  }, [productId]);
 
   const handleSearchFormChange = (e) => {
     setQuery(e.target.value);
   };
 
-  // !loading ?
+  const searchFormSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const queryMatches = [];
+    questions.forEach((question) => {
+      if (question.question_body.indexOf(query) !== -1) {
+        queryMatches.push(question);
+      }
+    });
+    setRendered(queryMatches);
+  };
+
   return (
     <div
-     id="searchContainer"
+      id="searchContainer"
     >
       <form id="searchForm">
         <label className="visually-hidden">
@@ -38,6 +40,7 @@ const SearchForm = () => {
         <button
           type="submit"
           id="searchButton"
+          onSubmit={searchFormSubmitHandler}
         >
           <i
             className="fas fa-search"
@@ -46,8 +49,7 @@ const SearchForm = () => {
         </button>
       </form>
     </div>
-  )
-  // : null;
+  );
 };
 
 export default SearchForm;

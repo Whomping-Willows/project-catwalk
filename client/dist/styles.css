@@ -516,6 +516,13 @@ button :hover {
   padding: 10px;
 }
 
+#qaContainer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
 #searchContainer {
   grid-row-start: 2;
   grid-row-end: 3;
