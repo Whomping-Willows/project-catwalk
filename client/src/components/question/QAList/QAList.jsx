@@ -16,11 +16,7 @@ function QAList({ qaList }) {
     }
   };
 
-  // const updateQuestionHelpfulness = (questionId) => {
-  //   const updatedQuestions = [...questions];
-  //   updatedQuestions[questionId].question_helpfulness++;
-  //   setQuestions(updatedQuestions);
-  // };
+
 
   return (
     <div id="qaListContainer">
@@ -29,7 +25,6 @@ function QAList({ qaList }) {
           {rendered.map((question) => (
             <QAListItem
               key={question.question_id}
-              // updateQuestionHelpfulness={updateQuestionHelpfulness}
               setQuestions={setQuestions}
               question={question}
             />

@@ -38,6 +38,8 @@ const QAListItem = ({ question, setQuestions }) => {
 
   const classes = useStyles();
 
+  const styles = helpful ? { textDecoration: 'none' } : null;
+
   const putQuestionHelpfulness = () => {
     setQuestionId(question.question_id);
     setHelpful(true);
@@ -58,6 +60,7 @@ const QAListItem = ({ question, setQuestions }) => {
     <div className="questionHelpful">
       Helpful?
       <button
+        style={styles}
         type="submit"
         className="helpfulButton"
         onClick={
