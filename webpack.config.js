@@ -1,11 +1,21 @@
 const path = require('path');
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
+  mode: "production",
   entry: './client/src/index.js',
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, 'client', 'dist')
+    path: path.resolve(__dirname, 'client', 'dist'),
   },
+  plugins: [
+    new HTMLWebpackPlugin({
+      filename: "./index.html",
+      template: path.join(__dirname, 'public/index.html'),
+    }),
+    new BundleAnalyzerPlugin(),
+  ],
   module: {
     rules: [
       {
@@ -22,9 +32,22 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
       },
+      {
+        test: /\.scss/i,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader'],
+      // },
     ],
   },
 };
