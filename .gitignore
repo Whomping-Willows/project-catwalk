@@ -1,7 +1,10 @@
 ## private APIs
-client/config.js
+server/config.js
 
 ## node modules
+node_modules
+
+## Jest coverage
+coverage
 
 ## TBD
-node_modules
