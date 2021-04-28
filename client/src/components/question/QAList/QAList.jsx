@@ -1,22 +1,26 @@
-/* eslint-disable import/extensions */
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import QAListItem from './QAListItem.jsx';
 
 function QAList({ qaList }) {
+  const [questions, setQuestions] = useState(qaList);
   const [index, setIndex] = useState(4);
-  let rendered = qaList.slice(0, index);
+  let rendered = questions.slice(0, index);
 
   const moreQuestionsClick = () => {
     if (index === 4) {
       setIndex(6);
-      rendered = qaList.slice(0, index);
+      rendered = questions.slice(0, index);
     } else if (index === 6) {
-      setIndex(qaList.length);
-      rendered = qaList;
+      setIndex(questions.length);
+      rendered = questions;
     }
   };
-  // console.log(rendered);
+
+  // const updateQuestionHelpfulness = (questionId) => {
+  //   const updatedQuestions = [...questions];
+  //   updatedQuestions[questionId].question_helpfulness++;
+  //   setQuestions(updatedQuestions);
+  // };
 
   return (
     <div id="qaListContainer">
@@ -25,6 +29,8 @@ function QAList({ qaList }) {
           {rendered.map((question) => (
             <QAListItem
               key={question.question_id}
+              // updateQuestionHelpfulness={updateQuestionHelpfulness}
+              setQuestions={setQuestions}
               question={question}
             />
           ))}

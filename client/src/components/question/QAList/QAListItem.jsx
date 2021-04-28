@@ -6,13 +6,12 @@ import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerList from './AnswerList.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
-const QAListItem = ({ question }) => {
+const QAListItem = ({ question, setQuestions }) => {
   const {
     questionId, getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
 
-  const [helpfulness, setHelpfulness] = useState(0);
-
+  const [helpful, setHelpful] = useState(false);
   const [open, setOpen] = useState(false);
   const [answers, setAnswers] = useState(question.answers);
 
@@ -39,15 +38,23 @@ const QAListItem = ({ question }) => {
 
   const classes = useStyles();
 
-  useEffect(() => {
-    putRequest(end.questionHelpful);
-  }, [questionId]);
-
   const putQuestionHelpfulness = () => {
     setQuestionId(question.question_id);
+    setHelpful(true);
   };
 
-  const helpful = (
+  useEffect(() => {
+    if (helpful) {
+      putRequest(end.questionHelpful)
+        .then(() => {
+          getRequest(end.listQuestions, (questions) => {
+            setQuestions(questions.results);
+          });
+        });
+    }
+  }, [helpful]);
+
+  const helpfulContainer = (
     <div className="questionHelpful">
       Helpful?
       <button
@@ -98,7 +105,6 @@ const QAListItem = ({ question }) => {
   );
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <li
       className="QAListItem"
     >
@@ -106,7 +112,7 @@ const QAListItem = ({ question }) => {
         Q:
         {` ${question.question_body}`}
       </h3>
-      {helpful}
+      {helpfulContainer}
       {addAnswer}
       <AnswerList
         answers={answers}

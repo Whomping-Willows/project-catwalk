@@ -4,20 +4,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 import formatDate from '../../../helpers/formatDate.js';
 
-const AnswerListItem = ({ answer, updateHelpfulness }) => {
+const AnswerListItem = ({ answer, updateHelpfulness, removeReportedAnswer }) => {
   const {
     putRequest, setAnswerId, end,
   } = useContext(ApiContext);
 
   const [helpful, setHelpful] = useState(false);
-  const [report, setReport] = useState(false);
-
-  useEffect(() => {
-    putRequest(end.answerHelpful, null)
-      .then(() => {
-        updateHelpfulness(answer.id);
-      });
-  }, [helpful]);
+  const [reported, setReported] = useState(false);
 
   const updatePutRequest = (callback) => {
     setAnswerId(answer.id);
@@ -25,8 +18,22 @@ const AnswerListItem = ({ answer, updateHelpfulness }) => {
   };
 
   useEffect(() => {
-    putRequest(end.answerReport, null);
-  }, [report]);
+    if (helpful) {
+      putRequest(end.answerHelpful, null)
+        .then(() => {
+          updateHelpfulness(answer.id);
+        });
+    }
+  }, [helpful]);
+
+  useEffect(() => {
+    if (reported) {
+      putRequest(end.answerReport, null)
+        .then(() => {
+          removeReportedAnswer(answer.id);
+        });
+    }
+  }, [reported]);
 
   // const seller = answer.answerer_name === 'seller' ? <p id="seller">SELLER</p> : null;
 
@@ -72,7 +79,7 @@ const AnswerListItem = ({ answer, updateHelpfulness }) => {
         className="helpfulButton"
         type="submit"
         onClick={() => {
-          updatePutRequest(setReport);
+          updatePutRequest(setReported);
         }}
       >
         {' '}

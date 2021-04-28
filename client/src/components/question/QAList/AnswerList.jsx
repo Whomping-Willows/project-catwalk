@@ -7,17 +7,24 @@ import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({ answers, setAnswers }) => {
   const [index, setIndex] = useState(2);
-  const allAnswers = Object.keys(answers);
+  const allAnswers = (Object.keys(answers));
   const [rendered, setRendered] = useState(allAnswers.slice(0, index));
 
   // const addNewAnswer = (answer) => {
-
   //   setRendered([...rendered, answer]);
   // };
 
   const updateHelpfulness = (answerId) => {
     const updatedAnswers = { ...answers };
     updatedAnswers[answerId].helpfulness++;
+    setAnswers(updatedAnswers);
+  };
+
+  const removeReportedAnswer = (answerId) => {
+    // console.log('ANSWER ID', answerId);
+    // console.log('ALL ANSWERS', allAnswers);
+    const updatedAnswers = Object.keys(answers).filter((answer) => answer !== answerId.toString());
+    // console.log("UPDATEDANSWERS", updatedAnswers);
     setAnswers(updatedAnswers);
   };
 
@@ -33,16 +40,14 @@ const AnswerList = ({ answers, setAnswers }) => {
   };
 
   const answerList = rendered && (rendered.length > 0)
-    ? rendered.map((answerId) => {
-      // console.log(answers[answerId]);
-      return (
-        <AnswerListItem
-          key={answerId}
-          answer={answers[answerId]}
-          updateHelpfulness={updateHelpfulness}
-        />
-      );
-})
+    ? rendered.map((answerId) => (
+      <AnswerListItem
+        key={answerId}
+        answer={answers[answerId]}
+        updateHelpfulness={updateHelpfulness}
+        removeReportedAnswer={removeReportedAnswer}
+      />
+    ))
     : null;
 
   let seeMoreAnswersText;

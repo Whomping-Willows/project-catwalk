@@ -89,21 +89,19 @@ export const ApiProvider = (props) => {
       });
   };
 
-  const putRequest = (endpoint) => {
-    return axios.put('/api', {
-      headers: {
-        endpoint,
-      },
+  const putRequest = (endpoint) => axios.put('/api', {
+    headers: {
+      endpoint,
+    },
+  })
+    .then((response) => {
+      console.log('endpoint: ', endpoint);
+      console.log('status code ', response.status);
+      console.log('statusText ', response.statusText);
     })
-      .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log('status code ', response.status);
-        console.log('statusText ', response.statusText);
-      })
-      .catch((err) => {
-        console.error('From requests: ', err);
-      });
-  };
+    .catch((err) => {
+      console.error('From requests: ', err);
+    });
 
   const postRequest = (endpoint, data) => {
     axios.post('/api', {
