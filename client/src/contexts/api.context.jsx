@@ -73,24 +73,19 @@ export const ApiProvider = (props) => {
   };
 
   // HTTP REQUESTS AS FUNCTIONS
-  const getRequest = (endpoint, callback) => {
-    return axios.get('/api', {
-      headers: {
-        endpoint,
-      },
+  const getRequest = (endpoint, callback) => axios.get('/api', {
+    headers: {
+      endpoint,
+    },
+  })
+    .then((response) => {
+      // console.log('endpoint: ', endpoint);
+      // console.log(response.data);
+      callback(response.data);
     })
-      .then((response) => {
-        // console.log('endpoint: ', endpoint);
-        // console.log(response.data);
-        if (endpoint === end.listQuestions) {
-          console.log(response.data.results);
-        }
-        callback(response.data);
-      })
-      .catch((err) => {
-        console.error('From requests: ', err);
-      });
-  };
+    .catch((err) => {
+      console.error('From requests: ', err);
+    });
 
   const putRequest = (endpoint) => axios.put('/api', {
     headers: {
@@ -106,21 +101,19 @@ export const ApiProvider = (props) => {
       console.error('From requests: ', err);
     });
 
-  const postRequest = (endpoint, data) => {
-    axios.post('/api', {
-      headers: {
-        endpoint,
-        data,
-      },
+  const postRequest = (endpoint, data) => axios.post('/api', {
+    headers: {
+      endpoint,
+      data,
+    },
+  })
+    .then((response) => {
+      // console.log('endpoint: ', endpoint);
+      // console.log(response.data);
     })
-      .then((response) => {
-        // console.log('endpoint: ', endpoint);
-        // console.log(response.data);
-      })
-      .catch((err) => {
-        console.error('From requests: ', err);
-      });
-  };
+    .catch((err) => {
+      console.error('From requests: ', err);
+    });
 
   return (
     <ApiContext.Provider value={{

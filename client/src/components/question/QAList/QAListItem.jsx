@@ -50,7 +50,7 @@ const QAListItem = ({ question, setQuestions }) => {
       putRequest(end.questionHelpful)
         .then(() => {
           getRequest(end.listQuestions, (questions) => {
-            // setQuestions(questions.results);
+            setQuestions(questions.results);
           });
         });
     }
@@ -102,6 +102,7 @@ const QAListItem = ({ question, setQuestions }) => {
           question_id={question.question_id}
           question_body={question.question_body}
           handleClose={handleClose}
+          setAnswers={setAnswers}
         />
       </Modal>
     </div>

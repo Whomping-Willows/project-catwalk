@@ -3,18 +3,45 @@ import QAListItem from './QAListItem.jsx';
 
 function QAList({ qaList }) {
   const [questions, setQuestions] = useState(qaList);
-  const [index, setIndex] = useState(4);
-  let rendered = questions.slice(0, index);
+  const [rendered, setRendered] = useState(questions.slice(0, 4));
 
   const moreQuestionsClick = () => {
-    if (index === 4) {
-      setIndex(6);
-      rendered = questions.slice(0, index);
-    } else if (index === 6) {
-      setIndex(questions.length);
-      rendered = questions;
+    if (rendered.length === 4) {
+      setRendered(questions.slice(0, 6));
+    } else if (rendered.length === 6 && rendered.length < questions.length) {
+      setRendered(questions.slice(0, questions.length));
+    } else if (rendered.length === questions.length) {
+      setRendered(questions.slice(0, 4));
     }
+
+    console.log('QUESTIONS', questions);
+    console.log('Rendered', rendered);
   };
+
+  let seeMoreQuestionsText;
+
+  if (rendered && (rendered.length < questions.length)) {
+    seeMoreQuestionsText = 'SEE MORE QUESTIONS';
+  } else if (rendered.length === questions.length && questions.length > 4) {
+    seeMoreQuestionsText = 'COLLAPSE QUESTIONS';
+  }
+//   <button
+//   id="moreAnsweredQuestions"
+//   type="submit"
+//   onClick={moreQuestionsClick}
+// >
+//   MORE ANSWERED QUESTIONS
+// </button>
+
+  const seeMoreQuestions = rendered && questions.length > 4 ? (
+    <button
+      id="moreAnsweredQuestions"
+      type="submit"
+      onClick={moreQuestionsClick}
+    >
+      {seeMoreQuestionsText}
+    </button>
+  ) : null;
 
   return (
     <div id="qaListContainer">
@@ -29,13 +56,7 @@ function QAList({ qaList }) {
           ))}
         </ul>
       </div>
-      <button
-        id="moreAnsweredQuestions"
-        type="submit"
-        onClick={moreQuestionsClick}
-      >
-        MORE ANSWERED QUESTIONS
-      </button>
+      {seeMoreQuestions}
     </div>
   );
 }

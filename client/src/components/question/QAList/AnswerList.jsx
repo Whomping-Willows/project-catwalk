@@ -46,6 +46,7 @@ const AnswerList = ({ answers, setAnswers }) => {
         answer={answers[answerId]}
         updateHelpfulness={updateHelpfulness}
         removeReportedAnswer={removeReportedAnswer}
+        setAnswers={setAnswers}
       />
     ))
     : null;
