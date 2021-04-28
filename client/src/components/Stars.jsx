@@ -5,7 +5,7 @@ import { ApiContext } from '../contexts/api.context.jsx';
 import getReviewsAvg from '../helpers/getReviewsAvg.js';
 
 const Stars = () => {
-  const [reviewScore, setReviewScore] = useState();
+  const [reviewScore, setReviewScore] = useState(0);
 
   const { productId, getRequest, end } = useContext(ApiContext);
 
@@ -19,17 +19,22 @@ const Stars = () => {
   }, [productId]);
 
   return (
-    <Ratings
-      rating={reviewScore}
-      widgetDimensions="15px"
-      widgetSpacings="1px"
-    >
-      <Ratings.Widget />
-      <Ratings.Widget />
-      <Ratings.Widget />
-      <Ratings.Widget />
-      <Ratings.Widget />
-    </Ratings>
+    <div>
+      {reviewScore && (
+        <Ratings
+          rating={reviewScore}
+          widgetDimensions="15px"
+          widgetSpacings="1px"
+        >
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+        </Ratings>
+
+      )}
+    </div>
   );
 };
 

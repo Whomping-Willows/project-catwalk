@@ -1,10 +1,12 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import { render, fireEvent, screen } from '../utils/test-utils.jsx';
-// import { screen } from '@testing-library/react';
+import { render } from '../utils/test-utils.jsx';
+import { userEvent, screen } from '@testing-library/react';
 import App from '../client/src/App.jsx';
 import Reviews from '../client/src/components/review/Reviews.jsx';
 import ReviewsSummary from '../client/src/components/review/ReviewsSummary.jsx';
+import ReviewsChars from '../client/src/components/review/ReviewsChars.jsx';
+import ReviewsList from '../client/src/components/review/ReviewsList.jsx';
 import getReviewsAvg from '../client/src/helpers/getReviewsAvg.js';
 
 describe('Reviews tests', () => {
@@ -91,15 +93,41 @@ describe('Reviews tests', () => {
     ],
   };
 
+  const getNumOfReviews = (metaData) => {
+    let numOfReviews = 0;
+
+    const values = Object.values(metaData.ratings);
+    values.forEach((val) => {
+      numOfReviews += Number(val);
+    });
+
+    return numOfReviews;
+  };
+
   it('should render the reviews component without crashing', () => {
     render(<Reviews />);
   });
 
   it('should display the avg rating for the current product', () => {
-    const metaData = render(<ReviewsSummary metaData={testMeta} />);
+    render(<Reviews />);
+    const checkThis = render(<ReviewsSummary metaData={testMeta} productData={testProduct} />);
     const overallRating = getReviewsAvg(testMeta);
-    metaData.getByText(overallRating);
-
+    checkThis.getByText(overallRating);
   });
+
+  it('should display the comfort factor breakdown if that product uses it', () => {
+    render(<Reviews />);
+    const checkThis = render(<ReviewsChars metaData={testMeta} productData={testProduct} />);
+    checkThis.getByText('Comfort');
+  });
+
+  // it('should display a sorted list of reviews by date when newest is selected', () => {
+  //   render(<Reviews />);
+  //   const reviewsInList = testProduct.results;
+  //   const checkThis = render(<ReviewsList reviewsMetaData={testMeta} reviewsProductData={testProduct} />);
+  //   const reviewsSorted = reviewsInList.sort((a, b) => new Date(b.date) - new Date(a.date));
+  //   checkThis.getByText(reviewsSorted.summary);
+  //   fireEvent.
+  // });
 
 });

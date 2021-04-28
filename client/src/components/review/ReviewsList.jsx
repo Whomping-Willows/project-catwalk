@@ -114,8 +114,8 @@ const ReviewsList = (props) => {
         <Modal
           open={open}
           onClose={handleClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
+          aria-labelledby="add-a-review-form"
+          aria-describedby="to-add-a-new-review"
           container={() => document.getElementById('reviews')}
           className={classes.reviewsModal}
         >
