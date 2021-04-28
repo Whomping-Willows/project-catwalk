@@ -1,22 +1,19 @@
+/* eslint-disable import/named */
 /* eslint-disable import/extensions */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-import api from './api/index.js';
+import { ApiProvider } from './contexts/api.context.jsx';
+import API from './components/API.jsx';
 
-class App extends React.Component {
-  testAPI() {
-    api.reviewsGETtest();
-    api.questionsGETtest();
-    api.productGETtest();
-  }
-
-  render() {
-    return (
-      <div>
-        <button type="submit" aria-label="get data" onClick={this.testAPI}>Test API</button>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <ApiProvider>
+    <div>
+      <span className="header">
+        <h1>Project Catwalk</h1>
+      </span>
+      <API />
+    </div>
+  </ApiProvider>
+);
 
 export default App;
