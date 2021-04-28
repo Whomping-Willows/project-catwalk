@@ -127,6 +127,7 @@ describe('Reviews tests', () => {
   //   const checkThis = render(<ReviewsList reviewsMetaData={testMeta} reviewsProductData={testProduct} />);
   //   const reviewsSorted = reviewsInList.sort((a, b) => new Date(b.date) - new Date(a.date));
   //   checkThis.getByText(reviewsSorted.summary);
+  //   fireEvent.
   // });
 
 });
