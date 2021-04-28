@@ -30,7 +30,7 @@ const AnswerList = ({ answers, setAnswers }) => {
   const seeMoreAnswersClick = () => {
     if (rendered.length === 2) {
       setRendered(allAnswers.slice(0, 4));
-    } else if (rendered.length === 4) {
+    } else if (rendered.length === 4 && rendered.length < allAnswers.length) {
       setRendered(allAnswers);
     } else if (rendered.length === allAnswers.length) {
       setRendered(allAnswers.slice(0, 2));
