@@ -714,15 +714,16 @@ button :hover {
 }
 
 #moreAnsweredQuestions {
-
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
   align-self: flex-end;
+  width: 250px;
 }
 
-.moreAnswersButton :hover {
+
+#moreAnsweredQuestionsButton :hover {
   cursor: pointer;
 }
 

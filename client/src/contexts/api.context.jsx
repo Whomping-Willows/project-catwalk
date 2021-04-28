@@ -68,58 +68,52 @@ export const ApiProvider = (props) => {
 
     answerHelpful: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
 
-    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/helpful`,
+    answerReport: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${answerId}/report`,
 
   };
 
   // HTTP REQUESTS AS FUNCTIONS
-  const getRequest = (endpoint, callback) => {
-    axios.get('/api', {
-      headers: {
-        endpoint,
-      },
+  const getRequest = (endpoint, callback) => axios.get('/api', {
+    headers: {
+      endpoint,
+    },
+  })
+    .then((response) => {
+      // console.log('endpoint: ', endpoint);
+      // console.log(response.data);
+      callback(response.data);
     })
-      .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log(response.data);
-        callback(response.data);
-      })
-      .catch((err) => {
-        console.error('From requests: ', err);
-      });
-  };
+    .catch((err) => {
+      console.error('From requests: ', err);
+    });
 
-  const putRequest = (endpoint) => {
-    axios.put('/api', {
-      headers: {
-        endpoint,
-      },
+  const putRequest = (endpoint) => axios.put('/api', {
+    headers: {
+      endpoint,
+    },
+  })
+    .then((response) => {
+      // console.log('endpoint: ', endpoint);
+      // console.log('status code ', response.status);
+      // console.log('statusText ', response.statusText);
     })
-      .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log('status code ', response.status);
-        console.log('statusText ', response.statusText);
-      })
-      .catch((err) => {
-        console.error('From requests: ', err);
-      });
-  };
+    .catch((err) => {
+      console.error('From requests: ', err);
+    });
 
-  const postRequest = (endpoint, data) => {
-    axios.post('/api', {
-      headers: {
-        endpoint,
-        data,
-      },
+  const postRequest = (endpoint, data) => axios.post('/api', {
+    headers: {
+      endpoint,
+      data,
+    },
+  })
+    .then((response) => {
+      // console.log('endpoint: ', endpoint);
+      // console.log(response.data);
     })
-      .then((response) => {
-        console.log('endpoint: ', endpoint);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.error('From requests: ', err);
-      });
-  };
+    .catch((err) => {
+      console.error('From requests: ', err);
+    });
 
   return (
     <ApiContext.Provider value={{

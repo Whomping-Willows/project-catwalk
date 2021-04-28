@@ -3,9 +3,9 @@
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
 
-const AddAnswerForm = ({ question_body,handleClose }) => {
+const AddAnswerForm = ({ question_id, question_body, handleClose, setAnswers }) => {
   const {
-    productNamegit , postRequest, end,
+    productName, postRequest, getRequest, setQuestionId, end,
   } = useContext(ApiContext);
 
   const [body, setAnswerBody] = useState();
@@ -22,10 +22,18 @@ const AddAnswerForm = ({ question_body,handleClose }) => {
 
   const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
-    postRequest(end.answersList, postData);
-    // need a promise and alert that it has been submitted.
 
-    handleClose();
+    setQuestionId(question_id);
+
+    postRequest(end.answersList, postData)
+      .then(() => {
+        getRequest(end.answersList, setAnswers);
+      })
+      // .then((answers) => {
+      //   console.log(answers);
+      //   setAnswers(answers);
+      // })
+      .then(handleClose());
   };
 
   return (

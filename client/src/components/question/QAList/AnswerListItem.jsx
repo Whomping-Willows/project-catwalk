@@ -1,38 +1,46 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../../contexts/api.context.jsx';
+import formatDate from '../../../helpers/formatDate.js';
 
-const AnswerListItem = ({ answer }) => {
+const AnswerListItem = ({ answer, updateHelpfulness, setAnswers }) => {
   const {
-    putRequest, setAnswerId, end,
+    putRequest, getRequest, setAnswerId, end,
   } = useContext(ApiContext);
 
-  const formatDate = (string) => {
-    let formatted = '';
-    const year = string.substring(0, 4);
-    const month = string.substring(5, 7);
-    const day = string.substring(8, 10);
+  const [helpful, setHelpful] = useState(false);
+  const [reported, setReported] = useState(false);
 
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const monthNumber = Number(month);
-    const monthString = monthNames[monthNumber - 1];
-
-    formatted = formatted.concat(monthString, ' ', day, ', ', year);
-
-    return formatted;
+  const updatePutRequest = (callback) => {
+    setAnswerId(answer.id);
+    callback(true);
   };
 
-  const putAnswerHelpfulness = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answerHelpful);
-    putRequest(end.answerHelpful, null);
-  };
+  useEffect(() => {
+    if (helpful) {
+      putRequest(end.answerHelpful, null)
+        .then(() => {
+          updateHelpfulness(answer.id);
+        });
+    }
+  }, [helpful]);
 
-  const putReportAnswer = () => {
-    console.log('Endpoint param from AnswerListItem ', end.answerReport);
-    putRequest(end.answerReport, null);
-  };
+  useEffect(() => {
+    if (reported) {
+      putRequest(end.answerReport, null)
+        .then(() => {
+          getRequest(end.answersList, (questions) => {
+            setAnswers(questions.results);
+          });
+        });
+    }
+  }, [reported]);
 
   // const seller = answer.answerer_name === 'seller' ? <p id="seller">SELLER</p> : null;
-  // console.log('GRAHAM', answer);
+
+  const styles = helpful ? { textDecoration: 'none' } : null;
+
   return answer ? (
     <li className="answerListItem">
       <p id="answerTag">A:</p>
@@ -52,10 +60,13 @@ const AnswerListItem = ({ answer }) => {
       <div className="answerHelpful">
         Helpful?
         <button
+          style={styles}
           id="answerHelpfulButton"
           className="helpfulButton"
           type="submit"
-          onClick={putAnswerHelpfulness}
+          onClick={!helpful ? () => {
+            updatePutRequest(setHelpful);
+          } : null}
         >
           <div
             className="questionHelpful"
@@ -70,7 +81,9 @@ const AnswerListItem = ({ answer }) => {
         id="answerReport"
         className="helpfulButton"
         type="submit"
-        onClick={putReportAnswer}
+        onClick={() => {
+          updatePutRequest(setReported);
+        }}
       >
         {' '}
         Report

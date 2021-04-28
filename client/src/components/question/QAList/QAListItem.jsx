@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
@@ -8,14 +6,18 @@ import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerList from './AnswerList.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
-const QAListItem = ({ question }) => {
+const QAListItem = ({ question, setQuestions }) => {
   const {
-    getRequest, putRequest, setQuestionId, end,
+    questionId, getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
 
+  const [helpful, setHelpful] = useState(false);
   const [open, setOpen] = useState(false);
+  const [answers, setAnswers] = useState(question.answers);
 
-  const handleOpen = () => {
+  const handleOpen = (e) => {
+    e.preventDefault();
+    setQuestionId(question.question_id);
     setOpen(true);
   };
 
@@ -36,35 +38,29 @@ const QAListItem = ({ question }) => {
 
   const classes = useStyles();
 
-  const setQuestionPromise = () => new Promise((resolve, reject) => {
-    if (question.question_id) {
-      resolve(setQuestionId(question.question_id));
-    } else {
-      reject('error');
-    }
-  });
-
-  const handleQuestionListItemClick = () => {
-    setQuestionId(question.question_id);
-  };
+  const styles = helpful ? { textDecoration: 'none' } : null;
 
   const putQuestionHelpfulness = () => {
-    // console.log('Endpoint param from QAListItem ', end.questionHelpful);
-
-    setQuestionPromise()
-      .then(putRequest(end.questionHelpful))
-      .then(getRequest(end.questionHelpful, (response) => {
-        // need to re-render question
-        // eslint-disable-next-line no-console
-        console.log(response);
-      }))
-      .catch();
+    setQuestionId(question.question_id);
+    setHelpful(true);
   };
 
-  const helpful = (
+  useEffect(() => {
+    if (helpful) {
+      putRequest(end.questionHelpful)
+        .then(() => {
+          getRequest(end.listQuestions, (questions) => {
+            setQuestions(questions.results);
+          });
+        });
+    }
+  }, [helpful]);
+
+  const helpfulContainer = (
     <div className="questionHelpful">
       Helpful?
       <button
+        style={styles}
         type="submit"
         className="helpfulButton"
         onClick={
@@ -103,8 +99,10 @@ const QAListItem = ({ question }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
+          question_id={question.question_id}
           question_body={question.question_body}
           handleClose={handleClose}
+          setAnswers={setAnswers}
         />
       </Modal>
     </div>
@@ -113,16 +111,16 @@ const QAListItem = ({ question }) => {
   return (
     <li
       className="QAListItem"
-      onClick={handleQuestionListItemClick}
     >
       <h3 style={questionStyle}>
         Q:
         {` ${question.question_body}`}
       </h3>
-      {helpful}
+      {helpfulContainer}
       {addAnswer}
       <AnswerList
-        answers={question.answers}
+        answers={answers}
+        setAnswers={setAnswers}
       />
     </li>
   );
