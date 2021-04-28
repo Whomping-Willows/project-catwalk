@@ -1,0 +1,85 @@
+App [MANAGE: productId, page]
+|
+|__Stars [MANAGE: cumulative review score per productId]
+|
+|__Product
+|
+|__Related
+|
+|__Questions
+    |
+    |__SearchForm
+    |
+    |__QAList
+    |   |
+    |   |__QAListItem
+    |       |
+    |       |__AnswerList
+    |           |
+    |           |__AnswerListItem
+    |           |
+    |           |__SubmitAnswerForm
+    |               |
+    |               |__UploadPhotosForm
+    |
+    |__AskQuestionForm
+|
+|__Reviews [MANAGE: all review data | STATE NEEDED: produtId, page]
+    |
+    |__Breakdown
+    |   |
+    |   |__Summary
+    |   |
+    |   |__FilterBlock
+    |   |   |
+    |   |   |__FilterBar
+    |   |
+    |   |__CharBlock
+    |       |
+    |       |__Characteristics
+    |
+    |__List
+    |   |
+    |   |__Sort
+    |   |
+    |   |__ReviewItem
+    |       |
+    |       |__Sub1
+    |       |
+    |       |__Sub2
+    |       |
+    |       |__Sub3, etc.
+    |
+    |__Form [MANAGE ADD NEW REVIEW STATE HERE]
+        |
+        |__Sub1
+        |
+        |__Sub2
+        |
+        |__Sub3
+
+|
+|__Related  [MANAGE: state:productId]
+    |
+    |__RelatedProductsList(component)
+    |   |
+    |   |__RelatedProductCard (component)
+    |       |
+    |       |__(ProductId)
+    |       |__(ProductCategory)
+    |       |__(ProductName)
+    |       |__(ProductImage)
+    |       |__(ProductRating)
+    |       |__(ProductPrice)
+    |       |
+    |       |__ComparisonModal (component)
+    |
+    |__YourOutFitList (component)
+        |
+        |__OutFitCard (component)
+            |__(ProductId)
+            |__(ProductCategory)
+            |__(ProductName)
+            |__(ProductImage)
+            |__(ProductRating)
+            |__(ProductPrice)
