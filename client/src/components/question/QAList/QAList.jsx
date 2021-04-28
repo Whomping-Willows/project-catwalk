@@ -13,9 +13,6 @@ function QAList({ qaList }) {
     } else if (rendered.length === questions.length) {
       setRendered(questions.slice(0, 4));
     }
-
-    console.log('QUESTIONS', questions);
-    console.log('Rendered', rendered);
   };
 
   let seeMoreQuestionsText;
@@ -25,13 +22,6 @@ function QAList({ qaList }) {
   } else if (rendered.length === questions.length && questions.length > 4) {
     seeMoreQuestionsText = 'COLLAPSE QUESTIONS';
   }
-//   <button
-//   id="moreAnsweredQuestions"
-//   type="submit"
-//   onClick={moreQuestionsClick}
-// >
-//   MORE ANSWERED QUESTIONS
-// </button>
 
   const seeMoreQuestions = rendered && questions.length > 4 ? (
     <button

@@ -6,9 +6,8 @@ import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({ answers, setAnswers }) => {
-  const [index, setIndex] = useState(2);
   const allAnswers = (Object.keys(answers));
-  const [rendered, setRendered] = useState(allAnswers.slice(0, index));
+  const [rendered, setRendered] = useState(allAnswers.slice(0, 2));
 
   // const addNewAnswer = (answer) => {
   //   setRendered([...rendered, answer]);
@@ -29,14 +28,13 @@ const AnswerList = ({ answers, setAnswers }) => {
   };
 
   const seeMoreAnswersClick = () => {
-    if (index === 2) {
-      setIndex(4);
-    } else if (index === 4) {
-      setIndex(allAnswers.length);
-    } else if (index === allAnswers.length) {
-      setIndex(2);
+    if (rendered.length === 2) {
+      setRendered(allAnswers.slice(0, 4));
+    } else if (rendered.length === 4) {
+      setRendered(allAnswers);
+    } else if (rendered.length === allAnswers.length) {
+      setRendered(allAnswers.slice(0, 2));
     }
-    setRendered(allAnswers.slice(0, index));
   };
 
   const answerList = rendered && (rendered.length > 0)
@@ -59,7 +57,7 @@ const AnswerList = ({ answers, setAnswers }) => {
     seeMoreAnswersText = 'COLLAPSE ANSWERS';
   }
 
-  const seeMoreAnswers = rendered ? (
+  const seeMoreAnswers = rendered && allAnswers.length > 2 ? (
     <button
       className="moreAnswersButton"
       type="submit"
