@@ -17,13 +17,15 @@ const ReviewsItem = (props) => {
   const [open, setOpen] = useState(false);
   const [currentModalImg, setCurrentModalImg] = useState();
 
-  const { end, putRequest } = useContext(ApiContext);
+  const { end, putRequest, setReviewId } = useContext(ApiContext);
 
-  const putHelpfulness = () => {
+  const putHelpfulness = (e) => {
+    setReviewId(e.target.name);
     putRequest(end.reviewsHelpful, null);
   };
 
-  const putReportReview = () => {
+  const putReportReview = (e) => {
+    setReviewId(e.target.name);
     putRequest(end.reviewsReport, null);
   };
 
@@ -119,12 +121,12 @@ const ReviewsItem = (props) => {
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <button type="button" onClick={putHelpfulness} className="reviewHelpP">
+        <button type="button" className="reviewHelpP" name={props.review.review_id} onClick={putHelpfulness}>
           Yes (
           {props.review.helpfulness}
           ) |
         </button>
-        <button type="button" onClick={putReportReview} className="reviewHelpP">
+        <button type="button" className="reviewHelpP" name={props.review.review_id} onClick={putReportReview}>
           {' '}
           Report
         </button>

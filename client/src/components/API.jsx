@@ -14,16 +14,13 @@ const API = () => {
     getRequest, end, productId, setProductId, setProductName,
   } = useContext(ApiContext);
 
-
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
     getRequest(end.productStyles, setCurrentStyles);
   }, [productId]);
 
   useEffect(() => {
-    console.log('This is current Product ', currentProduct);
     if (currentProduct) {
-      console.log('This is setProductName', setProductName);
       setProductName(currentProduct.name);
     }
   }, [currentProduct]);
@@ -38,13 +35,12 @@ const API = () => {
       {currentProduct && currentStyles
         && (
         <>
-          {/* <Product
-            loading={loading}
+          <Product
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
             setCurrentStyles={setCurrentStyles}
-          /> */}
+          />
           <Related
             currentProduct={currentProduct}
             handleRelatedChange={handleRelatedChange}
