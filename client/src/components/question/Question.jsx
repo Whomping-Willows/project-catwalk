@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
-import QAListItem from './QAList/QAListItem.jsx';
+import QAListItem from './QAListItem.jsx';
 import SearchForm from './SearchForm.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
 
@@ -34,9 +34,9 @@ const Question = () => {
   const { getRequest, end, productId } = useContext(ApiContext);
 
   const [questions, setQuestions] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [rendered, setRendered] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     getRequest(end.listQuestions, (data) => {
@@ -46,7 +46,7 @@ const Question = () => {
     })
       .then(() => {
         console.log(questions);
-        // setRendered(questions.slice(0, 4));
+        setRendered(questions.slice(0, 4));
         setLoading(false);
       });
   }, [productId]);
