@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
-import { ApiContext } from '../../../contexts/api.context.jsx';
-import formatDate from '../../../helpers/formatDate.js';
+import { ApiContext } from '../../contexts/api.context.jsx';
+import formatDate from '../../helpers/formatDate.js';
 
 const AnswerListItem = ({ answer, updateHelpfulness, setAnswers }) => {
   const {

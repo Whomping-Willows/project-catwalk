@@ -101,7 +101,7 @@ export const ApiProvider = (props) => {
       console.error('From requests: ', err);
     });
 
-  const postRequest = (endpoint, data) => axios.post('/api', {
+  const postRequest = (endpoint, data, callback) => axios.post('/api', {
     headers: {
       endpoint,
       data,
@@ -110,6 +110,9 @@ export const ApiProvider = (props) => {
     .then((response) => {
       // console.log('endpoint: ', endpoint);
       // console.log(response.data);
+      if (callback) {
+        callback();
+      }
     })
     .catch((err) => {
       console.error('From requests: ', err);

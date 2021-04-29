@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ApiContext } from '../../../contexts/api.context.jsx';
+import { ApiContext } from '../../contexts/api.context.jsx';
 import AnswerList from './AnswerList.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 

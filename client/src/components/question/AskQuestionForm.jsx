@@ -5,9 +5,9 @@
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
-const AskQuestionForm = ({ handleClose }) => {
+const AskQuestionForm = ({ handleClose, setQuestions }) => {
   const {
-    productName, productId, postRequest, end,
+    productName, productId, postRequest, getRequest, end,
   } = useContext(ApiContext);
 
   const [body, setQuestionBody] = useState();
@@ -21,11 +21,16 @@ const AskQuestionForm = ({ handleClose }) => {
     product_id: productId,
   };
 
+  const postDataHelper = () => {
+    getRequest(end.listQuestions, (data) => {
+      setQuestions(data.results);
+    });
+  };
+
   const handleAskQuestionSubmit = (e) => {
     e.preventDefault();
-    postRequest(end.addQuestion, postData);
-    // need a promise and alert that it has been submitted.
 
+    postRequest(end.addQuestion, postData, postDataHelper);
     handleClose();
   };
 
