@@ -42,7 +42,6 @@ const API = () => {
             setCurrentStyles={setCurrentStyles}
           />
           <Related
-            currentProduct={currentProduct}
             handleRelatedChange={handleRelatedChange}
           />
           <Question />
