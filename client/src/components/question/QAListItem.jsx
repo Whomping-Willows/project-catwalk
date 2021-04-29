@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
@@ -8,7 +9,7 @@ import AddAnswerForm from './AddAnswerForm.jsx';
 
 const QAListItem = ({ question, setQuestions }) => {
   const {
-    questionId, getRequest, putRequest, setQuestionId, end,
+    getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
 
   const [helpful, setHelpful] = useState(false);

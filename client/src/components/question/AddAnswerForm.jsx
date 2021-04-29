@@ -7,7 +7,7 @@ import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
 const AddAnswerForm = ({
-  question_id, question_body, handleClose, setAnswers,
+  questions, question_id, question_body, handleClose, setAnswers, setRendered,
 }) => {
   const {
     productName, postRequest, getRequest, setQuestionId, end,
@@ -29,6 +29,7 @@ const AddAnswerForm = ({
     getRequest(end.answersList, (data) => {
       console.log(data.results);
       setAnswers(data.results);
+      // setRendered(questions.length);
     });
   };
 
