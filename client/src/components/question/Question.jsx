@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 import QAListItem from './QAListItem.jsx';
 import SearchForm from './SearchForm.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
@@ -32,11 +33,14 @@ import AskQuestionForm from './AskQuestionForm.jsx';
 
 const Question = () => {
   const { getRequest, end, productId } = useContext(ApiContext);
+  const {
+    questions, setQuestions, renderedQuestions, setRenderedQuestions,
+  } = useContext(QuestionContext);
 
-  const [rendered, setRendered] = useState([]);
+  // const [renderedQuestions, setRenderedQuestions] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [questions, setQuestions] = useState([]);
+  // const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     getRequest(end.listQuestions, (data) => {
@@ -45,31 +49,31 @@ const Question = () => {
   }, [productId]);
 
   useEffect(() => {
-    setRendered(questions.slice(0, 4));
+    setRenderedQuestions(questions.slice(0, 4));
     setLoading(false);
   }, [questions]);
 
   const moreQuestionsClick = () => {
-    if (rendered.length === 4) {
-      setRendered(questions.slice(0, 6));
-    } else if (rendered.length === 6 && rendered.length < questions.length) {
-      setRendered(questions.slice(0, questions.length));
-    } else if (rendered.length === questions.length) {
-      setRendered(questions.slice(0, 4));
+    if (renderedQuestions.length === 4) {
+      setRenderedQuestions(questions.slice(0, 6));
+    } else if (renderedQuestions.length === 6 && renderedQuestions.length < questions.length) {
+      setRenderedQuestions(questions.slice(0, questions.length));
+    } else if (renderedQuestions.length === questions.length) {
+      setRenderedQuestions(questions.slice(0, 4));
     }
   };
 
   let seeMoreQuestionsText;
 
-  if (questions && rendered) {
-    if (rendered && (rendered.length < questions.length)) {
+  if (questions && renderedQuestions) {
+    if (renderedQuestions && (renderedQuestions.length < questions.length)) {
       seeMoreQuestionsText = 'SEE MORE QUESTIONS';
-    } else if (rendered.length === questions.length && questions.length > 4) {
+    } else if (renderedQuestions.length === questions.length && questions.length > 4) {
       seeMoreQuestionsText = 'COLLAPSE QUESTIONS';
     }
   }
 
-  const seeMoreQuestions = rendered && questions.length > 4 ? (
+  const seeMoreQuestions = renderedQuestions && questions.length > 4 ? (
     <button
       id="moreAnsweredQuestions"
       type="submit"
@@ -113,7 +117,7 @@ const Question = () => {
             <div id="qaListContainer">
               <div id="qaListScroll">
                 <ul id="qaList">
-                  {rendered.map((question) => (
+                  {renderedQuestions.map((question) => (
                     <QAListItem
                       key={question.question_id}
                       setQuestions={setQuestions}

@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../contexts/api.context.jsx';
 import Product from './product/Product.jsx';
 import Related from './related/Related.jsx';
+import { QuestionProvider } from './question/QuestionContext.jsx';
 import Question from './question/Question.jsx';
 import Reviews from './review/Reviews.jsx';
 
@@ -45,7 +46,9 @@ const API = () => {
             currentProduct={currentProduct}
             handleRelatedChange={handleRelatedChange}
           />
-          <Question />
+          <QuestionProvider>
+            <Question className="question" />
+          </QuestionProvider>
           <Reviews />
         </>
         )}
