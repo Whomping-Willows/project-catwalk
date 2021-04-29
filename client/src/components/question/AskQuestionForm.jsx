@@ -5,7 +5,7 @@
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
-const AskQuestionForm = ({ handleClose, questions, setQuestions }) => {
+const AskQuestionForm = ({ handleClose, setQuestions }) => {
   const {
     productName, productId, postRequest, getRequest, end,
   } = useContext(ApiContext);

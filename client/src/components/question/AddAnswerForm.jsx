@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
-const AddAnswerForm = ({ question_id, question_body, handleClose, setAnswers }) => {
+const AddAnswerForm = ({
+  question_id, question_body, handleClose, setAnswers,
+}) => {
   const {
     productName, postRequest, getRequest, setQuestionId, end,
   } = useContext(ApiContext);
@@ -20,27 +25,27 @@ const AddAnswerForm = ({ question_id, question_body, handleClose, setAnswers }) 
     photos,
   };
 
+  const postDataHelper = () => {
+    getRequest(end.answersList, (data) => {
+      console.log(data.results);
+      setAnswers(data.results);
+    });
+  };
+
   const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
 
     setQuestionId(question_id);
 
-    postRequest(end.answersList, postData)
-      .then(() => {
-        getRequest(end.answersList, setAnswers);
-      })
-      // .then((answers) => {
-      //   console.log(answers);
-      //   setAnswers(answers);
-      // })
-      .then(handleClose());
+    postRequest(end.answersList, postData, postDataHelper);
+    handleClose();
   };
 
   return (
     <div className="qaFormContainer">
       <h2>
         Submit your answer for:
-        <h3>{` '${productName}' : ${question_body}` }</h3>
+        {` '${productName}' : ${question_body}` }
       </h2>
       <form>
         <div id="answerFormBody">
