@@ -3,10 +3,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchForm from './SearchForm.jsx';
-import QAList from './QAList/QAList.jsx';
-import AskQuestionForm from './AskQuestionForm.jsx';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import QAListItem from './QAListItem.jsx';
+import SearchForm from './SearchForm.jsx';
+import AskQuestionForm from './AskQuestionForm.jsx';
 
 // const dummyData = {
 //   results: [
@@ -33,15 +33,51 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 const Question = () => {
   const { getRequest, end, productId } = useContext(ApiContext);
 
-  const [questionsMeta, setQuestionsMeta] = useState();
+  const [rendered, setRendered] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    getRequest(end.listQuestions, setQuestionsMeta).then(() => {
-      setLoading(false);
+    getRequest(end.listQuestions, (data) => {
+      setQuestions(data.results);
     });
   }, [productId]);
+
+  useEffect(() => {
+    setRendered(questions.slice(0, 4));
+    setLoading(false);
+  }, [questions]);
+
+  const moreQuestionsClick = () => {
+    if (rendered.length === 4) {
+      setRendered(questions.slice(0, 6));
+    } else if (rendered.length === 6 && rendered.length < questions.length) {
+      setRendered(questions.slice(0, questions.length));
+    } else if (rendered.length === questions.length) {
+      setRendered(questions.slice(0, 4));
+    }
+  };
+
+  let seeMoreQuestionsText;
+
+  if (questions && rendered) {
+    if (rendered && (rendered.length < questions.length)) {
+      seeMoreQuestionsText = 'SEE MORE QUESTIONS';
+    } else if (rendered.length === questions.length && questions.length > 4) {
+      seeMoreQuestionsText = 'COLLAPSE QUESTIONS';
+    }
+  }
+
+  const seeMoreQuestions = rendered && questions.length > 4 ? (
+    <button
+      id="moreAnsweredQuestions"
+      type="submit"
+      onClick={moreQuestionsClick}
+    >
+      {seeMoreQuestionsText}
+    </button>
+  ) : null;
 
   const handleOpen = () => {
     setOpen(true);
@@ -66,13 +102,29 @@ const Question = () => {
 
   return !loading ? (
     <div className="question">
-      {questionsMeta && (
+      {questions && (
         <>
           <h2>QUESTIONS & ANSWERS</h2>
-          <SearchForm />
-          <QAList
-            qaList={questionsMeta.results}
-          />
+          <div id="qaContainer">
+            <SearchForm
+              questions={questions}
+              setQuestions={setQuestions}
+            />
+            <div id="qaListContainer">
+              <div id="qaListScroll">
+                <ul id="qaList">
+                  {rendered.map((question) => (
+                    <QAListItem
+                      key={question.question_id}
+                      setQuestions={setQuestions}
+                      question={question}
+                    />
+                  ))}
+                </ul>
+              </div>
+              {seeMoreQuestions}
+            </div>
+          </div>
           <div id="askYourQuestion">
             <label id="askQuestionLabel">
               Don&apos;t see the answer you&apos;re looking for?
@@ -96,6 +148,8 @@ const Question = () => {
           >
             <AskQuestionForm
               handleClose={handleClose}
+              questions={questions}
+              setQuestions={setQuestions}
             />
           </Modal>
         </>
