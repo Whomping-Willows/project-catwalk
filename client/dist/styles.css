@@ -1,41 +1,46 @@
+:root {
+  --size-divisor: 3;
+}
+
 body {
-  margin: 0;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
+}
+/* Header */
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(150px/ var(--size-divisor));
+  width: 100%;
+  background-color: #515151;
+  display: block;
 }
 
 /* Main container for 4 widgets */
 .appContainer {
   display: grid;
-  width: 1000px;
-  grid-template-rows: 200px 720px 500px 820px 720px 100px;
-  grid-template-columns: 100px 800px 100px;
+  grid-template-rows: 100px 720px 450px 820px 720px 100px;
+  grid-template-columns: 100px auto 100px;
+  margin: 100px auto;
+  width: calc(1000px/var(--size-divisor));
 }
 
-/* Header */
-
-.header {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 150px;
-  width: 100%;
-  background-color: #515151;
-}
 
 /* Title */
 h1 {
   position: absolute;
-  width: 686px;
-  height: 78px;
-  left: 34px;
-  top: 34px;
+  width: calc(686px/ var(--size-divisor));
+  height: calc(78px/ var(--size-divisor));
+  left: calc(34px/ var(--size-divisor));
+  top: calc(34px/ var(--size-divisor));
 
   font-family: Unica One;
   font-style: normal;
   font-weight: normal;
-  font-size: 60px;
-  line-height: 71px;
+  font-size: calc(60px/ var(--size-divisor));
+  line-height: calc(71px/ var(--size-divisor));
 
   color: #E5E5E5;
 }
@@ -43,7 +48,7 @@ h1 {
 /* For widget titles */
 h2 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
   color: darkslategrey;
   font-weight: 400;
 }
@@ -51,14 +56,14 @@ h2 {
 /* For bold titles (not product title) */
 h3 {
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
   color: darkslategrey;
   font-weight: bold;
 }
 
 p {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px/ var(--size-divisor));
   color: darkslategrey
 }
 
@@ -75,8 +80,8 @@ i {
 #testbutton {
   position: absolute;
   display: inline-block;
-  top: 200px;
-  left: 30px;
+  top: calc(200px/ var(--size-divisor));
+  left: calc(30px/ var(--size-divisor));
 }
 
 button {
@@ -84,11 +89,11 @@ button {
   border-width: 1px;
   font-family: Arial, Helvetica, sans-serif;
   color: #393939;
-  padding: 20px;
-  margin: 10px;
+  padding: calc(20px/ var(--size-divisor));
+  margin: calc(10px/ var(--size-divisor));
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
   background-color: white;
 }
 
@@ -103,8 +108,8 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 4;
   display: grid;
-  grid-template-rows: 5% 15% auto 10% 200px;
-  grid-template-columns: 100px 520px 20px 260px 100px;
+  grid-template-rows: calc(5% 15% auto 10% 200px/ var(--size-divisor));
+  grid-template-columns: calc(100px 520px 20px 260px 100px/ var(--size-divisor));
 }
 
 .productGallery {
@@ -123,8 +128,8 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 6;
-  height: 520px;
-  width: 620px;
+  height: calc(520px/ var(--size-divisor));
+  width: calc(620px/ var(--size-divisor));
 }
 
 .sideGallery {
@@ -133,16 +138,16 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 2;
   overflow-y: scroll;
-  width: 100px;
+  width: calc(100px/ var(--size-divisor));
   height: 66%;
 }
 
 .sideImage {
-  height: 50px;
-  width: 50px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
+  height: calc(50px/ var(--size-divisor));
+  width: calc(50px/ var(--size-divisor));
+  margin-left: calc(10px/ var(--size-divisor));
+  margin-right: calc(10px/ var(--size-divisor));
+  margin-top: calc(10px/ var(--size-divisor));
 }
 
 .productStars {
@@ -180,15 +185,15 @@ button :hover {
 #productCategory {
   grid-row-start: 1;
   grid-row-end: 2;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
   margin: 0px;
 }
 
 #productName {
   grid-row-start: 2;
   grid-row-end: 3;
-  font-size: 20px;
-  margin: 0px;
+  font-size: calc(20px/ var(--size-divisor));
+  margin: 0;
 }
 
 .productStyles {
@@ -211,14 +216,14 @@ button :hover {
 #styleStyle {
   grid-column-start: 1;
   grid-column-end: 2;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
 }
 
 #styleName {
   grid-column-start: 2;
   grid-column-end: 3;
-  margin-left: 10px;
-  font-size: 16px;
+  margin-left: calc(10px/ var(--size-divisor));
+  font-size: calc(16px/ var(--size-divisor));
 }
 
 .styleSelector {
@@ -255,11 +260,11 @@ button :hover {
 .styleImage {
   display: inline-block;
   border-Width: 1;
-  width: 70px;
-  height: 70px;
-  border-radius: 35px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  width: calc(70px/ var(--size-divisor));
+  height: calc(70px/ var(--size-divisor));
+  border-radius: calc(35px/ var(--size-divisor));
+  margin-bottom: calc(10px/ var(--size-divisor));
+  margin-right: calc(10px/ var(--size-divisor));
   background-size: cover;
 }
 
@@ -273,14 +278,14 @@ button :hover {
 
 #sizeSelector {
   width: 60%;
-  margin-right: 20px;
-  margin-bottom: 12.5px;
+  margin-right: calc(20px/ var(--size-divisor));
+  margin-bottom: calc(12.5px/ var(--size-divisor));
   display: inline-block;
 }
 
 #quantitySelector {
   width: 30%;
-  margin-bottom: 12.5px;
+  margin-bottom: calc(12.5px/ var(--size-divisor));
   display: inline-block;
   border-color: black;
 }
@@ -293,7 +298,7 @@ button :hover {
 }
 
 #productSalePrice {
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
   color: red;
 }
 
@@ -302,7 +307,7 @@ button :hover {
 }
 
 #productPrice {
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
 }
 
 .productCart {
@@ -315,26 +320,26 @@ button :hover {
 
 #addToBag {
   width: 75%;
-  height: 50px;
+  height: calc(50px/ var(--size-divisor));
   float: left;
 }
 
 #addToCartText{
   position: relative;
-  top: -12.5px;
-  left: -10px;
+  top: calc(-12.5px/ var(--size-divisor));
+  left: calc(-10px/ var(--size-divisor));
 }
 
 #favorite {
-  width: 50px;
-  height: 50px;
+  width: calc(50px/ var(--size-divisor));
+  height: calc(50px/ var(--size-divisor));
   float: right;
 }
 
 #favoriteStar {
   position: relative;
-  top: -12.5px;
-  left: -12.5px;
+  top: calc(-12.5px/ var(--size-divisor));
+  left: calc(-12.5px/ var(--size-divisor));
 }
 
 .productDescription {
@@ -372,7 +377,7 @@ button :hover {
 }
 
 #featureList {
-  margin-top: 10px;
+  margin-top: calc(10px/ var(--size-divisor));
 }
 
 #productCheck {
@@ -383,12 +388,13 @@ button :hover {
 /* RELATED SECTION */
 
 .related {
+  margin-top: calc(50px/ var(--size-divisor));
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px auto;
+  grid-template-rows: 50px 350px;
 }
 
 #relatedProductsTitle {
@@ -403,7 +409,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-template-rows: 200px 50px;
@@ -420,7 +426,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
 }
 
 .relatedPic1 {
@@ -442,7 +448,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 2;
   grid-column-end: 3;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
 }
 
 .relatedPic2 {
@@ -464,7 +470,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 3;
   grid-column-end: 4;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
 }
 
 .relatedPic3 {
@@ -486,7 +492,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 4;
   grid-column-end: 5;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
 }
 
 .relatedPic4 {
@@ -792,14 +798,14 @@ button :hover {
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 50px auto 100px 720px;
+  grid-template-rows: calc(50px auto 100px 720px / var(--size-divisor));
   grid-template-columns: 33% 67%;
-  padding: 10px;
+  padding: calc(10px / var(--size-divisor));
 }
 
 .reviewsLabel {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: calc(14px / var(--size-divisor));
   color: darkslategrey
 }
 
@@ -811,7 +817,7 @@ button :hover {
   border-width: 2px;
   border-color:darkgrey;
   display: grid;
-  grid-template-rows: 100px 30px 200px auto;
+  grid-template-rows: calc(100px 30px 200px auto / var(--size-divisor));
 }
 
 #reviewsSummary {
@@ -820,8 +826,8 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: auto 30px;
-  grid-template-columns: auto 150px;
+  grid-template-rows: calc(auto 30px / var(--size-divisor));
+  grid-template-columns: calc(auto 150px / var(--size-divisor));
 }
 
 #reviewsSumNum {
@@ -829,7 +835,7 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  font-size: 64px;
+  font-size: calc(64px / var(--size-divisor));
   font-weight: bold;
   color: darkslategray;
 }
@@ -839,8 +845,8 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 3;
-  font-size: 12px;
-  margin-top: 10px;
+  font-size: calc(12px/ var(--size-divisor));
+  margin-top: calc(10px / var(--size-divisor));
 }
 
 #reviewsSumRec {
@@ -857,16 +863,16 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: 30px 30px 30px 30px 30px;
-  grid-template-columns: 50px auto;
-  margin-top: 20px;
+  grid-template-rows: calc(30px 30px 30px 30px 30px / var(--size-divisor));
+  grid-template-columns: calc(50px auto/ var(--size-divisor));
+  margin-top: calc(20px/ var(--size-divisor));
   align-items: center;
 }
 
 .filterBar {
   grid-column-start: 1;
   grid-column-end: 3;
-  padding: 5px;
+  padding: calc(5px / var(--size-divisor));
   border-style: none;
   border-color: white;
   border-width: 0;
@@ -879,7 +885,7 @@ button :hover {
 .filterBarOn {
   grid-column-start: 1;
   grid-column-end: 3;
-  padding: 5px;
+  padding: calc(5px/ var(--size-divisor));
   border-style: none;
   border-color: white;
   border-width: 0;
@@ -912,7 +918,7 @@ button :hover {
 .reviewsFilterLabel {
   margin: 0 0 0 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px / var(--size-divisor));
   color: darkslategrey;
   text-decoration: underline;
   display: inline;
@@ -993,13 +999,13 @@ button :hover {
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
-  margin-top: 20px;
+  margin-top: calc(20px / var(--size-divisor));
 }
 
 .reviewsCharLabel {
   margin: 0 0 0 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px / var(--size-divisor));
   color: darkslategrey;
 }
 
@@ -1021,8 +1027,8 @@ button :hover {
 .reviewsCharDiv {
   display: grid;
   grid-template-rows: auto auto auto;
-  grid-template-columns: 10px auto 10px auto 10px auto 10px auto 10px;
-  margin-bottom: 30px;
+  grid-template-columns: calc(10px auto 10px auto 10px auto 10px auto 10px/ var(--size-divisor));
+  margin-bottom: calc(30px/ var(--size-divisor));
 }
 
 #charPointer {
@@ -1071,8 +1077,8 @@ button :hover {
   grid-column-end: 10;
   grid-row-start: 2;
   grid-row-end: 3;
-  height: 10px;
-  margin-bottom: 10px;
+  height: calc(10px/ var(--size-divisor));
+  margin-bottom: calc(10px / var(--size-divisor));
 }
 
 .reviewsCharTable {
@@ -1091,8 +1097,8 @@ button :hover {
   border-width: 2px;
   border-color: darkgrey;
   display: grid;
-  grid-template-rows: 50px 600px 100px;
-  margin-left: 50px;
+  grid-template-rows: calc(50px 600px 100px/ var(--size-divisor));
+  margin-left: calc(50px/ var(--size-divisor));
 }
 
 #reviewsSort {
@@ -1100,7 +1106,7 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 3;
-  border-bottom: 2px;
+  border-bottom: calc(2px / var(--size-divisor));
   border-color: darkgrey;
   float: left;
 }
@@ -1116,10 +1122,10 @@ button :hover {
 
 .reviewsSortMenuDiv a {
   float: left;
-  font-size: 16px;
+  font-size: calc(16px / var(--size-divisor));
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: calc(14px 16px/ var(--size-divisor));
   text-decoration: none;
 }
 
@@ -1127,13 +1133,13 @@ button :hover {
   display: inline;
   color: darkslategrey;
   font-weight: bold;
-  padding-left: 5px;
+  padding-left: calc(5px / var(--size-divisor));
   z-index: 1;
 }
 
 #sortCaret {
   display: inline;
-  margin-left: 5px;
+  margin-left: calc(5px/ var(--size-divisor));
   float: none;
 }
 
@@ -1149,19 +1155,19 @@ button :hover {
 
 .dropdown-content {
   display: block;
-  min-width: 100px;
-  font-size: 16px;
+  min-width: calc(100px/ var(--size-divisor));
+  font-size: calc(16px/ var(--size-divisor));
   color: darkslategrey;
-  margin-left: 170px;
+  margin-left: calc(170px/ var(--size-divisor));
   line-height: 2;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
   background-color: white;
   position: absolute;
   z-index: 1000;
 }
 
 #reviewsListButtons {
-  margin-top: 20px;
+  margin-top: calc(20px/ var(--size-divisor));
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 1;
@@ -1171,7 +1177,7 @@ button :hover {
 #reviewsAddPlus {
   float: right;
   margin: 0;
-  margin-left: 10px;
+  margin-left: calc(10px/ var(--size-divisor));
 }
 
 #reviewsAll {
@@ -1187,10 +1193,10 @@ button :hover {
   border-bottom-style: solid;
   border-color: darkgrey;
   display: grid;
-  grid-template-rows: auto auto auto auto auto 30px;
-  grid-template-columns: auto 300px;
-  margin: 10px;
-  margin-bottom: 30px;
+  grid-template-rows: auto auto auto auto auto calc(30px/ var(--size-divisor));
+  grid-template-columns: calc(auto 300px/ var(--size-divisor));
+  margin: calc(10px/ var(--size-divisor));
+  margin-bottom: calc(30px/ var(--size-divisor));
 }
 
 #reviewSubTitleStars {
@@ -1198,7 +1204,7 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  font-size: 12px;
+  font-size: calc(12px/ var(--size-divisor));
 }
 
 #reviewSubTitleUserDate {
@@ -1206,7 +1212,7 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 3;
-  font-size: 10px;
+  font-size: calc(10px/ var(--size-divisor));
   text-align: right;
   color: darkgrey;
 }
@@ -1231,8 +1237,8 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 3;
   white-space: nowrap;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: calc(10px/ var(--size-divisor));
+  margin-bottom: calc(20px/ var(--size-divisor));
 }
 
 #reviewIsRec {
@@ -1240,12 +1246,12 @@ button :hover {
   grid-row-end: 5;
   grid-column-start: 1;
   grid-column-end: 3;
-  margin-top: 7px;
+  margin-top: calc(7px/ var(--size-divisor));
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px/ var(--size-divisor));
   color: darkslategrey;
   white-space: nowrap;
-  height: 15px;
+  height: calc(15px/ var(--size-divisor));
 }
 
 #reviewsPhotos {
@@ -1253,33 +1259,33 @@ button :hover {
   grid-row-end: 6;
   grid-column-start: 1;
   grid-column-end: 3;
-  height: 50px;
-  margin-bottom: 10px;
+  height: calc(50px/ var(--size-divisor));
+  margin-bottom: calc(10px/ var(--size-divisor));
 }
 
 .reviewsPhotoDiv {
   object-fit: cover;
-  padding-bottom: 10px;
+  padding-bottom: calc(10px/ var(--size-divisor));
   display: inline;
 }
 
 .reviewsImg {
-  width: 45px;
-  height: 45px;
-  margin: 5px;
-  padding-bottom: 5px;
+  width: calc(45px/ var(--size-divisor));
+  height: calc(45px/ var(--size-divisor));
+  margin: calc(5px/ var(--size-divisor));
+  padding-bottom: calc(5px/ var(--size-divisor));
 }
 
 .reviewsModalImgDiv {
-  width: 720px;
-  height: 720px;
+  width: calc(720px/ var(--size-divisor));
+  height: calc(720px/ var(--size-divisor));
   object-fit: cover;
 }
 
 .reviewsModalImg {
   width: 100%;
   height: 100%;
-  padding: 50px;
+  padding: calc(50px/ var(--size-divisor));
 }
 
 #reviewResponse {
@@ -1289,18 +1295,18 @@ button :hover {
   grid-column-end: 3;
   background-color: lightgray;
   color: #515151;
-  padding: 15px;
-  font-size: 10px;
+  padding: calc(15px/ var(--size-divisor));
+  font-size: calc(10px/ var(--size-divisor));
 }
 
 #reviewResponseTitle {
-  margin: 0px;
+  margin: 0;
   font-weight: bold;
   padding: 5px;
 }
 
 #reviewResponseBody {
-  margin: 0px;
+  margin: 0;
   padding: 5px;
 }
 
@@ -1309,11 +1315,11 @@ button :hover {
     grid-row-end: 7;
     grid-column-start: 1;
     grid-column-end: 3;
-    margin-bottom: 10px;
+    margin-bottom: calc(10px/ var(--size-divisor));
   }
 
 .reviewHelpP {
-  font-size: 10px;
+  font-size: calc(10px/ var(--size-divisor));
   color: darkslategray;
   display: inline;
   border-style: none;
@@ -1326,10 +1332,10 @@ button :hover {
 }
 
 .button3 {
-  width: 500px;
-  font-size: 10px;
+  width: calc(500px/ var(--size-divisor));
+  font-size: calc(10px/ var(--size-divisor));
   float: left;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
@@ -1337,10 +1343,10 @@ button :hover {
 }
 
 .button2 {
-  width: 100px;
-  font-size: 10px;
+  width: calc(100px/ var(--size-divisor));
+  font-size: calc(10px/ var(--size-divisor));
   float: left;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
@@ -1353,12 +1359,12 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 3;
   display: grid;
-  grid-template-rows: auto auto auto 50px auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: calc(auto auto auto 50px auto auto auto auto auto auto auto auto auto/ var(--size-divisor));
   grid-template-columns: 40% 60%;
-  padding: 50px;
-  margin: 100px;
+  padding: calc(50px/ var(--size-divisor));
+  margin: calc(100px/ var(--size-divisor));
   background-color: white;
-  width: 600px;
+  width: calc(600px/ var(--size-divisor));
   overflow-y: scroll;
 }
 
@@ -1373,19 +1379,19 @@ button :hover {
 #reviewsFormTitle {
   text-align: center;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  font-size: calc(24px/ var(--size-divisor));
   color: darkslategrey;
   font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: calc(10px/ var(--size-divisor));
+  margin-bottom: calc(10px/ var(--size-divisor));
 }
 
 .reviewsFormSub {
   text-align: center;
-  font-size: 20px;
+  font-size: calc(20px/ var(--size-divisor));
   font-weight: normal;
-  margin-bottom: 10px;
-  margin-top: 0px;
+  margin-bottom: calc(10px/ var(--size-divisor));
+  margin-top: 0;
 }
 
 #reviewsOverallRatingDiv {
@@ -1396,12 +1402,12 @@ button :hover {
 }
 
 #overallRatingStars {
-  margin-right: 10px;
+  margin-right: calc(10px/ var(--size-divisor));
 }
 
 .reviewsFormLabelsMain {
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: calc(16px/ var(--size-divisor));
   font-weight: bold;
   color: darkslategrey;
   display: inline;
@@ -1409,16 +1415,16 @@ button :hover {
 
 .reviewsFormBorder {
   border-top: 1px solid darkgrey;
-  padding: 20px 0 20px 0;
+  padding: calc(20px 0 20px 0/ var(--size-divisor));
 }
 
 .reviewsFormLabelsSm {
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px/ var(--size-divisor));
   font-weight: normal;
   color: darkslategrey;
   display: inline;
-  margin-left: 10px;
+  margin-left: calc(10px/ var(--size-divisor));
   margin-right: 2px;
 }
 
@@ -1435,7 +1441,7 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 3;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px/ var(--size-divisor));
   color: darkslategrey;
   display: inline;
 }
@@ -1450,8 +1456,8 @@ button :hover {
 .charGrid {
   display: grid;
   grid-template-rows: auto auto auto;
-  grid-template-columns: 150px 60px 60px 60px 60px 60px;
-  margin-bottom: 5px;
+  grid-template-columns: calc(150px 60px 60px 60px 60px 60px/ var(--size-divisor));
+  margin-bottom: calc(5px/ var(--size-divisor));
   align-items:center;
   justify-content:center;
 }
@@ -1461,7 +1467,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
-  margin: 0 0 0 20px;
+  margin: calc(0 0 0 20px/ var(--size-divisor));
   float: right;
 }
 
@@ -1481,7 +1487,7 @@ button :hover {
   grid-column-start: 2;
   grid-column-end: 3;
   display: block;
-  margin: 0 22px 0 22px;
+  margin: calc(0 22px 0 22px/ var(--size-divisor));
 }
 
 .char1Score {
@@ -1510,7 +1516,7 @@ button :hover {
   grid-column-start: 3;
   grid-column-end: 4;
   display: block;
-  margin: 0 25px 0 25px;
+  margin: calc(0 25px 0 25px/ var(--size-divisor));
 }
 
 .char3Title {
@@ -1529,7 +1535,7 @@ button :hover {
   grid-column-start: 4;
   grid-column-end: 5;
   display: block;
-  margin: 0 25px 0 25px;
+  margin: calc(0 25px 0 25px/ var(--size-divisor));
 }
 
 .char4Title {
@@ -1548,7 +1554,7 @@ button :hover {
   grid-column-start: 5;
   grid-column-end: 6;
   display: block;
-  margin: 0 25px 0 25px;
+  margin: calc(0 25px 0 25px/ var(--size-divisor));
 }
 
 .char5Title {
@@ -1567,7 +1573,7 @@ button :hover {
   grid-column-start: 6;
   grid-column-end: 7;
   display: block;
-  margin: 0 25px 0 25px;
+  margin: calc(0 25px 0 25px/ var(--size-divisor));
 }
 
 .char5Score {
@@ -1587,7 +1593,7 @@ button :hover {
 }
 
 #summary {
-  width: 350px;
+  width: calc(350px/ var(--size-divisor));
 }
 
 #reviewsFormBody {
@@ -1610,10 +1616,10 @@ button :hover {
   grid-row-end: 9;
   grid-column-start: 1;
   grid-column-end: 3;
-  width: 500px;
-  height: 150px;
+  width: calc(500px/ var(--size-divisor));
+  height: calc(150px/ var(--size-divisor));
   font-weight: normal;
-  margin-top: 10px;
+  margin-top: calc(10px/ var(--size-divisor));
   padding:0 5px;
   word-wrap: break-word;
   word-break: break-all;
@@ -1642,23 +1648,23 @@ button :hover {
   grid-column-end: 3;
   display: inline;
   height: auto;
-  padding: 10px;
+  padding: calc(10px/ var(--size-divisor));
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px/ var(--size-divisor));
   font-weight: normal;
   color: #2f4f4f;
 }
 
 #reviewsAddPhotosModal {
-  padding: 50px;
-  margin: 150px;
+  padding: calc(50px/ var(--size-divisor));
+  margin: calc(150px/ var(--size-divisor));
   background-color: white;
-  width: 400px;
+  width: calc(400px/ var(--size-divisor));
 }
 
 #reviewsUploadedPhotos {
-  height: 50px;
-  width: 50px;
+  height: calc(50px/ var(--size-divisor));
+  width: calc(50px/ var(--size-divisor));
 }
 
 #reviewsFormName {
@@ -1669,7 +1675,7 @@ button :hover {
 }
 
 #nickname {
-  width: 320px;
+  width: calc(320px/ var(--size-divisor));
 }
 
 #disclaimer {
@@ -1684,7 +1690,7 @@ button :hover {
 }
 
 #email {
-  width: 350px;
+  width: calc(350px/ var(--size-divisor));
 }
 
 #reviewsFormSubmit {
@@ -1695,5 +1701,26 @@ button :hover {
 }
 
 #reviewsSubmit {
-  margin-left: 200px;
+  margin-left: calc(200px/ var(--size-divisor));
+}
+
+@media (min-width: 576px) {
+  :root {
+    --size-divisor: 2;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --size-divisor: 1.5;
+  }
+}
+@media (min-width: 992px) {
+  :root {
+    --size-divisor: 1;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --size-divisor: 1;
+  }
 }

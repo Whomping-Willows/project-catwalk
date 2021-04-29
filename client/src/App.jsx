@@ -8,9 +8,9 @@ import API from './components/API.jsx';
 const App = () => (
   <ApiProvider>
     <div>
-      <span className="header">
+      <div className="header">
         <h1>Project Catwalk</h1>
-      </span>
+      </div>
       <API />
     </div>
   </ApiProvider>
