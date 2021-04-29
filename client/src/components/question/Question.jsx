@@ -3,7 +3,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 import QAListItem from './QAListItem.jsx';
 import SearchForm from './SearchForm.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
@@ -31,25 +31,18 @@ import AskQuestionForm from './AskQuestionForm.jsx';
 // };
 
 const Question = () => {
-  const { getRequest, end, productId } = useContext(ApiContext);
+  console.log(QuestionContext);
+  const { questions, setQuestions } = useContext(QuestionContext);
 
-  const [questions, setQuestions] = useState([]);
   const [rendered, setRendered] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getRequest(end.listQuestions, (data) => {
-      console.log(data.results);
-      setQuestions(data.results);
-      console.log(questions);
-    })
-      .then(() => {
-        console.log(questions);
-        setRendered(questions.slice(0, 4));
-        setLoading(false);
-      });
-  }, [productId]);
+    console.log(questions);
+    setRendered(questions.slice(0, 4));
+    setLoading(false);
+  }, [questions]);
 
   const moreQuestionsClick = () => {
     if (rendered.length === 4) {

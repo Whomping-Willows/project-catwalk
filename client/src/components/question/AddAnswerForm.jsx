@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
-import { ApiContext } from '../../../contexts/api.context.jsx';
+import { ApiContext } from '../../contexts/api.context.jsx';
 
 const AddAnswerForm = ({ question_id, question_body, handleClose, setAnswers }) => {
   const {
