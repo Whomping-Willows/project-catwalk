@@ -1,10 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 /* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import React, { useContext, useState } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
