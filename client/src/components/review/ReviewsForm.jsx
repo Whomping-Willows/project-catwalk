@@ -355,8 +355,6 @@ const ReviewsForm = ({ metaData, setOpen }) => {
           className={classes.reviewsModalPhoto}
         >
           <ReviewsAddPhotos
-            handleClose={handlePhotoClose}
-            setOpen={setPhotoOpen}
             handleImageUpload={handleImageUpload}
             uploadedPhotos={uploadedPhotos}
           />
