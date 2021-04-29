@@ -12,7 +12,7 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import StarsReviewForm from './StarsReviewForm.jsx';
 import ReviewsAddPhotos from './ReviewsAddPhotos.jsx';
 
-const ReviewsForm = (props) => {
+const ReviewsForm = ({ metaData, setOpen }) => {
   const {
     productId, productName, postRequest, end,
   } = useContext(ApiContext);
@@ -32,15 +32,15 @@ const ReviewsForm = (props) => {
   const [email, setEmail] = useState('jackson11@email.com');
   const [characteristics, setCharacteristics] = useState({});
 
-  const [open, setOpen] = useState(false);
+  const [photoOpen, setPhotoOpen] = useState(false);
   const [uploadedPhotos, setUploadedPhotos] = useState([]);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handlePhotoOpen = () => {
+    setPhotoOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handlePhotoClose = () => {
+    setPhotoOpen(false);
   };
 
   const useStyles = makeStyles({
@@ -56,7 +56,7 @@ const ReviewsForm = (props) => {
 
   const classes = useStyles();
 
-  const chars = props.reviewsMetaData.characteristics;
+  const chars = metaData.characteristics;
 
   const charsDescriptions = {
     size: {
@@ -150,7 +150,7 @@ const ReviewsForm = (props) => {
   };
 
   const postReview = () => {
-    props.setOpen(false);
+    setOpen(false);
     postRequest(endpoint, bodyForPost);
   };
 
@@ -348,18 +348,18 @@ const ReviewsForm = (props) => {
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormPhoto">
         <h3 className="reviewsFormLabelsMain" id="reviewsPhotoTitle">Share Your Style!</h3>
         <p className="reviewsFormLabelsSm" id="reviewsPhotoSub">We`&apos;d love to see your product in action. Click the button to upload up to 5 images to share with others</p>
-        <button type="button" id="reviewsAddPhotos" onClick={handleOpen}>Upload Your Photos</button>
+        <button type="button" id="reviewsAddPhotos" onClick={handlePhotoOpen}>Upload Your Photos</button>
         <Modal
-          open={open}
-          onClose={handleClose}
+          open={photoOpen}
+          onClose={handlePhotoClose}
           aria-labelledby="large-version-of-image"
           aria-describedby="simple-modal-description"
           container={() => document.getElementById('reviews')}
           className={classes.reviewsModalPhoto}
         >
           <ReviewsAddPhotos
-            handleClose={handleClose}
-            setOpen={setOpen}
+            handleClose={handlePhotoClose}
+            setOpen={setPhotoOpen}
             handleImageUpload={handleImageUpload}
             uploadedPhotos={uploadedPhotos}
           />

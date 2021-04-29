@@ -81,7 +81,7 @@ const ReviewsList = ({ productData, metaData, filter }) => {
   return (
     <div id="reviewsList">
       <ReviewsSort
-        reviewsMetaData={metaData}
+        metaData={metaData}
         changeSort={changeSort}
       />
 
@@ -109,8 +109,7 @@ const ReviewsList = ({ productData, metaData, filter }) => {
           className={classes.reviewsModal}
         >
           <ReviewsForm
-            reviewsMetaData={metaData}
-            handleClose={handleClose}
+            metaData={metaData}
             setOpen={setOpen}
           />
         </Modal>
