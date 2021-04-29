@@ -7,7 +7,7 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 
 const AskQuestionForm = ({ handleClose, questions, setQuestions }) => {
   const {
-    productName, productId, postRequest, end,
+    productName, productId, postRequest, getRequest, end,
   } = useContext(ApiContext);
 
   const [body, setQuestionBody] = useState();
@@ -21,14 +21,16 @@ const AskQuestionForm = ({ handleClose, questions, setQuestions }) => {
     product_id: productId,
   };
 
+  const postDataHelper = () => {
+    getRequest(end.listQuestions, (data) => {
+      setQuestions(data.results);
+    });
+  };
+
   const handleAskQuestionSubmit = (e) => {
     e.preventDefault();
 
-    postRequest(end.addQuestion, postData)
-      .then(() => {
-        setQuestions([...questions, postData]);
-      });
-
+    postRequest(end.addQuestion, postData, postDataHelper);
     handleClose();
   };
 

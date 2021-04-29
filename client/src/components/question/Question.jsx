@@ -3,7 +3,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { QuestionContext } from './QuestionContext.jsx';
+import { ApiContext } from '../../contexts/api.context.jsx';
 import QAListItem from './QAListItem.jsx';
 import SearchForm from './SearchForm.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
@@ -31,15 +31,20 @@ import AskQuestionForm from './AskQuestionForm.jsx';
 // };
 
 const Question = () => {
-  console.log(QuestionContext);
-  const { questions, setQuestions } = useContext(QuestionContext);
+  const { getRequest, end, productId } = useContext(ApiContext);
 
   const [rendered, setRendered] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    console.log(questions);
+    getRequest(end.listQuestions, (data) => {
+      setQuestions(data.results);
+    });
+  }, [productId]);
+
+  useEffect(() => {
     setRendered(questions.slice(0, 4));
     setLoading(false);
   }, [questions]);
