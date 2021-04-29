@@ -28,16 +28,15 @@ const Reviews = () => {
           <>
             <h2>RATINGS & REVIEWS</h2>
             <ReviewsBreakdown
-              reviewsProductData={reviewsProductData}
-              reviewsMetaData={reviewsMetaData}
+              productData={reviewsProductData}
+              metaData={reviewsMetaData}
               filter={reviewsFilter}
               setFilter={setReviewsFilter}
             />
             <ReviewsList
-              reviewsProductData={reviewsProductData}
-              reviewsMetaData={reviewsMetaData}
+              productData={reviewsProductData}
+              metaData={reviewsMetaData}
               filter={reviewsFilter}
-              setFilter={setReviewsFilter}
             />
           </>
         )}

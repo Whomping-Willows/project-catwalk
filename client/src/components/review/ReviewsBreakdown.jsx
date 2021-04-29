@@ -6,19 +6,19 @@ import ReviewsFilter from './ReviewsFilter.jsx';
 import ReviewsChars from './ReviewsChars.jsx';
 
 const ReviewsBreakdown = ({
-  reviewsProductData, reviewsMetaData, filter, setFilter,
+  productData, metaData, filter, setFilter,
 }) => (
   <div id="reviewsBreakdown">
     <ReviewsSummary
-      metaData={reviewsMetaData}
-      productData={reviewsProductData}
+      metaData={metaData}
+      productData={productData}
     />
     <ReviewsFilter
-      metaData={reviewsMetaData}
+      metaData={metaData}
       filter={filter}
       setFilter={setFilter}
     />
-    <ReviewsChars metaData={reviewsMetaData} />
+    <ReviewsChars metaData={metaData} />
   </div>
 );
 
