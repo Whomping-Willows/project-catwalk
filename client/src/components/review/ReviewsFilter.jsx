@@ -1,17 +1,11 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-var */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-script-url */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable import/no-unresolved */
-import React from 'react';
+import React, { useState } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import getNumOfReviews from '../../helpers/getNumOfReviews.js';
 
-const ReviewsFilter = (props) => {
+const ReviewsFilter = ({ metaData, filter, setFilter }) => {
   const percentFor = (data, num) => {
     const total = getNumOfReviews(data);
     const forNum = Number(data.ratings[num]);
@@ -21,28 +15,67 @@ const ReviewsFilter = (props) => {
     return ((forNum / total) * 100).toFixed(0);
   };
 
-  const reviews5For = Number(percentFor(props.metaData, 5));
-  const reviews4For = Number(percentFor(props.metaData, 4));
-  const reviews3For = Number(percentFor(props.metaData, 3));
-  const reviews2For = Number(percentFor(props.metaData, 2));
-  const reviews1For = Number(percentFor(props.metaData, 1));
+  const startInfo = [
+    {
+      id: 5,
+      label: '5 Stars',
+      value: Number(percentFor(metaData, 5)),
+      active: false,
+    },
+    {
+      id: 4,
+      label: '4 Stars',
+      value: Number(percentFor(metaData, 4)),
+      active: false,
+    },
+    {
+      id: 3,
+      label: '3 Stars',
+      value: Number(percentFor(metaData, 3)),
+      active: false,
+    },
+    {
+      id: 2,
+      label: '2 Stars',
+      value: Number(percentFor(metaData, 2)),
+      active: false,
+    },
+    {
+      id: 1,
+      label: '1 Stars',
+      value: Number(percentFor(metaData, 1)),
+      active: false,
+    },
+  ];
 
-  const filterHelper = (strNum, setFilterFunc) => {
-    var oldFilter = [];
-    var i = 0;
+  const [filterInfo, setFilterInfo] = useState(startInfo);
+
+  const filterHelper = (strNum) => {
+    var oldFilter;
+    var oldInfo;
+    var i;
     const num = Number(strNum);
+    const indexKey = {
+      5: 0, 4: 1, 3: 2, 2: 3, 1: 4,
+    };
 
-    if (props.filter.includes(num)) {
-      oldFilter = props.filter.slice();
+    if (filter.includes(num)) {
+      oldFilter = filter.slice();
       i = oldFilter.indexOf(num);
       oldFilter.splice(i, 1);
-      props.setFilter(oldFilter);
-      setFilterFunc('off');
+      setFilter(oldFilter);
+      oldInfo = filterInfo.slice();
+      i = indexKey[num];
+      oldInfo[i].active = false;
+      setFilterInfo(oldInfo);
     } else {
-      oldFilter = props.filter.slice();
+      oldFilter = filter.slice();
       oldFilter.push(num);
-      props.setFilter(oldFilter);
-      setFilterFunc('on');
+      setFilter(oldFilter);
+      oldInfo = filterInfo.slice();
+      i = indexKey[num];
+      oldInfo[i].active = true;
+      setFilterInfo(oldInfo);
     }
   };
 
@@ -50,100 +83,40 @@ const ReviewsFilter = (props) => {
     const el = e.target.id;
 
     if (el.includes('5')) {
-      filterHelper('5', props.setFilter5);
+      filterHelper('5');
     } else if (el.includes('4')) {
-      filterHelper('4', props.setFilter4);
+      filterHelper('4');
     } else if (el.includes('3')) {
-      filterHelper('3', props.setFilter3);
+      filterHelper('3');
     } else if (el.includes('2')) {
-      filterHelper('2', props.setFilter2);
+      filterHelper('2');
     } else if (el.includes('1')) {
-      filterHelper('1', props.setFilter1);
+      filterHelper('1');
     }
   };
 
   return (
     <div id="reviewsFilterBlock">
-      {props.filter5 === 'off' && (
-      <div className="filterBar" id="5" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews5Label">5 Stars</p>
-        <div id="reviews5Data">
-          <HSBar height={10} data={[{ value: reviews5For, color: 'green' }, { value: 100 - reviews5For, color: 'lightgrey' }]} className="reviewsBar" id="5" />
-        </div>
-      </div>
-      )}
-      {props.filter5 === 'on' && (
-      <div className="filterBarOn" id="5" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews5Label">5 Stars</p>
-        <div id="reviews5Data">
-          <HSBar height={10} data={[{ value: reviews5For, color: 'green' }, { value: 100 - reviews5For, color: 'lightgrey' }]} className="reviewsBar" id="5" />
-        </div>
-      </div>
-      )}
-      {props.filter4 === 'off' && (
-      <div className="filterBar" id="4" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews4Label">4 Stars</p>
-        <div id="reviews4Data">
-          <HSBar height={10} data={[{ value: reviews4For, color: 'green' }, { value: 100 - reviews4For, color: 'lightgrey' }]} className="reviewsBar" id="4" />
-        </div>
-      </div>
-      )}
-      {props.filter4 === 'on' && (
-        <div className="filterBarOn" id="4" onClick={changeListByFilter}>
-          <p className="reviewsFilterLabel" id="reviews4Label">4 Stars</p>
-          <div id="reviews4Data">
-            <HSBar height={10} data={[{ value: reviews4For, color: 'green' }, { value: 100 - reviews4For, color: 'lightgrey' }]} className="reviewsBar" id="4" />
+      {filterInfo.map((num) => (
+        <>
+          {num.active === false && (
+          <div className="filterBar" role="checkbox" id={num.id} key={`${num.id}-off`} onClick={changeListByFilter} onKeyDown={changeListByFilter} aria-checked="false" tabIndex={0}>
+            <p className="reviewsFilterLabel" id={num.id}>{num.label}</p>
+            <div id="reviewsData">
+              <HSBar height={10} data={[{ value: num.value, color: 'green' }, { value: 100 - num.value, color: 'lightgrey' }]} className="reviewsBar" id={num.id} />
+            </div>
           </div>
-        </div>
-      )}
-      {props.filter3 === 'off' && (
-      <div className="filterBar" id="3" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews3Label">3 Stars</p>
-        <div id="reviews3Data">
-          <HSBar height={10} data={[{ value: reviews3For, color: 'green' }, { value: 100 - reviews3For, color: 'lightgrey' }]} className="reviewsBar" id="3" />
-        </div>
-      </div>
-      )}
-      {props.filter3 === 'on' && (
-        <div className="filterBarOn" id="3" onClick={changeListByFilter}>
-          <p className="reviewsFilterLabel" id="reviews3Label">3 Stars</p>
-          <div id="reviews3Data">
-            <HSBar height={10} data={[{ value: reviews3For, color: 'green' }, { value: 100 - reviews3For, color: 'lightgrey' }]} className="reviewsBar" id="3" />
+          )}
+          {num.active === true && (
+          <div className="filterBarOn" role="checkbox" id={num.id} key={`${num.id}-on`} onClick={changeListByFilter} onKeyDown={changeListByFilter} aria-checked="true" tabIndex={0}>
+            <p className="reviewsFilterLabel" id={num.id}>{num.label}</p>
+            <div id="reviewsData">
+              <HSBar height={10} data={[{ value: num.value, color: 'green' }, { value: 100 - num.value, color: 'lightgrey' }]} className="reviewsBar" id={num.id} />
+            </div>
           </div>
-        </div>
-      )}
-      {props.filter2 === 'off' && (
-      <div className="filterBar" id="2" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews2Label">2 Stars</p>
-        <div id="reviews2Data">
-          <HSBar height={10} data={[{ value: reviews2For, color: 'green' }, { value: 100 - reviews2For, color: 'lightgrey' }]} className="reviewsBar" id="2" />
-        </div>
-      </div>
-      )}
-      {props.filter2 === 'on' && (
-      <div className="filterBarOn" id="2" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews2Label">2 Stars</p>
-        <div id="reviews2Data">
-          <HSBar height={10} data={[{ value: reviews2For, color: 'green' }, { value: 100 - reviews2For, color: 'lightgrey' }]} className="reviewsBar" id="2" />
-        </div>
-      </div>
-      )}
-      {props.filter1 === 'off' && (
-      <div className="filterBar" id="1" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews1Label">1 Stars</p>
-        <div id="reviews1Data">
-          <HSBar height={10} data={[{ value: reviews1For, color: 'green' }, { value: 100 - reviews1For, color: 'lightgrey' }]} className="reviewsBar" id="1" />
-        </div>
-      </div>
-      )}
-      {props.filter1 === 'on' && (
-      <div className="filterBarOn" id="1" onClick={changeListByFilter}>
-        <p className="reviewsFilterLabel" id="reviews1Label">1 Stars</p>
-        <div id="reviews1Data">
-          <HSBar height={10} data={[{ value: reviews1For, color: 'green' }, { value: 100 - reviews1For, color: 'lightgrey' }]} className="reviewsBar" id="1" />
-        </div>
-      </div>
-      )}
+          )}
+        </>
+      ))}
     </div>
   );
 };

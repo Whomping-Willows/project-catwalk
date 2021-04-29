@@ -72,7 +72,7 @@ const createChars = (metaData) => {
 const ReviewsChars = ({ metaData }) => (
   <div className="reviewsCharBlock">
     {createChars(metaData).map((char) => (
-      <div className="reviewsCharDiv">
+      <div className="reviewsCharDiv" key={`${char.label}-${char.value}`}>
         <p className="reviewsLabel">{char.label}</p>
         {char.value < 1.5 && (
         <div id="reviewsChar1">

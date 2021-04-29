@@ -12,11 +12,6 @@ const Reviews = () => {
 
   // FILTER CONTROLS FOR SELECTING IN BREAKDOWN AND DISPLAYING IN LIST
   const [reviewsFilter, setReviewsFilter] = useState([]);
-  const [filter5, setFilter5] = useState('off');
-  const [filter4, setFilter4] = useState('off');
-  const [filter3, setFilter3] = useState('off');
-  const [filter2, setFilter2] = useState('off');
-  const [filter1, setFilter1] = useState('off');
 
   // API REQUEST FUNCTIONS FROM CONTEXT
   const { end, getRequest, productId } = useContext(ApiContext);
@@ -37,16 +32,6 @@ const Reviews = () => {
               reviewsMetaData={reviewsMetaData}
               filter={reviewsFilter}
               setFilter={setReviewsFilter}
-              filter5={filter5}
-              setFilter5={setFilter5}
-              filter4={filter4}
-              setFilter4={setFilter4}
-              filter3={filter3}
-              setFilter3={setFilter3}
-              filter2={filter2}
-              setFilter2={setFilter2}
-              filter1={filter1}
-              setFilter1={setFilter1}
             />
             <ReviewsList
               reviewsProductData={reviewsProductData}

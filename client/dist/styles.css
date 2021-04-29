@@ -915,12 +915,12 @@ button :hover {
   display: inline;
 }
 
-#reviews5Label {
+#reviewsLabel {
   grid-row-start: 1;
   grid-row-end: 2;
 }
 
-#reviews5Data {
+#reviewsData {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
