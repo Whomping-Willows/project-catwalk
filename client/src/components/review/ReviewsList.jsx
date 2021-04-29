@@ -81,10 +81,7 @@ const ReviewsList = ({ productData, metaData, filter }) => {
   return (
     <div id="reviewsList">
       <ReviewsSort
-        reviewData={productData}
         reviewsMetaData={metaData}
-        reviewsInList={reviewsInList}
-        setReviewsInList={setReviewsInList}
         changeSort={changeSort}
       />
 
