@@ -5,13 +5,17 @@
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 
 const AddAnswerForm = ({
-  questions, question_id, question_body, handleClose, setAnswers, setRendered,
+  question_body, handleClose,
 }) => {
   const {
     productName, postRequest, getRequest, setQuestionId, end,
   } = useContext(ApiContext);
+  const {
+    questions, question_id, setAnswers, setRenderedAnswers,
+  } = useContext(QuestionContext);
 
   const [body, setAnswerBody] = useState();
   const [name, setAnswererName] = useState();
@@ -29,7 +33,7 @@ const AddAnswerForm = ({
     getRequest(end.answersList, (data) => {
       console.log(data.results);
       setAnswers(data.results);
-      // setRendered(questions.length);
+      setRenderedAnswers(questions.length);
     });
   };
 

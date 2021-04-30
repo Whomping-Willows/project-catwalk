@@ -4,17 +4,24 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 import AnswerList from './AnswerList.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
-const QAListItem = ({ question, setQuestions }) => {
+const QAListItem = ({ question }) => {
   const {
     getRequest, putRequest, setQuestionId, end,
   } = useContext(ApiContext);
 
+  const { setQuestions } = useContext(QuestionContext);
+
   const [helpful, setHelpful] = useState(false);
   const [open, setOpen] = useState(false);
-  const [answers, setAnswers] = useState(question.answers);
+  const [answers, setAnswers] = useState();
+
+  useEffect(() => {
+    setAnswers(question.answers);
+  }, [question]);
 
   const handleOpen = (e) => {
     e.preventDefault();
@@ -50,8 +57,8 @@ const QAListItem = ({ question, setQuestions }) => {
     if (helpful) {
       putRequest(end.questionHelpful)
         .then(() => {
-          getRequest(end.listQuestions, (questions) => {
-            setQuestions(questions.results);
+          getRequest(end.listQuestions, (questionsMeta) => {
+            setQuestions(questionsMeta.results);
           });
         });
     }
@@ -100,16 +107,13 @@ const QAListItem = ({ question, setQuestions }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
-          question_id={question.question_id}
-          question_body={question.question_body}
           handleClose={handleClose}
-          setAnswers={setAnswers}
         />
       </Modal>
     </div>
   );
 
-  return (
+  return answers ? (
     <li
       className="QAListItem"
     >
@@ -121,10 +125,9 @@ const QAListItem = ({ question, setQuestions }) => {
       {addAnswer}
       <AnswerList
         answers={answers}
-        setAnswers={setAnswers}
       />
     </li>
-  );
+  ) : null;
 };
 
 export default QAListItem;

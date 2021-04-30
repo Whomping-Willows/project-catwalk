@@ -9,8 +9,8 @@ import QAListItem from './QAListItem.jsx';
 import SearchForm from './SearchForm.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
 
-// const dummyData = {
-//   results: [
+// // const dummyData = {
+// //   results: [
 //     {
 //       asker_name: 'cleopatra',
 //       question_body: 'Can I wash it?',
@@ -37,10 +37,8 @@ const Question = () => {
     questions, setQuestions, renderedQuestions, setRenderedQuestions,
   } = useContext(QuestionContext);
 
-  // const [renderedQuestions, setRenderedQuestions] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  // const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     getRequest(end.listQuestions, (data) => {
@@ -49,8 +47,10 @@ const Question = () => {
   }, [productId]);
 
   useEffect(() => {
-    setRenderedQuestions(questions.slice(0, 4));
-    setLoading(false);
+    if (questions) {
+      setRenderedQuestions(questions.slice(0, 4));
+      setLoading(false);
+    }
   }, [questions]);
 
   const moreQuestionsClick = () => {
@@ -110,17 +110,13 @@ const Question = () => {
         <>
           <h2>QUESTIONS & ANSWERS</h2>
           <div id="qaContainer">
-            <SearchForm
-              questions={questions}
-              setQuestions={setQuestions}
-            />
+            <SearchForm />
             <div id="qaListContainer">
               <div id="qaListScroll">
                 <ul id="qaList">
                   {renderedQuestions.map((question) => (
                     <QAListItem
                       key={question.question_id}
-                      setQuestions={setQuestions}
                       question={question}
                     />
                   ))}
@@ -152,8 +148,6 @@ const Question = () => {
           >
             <AskQuestionForm
               handleClose={handleClose}
-              questions={questions}
-              setQuestions={setQuestions}
             />
           </Modal>
         </>
