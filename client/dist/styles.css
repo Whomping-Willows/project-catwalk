@@ -12,7 +12,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  height: calc(150px/ var(--size-divisor));
+  height: 150px;
   width: 100%;
   background-color: #515151;
   display: block;
@@ -20,17 +20,21 @@ body {
 
 /* Main container for 4 widgets */
 .appContainer {
-  display: grid;
-  grid-template-areas: '. . .'
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 70px;
+  /* grid-template-areas: '. . .'
                        'product product product'
                        '. related .'
                        '. question .'
                        '. reviews .'
                        '. . .';
-  grid-template-rows: 100px 720px 450px 820px 720px 100px;
-  grid-template-columns: 100px auto 100px;
-  margin: 100px auto;
-  width: calc(1000px/var(--size-divisor));
+  grid-template-rows: 100px auto auto auto auto 100px;
+  grid-template-columns: 100px auto 100px; */
+  margin: 200px 100px 100px 100px;
+  /* width: calc(1000px/var(--size-divisor)); */
 }
 
 
@@ -109,7 +113,6 @@ button :hover {
 /* PRODUCT SECTION */
 
 .product {
-  grid-area: product;
   display: grid;
   grid-template-rows: calc(5% 15% auto 10% 200px/ var(--size-divisor));
   grid-template-columns: calc(100px 520px 20px 260px 100px/ var(--size-divisor));
@@ -391,10 +394,8 @@ button :hover {
 /* RELATED SECTION */
 
 .related {
-  margin: calc(50px 0 50px 0/ var(--size-divisor));
-  grid-area: related;
   display: grid;
-  grid-template-rows: 50px 350px;
+  grid-template-rows: 50px auto;
   grid-template-areas: 'title'
                        'products';
 }
@@ -409,10 +410,8 @@ button :hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  flex: 1 1 1 1;
-  width: 600px;
+  gap: 20px;
   /* display: grid;
   grid-template-areas: 'pic1 pic2 pic3 pic4'
                        'lab1 lab2 lab3 lab4';
@@ -421,54 +420,29 @@ button :hover {
   grid-template-rows: 200px 50px; */
 }
 
+.relatedDiv {
+  flex: 1 0 auto;
+  width: 180px;
+}
+
 .relatedImg {
   width: 180px;
   height: 240px;
   object-fit: cover;
   margin: 10px;
+  flex: 1 0 auto;
 }
 
 .relatedInfo {
   white-space: normal !important;
   width: 180px !important;
+  flex: 1 0 auto;
+  margin: 0 0 10px 10px;
 }
-
-/* .relatedPic1 {
-  grid-area: pic1;
-}
-
-.relatedInfo1 {
-  grid-area: lab1;
-}
-
-.relatedPic2 {
-  grid-area: pic2;
-}
-
-.relatedInfo2 {
-  grid-area: lab2;
-}
-
-.relatedPic3 {
-  grid-area: pic3;
-}
-
-.relatedInfo3 {
-  grid-area: lab3;
-}
-
-.relatedPic4 {
-  grid-area: pic4;
-}
-
-.relatedInfo4 {
-  grid-area: lab4;
-} */
 
 /* QUESTIONS SECTION */
 
 .question {
-  grid-area: question;
   display: grid;
   grid-template-rows: 50px 70px 480px 100px;
   grid-template-columns: 40% 40% auto;
@@ -746,14 +720,8 @@ button :hover {
 /* REVIEWS SECTION */
 
 #reviews {
-  grid-area: reviews;
-
-  /* grid-template-areas: 'title title'
-                       'breakdown list';
-  grid-template-rows: calc(50px auto / var(--size-divisor));
-  grid-template-columns: 33% 67%; */
-  padding: calc(10px / var(--size-divisor));
   height: calc(720px/ var(--size-divisor));
+  padding-bottom: 100px;
 }
 
 #reviewsFlex {
