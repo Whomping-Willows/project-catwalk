@@ -26,8 +26,6 @@ const QAListItem = ({ question }) => {
     setAnswers(question.answers);
   }, [question]);
 
-
-
   // useEffect(() => {
   //   setRenderedAnswers(answers);
   // }, [answers]);
@@ -142,6 +140,7 @@ const QAListItem = ({ question }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
+          answers={answers}
           setAnswers={setAnswers}
           handleClose={handleClose}
         />

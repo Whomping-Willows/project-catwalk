@@ -8,7 +8,7 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import { QuestionContext } from './QuestionContext.jsx';
 
 const AddAnswerForm = ({
-  setAnswers, handleClose,
+  answers, setAnswers, handleClose,
 }) => {
   const {
     questionId,
@@ -43,6 +43,7 @@ const AddAnswerForm = ({
     setQuestionId(question.question_id);
 
     postRequest(end.answersList, postData, addNewAnswer);
+
     handleClose();
   };
 
