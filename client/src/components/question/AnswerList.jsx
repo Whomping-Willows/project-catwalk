@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({
-  answers, setAnswers,
+  answers, setAnswers, questionId,
 }) => {
   const [renderedAnswers, setRenderedAnswers] = useState();
   const [allAnswerIds, setAllAnswerIds] = useState();
@@ -47,6 +47,7 @@ const AnswerList = ({
   const answerList = renderedAnswers && (renderedAnswers.length > 0)
     ? renderedAnswers.map((answerId) => (
       <AnswerListItem
+        questionId={questionId}
         key={answerId}
         answer={answers[answerId]}
         updateHelpfulness={updateHelpfulness}

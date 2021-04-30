@@ -26,14 +26,6 @@ const QAListItem = ({ question }) => {
     setAnswers(question.answers);
   }, [question]);
 
-  // useEffect(() => {
-  //   setRenderedAnswers(answers);
-  // }, [answers]);
-
-  // const addNewAnswer = (answer) => {
-  //   setAnswers([...answers, answer]);
-  // };
-
   const handleOpen = (e) => {
     e.preventDefault();
     setQuestionId(question.question_id);
@@ -143,6 +135,7 @@ const QAListItem = ({ question }) => {
           answers={answers}
           setAnswers={setAnswers}
           handleClose={handleClose}
+          questionId={question.question_id}
         />
       </Modal>
     </div>

@@ -5,12 +5,12 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import { QuestionContext } from './QuestionContext.jsx';
 import formatDate from '../../helpers/formatDate.js';
 
-const AnswerListItem = ({ answer, updateHelpfulness }) => {
+const AnswerListItem = ({ answer, updateHelpfulness, questionId,removeReportedAnswer }) => {
   const {
-    putRequest, getRequest, setAnswerId, end,
+    putRequest, getRequest, setQuestionId, setAnswerId, end,
   } = useContext(ApiContext);
 
-  const { setAnswers } = useContext(QuestionContext);
+  const { setQuestions } = useContext(QuestionContext);
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
@@ -31,10 +31,13 @@ const AnswerListItem = ({ answer, updateHelpfulness }) => {
 
   useEffect(() => {
     if (reported) {
+      console.log('got here');
+      setQuestionId(questionId);
       putRequest(end.answerReport, null)
         .then(() => {
-          getRequest(end.answersList, (questions) => {
-            setAnswers(questions.results);
+          getRequest(end.listQuestions, (questionsMeta) => {
+            console.log(questionsMeta.results);
+            setQuestions(questionsMeta.results);
           });
         });
     }
