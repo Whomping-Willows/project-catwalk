@@ -22,12 +22,14 @@ const ProductGallery = (props) => {
   );
 
   const sideGallery = images[0].map((data, key) => (
-    <img
-      key={`photo${key}`}
-      className="sideImage"
-      alt="Not found"
-      src={data.thumbnail_url}
-    />
+    <div className="sideImgDiv">
+      <img
+        key={`photo${key}`}
+        className="sideImage"
+        alt="Not found"
+        src={data.thumbnail_url}
+      />
+    </div>
   ));
 
   return (
