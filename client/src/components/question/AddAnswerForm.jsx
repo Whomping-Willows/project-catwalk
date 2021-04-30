@@ -32,18 +32,14 @@ const AddAnswerForm = ({
 
   const addNewAnswer = () => {
     getRequest(end.answersList, (data) => {
-      console.log(data.results);
       setAnswers(data.results);
     });
   };
 
   const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
-
     setQuestionId(question.question_id);
-
     postRequest(end.answersList, postData, addNewAnswer);
-
     handleClose();
   };
 

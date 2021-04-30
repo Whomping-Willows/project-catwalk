@@ -11,14 +11,12 @@ const AnswerList = ({
   const [allAnswerIds, setAllAnswerIds] = useState();
 
   useEffect(() => {
-    console.log('answers', answers);
     if (answers) {
       setAllAnswerIds(Object.keys(answers));
     }
   }, [answers]);
 
   useEffect(() => {
-    console.log('got here');
     if (allAnswerIds) {
       setRenderedAnswers(allAnswerIds.slice(0, 2));
     }
