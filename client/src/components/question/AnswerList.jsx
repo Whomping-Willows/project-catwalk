@@ -6,23 +6,23 @@ import React, { useContext, useEffect, useState } from 'react';
 import { QuestionContext } from './QuestionContext.jsx';
 import AnswerListItem from './AnswerListItem.jsx';
 
-const AnswerList = ({ answers }) => {
-  const {
-    setAnswerId, setAnswers,
-  } = useContext(QuestionContext);
+const AnswerList = ({
+  answers, setAnswers, allAnswerIds, renderedAnswers, setRenderedAnswers,
+}) => {
+  // const [allAnswerIds, setAllAnswerIds] = useState();
+  // const [renderedAnswers, setRenderedAnswers] = useState();
 
-  const [allAnswerIds, setAllAnswerIds] = useState(Object.keys(answers));
-  const [renderedAnswers, setRenderedAnswers] = useState();
+  // useEffect(() => {
+  //   if (answers) {
+  //     setAllAnswerIds(Object.keys(answers));
+  //   }
+  // }, [answers]);
 
-  useEffect(() => {
-    if (allAnswerIds) {
-      setRenderedAnswers(allAnswerIds.slice(0, 2));
-    }
-  }, []);
-
-  // const addNewAnswer = (answer) => {
-  //   setRenderedAnswers([...rendered, answer]);
-  // };
+  // useEffect(() => {
+  //   if (allAnswerIds) {
+  //     setRenderedAnswers(allAnswerIds.slice(0, 2));
+  //   }
+  // }, [allAnswerIds]);
 
   const updateHelpfulness = (answerId) => {
     const updatedAnswers = { ...answers };
@@ -31,10 +31,8 @@ const AnswerList = ({ answers }) => {
   };
 
   const removeReportedAnswer = (answerId) => {
-    // console.log('ANSWER ID', answerId);
-    // console.log('ALL ANSWERS', allAnswerIds);
     const updatedAnswers = Object.keys(answers).filter((answer) => answer !== answerId.toString());
-    // console.log("UPDATEDANSWERS", updatedAnswers);
+
     setAnswers(updatedAnswers);
   };
 
@@ -48,16 +46,20 @@ const AnswerList = ({ answers }) => {
     }
   };
 
-  const answerList = renderedAnswers && (renderedAnswers.length > 0)
-    ? renderedAnswers.map((answerId) => (
-      <AnswerListItem
-        key={answerId}
-        answer={answers[answerId]}
-        updateHelpfulness={updateHelpfulness}
-        removeReportedAnswer={removeReportedAnswer}
-      />
-    ))
-    : null;
+  let answerList;
+
+  useEffect(() => {
+    console.log(renderedAnswers);
+    answerList = renderedAnswers && (renderedAnswers.length > 0)
+  ? renderedAnswers.map((answerId) => (
+    <AnswerListItem
+      key={answerId}
+      answer={answers[answerId]}
+      updateHelpfulness={updateHelpfulness}
+      removeReportedAnswer={removeReportedAnswer}
+    />
+    )) : null;
+  }, [renderedAnswers]);
 
   let seeMoreAnswersText;
 

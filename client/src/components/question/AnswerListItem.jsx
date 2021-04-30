@@ -2,12 +2,15 @@
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 import formatDate from '../../helpers/formatDate.js';
 
-const AnswerListItem = ({ answer, updateHelpfulness, setAnswers }) => {
+const AnswerListItem = ({ answer, updateHelpfulness }) => {
   const {
     putRequest, getRequest, setAnswerId, end,
   } = useContext(ApiContext);
+
+  const { setAnswers } = useContext(QuestionContext);
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);

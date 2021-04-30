@@ -8,13 +8,14 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import { QuestionContext } from './QuestionContext.jsx';
 
 const AddAnswerForm = ({
-  question_body, handleClose,
+  setAnswers, handleClose, addNewAnswer,
 }) => {
   const {
+    questionId,
     productName, postRequest, getRequest, setQuestionId, end,
   } = useContext(ApiContext);
   const {
-    questions, question_id, setAnswers, setRenderedAnswers,
+    question, questions,
   } = useContext(QuestionContext);
 
   const [body, setAnswerBody] = useState();
@@ -31,16 +32,15 @@ const AddAnswerForm = ({
 
   const postDataHelper = () => {
     getRequest(end.answersList, (data) => {
-      console.log(data.results);
-      setAnswers(data.results);
-      setRenderedAnswers(questions.length);
+      // setAnswers(data.results);
+      addNewAnswer(data.results);
     });
   };
 
   const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
 
-    setQuestionId(question_id);
+    setQuestionId(question.question_id);
 
     postRequest(end.answersList, postData, postDataHelper);
     handleClose();
@@ -50,7 +50,7 @@ const AddAnswerForm = ({
     <div className="qaFormContainer">
       <h2>
         Submit your answer for:
-        {` '${productName}' : ${question_body}` }
+        {` '${productName}' : ${question.question_body}` }
       </h2>
       <form>
         <div id="answerFormBody">

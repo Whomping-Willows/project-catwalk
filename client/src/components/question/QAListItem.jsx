@@ -15,20 +15,43 @@ const QAListItem = ({ question }) => {
     getRequest, putRequest, setQuestionId, questionId, end,
   } = useContext(ApiContext);
 
-  const { setQuestions, questions } = useContext(QuestionContext);
+  const { setQuestion, setQuestions, questions } = useContext(QuestionContext);
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
   const [open, setOpen] = useState(false);
   const [answers, setAnswers] = useState();
+  const [renderedAnswers, setRenderedAnswers] = useState();
+  const [allAnswerIds, setAllAnswerIds] = useState();
 
   useEffect(() => {
     setAnswers(question.answers);
   }, [question]);
 
+  useEffect(() => {
+    if (answers) {
+      setAllAnswerIds(Object.keys(answers));
+    }
+  }, [answers]);
+
+  useEffect(() => {
+    if (allAnswerIds) {
+      setRenderedAnswers(allAnswerIds.slice(0, 2));
+    }
+  }, [allAnswerIds]);
+
+  // useEffect(() => {
+  //   setRenderedAnswers(answers);
+  // }, [answers]);
+
+  const addNewAnswer = (answer) => {
+    setRenderedAnswers([...renderedAnswers, answer]);
+  };
+
   const handleOpen = (e) => {
     e.preventDefault();
     setQuestionId(question.question_id);
+    setQuestion(question);
     setOpen(true);
   };
 
@@ -131,6 +154,7 @@ const QAListItem = ({ question }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
+          setAnswers={setAnswers}
           handleClose={handleClose}
         />
       </Modal>
@@ -147,7 +171,7 @@ const QAListItem = ({ question }) => {
       </h3>
       {helpfulContainer}
       <button
-        id="answerReport"
+        id="questionReport"
         className="helpfulButton"
         type="submit"
         onClick={() => {
@@ -159,6 +183,9 @@ const QAListItem = ({ question }) => {
       </button>
       {addAnswer}
       <AnswerList
+        setRenderedAnswers={setRenderedAnswers}
+        renderedAnswers={renderedAnswers}
+        setAnswers={setAnswers}
         answers={answers}
       />
     </li>
