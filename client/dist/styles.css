@@ -69,7 +69,7 @@ h3 {
 
 p {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
   color: darkslategrey
 }
 
@@ -747,17 +747,28 @@ button :hover {
 
 #reviews {
   grid-area: reviews;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+
   /* grid-template-areas: 'title title'
                        'breakdown list';
   grid-template-rows: calc(50px auto / var(--size-divisor));
   grid-template-columns: 33% 67%; */
   padding: calc(10px / var(--size-divisor));
   height: calc(720px/ var(--size-divisor));
+}
+
+#reviewsFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+  width: calc(800px / var(--size-divisor));
+  flex: 1 0 auto;
+}
+
+#reviewsHead {
+  display: block;
 }
 
 #reviewsBreakdown {
@@ -782,7 +793,7 @@ button :hover {
 
 #reviewsSumStars {
   grid-area: stars;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
   margin-top: calc(10px / var(--size-divisor));
 }
 
@@ -849,7 +860,7 @@ button :hover {
 .reviewsFilterLabel {
   margin: 0 0 0 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: calc(12px / var(--size-divisor));
+  font-size: 12px;
   color: darkslategrey;
   text-decoration: underline;
   display: inline;
@@ -878,7 +889,7 @@ button :hover {
 .reviewsCharLabel {
   margin: 0 0 0 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: calc(12px / var(--size-divisor));
+  font-size: 12px;
   color: darkslategrey;
 }
 
@@ -959,15 +970,15 @@ button :hover {
 }
 
 #reviewsList {
-  width: 500px;
   border-width: 2px;
   border-color: darkgrey;
+  width: 350px;
+  flex: 1 0 auto;
   display: grid;
   grid-template-areas: 'sort'
                        'items'
                        'buttons';
   grid-template-rows: 7% 80% 13%;
-  margin-left: calc(70px/ var(--size-divisor));
 }
 
 #reviewsSort {
@@ -1070,7 +1081,7 @@ button :hover {
 
 #reviewSubTitleStars {
   grid-area: stars;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
 }
 
 #reviewSubTitleUserDate {
@@ -1096,7 +1107,7 @@ button :hover {
 
 #reviewIsRec {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
   margin-top: 0.5em;
   color: darkslategrey;
   white-space: nowrap;
@@ -1142,7 +1153,7 @@ button :hover {
   background-color: lightgray;
   color: #515151;
   padding: calc(15px/ var(--size-divisor));
-  font-size: calc(10px/ var(--size-divisor));
+  font-size: 10px;
 }
 
 #reviewResponseTitle {
@@ -1176,7 +1187,7 @@ button :hover {
 
 .button3 {
   width: calc(500px/ var(--size-divisor));
-  font-size: calc(10px/ var(--size-divisor));
+  font-size: 10px;
   float: left;
   padding: calc(10px/ var(--size-divisor));
   grid-area: buttons;
@@ -1184,7 +1195,7 @@ button :hover {
 
 .button2 {
   width: calc(100px/ var(--size-divisor));
-  font-size: calc(10px/ var(--size-divisor));
+  font-size: 10px;
   float: left;
   padding: calc(10px/ var(--size-divisor));
   grid-area: buttons;
@@ -1278,7 +1289,7 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 3;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
   color: darkslategrey;
   display: inline;
 }
@@ -1487,7 +1498,7 @@ button :hover {
   height: auto;
   padding: calc(10px/ var(--size-divisor));
   font-family: Arial, Helvetica, sans-serif;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
   font-weight: normal;
   color: #2f4f4f;
 }
@@ -1560,4 +1571,5 @@ button :hover {
   :root {
     --size-divisor: 1;
   }
+
 }
