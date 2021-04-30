@@ -406,21 +406,34 @@ button :hover {
 #relatedProducts {
   grid-area: products;
   margin-bottom: 50px;
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 1 1;
+  width: 600px;
+  /* display: grid;
   grid-template-areas: 'pic1 pic2 pic3 pic4'
                        'lab1 lab2 lab3 lab4';
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   column-gap: 20px;
-  grid-template-rows: 200px 50px;
+  grid-template-rows: 200px 50px; */
 }
 
 .relatedImg {
-  width: 100%;
-  height: 100%;
+  width: 180px;
+  height: 240px;
   object-fit: cover;
+  margin: 10px;
 }
 
-.relatedPic1 {
+.relatedInfo {
+  white-space: normal !important;
+  width: 180px !important;
+}
+
+/* .relatedPic1 {
   grid-area: pic1;
 }
 
@@ -450,7 +463,7 @@ button :hover {
 
 .relatedInfo4 {
   grid-area: lab4;
-}
+} */
 
 /* QUESTIONS SECTION */
 
@@ -734,16 +747,22 @@ button :hover {
 
 #reviews {
   grid-area: reviews;
-  display: grid;
-  grid-template-areas: 'title title'
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  /* grid-template-areas: 'title title'
                        'breakdown list';
   grid-template-rows: calc(50px auto / var(--size-divisor));
-  grid-template-columns: 33% 67%;
+  grid-template-columns: 33% 67%; */
   padding: calc(10px / var(--size-divisor));
+  height: calc(720px/ var(--size-divisor));
 }
 
 #reviewsBreakdown {
   grid-area: breakdown;
+  width: 250px;
   border-width: 2px;
   border-color:darkgrey;
   display: grid;
@@ -940,14 +959,14 @@ button :hover {
 }
 
 #reviewsList {
-  grid-area: list;
+  width: 500px;
   border-width: 2px;
   border-color: darkgrey;
   display: grid;
   grid-template-areas: 'sort'
                        'items'
                        'buttons';
-  grid-template-rows: calc(50px 600px 100px/ var(--size-divisor));
+  grid-template-rows: 7% 80% 13%;
   margin-left: calc(70px/ var(--size-divisor));
 }
 
@@ -1028,6 +1047,7 @@ button :hover {
 #reviewsAll {
   grid-row-start: 2;
   grid-row-end: 3;
+  height: calc(600px / var(--size-divisor));
   overflow-y: scroll;
 }
 
@@ -1137,10 +1157,7 @@ button :hover {
 }
 
 #reviewHelpfulness {
-    grid-row-start: 6;
-    grid-row-end: 7;
-    grid-column-start: 1;
-    grid-column-end: 3;
+    grid-area: help;
     margin-bottom: calc(10px/ var(--size-divisor));
   }
 
