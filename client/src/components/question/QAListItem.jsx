@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
@@ -10,12 +12,13 @@ import AddAnswerForm from './AddAnswerForm.jsx';
 
 const QAListItem = ({ question }) => {
   const {
-    getRequest, putRequest, setQuestionId, end,
+    getRequest, putRequest, setQuestionId, questionId, end,
   } = useContext(ApiContext);
 
-  const { setQuestions } = useContext(QuestionContext);
+  const { setQuestions, questions } = useContext(QuestionContext);
 
   const [helpful, setHelpful] = useState(false);
+  const [reported, setReported] = useState(false);
   const [open, setOpen] = useState(false);
   const [answers, setAnswers] = useState();
 
@@ -46,23 +49,44 @@ const QAListItem = ({ question }) => {
 
   const classes = useStyles();
 
-  const styles = helpful ? { textDecoration: 'none' } : null;
-
-  const putQuestionHelpfulness = () => {
+  const putQuestion = (callback) => {
     setQuestionId(question.question_id);
-    setHelpful(true);
+    callback(true);
+  };
+
+  let styles = {};
+
+  const updateHelpfulness = (questionID) => {
+    let updatedQuestions = [];
+    updatedQuestions = questions.map((q) => {
+      if (q.question_id === questionID) {
+        q.question_helpfulness++;
+      }
+      return q;
+    });
+    setQuestions(updatedQuestions);
+    styles = { textDecoration: 'none' };
   };
 
   useEffect(() => {
     if (helpful) {
       putRequest(end.questionHelpful)
         .then(() => {
+          updateHelpfulness(questionId);
+        });
+    }
+  }, [helpful]);
+
+  useEffect(() => {
+    if (reported) {
+      putRequest(end.questionReport)
+        .then(() => {
           getRequest(end.listQuestions, (questionsMeta) => {
             setQuestions(questionsMeta.results);
           });
         });
     }
-  }, [helpful]);
+  }, [reported]);
 
   const helpfulContainer = (
     <div className="questionHelpful">
@@ -71,9 +95,9 @@ const QAListItem = ({ question }) => {
         style={styles}
         type="submit"
         className="helpfulButton"
-        onClick={
-          putQuestionHelpfulness
-          }
+        onClick={() => {
+          putQuestion(setHelpful);
+        }}
       >
         <div>
           Yes (
@@ -122,6 +146,17 @@ const QAListItem = ({ question }) => {
         {` ${question.question_body}`}
       </h3>
       {helpfulContainer}
+      <button
+        id="answerReport"
+        className="helpfulButton"
+        type="submit"
+        onClick={() => {
+          putQuestion(setReported);
+        }}
+      >
+        {' '}
+        Report
+      </button>
       {addAnswer}
       <AnswerList
         answers={answers}

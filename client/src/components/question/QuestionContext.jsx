@@ -10,7 +10,7 @@ import React, {
 export const QuestionContext = createContext();
 
 export const QuestionProvider = (props) => {
-  const [question_id, setQuestionId] = useState();
+  // const [question_id, setQuestionId] = useState();
   const [question, setQuestion] = useState();
   const [questions, setQuestions] = useState();
   const [renderedQuestions, setRenderedQuestions] = useState();
@@ -20,8 +20,8 @@ export const QuestionProvider = (props) => {
 
   return (
     <QuestionContext.Provider value={{
-      question_id,
-      setQuestionId,
+      // setQuestionId,
+      // question_id,
       question,
       setQuestion,
       questions,
