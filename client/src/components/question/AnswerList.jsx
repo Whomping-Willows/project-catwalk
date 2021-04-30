@@ -3,26 +3,25 @@
 /* eslint-disable no-plusplus */
 import React, { useContext, useEffect, useState } from 'react';
 // import { ApiContext } from '../../../contexts/api.context.jsx';
-import { QuestionContext } from './QuestionContext.jsx';
 import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({
-  answers, setAnswers, allAnswerIds, renderedAnswers, setRenderedAnswers,
+  answers, setAnswers,
 }) => {
-  // const [allAnswerIds, setAllAnswerIds] = useState();
-  // const [renderedAnswers, setRenderedAnswers] = useState();
+  const [renderedAnswers, setRenderedAnswers] = useState();
+  const [allAnswerIds, setAllAnswerIds] = useState();
 
-  // useEffect(() => {
-  //   if (answers) {
-  //     setAllAnswerIds(Object.keys(answers));
-  //   }
-  // }, [answers]);
+  useEffect(() => {
+    if (answers) {
+      setAllAnswerIds(Object.keys(answers));
+    }
+  }, [answers]);
 
-  // useEffect(() => {
-  //   if (allAnswerIds) {
-  //     setRenderedAnswers(allAnswerIds.slice(0, 2));
-  //   }
-  // }, [allAnswerIds]);
+  useEffect(() => {
+    if (allAnswerIds) {
+      setRenderedAnswers(allAnswerIds.slice(0, 2));
+    }
+  }, [allAnswerIds]);
 
   const updateHelpfulness = (answerId) => {
     const updatedAnswers = { ...answers };
@@ -46,20 +45,15 @@ const AnswerList = ({
     }
   };
 
-  let answerList;
-
-  useEffect(() => {
-    console.log(renderedAnswers);
-    answerList = renderedAnswers && (renderedAnswers.length > 0)
-  ? renderedAnswers.map((answerId) => (
-    <AnswerListItem
-      key={answerId}
-      answer={answers[answerId]}
-      updateHelpfulness={updateHelpfulness}
-      removeReportedAnswer={removeReportedAnswer}
-    />
+  const answerList = renderedAnswers && (renderedAnswers.length > 0)
+    ? renderedAnswers.map((answerId) => (
+      <AnswerListItem
+        key={answerId}
+        answer={answers[answerId]}
+        updateHelpfulness={updateHelpfulness}
+        removeReportedAnswer={removeReportedAnswer}
+      />
     )) : null;
-  }, [renderedAnswers]);
 
   let seeMoreAnswersText;
 

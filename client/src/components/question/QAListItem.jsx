@@ -21,32 +21,20 @@ const QAListItem = ({ question }) => {
   const [reported, setReported] = useState(false);
   const [open, setOpen] = useState(false);
   const [answers, setAnswers] = useState();
-  const [renderedAnswers, setRenderedAnswers] = useState();
-  const [allAnswerIds, setAllAnswerIds] = useState();
 
   useEffect(() => {
     setAnswers(question.answers);
   }, [question]);
 
-  useEffect(() => {
-    if (answers) {
-      setAllAnswerIds(Object.keys(answers));
-    }
-  }, [answers]);
 
-  useEffect(() => {
-    if (allAnswerIds) {
-      setRenderedAnswers(allAnswerIds.slice(0, 2));
-    }
-  }, [allAnswerIds]);
 
   // useEffect(() => {
   //   setRenderedAnswers(answers);
   // }, [answers]);
 
-  const addNewAnswer = (answer) => {
-    setRenderedAnswers([...renderedAnswers, answer]);
-  };
+  // const addNewAnswer = (answer) => {
+  //   setAnswers([...answers, answer]);
+  // };
 
   const handleOpen = (e) => {
     e.preventDefault();
@@ -183,8 +171,6 @@ const QAListItem = ({ question }) => {
       </button>
       {addAnswer}
       <AnswerList
-        setRenderedAnswers={setRenderedAnswers}
-        renderedAnswers={renderedAnswers}
         setAnswers={setAnswers}
         answers={answers}
       />

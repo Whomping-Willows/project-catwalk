@@ -8,7 +8,7 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import { QuestionContext } from './QuestionContext.jsx';
 
 const AddAnswerForm = ({
-  setAnswers, handleClose, addNewAnswer,
+  setAnswers, handleClose,
 }) => {
   const {
     questionId,
@@ -30,10 +30,10 @@ const AddAnswerForm = ({
     photos,
   };
 
-  const postDataHelper = () => {
+  const addNewAnswer = () => {
     getRequest(end.answersList, (data) => {
-      // setAnswers(data.results);
-      addNewAnswer(data.results);
+      console.log(data.results);
+      setAnswers(data.results);
     });
   };
 
@@ -42,7 +42,7 @@ const AddAnswerForm = ({
 
     setQuestionId(question.question_id);
 
-    postRequest(end.answersList, postData, postDataHelper);
+    postRequest(end.answersList, postData, addNewAnswer);
     handleClose();
   };
 
