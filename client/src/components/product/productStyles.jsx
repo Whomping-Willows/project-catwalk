@@ -1,10 +1,13 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-plusplus */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React, { useState, useContext, useEffect } from 'react';
 import Select from 'react-select';
-import Overlay from 'react-image-overlay';
+// import Overlay from 'react-image-overlay';
 
 const ProductStyles = (props) => {
   const styleData = props.styles.results;
@@ -25,6 +28,13 @@ const ProductStyles = (props) => {
     setSize(item.value);
   };
 
+  const styleOptionClick = (e) => {
+    e.preventDefault();
+    e.persist();
+    console.log('Click Event: ', e);
+    // props.setStyle(e.target.alt);
+  };
+
   useEffect(() => {
     setQuantOptions(() => {
       // console.log('Current size: ', selectedSize);
@@ -42,7 +52,7 @@ const ProductStyles = (props) => {
           });
         }
       });
-      let result = [];
+      const result = [];
       for (let i = 1; i <= totQuant; i++) {
         result.push({ value: i, label: i });
       }
@@ -89,10 +99,14 @@ const ProductStyles = (props) => {
   const styleSelectors = styleData.map((data) => {
     if (data.style_id === props.selectedStyle) {
       return (
-        <div className="styleOption" key={data.style_id}>
+        <div
+          className="styleOption"
+          key={data.style_id}
+          onClick={(e) => { styleOptionClick(e); }}
+        >
           <img
             className="styleImage"
-            alt={data.name}
+            alt={data.style_id}
             key={`image${data.style_id}`}
             src={data.photos[0].thumbnail_url}
           />
@@ -103,10 +117,14 @@ const ProductStyles = (props) => {
       );
     }
     return (
-      <div className="styleOption" key={data.style_id}>
+      <div
+        className="styleOption"
+        key={data.style_id}
+        onClick={(e) => { styleOptionClick(e); }}
+      >
         <img
           className="styleImage"
-          alt={data.name}
+          alt={data.style_id}
           key={`nocheck${data.style_id}`}
           src={data.photos[0].thumbnail_url}
         />

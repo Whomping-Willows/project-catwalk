@@ -14,7 +14,7 @@ const Product = (props) => {
   const [selectedStyle, setStyle] = useState(props.currentStyles.results[0].style_id);
 
   // useEffect(() => {
-  //   setSelectedStyle(props.currentStyles.results[0].style_id);
+  //   setStyle();
   // });
 
   return (
@@ -33,7 +33,7 @@ const Product = (props) => {
           <ProductStyles
             styles={props.currentStyles}
             selectedStyle={selectedStyle}
-            setSelectedStyle={setStyle}
+            setStyle={setStyle}
           />
           <ProductCart />
           <ProductDescription
