@@ -4,7 +4,6 @@
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
 import { QuestionContext } from './QuestionContext.jsx';
 import AnswerList from './AnswerList.jsx';
@@ -15,7 +14,9 @@ const QAListItem = ({ question }) => {
     getRequest, putRequest, setQuestionId, questionId, end,
   } = useContext(ApiContext);
 
-  const { setQuestion, setQuestions, questions } = useContext(QuestionContext);
+  const {
+    setQuestion, setQuestions, questions, classes, handleClose,
+  } = useContext(QuestionContext);
 
   const [helpful, setHelpful] = useState(false);
   const [reported, setReported] = useState(false);
@@ -32,23 +33,6 @@ const QAListItem = ({ question }) => {
     setQuestion(question);
     setOpen(true);
   };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const useStyles = makeStyles({
-    askQuestionModal: {
-      position: 'absolute',
-      top: '10%',
-      left: '10%',
-      overflow: 'scroll',
-      height: '100%',
-      display: 'block',
-    },
-  });
-
-  const classes = useStyles();
 
   const putQuestion = (callback) => {
     setQuestionId(question.question_id);
@@ -109,10 +93,6 @@ const QAListItem = ({ question }) => {
     </div>
   );
 
-  const questionStyle = {
-    margin: 10,
-  };
-
   const addAnswer = (
     <div className="questionHelpful">
       <button
@@ -125,7 +105,7 @@ const QAListItem = ({ question }) => {
       </button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => { handleClose(setOpen); }}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         container={() => document.getElementById('question')}
@@ -134,7 +114,7 @@ const QAListItem = ({ question }) => {
         <AddAnswerForm
           answers={answers}
           setAnswers={setAnswers}
-          handleClose={handleClose}
+          handleClose={() => { handleClose(setOpen); }}
           questionId={question.question_id}
         />
       </Modal>
@@ -145,14 +125,14 @@ const QAListItem = ({ question }) => {
     <li
       className="QAListItem"
     >
-      <h3 style={questionStyle}>
+      <h3 id="questionBody">
         Q:
         {` ${question.question_body}`}
       </h3>
       {helpfulContainer}
       <button
         id="questionReport"
-        className="helpfulButton"
+        className="questionHelpful helpfulButton"
         type="submit"
         onClick={() => {
           putQuestion(setReported);

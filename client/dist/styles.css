@@ -471,9 +471,14 @@ button :hover {
 .question {
   width: calc(800px / var(--size-divisor));
   display: grid;
-  grid-template-rows: 50px 70px 480px 100px;
-  grid-template-columns: 40% 40% auto;
+  grid-template-rows: 50px 70px 480px auto;
+  grid-template-columns: 32% 40% auto;
   padding: 10px;
+}
+
+#questionTitle {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 #qaContainer {
@@ -536,22 +541,29 @@ button :hover {
   color: #515151;
 }
 
-#qaListContainer {
-  grid-row-start: 3;
+#moreAnsweredQuestions {
+  grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 1;
-  grid-column-end: 4;
-  display: grid;
-  grid-template-rows: 480px 100px;
-  grid-template-columns: 50% 50%;
+  grid-column-end: 2;
+  margin-top: 28px;
+  width: fit-content;
+}
+
+
+#moreAnsweredQuestionsButton :hover {
+  cursor: pointer;
 }
 
 #qaListScroll {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 3;
   overflow-y: scroll;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-rows: 480px;
+  grid-template-columns: 50% 50%;
 }
 
 #qaList {
@@ -569,15 +581,20 @@ button :hover {
   grid-column-start: span 2;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 70% 15% 5% 10%;
+  grid-template-columns: auto 15% 8% 10%;
   margin-bottom: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
   border-color: darkgrey;
 }
 
+#questionBody {
+  margin: 10px;
+}
+
 .questionHelpful {
   display: block;
+  width: fit-content;
   font-size: 10px;
   padding: 0px;
   color: darkslategray;
@@ -591,6 +608,7 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 3;
+  width:fit-content;
   border: none;
   text-decoration: underline;
   font-size: 10px;
@@ -683,20 +701,6 @@ button :hover {
   padding: 5px;
   margin-left: 30px;
   color: darkslategray
-}
-
-#moreAnsweredQuestions {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  align-self: flex-end;
-  width: 250px;
-}
-
-
-#moreAnsweredQuestionsButton :hover {
-  cursor: pointer;
 }
 
 #askQuestionLabel {
