@@ -10,14 +10,21 @@ import Reviews from './review/Reviews.jsx';
 const API = () => {
   const [currentProduct, setCurrentProduct] = useState();
   const [currentStyles, setCurrentStyles] = useState();
+  const [selectedStyle, setSelectedStyle] = useState();
 
   const {
     getRequest, end, productId, setProductId, setProductName,
   } = useContext(ApiContext);
 
+  const currentStyleCallback = (data) => {
+    setCurrentStyles(data);
+    const newStyleId = data.results[0].style_id;
+    setSelectedStyle(newStyleId);
+  };
+
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
-    getRequest(end.productStyles, setCurrentStyles);
+    getRequest(end.productStyles, currentStyleCallback);
   }, [productId]);
 
   useEffect(() => {
@@ -41,6 +48,8 @@ const API = () => {
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
             setCurrentStyles={setCurrentStyles}
+            selectedStyle={selectedStyle}
+            setSelectedStyle={setSelectedStyle}
           />
           <Related
             handleRelatedChange={handleRelatedChange}
