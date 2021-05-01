@@ -26,18 +26,20 @@ const Reviews = () => {
       {reviewsProductData && reviewsMetaData
         && (
           <>
-            <h2>RATINGS & REVIEWS</h2>
-            <ReviewsBreakdown
-              productData={reviewsProductData}
-              metaData={reviewsMetaData}
-              filter={reviewsFilter}
-              setFilter={setReviewsFilter}
-            />
-            <ReviewsList
-              productData={reviewsProductData}
-              metaData={reviewsMetaData}
-              filter={reviewsFilter}
-            />
+            <h2 id="reviewsHead">RATINGS & REVIEWS</h2>
+            <div id="reviewsFlex">
+              <ReviewsBreakdown
+                productData={reviewsProductData}
+                metaData={reviewsMetaData}
+                filter={reviewsFilter}
+                setFilter={setReviewsFilter}
+              />
+              <ReviewsList
+                productData={reviewsProductData}
+                metaData={reviewsMetaData}
+                filter={reviewsFilter}
+              />
+            </div>
           </>
         )}
     </div>
