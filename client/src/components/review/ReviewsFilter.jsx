@@ -1,7 +1,7 @@
 /* eslint-disable no-var */
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HSBar from 'react-horizontal-stacked-bar-chart';
 import getNumOfReviews from '../../helpers/getNumOfReviews.js';
 
@@ -49,6 +49,9 @@ const ReviewsFilter = ({ metaData, filter, setFilter }) => {
   ];
 
   const [filterInfo, setFilterInfo] = useState(startInfo);
+  useEffect(() => {
+    setFilterInfo(startInfo);
+  }, [metaData]);
 
   const filterHelper = (strNum) => {
     var oldFilter;
@@ -100,20 +103,20 @@ const ReviewsFilter = ({ metaData, filter, setFilter }) => {
       {filterInfo.map((num) => (
         <>
           {num.active === false && (
-          <div className="filterBar" role="checkbox" id={num.id} key={`${num.id}-off`} onClick={changeListByFilter} onKeyDown={changeListByFilter} aria-checked="false" tabIndex={0}>
-            <p className="reviewsFilterLabel" id={num.id}>{num.label}</p>
-            <div id="reviewsData">
-              <HSBar height={10} data={[{ value: num.value, color: 'green' }, { value: 100 - num.value, color: 'lightgrey' }]} className="reviewsBar" id={num.id} />
+            <div className="filterBar" role="checkbox" id={num.id} key={`${num.id}-off`} onClick={changeListByFilter} onKeyDown={changeListByFilter} aria-checked="false" tabIndex={0}>
+              <p className="reviewsFilterLabel" id={num.id}>{num.label}</p>
+              <div id="reviewsData">
+                <HSBar height={10} data={[{ value: num.value, color: 'green' }, { value: 100 - num.value, color: 'lightgrey' }]} className="reviewsBar" id={num.id} />
+              </div>
             </div>
-          </div>
           )}
           {num.active === true && (
-          <div className="filterBarOn" role="checkbox" id={num.id} key={`${num.id}-on`} onClick={changeListByFilter} onKeyDown={changeListByFilter} aria-checked="true" tabIndex={0}>
-            <p className="reviewsFilterLabel" id={num.id}>{num.label}</p>
-            <div id="reviewsData">
-              <HSBar height={10} data={[{ value: num.value, color: 'green' }, { value: 100 - num.value, color: 'lightgrey' }]} className="reviewsBar" id={num.id} />
+            <div className="filterBarOn" role="checkbox" id={num.id} key={`${num.id}-on`} onClick={changeListByFilter} onKeyDown={changeListByFilter} aria-checked="true" tabIndex={0}>
+              <p className="reviewsFilterLabel" id={num.id}>{num.label}</p>
+              <div id="reviewsData">
+                <HSBar height={10} data={[{ value: num.value, color: 'green' }, { value: 100 - num.value, color: 'lightgrey' }]} className="reviewsBar" id={num.id} />
+              </div>
             </div>
-          </div>
           )}
         </>
       ))}

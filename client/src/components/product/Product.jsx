@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React from 'react';
 // import { ApiContext } from '../../contexts/api.context.jsx';
 import ProductDescription from './productDescription.jsx';
 import ProductGallery from './productGallery.jsx';
@@ -10,37 +10,42 @@ import ProductStars from './productStars.jsx';
 import ProductStyles from './productStyles.jsx';
 import ProductCart from './productCart.jsx';
 
-const Product = (props) => {
-  const [selectedStyle, setStyle] = useState(props.currentStyles.results[0].style_id);
-
-  // useEffect(() => {
-  //   setSelectedStyle(props.currentStyles.results[0].style_id);
-  // });
+const Product = ({
+  currentProduct, currentStyles, selectedStyle, setSelectedStyle,
+}) => {
+  const styleOptionClick = (e) => {
+    e.preventDefault();
+    e.persist();
+    setSelectedStyle(Number(e.target.alt));
+  };
 
   return (
     <div className="product">
-      {props.currentStyles && props.currentProduct
+      {currentStyles && currentProduct
         && (
-        <>
-          <ProductGallery
-            styles={props.currentStyles}
-            selectedStyle={selectedStyle}
-          />
-          <ProductStars />
-          <ProductName
-            product={props.currentProduct}
-          />
-          <ProductStyles
-            styles={props.currentStyles}
-            selectedStyle={selectedStyle}
-            setSelectedStyle={setStyle}
-          />
-          <ProductCart />
-          <ProductDescription
-            currentProduct={props.currentProduct}
-            loading={props.loading}
-          />
-        </>
+          <>
+            <div id="productFlex">
+              <ProductGallery
+                styles={currentStyles}
+                selectedStyle={selectedStyle}
+              />
+              <div id="productInfoFlex">
+                <ProductStars />
+                <ProductName
+                  product={currentProduct}
+                />
+                <ProductStyles
+                  styles={currentStyles}
+                  selectedStyle={selectedStyle}
+                  styleClick={styleOptionClick}
+                />
+                <ProductCart />
+              </div>
+            </div>
+            <ProductDescription
+              currentProduct={currentProduct}
+            />
+          </>
         )}
     </div>
   );

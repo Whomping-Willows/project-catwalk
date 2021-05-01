@@ -1,18 +1,16 @@
-/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable react/destructuring-assignment */
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
 export const ApiContext = createContext();
 
-export const ApiProvider = (props) => {
+export const ApiProvider = ({ children }) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(100);
-  const [sort, setSort] = useState('helpful');
+  const [sort, setSort] = useState('relevant');
   const [productId, setProductId] = useState(18078);
   const [productName, setProductName] = useState('Camo Onesie');
   const [questionId, setQuestionId] = useState(114290);
@@ -79,12 +77,10 @@ export const ApiProvider = (props) => {
     },
   })
     .then((response) => {
-      // console.log('endpoint: ', endpoint);
-      // console.log(response.data);
       callback(response.data);
     })
     .catch((err) => {
-      console.error('From requests: ', err);
+      throw err;
     });
 
   const putRequest = (endpoint) => axios.put('/api', {
@@ -93,12 +89,9 @@ export const ApiProvider = (props) => {
     },
   })
     .then((response) => {
-      // console.log('endpoint: ', endpoint);
-      // console.log('status code ', response.status);
-      // console.log('statusText ', response.statusText);
     })
     .catch((err) => {
-      console.error('From requests: ', err);
+      throw err;
     });
 
   const postRequest = (endpoint, data, callback) => axios.post('/api', {
@@ -108,14 +101,12 @@ export const ApiProvider = (props) => {
     },
   })
     .then((response) => {
-      // console.log('endpoint: ', endpoint);
-      // console.log(response.data);
       if (callback) {
         callback();
       }
     })
     .catch((err) => {
-      console.error('From requests: ', err);
+      throw err;
     });
 
   return (
@@ -123,7 +114,7 @@ export const ApiProvider = (props) => {
       productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest, questionId, setQuestionId, answerId, sort, setProductName, setAnswerId, setReviewId,
     }}
     >
-      {props.children}
+      {children}
     </ApiContext.Provider>
   );
 };
