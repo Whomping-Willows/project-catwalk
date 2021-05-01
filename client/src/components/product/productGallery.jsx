@@ -34,15 +34,17 @@ const ProductGallery = (props) => {
           <>
             {mainImage}
             <div className="sideGallery">
-              {images
-                && images.map((innerData, key) => (
-                  <img
-                    key={`photo${key}`}
-                    className="sideImage"
-                    alt="Not found"
-                    src={innerData.thumbnail_url}
-                  />
-                ))}
+              <div className="sideImgDiv">
+                {images
+                  && images.map((innerData, key) => (
+                    <img
+                      key={`photo${key}`}
+                      className="sideImage"
+                      alt="Not found"
+                      src={innerData.thumbnail_url}
+                    />
+                  ))}
+              </div>
             </div>
           </>
         )}
