@@ -88,13 +88,6 @@ i {
 }
 
 /* Buttons */
-#testbutton {
-  position: absolute;
-  display: inline-block;
-  top: calc(200px/ var(--size-divisor));
-  left: calc(30px/ var(--size-divisor));
-}
-
 button {
   border-color:  393939;
   border-width: 1px;
@@ -457,7 +450,7 @@ button :hover {
 
 .question {
   display: grid;
-  grid-template-rows: 50px 70px 480px 100px;
+  grid-template-rows: 50px 70px 480px auto;
   grid-template-columns: 32% 40% auto;
   padding: 10px;
 }
