@@ -132,7 +132,7 @@ const QAListItem = ({ question }) => {
       {helpfulContainer}
       <button
         id="questionReport"
-        className="helpfulButton"
+        className="questionHelpful helpfulButton"
         type="submit"
         onClick={() => {
           putQuestion(setReported);

@@ -609,7 +609,7 @@ button :hover {
   grid-column-start: span 2;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 70% 15% 5% 10%;
+  grid-template-columns: auto 15% 8% 10%;
   margin-bottom: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -622,6 +622,7 @@ button :hover {
 
 .questionHelpful {
   display: block;
+  width: fit-content;
   font-size: 10px;
   padding: 0px;
   color: darkslategray;
@@ -635,6 +636,7 @@ button :hover {
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 3;
+  width:fit-content;
   border: none;
   text-decoration: underline;
   font-size: 10px;
