@@ -10,7 +10,7 @@ export const ApiProvider = ({ children }) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(100);
-  const [sort, setSort] = useState('helpful');
+  const [sort, setSort] = useState('relevant');
   const [productId, setProductId] = useState(18078);
   const [productName, setProductName] = useState('Camo Onesie');
   const [questionId, setQuestionId] = useState(114290);
