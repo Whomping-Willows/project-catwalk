@@ -1,14 +1,12 @@
-/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-/* eslint-disable react/destructuring-assignment */
+/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
 export const ApiContext = createContext();
 
-export const ApiProvider = (props) => {
+export const ApiProvider = ({ children }) => {
   // PARAM VARIABLES AS STATE
   const [page, setPage] = useState(0);
   const [count, setCount] = useState(100);
@@ -123,7 +121,7 @@ export const ApiProvider = (props) => {
       productId, productName, count, setProductId, reviewId, apiProductIdQuery, end, getRequest, putRequest, postRequest, questionId, setQuestionId, answerId, sort, setProductName, setAnswerId, setReviewId,
     }}
     >
-      {props.children}
+      {children}
     </ApiContext.Provider>
   );
 };
