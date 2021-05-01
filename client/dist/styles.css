@@ -512,7 +512,7 @@ button :hover {
   grid-column-end: 3;
   display: grid;
   grid-template-rows: 50px 70px 480px 100px;
-  grid-template-columns: 40% 40% auto;
+  grid-template-columns: 32% 40% auto;
   padding: 10px;
 }
 
@@ -576,22 +576,29 @@ button :hover {
   color: #515151;
 }
 
-#qaListContainer {
-  grid-row-start: 3;
+#moreAnsweredQuestions {
+  grid-row-start: 4;
   grid-row-end: 5;
   grid-column-start: 1;
-  grid-column-end: 4;
-  display: grid;
-  grid-template-rows: 480px 100px;
-  grid-template-columns: 50% 50%;
+  grid-column-end: 2;
+  margin-top: 28px;
+  width: fit-content;
+}
+
+
+#moreAnsweredQuestionsButton :hover {
+  cursor: pointer;
 }
 
 #qaListScroll {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 3;
   overflow-y: scroll;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-rows: 480px;
+  grid-template-columns: 50% 50%;
 }
 
 #qaList {
@@ -725,20 +732,6 @@ button :hover {
   padding: 5px;
   margin-left: 30px;
   color: darkslategray
-}
-
-#moreAnsweredQuestions {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  align-self: flex-end;
-  width: 250px;
-}
-
-
-#moreAnsweredQuestionsButton :hover {
-  cursor: pointer;
 }
 
 #askQuestionLabel {

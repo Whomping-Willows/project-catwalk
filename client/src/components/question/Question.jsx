@@ -68,19 +68,17 @@ const Question = () => {
           <h2>QUESTIONS & ANSWERS</h2>
           <div id="qaContainer">
             <SearchForm />
-            <div id="qaListContainer">
-              <div id="qaListScroll">
-                <ul id="qaList">
-                  {renderedQuestions.map((question) => (
-                    <QAListItem
-                      key={question.question_id}
-                      question={question}
-                    />
-                  ))}
-                </ul>
-              </div>
-              {seeMoreQuestions}
+            <div id="qaListScroll">
+              <ul id="qaList">
+                {renderedQuestions.map((question) => (
+                  <QAListItem
+                    key={question.question_id}
+                    question={question}
+                  />
+                ))}
+              </ul>
             </div>
+            {seeMoreQuestions}
           </div>
           <div id="askYourQuestion">
             <label id="askQuestionLabel">
