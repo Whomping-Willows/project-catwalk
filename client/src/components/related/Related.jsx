@@ -1,13 +1,10 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-console */
-/* eslint-disable import/no-unresolved */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useContext } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
 
-const Related = (props) => {
+const Related = ({ handleRelatedChange }) => {
   const [relatedProductsIds, setRelatedProductsIds] = useState([]);
   const [related1, setRelated1] = useState();
   const [related1Styles, setRelated1Styles] = useState();
@@ -59,8 +56,8 @@ const Related = (props) => {
                     id="relatedPic1"
                     alt={related1.name}
                     name={related1.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
@@ -70,8 +67,8 @@ const Related = (props) => {
                     id="relatedPic1"
                     alt={related1.name}
                     name={related1.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src={related1Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}
@@ -90,8 +87,8 @@ const Related = (props) => {
                     id="relatedPic2"
                     alt={related2.name}
                     name={related2.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
@@ -101,8 +98,8 @@ const Related = (props) => {
                     id="relatedPic2"
                     alt={related2.name}
                     name={related2.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src={related2Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}
@@ -121,8 +118,8 @@ const Related = (props) => {
                     id="relatedPic3"
                     alt={related3.name}
                     name={related3.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
@@ -132,8 +129,8 @@ const Related = (props) => {
                     id="relatedPic3"
                     alt={related3.name}
                     name={related3.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src={related3Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}
@@ -152,8 +149,8 @@ const Related = (props) => {
                     id="relatedPic4"
                     alt={related4.name}
                     name={related4.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Flarryolmsted%2Ffiles%2F2017%2F10%2FTom-Cruise-Oblivion.jpg"
                   />
                 )}
@@ -163,8 +160,8 @@ const Related = (props) => {
                     id="relatedPic4"
                     alt={related4.name}
                     name={related4.id}
-                    onClick={props.handleRelatedChange}
-                    onKeyDown={props.handleRelatedChange}
+                    onClick={handleRelatedChange}
+                    onKeyDown={handleRelatedChange}
                     src={related4Styles.results[0].photos[0].thumbnail_url}
                   />
                 )}

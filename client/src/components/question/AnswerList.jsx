@@ -1,17 +1,26 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable no-plusplus */
-import React, { useState } from 'react';
-// import { ApiContext } from '../../../contexts/api.context.jsx';
+import React, { useEffect, useState } from 'react';
 import AnswerListItem from './AnswerListItem.jsx';
 
-const AnswerList = ({ answers, setAnswers }) => {
-  const allAnswers = (Object.keys(answers));
-  const [rendered, setRendered] = useState(allAnswers.slice(0, 2));
+const AnswerList = ({
+  answers, setAnswers, questionId,
+}) => {
+  const [renderedAnswers, setRenderedAnswers] = useState();
+  const [allAnswerIds, setAllAnswerIds] = useState();
 
-  // const addNewAnswer = (answer) => {
-  //   setRendered([...rendered, answer]);
-  // };
+  useEffect(() => {
+    if (answers) {
+      setAllAnswerIds(Object.keys(answers));
+    }
+  }, [answers]);
+
+  useEffect(() => {
+    if (allAnswerIds) {
+      setRenderedAnswers(allAnswerIds.slice(0, 2));
+    }
+  }, [allAnswerIds]);
 
   const updateHelpfulness = (answerId) => {
     const updatedAnswers = { ...answers };
@@ -20,44 +29,43 @@ const AnswerList = ({ answers, setAnswers }) => {
   };
 
   const removeReportedAnswer = (answerId) => {
-    // console.log('ANSWER ID', answerId);
-    // console.log('ALL ANSWERS', allAnswers);
     const updatedAnswers = Object.keys(answers).filter((answer) => answer !== answerId.toString());
-    // console.log("UPDATEDANSWERS", updatedAnswers);
+
     setAnswers(updatedAnswers);
   };
 
   const seeMoreAnswersClick = () => {
-    if (rendered.length === 2) {
-      setRendered(allAnswers.slice(0, 4));
-    } else if (rendered.length === 4 && rendered.length < allAnswers.length) {
-      setRendered(allAnswers);
-    } else if (rendered.length === allAnswers.length) {
-      setRendered(allAnswers.slice(0, 2));
+    if (renderedAnswers.length === 2) {
+      setRenderedAnswers(allAnswerIds.slice(0, 4));
+    } else if (renderedAnswers.length === 4 && renderedAnswers.length < allAnswerIds.length) {
+      setRenderedAnswers(allAnswerIds);
+    } else if (renderedAnswers.length === allAnswerIds.length) {
+      setRenderedAnswers(allAnswerIds.slice(0, 2));
     }
   };
 
-  const answerList = rendered && (rendered.length > 0)
-    ? rendered.map((answerId) => (
+  const answerList = renderedAnswers && (renderedAnswers.length > 0)
+    ? renderedAnswers.map((answerId) => (
       <AnswerListItem
+        questionId={questionId}
         key={answerId}
         answer={answers[answerId]}
         updateHelpfulness={updateHelpfulness}
         removeReportedAnswer={removeReportedAnswer}
-        setAnswers={setAnswers}
       />
-    ))
-    : null;
+    )) : null;
 
   let seeMoreAnswersText;
 
-  if (rendered && (rendered.length < allAnswers.length)) {
-    seeMoreAnswersText = 'SEE MORE ANSWERS';
-  } else if (rendered.length === allAnswers.length && allAnswers.length > 2) {
-    seeMoreAnswersText = 'COLLAPSE ANSWERS';
+  if (renderedAnswers && allAnswerIds) {
+    if (renderedAnswers.length < allAnswerIds.length) {
+      seeMoreAnswersText = 'SEE MORE ANSWERS';
+    } else if (renderedAnswers.length === allAnswerIds.length && allAnswerIds.length > 2) {
+      seeMoreAnswersText = 'COLLAPSE ANSWERS';
+    }
   }
 
-  const seeMoreAnswers = rendered && allAnswers.length > 2 ? (
+  const seeMoreAnswers = renderedAnswers && allAnswerIds && allAnswerIds.length > 2 ? (
     <button
       className="moreAnswersButton"
       type="submit"

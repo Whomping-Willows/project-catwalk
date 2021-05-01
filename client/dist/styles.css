@@ -609,7 +609,7 @@ button :hover {
   grid-column-start: span 2;
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 75% 15% 11%;
+  grid-template-columns: 70% 15% 5% 10%;
   margin-bottom: 10px;
   border-bottom-width: 2px;
   border-bottom-style: solid;
@@ -639,11 +639,16 @@ button :hover {
   padding: 0;
 }
 
+#questionReport {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
 #addAnswerButton {
   grid-row-start: 1;
   grid-row-end: 2;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 4;
+  grid-column-end: 5;
 }
 
 #answerList {
@@ -918,12 +923,12 @@ button :hover {
   display: inline;
 }
 
-#reviews5Label {
+#reviewsLabel {
   grid-row-start: 1;
   grid-row-end: 2;
 }
 
-#reviews5Data {
+#reviewsData {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
