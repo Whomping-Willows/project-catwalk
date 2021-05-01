@@ -49,7 +49,7 @@ const Related = ({ handleRelatedChange }) => {
           <h2 id="relatedProductsTitle">RELATED PRODUCTS</h2>
           <div id="relatedProducts">
             {related1 && related1Styles && (
-              <div id="related1">
+              <div className="relatedDiv">
                 {related1Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
@@ -80,7 +80,7 @@ const Related = ({ handleRelatedChange }) => {
             )}
 
             {related2 && related2Styles && (
-              <div id="related2">
+              <div className="relatedDiv">
                 {related2Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
@@ -111,7 +111,7 @@ const Related = ({ handleRelatedChange }) => {
             )}
 
             {related3 && related3Styles && (
-              <div id="related3">
+              <div className="relatedDiv">
                 {related3Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
@@ -142,7 +142,7 @@ const Related = ({ handleRelatedChange }) => {
             )}
 
             {related4 && related4Styles && (
-              <div id="related4">
+              <div className="relatedDiv">
                 {related4Styles.results[0].photos[0].thumbnail_url === null && (
                   <img
                     className="relatedImg"
