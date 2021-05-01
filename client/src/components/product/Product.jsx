@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { ApiContext } from '../../contexts/api.context.jsx';
 import ProductDescription from './productDescription.jsx';
 import ProductGallery from './productGallery.jsx';
@@ -13,9 +13,12 @@ import ProductCart from './productCart.jsx';
 const Product = (props) => {
   const [selectedStyle, setStyle] = useState(props.currentStyles.results[0].style_id);
 
-  // useEffect(() => {
-  //   setStyle();
-  // });
+  const styleOptionClick = (e) => {
+    e.preventDefault();
+    e.persist();
+    // console.log('Click Event: ', e);
+    setStyle(parseInt(e.target.alt));
+  };
 
   return (
     <div className="product">
@@ -33,7 +36,7 @@ const Product = (props) => {
           <ProductStyles
             styles={props.currentStyles}
             selectedStyle={selectedStyle}
-            setStyle={setStyle}
+            styleClick={styleOptionClick}
           />
           <ProductCart />
           <ProductDescription

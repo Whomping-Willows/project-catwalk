@@ -5,7 +5,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 // import Overlay from 'react-image-overlay';
 
@@ -18,6 +18,7 @@ const ProductStyles = (props) => {
     { value: 'M', label: 'M' },
     { value: 'L', label: 'L' },
     { value: 'XL', label: 'XL' },
+    { value: 'XXL', label: 'XXL' },
   ];
 
   const [selectedSize, setSize] = useState('S');
@@ -26,13 +27,6 @@ const ProductStyles = (props) => {
 
   const handleSizeChange = (item) => {
     setSize(item.value);
-  };
-
-  const styleOptionClick = (e) => {
-    e.preventDefault();
-    e.persist();
-    console.log('Click Event: ', e);
-    // props.setStyle(e.target.alt);
   };
 
   useEffect(() => {
@@ -88,6 +82,7 @@ const ProductStyles = (props) => {
       {priceSet()}
     </>
   );
+
   const styleName = styleData.map((data) => {
     // console.log('StyleName conditional: ', data.name);
     if (data.style_id === props.selectedStyle) {
@@ -102,7 +97,7 @@ const ProductStyles = (props) => {
         <div
           className="styleOption"
           key={data.style_id}
-          onClick={(e) => { styleOptionClick(e); }}
+          onClick={(e) => { props.styleClick(e); }}
         >
           <img
             className="styleImage"
@@ -120,7 +115,7 @@ const ProductStyles = (props) => {
       <div
         className="styleOption"
         key={data.style_id}
-        onClick={(e) => { styleOptionClick(e); }}
+        onClick={(e) => { props.styleClick(e); }}
       >
         <img
           className="styleImage"
@@ -160,7 +155,7 @@ const ProductStyles = (props) => {
         <Select
           id="quantitySelector"
           options={quantityOptions}
-          placeholder="1"
+          placeholder=""
         />
       </from>
     </div>
