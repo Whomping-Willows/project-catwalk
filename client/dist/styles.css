@@ -1236,18 +1236,18 @@ button :hover {
 #reviewsFormTitle {
   text-align: center;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: calc(24px/ var(--size-divisor));
+  font-size: 24px;
   color: darkslategrey;
   font-weight: bold;
-  margin-top: calc(10px/ var(--size-divisor));
-  margin-bottom: calc(10px/ var(--size-divisor));
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .reviewsFormSub {
   text-align: center;
-  font-size: calc(20px/ var(--size-divisor));
+  font-size: 20px;
   font-weight: normal;
-  margin-bottom: calc(10px/ var(--size-divisor));
+  margin-bottom: 10px;
   margin-top: 0;
 }
 
@@ -1259,12 +1259,12 @@ button :hover {
 }
 
 #overallRatingStars {
-  margin-right: calc(10px/ var(--size-divisor));
+  margin-right: 10px;
 }
 
 .reviewsFormLabelsMain {
   font-family:Arial, Helvetica, sans-serif;
-  font-size: calc(16px/ var(--size-divisor));
+  font-size: 16px;
   font-weight: bold;
   color: darkslategrey;
   display: inline;
@@ -1272,16 +1272,16 @@ button :hover {
 
 .reviewsFormBorder {
   border-top: 1px solid darkgrey;
-  padding: calc(20px 0 20px 0/ var(--size-divisor));
+  padding: 20px 0 20px 0;
 }
 
 .reviewsFormLabelsSm {
   font-family:Arial, Helvetica, sans-serif;
-  font-size: calc(12px/ var(--size-divisor));
+  font-size: 12px;
   font-weight: normal;
   color: darkslategrey;
   display: inline;
-  margin-left: calc(10px/ var(--size-divisor));
+  margin-left: 10px;
   margin-right: 2px;
 }
 
@@ -1314,7 +1314,7 @@ button :hover {
   display: grid;
   grid-template-rows: auto auto auto;
   grid-template-columns: calc(150px 60px 60px 60px 60px 60px/ var(--size-divisor));
-  margin-bottom: calc(5px/ var(--size-divisor));
+  margin-bottom: 5px;
   align-items:center;
   justify-content:center;
 }
@@ -1324,7 +1324,7 @@ button :hover {
   grid-row-end: 3;
   grid-column-start: 1;
   grid-column-end: 2;
-  margin: calc(0 0 0 20px/ var(--size-divisor));
+  margin: 0 0 0 20px;
   float: right;
 }
 
@@ -1344,7 +1344,7 @@ button :hover {
   grid-column-start: 2;
   grid-column-end: 3;
   display: block;
-  margin: calc(0 22px 0 22px/ var(--size-divisor));
+  margin: 0 22px 0 22px;
 }
 
 .char1Score {
@@ -1373,7 +1373,7 @@ button :hover {
   grid-column-start: 3;
   grid-column-end: 4;
   display: block;
-  margin: calc(0 25px 0 25px/ var(--size-divisor));
+  margin: 0 25px 0 25px;
 }
 
 .char3Title {
@@ -1392,7 +1392,7 @@ button :hover {
   grid-column-start: 4;
   grid-column-end: 5;
   display: block;
-  margin: calc(0 25px 0 25px/ var(--size-divisor));
+  margin: 0 25px 0 25px;
 }
 
 .char4Title {
@@ -1411,7 +1411,7 @@ button :hover {
   grid-column-start: 5;
   grid-column-end: 6;
   display: block;
-  margin: calc(0 25px 0 25px/ var(--size-divisor));
+  margin: 0 25px 0 25px;
 }
 
 .char5Title {
@@ -1430,7 +1430,7 @@ button :hover {
   grid-column-start: 6;
   grid-column-end: 7;
   display: block;
-  margin: calc(0 25px 0 25px/ var(--size-divisor));
+  margin: 0 25px 0 25px;
 }
 
 .char5Score {
@@ -1476,7 +1476,7 @@ button :hover {
   width: calc(500px/ var(--size-divisor));
   height: calc(150px/ var(--size-divisor));
   font-weight: normal;
-  margin-top: calc(10px/ var(--size-divisor));
+  margin-top: 10px;
   padding:0 5px;
   word-wrap: break-word;
   word-break: break-all;
@@ -1505,7 +1505,7 @@ button :hover {
   grid-column-end: 3;
   display: inline;
   height: auto;
-  padding: calc(10px/ var(--size-divisor));
+  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: normal;

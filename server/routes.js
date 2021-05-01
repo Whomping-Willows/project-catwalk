@@ -15,7 +15,7 @@ router.get('/api', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.error('From routes: ', err);
+      throw err;
     });
 });
 
@@ -24,11 +24,10 @@ router.put('/api', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
-      console.log('Response from put ', response);
       res.send(response.data);
     })
     .catch((err) => {
-      console.error('From routes: ', err);
+      throw err;
     });
 });
 
@@ -37,11 +36,10 @@ router.post('/api', (req, res) => {
     headers: { Authorization: GITHUB_API_KEY },
   })
     .then((response) => {
-      console.log(response.data);
       res.send(response.data);
     })
     .catch((err) => {
-      console.error('From routes: ', err);
+      throw err;
     });
 });
 

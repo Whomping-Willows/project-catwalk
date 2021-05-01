@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React from 'react';
 // import { ApiContext } from '../../contexts/api.context.jsx';
 import ProductDescription from './productDescription.jsx';
 import ProductGallery from './productGallery.jsx';

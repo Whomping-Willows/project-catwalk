@@ -77,12 +77,10 @@ export const ApiProvider = ({ children }) => {
     },
   })
     .then((response) => {
-      // console.log('endpoint: ', endpoint);
-      // console.log(response.data);
       callback(response.data);
     })
     .catch((err) => {
-      console.error('From requests: ', err);
+      throw err;
     });
 
   const putRequest = (endpoint) => axios.put('/api', {
@@ -91,12 +89,9 @@ export const ApiProvider = ({ children }) => {
     },
   })
     .then((response) => {
-      // console.log('endpoint: ', endpoint);
-      // console.log('status code ', response.status);
-      // console.log('statusText ', response.statusText);
     })
     .catch((err) => {
-      console.error('From requests: ', err);
+      throw err;
     });
 
   const postRequest = (endpoint, data, callback) => axios.post('/api', {
@@ -106,14 +101,12 @@ export const ApiProvider = ({ children }) => {
     },
   })
     .then((response) => {
-      // console.log('endpoint: ', endpoint);
-      // console.log(response.data);
       if (callback) {
         callback();
       }
     })
     .catch((err) => {
-      console.error('From requests: ', err);
+      throw err;
     });
 
   return (
