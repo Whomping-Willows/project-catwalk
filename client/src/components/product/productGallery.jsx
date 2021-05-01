@@ -5,37 +5,47 @@ import React, { useState, useContext, useEffect } from 'react';
 
 const ProductGallery = (props) => {
   const styleData = props.styles.results;
+  const [mainImage, setMainImage] = useState();
+  const [images, setImages] = useState();
 
-  const images = styleData.map((data) => {
-    if (data.style_id === props.selectedStyle) {
-      // console.log('Gallery Data: ', data.photos);
-      return data.photos;
-    }
-  });
+  // console.log(styleData);
+  // console.log(props.selectedStyle);
 
-  const mainImage = () => (
-    <img
-      id="mainImage"
-      alt={styleData[0].name}
-      src={styleData[0].photos[0].url}
-    />
-  );
-
-  const sideGallery = images[0].map((data, key) => (
-    <img
-      key={`photo${key}`}
-      className="sideImage"
-      alt="Not found"
-      src={data.thumbnail_url}
-    />
-  ));
+  useEffect(() => {
+    styleData.map((data) => {
+      if (data.style_id === props.selectedStyle) {
+        // console.log('Gallery Data: ', data.photos);
+        setImages(data.photos);
+        setMainImage(() => (
+          <img
+            id="mainImage"
+            alt={data.name}
+            src={data.photos[0].url}
+          />
+        ));
+      }
+    });
+  }, [styleData, props.selectedStyle]);
 
   return (
     <div className="productGallery">
-      {mainImage()}
-      <div className="sideGallery">
-        {sideGallery}
-      </div>
+      {props.styles && props.selectedStyle
+        && (
+          <>
+            {mainImage}
+            <div className="sideGallery">
+              {images
+                && images.map((innerData, key) => (
+                  <img
+                    key={`photo${key}`}
+                    className="sideImage"
+                    alt="Not found"
+                    src={innerData.thumbnail_url}
+                  />
+                ))}
+            </div>
+          </>
+        )}
     </div>
   );
 };
