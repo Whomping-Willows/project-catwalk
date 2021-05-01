@@ -1,10 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import { Modal } from '@material-ui/core';
@@ -13,7 +8,7 @@ import { ApiContext } from '../../contexts/api.context.jsx';
 import ReviewsStars from './ReviewsStars.jsx';
 import formatDate from '../../helpers/formatDate.js';
 
-const ReviewsItem = (props) => {
+const ReviewsItem = ({ review }) => {
   const [open, setOpen] = useState(false);
   const [currentModalImg, setCurrentModalImg] = useState();
 
@@ -31,7 +26,6 @@ const ReviewsItem = (props) => {
 
   const handleOpen = (e) => {
     const img = e.target.src;
-    console.log(img);
     setOpen(true);
     setCurrentModalImg(img);
   };
@@ -57,40 +51,41 @@ const ReviewsItem = (props) => {
   return (
     <div id="reviewItem">
       <div id="reviewSubTitleStars">
-        <ReviewsStars rating={props.review.rating} />
+        <ReviewsStars rating={review.rating} />
       </div>
       <div id="reviewSubTitleUserDate">
-        {props.review.reviewer_name}
+        {review.reviewer_name}
         ,
         {' '}
-        {formatDate(props.review.date)}
+        {formatDate(review.date)}
       </div>
-      <h3 id="reviewTitle">{props.review.summary}</h3>
-      <p id="reviewBody">{props.review.body}</p>
-      {props.review.recommend
+      <h3 id="reviewTitle">{review.summary}</h3>
+      <p id="reviewBody">{review.body}</p>
+      {review.recommend
         && (
           <div id="reviewIsRecDiv">
             <i className="fas fa-check" />
             <div id="reviewIsRec">I recommend this product</div>
           </div>
         )}
-      {props.review.response
+      {review.response
         && (
           <div id="reviewResponse">
             <p id="reviewResponseTitle">Response: </p>
-            <p id="reviewResponseBody">{props.review.response}</p>
+            <p id="reviewResponseBody">{review.response}</p>
           </div>
         )}
-      {props.review.photos.length > 0 && (
+      {review.photos.length > 0 && (
 
         <div id="reviewsPhotos">
-          {props.review.photos.map((photo) => (
+          {review.photos.map((photo) => (
             <>
               <div className="reviewsPhotoDiv">
                 <img
                   className="reviewsImg"
-                  alt={props.review.name}
-                  name={props.review_id}
+                  alt={review.name}
+                  name={review.review_id}
+                  onKeyDown={handleOpen}
                   onClick={handleOpen}
                   src={photo.url}
                 />
@@ -107,9 +102,10 @@ const ReviewsItem = (props) => {
                 >
                   <img
                     className="reviewsModalImg"
-                    alt={props.review.name}
-                    name={props.review_id}
-                    onClick={props.review.photos[0].url}
+                    alt={review.name}
+                    name={review.review_id}
+                    onClick={review.photos[0].url}
+                    onKeyDown={review.photos[0].url}
                     src={currentModalImg}
                   />
                 </Modal>
@@ -121,12 +117,12 @@ const ReviewsItem = (props) => {
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <button type="button" className="reviewHelpP" name={props.review.review_id} onClick={putHelpfulness}>
+        <button type="button" className="reviewHelpP" name={review.review_id} onClick={putHelpfulness} onKeyDown={putHelpfulness}>
           Yes (
-          {props.review.helpfulness}
+          {review.helpfulness}
           ) |
         </button>
-        <button type="button" className="reviewHelpP" name={props.review.review_id} onClick={putReportReview}>
+        <button type="button" className="reviewHelpP" name={review.review_id} onClick={putReportReview} onKeyDown={putHelpfulness}>
           {' '}
           Report
         </button>

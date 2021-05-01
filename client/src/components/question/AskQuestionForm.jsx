@@ -2,13 +2,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 
 const AskQuestionForm = ({ handleClose }) => {
   const {
-    productName, productId, postRequest, end,
+    productName, productId, postRequest, getRequest, end,
   } = useContext(ApiContext);
+
+  const { questions, setQuestions, setRenderedQuestions } = useContext(QuestionContext);
 
   const [body, setQuestionBody] = useState();
   const [name, setAskerName] = useState();
@@ -21,11 +24,20 @@ const AskQuestionForm = ({ handleClose }) => {
     product_id: productId,
   };
 
+  useEffect(() => {
+    setRenderedQuestions(questions);
+  }, [questions]);
+
+  const postDataHelper = () => {
+    getRequest(end.listQuestions, (data) => {
+      setQuestions(data.results);
+    });
+  };
+
   const handleAskQuestionSubmit = (e) => {
     e.preventDefault();
-    postRequest(end.addQuestion, postData);
-    // need a promise and alert that it has been submitted.
 
+    postRequest(end.addQuestion, postData, postDataHelper);
     handleClose();
   };
 
