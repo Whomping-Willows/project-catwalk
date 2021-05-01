@@ -1,23 +1,35 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 import AnswerList from './AnswerList.jsx';
 import AddAnswerForm from './AddAnswerForm.jsx';
 
-const QAListItem = ({ question, setQuestions }) => {
+const QAListItem = ({ question }) => {
   const {
-    questionId, getRequest, putRequest, setQuestionId, end,
+    getRequest, putRequest, setQuestionId, questionId, end,
   } = useContext(ApiContext);
 
+  const { setQuestion, setQuestions, questions } = useContext(QuestionContext);
+
   const [helpful, setHelpful] = useState(false);
+  const [reported, setReported] = useState(false);
   const [open, setOpen] = useState(false);
-  const [answers, setAnswers] = useState(question.answers);
+  const [answers, setAnswers] = useState();
+
+  useEffect(() => {
+    setAnswers(question.answers);
+  }, [question]);
 
   const handleOpen = (e) => {
     e.preventDefault();
     setQuestionId(question.question_id);
+    setQuestion(question);
     setOpen(true);
   };
 
@@ -38,23 +50,44 @@ const QAListItem = ({ question, setQuestions }) => {
 
   const classes = useStyles();
 
-  const styles = helpful ? { textDecoration: 'none' } : null;
-
-  const putQuestionHelpfulness = () => {
+  const putQuestion = (callback) => {
     setQuestionId(question.question_id);
-    setHelpful(true);
+    callback(true);
+  };
+
+  let styles = {};
+
+  const updateHelpfulness = (questionID) => {
+    let updatedQuestions = [];
+    updatedQuestions = questions.map((q) => {
+      if (q.question_id === questionID) {
+        q.question_helpfulness++;
+      }
+      return q;
+    });
+    setQuestions(updatedQuestions);
+    styles = { textDecoration: 'none' };
   };
 
   useEffect(() => {
     if (helpful) {
       putRequest(end.questionHelpful)
         .then(() => {
-          getRequest(end.listQuestions, (questions) => {
-            setQuestions(questions.results);
-          });
+          updateHelpfulness(questionId);
         });
     }
   }, [helpful]);
+
+  useEffect(() => {
+    if (reported) {
+      putRequest(end.questionReport)
+        .then(() => {
+          getRequest(end.listQuestions, (questionsMeta) => {
+            setQuestions(questionsMeta.results);
+          });
+        });
+    }
+  }, [reported]);
 
   const helpfulContainer = (
     <div className="questionHelpful">
@@ -63,9 +96,9 @@ const QAListItem = ({ question, setQuestions }) => {
         style={styles}
         type="submit"
         className="helpfulButton"
-        onClick={
-          putQuestionHelpfulness
-          }
+        onClick={() => {
+          putQuestion(setHelpful);
+        }}
       >
         <div>
           Yes (
@@ -99,16 +132,16 @@ const QAListItem = ({ question, setQuestions }) => {
         className={classes.askQuestionModal}
       >
         <AddAnswerForm
-          question_id={question.question_id}
-          question_body={question.question_body}
-          handleClose={handleClose}
+          answers={answers}
           setAnswers={setAnswers}
+          handleClose={handleClose}
+          questionId={question.question_id}
         />
       </Modal>
     </div>
   );
 
-  return (
+  return answers ? (
     <li
       className="QAListItem"
     >
@@ -117,13 +150,24 @@ const QAListItem = ({ question, setQuestions }) => {
         {` ${question.question_body}`}
       </h3>
       {helpfulContainer}
+      <button
+        id="questionReport"
+        className="helpfulButton"
+        type="submit"
+        onClick={() => {
+          putQuestion(setReported);
+        }}
+      >
+        {' '}
+        Report
+      </button>
       {addAnswer}
       <AnswerList
-        answers={answers}
         setAnswers={setAnswers}
+        answers={answers}
       />
     </li>
-  );
+  ) : null;
 };
 
 export default QAListItem;

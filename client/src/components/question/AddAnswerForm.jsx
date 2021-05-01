@@ -5,13 +5,18 @@
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
 import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 
 const AddAnswerForm = ({
-  question_id, question_body, handleClose, setAnswers,
+  answers, setAnswers, handleClose,
 }) => {
   const {
+    questionId,
     productName, postRequest, getRequest, setQuestionId, end,
   } = useContext(ApiContext);
+  const {
+    question, questions,
+  } = useContext(QuestionContext);
 
   const [body, setAnswerBody] = useState();
   const [name, setAnswererName] = useState();
@@ -25,19 +30,16 @@ const AddAnswerForm = ({
     photos,
   };
 
-  const postDataHelper = () => {
+  const addNewAnswer = () => {
     getRequest(end.answersList, (data) => {
-      console.log(data.results);
       setAnswers(data.results);
     });
   };
 
   const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
-
-    setQuestionId(question_id);
-
-    postRequest(end.answersList, postData, postDataHelper);
+    setQuestionId(question.question_id);
+    postRequest(end.answersList, postData, addNewAnswer);
     handleClose();
   };
 
@@ -45,7 +47,7 @@ const AddAnswerForm = ({
     <div className="qaFormContainer">
       <h2>
         Submit your answer for:
-        {` '${productName}' : ${question_body}` }
+        {` '${productName}' : ${question.question_body}` }
       </h2>
       <form>
         <div id="answerFormBody">

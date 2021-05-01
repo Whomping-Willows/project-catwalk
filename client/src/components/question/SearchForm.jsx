@@ -2,25 +2,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
+import { QuestionContext } from './QuestionContext.jsx';
 
-const SearchForm = ({ questions, setRendered }) => {
+const SearchForm = () => {
+  const { questions, setRenderedQuestions } = useContext(QuestionContext);
+
   const [query, setQuery] = useState('');
+  // const [searchSubmit, setSearchSubmit] = useState(false);
 
   const handleSearchFormChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const searchFormSubmitHandler = (e) => {
-    e.preventDefault();
-
-    const queryMatches = [];
-    questions.forEach((question) => {
-      if (question.question_body.indexOf(query) !== -1) {
-        queryMatches.push(question);
-      }
-    });
-    setRendered(queryMatches);
-  };
+  useEffect(() => {
+    setRenderedQuestions(questions.filter((quest) => (
+      quest.question_body.toLowerCase().includes(query.toLowerCase()))));
+  }, [query]);
 
   return (
     <div
@@ -37,16 +34,18 @@ const SearchForm = ({ questions, setRendered }) => {
           onChange={handleSearchFormChange}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS"
         />
-        <button
-          type="submit"
+        {/* <button
+          type="button"
           id="searchButton"
-          onSubmit={searchFormSubmitHandler}
-        >
-          <i
-            className="fas fa-search"
-            id="searchAddIcon"
-          />
-        </button>
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        > */}
+        <i
+          className="fas fa-search"
+          id="searchAddIcon"
+        />
+        {/* </button> */}
       </form>
     </div>
   );
