@@ -2,39 +2,17 @@
 /* eslint-disable import/extensions */
 import React, { useState, useContext, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
 import { QuestionContext } from './QuestionContext.jsx';
 import QAListItem from './QAListItem.jsx';
 import SearchForm from './SearchForm.jsx';
 import AskQuestionForm from './AskQuestionForm.jsx';
 
-// // const dummyData = {
-// //   results: [
-//     {
-//       asker_name: 'cleopatra',
-//       question_body: 'Can I wash it?',
-//       question_date: '2018-02-08T00:00:00.000Z',
-//       question_helpfulness: 27,
-//       question_id: 114290,
-//       answers: {
-//         1082146: {
-//           answerer_name: 'ceasar',
-//           body: 'It says not to',
-//           date: '2018-03-08T00:00:00.000Z',
-//           helpfulness: 1,
-//           id: 1082146,
-//           photos: [],
-//         },
-//       },
-//     },
-//   ],
-// };
-
 const Question = () => {
   const { getRequest, end, productId } = useContext(ApiContext);
   const {
-    questions, setQuestions, renderedQuestions, setRenderedQuestions,
+    questions, setQuestions, renderedQuestions,
+    setRenderedQuestions, classes, handleOpen, handleClose,
   } = useContext(QuestionContext);
 
   const [open, setOpen] = useState(false);
@@ -83,27 +61,6 @@ const Question = () => {
     </button>
   ) : null;
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const useStyles = makeStyles({
-    askQuestionModal: {
-      position: 'absolute',
-      top: '10%',
-      left: '10%',
-      overflow: 'scroll',
-      height: '100%',
-      display: 'block',
-    },
-  });
-
-  const classes = useStyles();
-
   return !loading ? (
     <div className="question">
       {questions && (
@@ -111,19 +68,17 @@ const Question = () => {
           <h2>QUESTIONS & ANSWERS</h2>
           <div id="qaContainer">
             <SearchForm />
-            <div id="qaListContainer">
-              <div id="qaListScroll">
-                <ul id="qaList">
-                  {renderedQuestions.map((question) => (
-                    <QAListItem
-                      key={question.question_id}
-                      question={question}
-                    />
-                  ))}
-                </ul>
-              </div>
-              {seeMoreQuestions}
+            <div id="qaListScroll">
+              <ul id="qaList">
+                {renderedQuestions.map((question) => (
+                  <QAListItem
+                    key={question.question_id}
+                    question={question}
+                  />
+                ))}
+              </ul>
             </div>
+            {seeMoreQuestions}
           </div>
           <div id="askYourQuestion">
             <label id="askQuestionLabel">
@@ -132,7 +87,7 @@ const Question = () => {
             <button
               className="button"
               type="submit"
-              onClick={handleOpen}
+              onClick={() => { handleOpen(setOpen); }}
             >
               ASK YOUR QUESTION
               <i className="fas fa-plus" id="reviewsAddPlus" />
@@ -140,14 +95,14 @@ const Question = () => {
           </div>
           <Modal
             open={open}
-            onClose={handleClose}
+            onClose={() => { handleClose(setOpen); }}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             container={() => document.getElementById('question')}
             className={classes.askQuestionModal}
           >
             <AskQuestionForm
-              handleClose={handleClose}
+              handleClose={() => { handleClose(setOpen); }}
             />
           </Modal>
         </>
