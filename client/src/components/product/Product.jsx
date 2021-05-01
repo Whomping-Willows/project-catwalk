@@ -25,20 +25,24 @@ const Product = ({
       {currentStyles && currentProduct
         && (
           <>
-            <ProductGallery
-              styles={currentStyles}
-              selectedStyle={selectedStyle}
-            />
-            <ProductStars />
-            <ProductName
-              product={currentProduct}
-            />
-            <ProductStyles
-              styles={currentStyles}
-              selectedStyle={selectedStyle}
-              styleClick={styleOptionClick}
-            />
-            <ProductCart />
+            <div id="productFlex">
+              <ProductGallery
+                styles={currentStyles}
+                selectedStyle={selectedStyle}
+              />
+              <div id="productInfoFlex">
+                <ProductStars />
+                <ProductName
+                  product={currentProduct}
+                />
+                <ProductStyles
+                  styles={currentStyles}
+                  selectedStyle={selectedStyle}
+                  styleClick={styleOptionClick}
+                />
+                <ProductCart />
+              </div>
+            </div>
             <ProductDescription
               currentProduct={currentProduct}
             />

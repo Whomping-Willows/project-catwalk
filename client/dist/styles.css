@@ -12,7 +12,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  height: 150px;
+  height: calc(150px/var(--size-divisor));
   width: 100%;
   background-color: #515151;
   display: block;
@@ -25,17 +25,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 70px;
-  /* grid-template-areas: '. . .'
-                       'product product product'
-                       '. related .'
-                       '. question .'
-                       '. reviews .'
-                       '. . .';
-  grid-template-rows: 100px auto auto auto auto 100px;
-  grid-template-columns: 100px auto 100px; */
-  margin: 200px 100px 100px 100px;
+  margin: calc(200px/ var(--size-divisor));
   padding-bottom: 100px;
-  /* width: calc(1000px/var(--size-divisor)); */
 }
 
 
@@ -87,17 +78,20 @@ i {
   margin: 0.5em;
 }
 
+<<<<<<< HEAD
 /* Buttons */
+=======
+>>>>>>> ccbca81845c670b863630da7018cb05da817b3ca
 button {
   border-color:  393939;
   border-width: 1px;
   font-family: Arial, Helvetica, sans-serif;
   color: #393939;
-  padding: calc(20px/ var(--size-divisor));
-  margin: calc(10px/ var(--size-divisor));
+  padding: 20px;
+  margin: 10px;
   text-align: center;
   text-decoration: none;
-  font-size: calc(16px/ var(--size-divisor));
+  font-size: 16px;
   background-color: white;
 }
 
@@ -109,8 +103,18 @@ button :hover {
 
 .product {
   display: grid;
-  grid-template-rows: calc(5% 15% auto 10% 200px/ var(--size-divisor));
-  grid-template-columns: calc(100px 520px 20px 260px 100px/ var(--size-divisor));
+  grid-template-rows: auto auto;
+}
+
+#productFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: calc(1000px / var(--size-divisor));
+  flex: 1 0 auto;
 }
 
 .productGallery {
@@ -160,26 +164,38 @@ button :hover {
   margin-top: 10px;
 }
 
+#productInfoFlex {
+  width: 150px;
+ flex: 1 0 auto;
+}
+
 .productStars {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 4;
   grid-column-end: 6;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 25% auto;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+  flex: 1 0 auto;
+  margin-bottom: 10px;
 }
 
 #productStars {
-  grid-column-start: 1;
-  grid-column-end: 2;
+  /* grid-column-start: 1;
+  grid-column-end: 2; */
+  width: fit-content;
+  padding-right: 10px;
 }
 
 #reviewLink {
-  float: left;
-  grid-column-start: 2;
-  grid-column-end: 3;
+  margin-block-start: .25em;
+  align-content: flex-start;
+  flex: 1 0 auto;
+  float: right;
+  /* grid-column-start: 2;
+  grid-column-end: 3; */
 }
 
 .productName {
@@ -220,7 +236,7 @@ button :hover {
 .styleNameContainer {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 15% auto;
+  grid-template-columns: 25% auto;
 }
 
 #styleStyle {
@@ -285,18 +301,21 @@ button :hover {
   grid-column-start: 1;
   grid-column-end: 2;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 #sizeSelector {
   width: 60%;
   margin-right: 20px;
   margin-bottom: 12.5px;
+  font-size: 12px;
   display: inline-block;
 }
 
 #quantitySelector {
   width: 30%;
   margin-bottom: 12.5px;
+  font-size: 12px;
   display: inline-block;
   border-color: black;
 }
@@ -326,12 +345,16 @@ button :hover {
   grid-row-end: 5;
   grid-column-start: 4;
   grid-column-end: 6;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
-
 #addToBag {
-  width: 75%;
   height: calc(50px/ var(--size-divisor));
+  font-size: 12px;
+  text-align: center;
+  flex: 1 0 auto;
   float: left;
 }
 
@@ -344,6 +367,7 @@ button :hover {
 #favorite {
   width: calc(50px/ var(--size-divisor));
   height: calc(50px/ var(--size-divisor));
+  flex: 1 0 auto;
   float: right;
 }
 
@@ -354,10 +378,9 @@ button :hover {
 }
 
 .productDescription {
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 2;
-  grid-column-end: 5;
+  margin-top: 20px;
+  grid-row-start: 2;
+  grid-row-end: 3;
   display: grid;
   grid-template-rows: 15% auto;
   grid-template-columns: 32.5% 32.5% 2.5% 32.5%;
@@ -401,6 +424,7 @@ button :hover {
 
 .related {
   display: grid;
+  width: calc(800px / var(--size-divisor));
   grid-template-rows: 50px auto;
   grid-template-areas: 'title'
                        'products';
@@ -449,6 +473,7 @@ button :hover {
 /* QUESTIONS SECTION */
 
 .question {
+  width: calc(800px / var(--size-divisor));
   display: grid;
   grid-template-rows: 50px 70px 480px auto;
   grid-template-columns: 32% 40% auto;
@@ -736,6 +761,7 @@ button :hover {
 #reviews {
   height: calc(720px/ var(--size-divisor));
   padding-bottom: 100px;
+  width: calc(800px / var(--size-divisor));
 }
 
 #reviewsFlex {
@@ -1544,9 +1570,9 @@ button :hover {
     --size-divisor: 1.5;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1000px) {
   :root {
-    --size-divisor: 1;
+    --size-divisor: 1.25;
   }
 }
 @media (min-width: 1200px) {
