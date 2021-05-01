@@ -65,7 +65,7 @@ const Question = () => {
     <div className="question">
       {questions && (
         <>
-          <h2>QUESTIONS & ANSWERS</h2>
+          <h2 id="questionTitle">QUESTIONS & ANSWERS</h2>
           <div id="qaContainer">
             <SearchForm />
             <div id="qaListScroll">

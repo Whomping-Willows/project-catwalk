@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import React, { useState } from 'react';
-import { ApiContext } from '../../../contexts/api.context.jsx';
 import AnswerListItem from './AnswerListItem.jsx';
 
 const AnswerList = ({ answers }) => {
-  // console.log(answers);
   const [index, setIndex] = useState(2);
   const allAnswers = Object.keys(answers);
   const [rendered, setRendered] = useState(allAnswers.slice(0, index));
@@ -20,15 +21,12 @@ const AnswerList = ({ answers }) => {
   };
 
   const answerList = rendered && (rendered.length > 0)
-    ? rendered.map((answerId) => {
-      // console.log('rendered', rendered);
-      return (
-        <AnswerListItem
-          key={answerId}
-          answer={answers[answerId]}
-        />
-      );
-})
+    ? rendered.map((answerId) => (
+      <AnswerListItem
+        key={answerId}
+        answer={answers[answerId]}
+      />
+    ))
     : null;
 
   let seeMoreAnswersText;

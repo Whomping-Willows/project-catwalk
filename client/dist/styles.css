@@ -78,10 +78,6 @@ i {
   margin: 0.5em;
 }
 
-<<<<<<< HEAD
-/* Buttons */
-=======
->>>>>>> ccbca81845c670b863630da7018cb05da817b3ca
 button {
   border-color:  393939;
   border-width: 1px;
@@ -478,6 +474,11 @@ button :hover {
   grid-template-rows: 50px 70px 480px auto;
   grid-template-columns: 32% 40% auto;
   padding: 10px;
+}
+
+#questionTitle {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 #qaContainer {

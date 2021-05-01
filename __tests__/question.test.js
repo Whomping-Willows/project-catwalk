@@ -13,12 +13,28 @@ describe('QA tests', () => {
         question_helpfulness: 27,
         question_id: 114290,
         answers: {
-          1082146: {
-            answerer_name: 'ceasar',
-            body: 'It says not to',
-            date: '2018-03-08T00:00:00.000Z',
-            helpfulness: 1,
-            id: 1082146,
+          1443949: {
+            answerer_name: '',
+            body: "Wash in cold. You'll thank me later.",
+            date: '2021-03-11T00:00:00.000Z',
+            helpfulness: 11,
+            id: 1443949,
+            photos: [],
+          },
+          1444025: {
+            answerer_name: 'UniqueUsrNm',
+            body: 'Wash in cold.',
+            date: '2021-03-11T00:00:00.000Z',
+            helpfulness: 5,
+            id: 1444025,
+            photos: [],
+          },
+          1444028: {
+            answerer_name: 'SomethingCool',
+            body: 'Of course, looks even better after',
+            date: '2021-03-11T00:00:00.000Z',
+            helpfulness: 0,
+            id: 1444028,
             photos: [],
           },
         },
@@ -30,7 +46,7 @@ describe('QA tests', () => {
     render(<QuestionContext />);
   });
 
-  it('should render a list of 4 questions on page load', ()=> {
+  it('should render a list of 4 questions on page load', () => {
 
   });
 
