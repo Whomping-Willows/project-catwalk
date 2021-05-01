@@ -616,6 +616,10 @@ button :hover {
   border-color: darkgrey;
 }
 
+#questionBody {
+  margin: 10px;
+}
+
 .questionHelpful {
   display: block;
   font-size: 10px;
