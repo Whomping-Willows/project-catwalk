@@ -1,6 +1,4 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-/* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 import React from 'react';
 import Stars from '../Stars.jsx';
@@ -18,21 +16,18 @@ const getPercentStr = (metaData) => {
   return percent;
 };
 
-const ReviewsSummary = (props) => (
+const ReviewsSummary = ({ productData, metaData }) => (
   <div id="reviewsSummary">
-    {props.productData.results.length > 0 && (
-      <div id="reviewsSumNum">{getReviewsAvg(props.metaData)}</div>
-    )}
-    {!props.productData.results.length && (
-      <div id="reviewsSumNum">0</div>
+    {productData.results.length > 0 && (
+      <div id="reviewsSumNum">{getReviewsAvg(metaData)}</div>
     )}
     <div id="reviewsSumStars">
       <Stars />
     </div>
-    {props.productData.results.length > 0 && (
+    {productData.results.length > 0 && (
       <div id="reviewsSumRec">
         <p>
-          {getPercentStr(props.metaData)}
+          {getPercentStr(metaData)}
           {' '}
           of reviews recommend this product
         </p>

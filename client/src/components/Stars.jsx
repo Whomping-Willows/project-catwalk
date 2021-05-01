@@ -5,9 +5,9 @@ import { ApiContext } from '../contexts/api.context.jsx';
 import getReviewsAvg from '../helpers/getReviewsAvg.js';
 
 const Stars = () => {
-  const [reviewScore, setReviewScore] = useState();
+  const [reviewScore, setReviewScore] = useState(0);
 
-  const { getRequest, end } = useContext(ApiContext);
+  const { productId, getRequest, end } = useContext(ApiContext);
 
   const createReviewsScore = (metaData) => {
     const score = Number(getReviewsAvg(metaData));
@@ -16,20 +16,25 @@ const Stars = () => {
 
   useEffect(() => {
     getRequest(end.reviewsMeta, createReviewsScore);
-  }, []);
+  }, [productId]);
 
   return (
-    <Ratings
-      rating={reviewScore}
-      widgetDimensions="15px"
-      widgetSpacings="1px"
-    >
-      <Ratings.Widget />
-      <Ratings.Widget />
-      <Ratings.Widget />
-      <Ratings.Widget />
-      <Ratings.Widget />
-    </Ratings>
+    <div>
+      {reviewScore && (
+        <Ratings
+          rating={reviewScore}
+          widgetDimensions="15px"
+          widgetSpacings="1px"
+        >
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+        </Ratings>
+
+      )}
+    </div>
   );
 };
 

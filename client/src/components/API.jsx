@@ -3,23 +3,28 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ApiContext } from '../contexts/api.context.jsx';
 import Product from './product/Product.jsx';
 import Related from './related/Related.jsx';
+import { QuestionProvider } from './question/QuestionContext.jsx';
 import Question from './question/Question.jsx';
 import Reviews from './review/Reviews.jsx';
 
 const API = () => {
   const [currentProduct, setCurrentProduct] = useState();
   const [currentStyles, setCurrentStyles] = useState();
-  const [loading, setLoading] = useState(true);
 
   const {
-    getRequest, end, productId, setProductId,
+    getRequest, end, productId, setProductId, setProductName,
   } = useContext(ApiContext);
 
   useEffect(() => {
     getRequest(end.listInfo, setCurrentProduct);
     getRequest(end.productStyles, setCurrentStyles);
-    setTimeout(() => { setLoading(false); }, 1000);
   }, [productId]);
+
+  useEffect(() => {
+    if (currentProduct) {
+      setProductName(currentProduct.name);
+    }
+  }, [currentProduct]);
 
   const handleRelatedChange = (e) => {
     const newId = e.target.name;
@@ -32,17 +37,17 @@ const API = () => {
         && (
         <>
           <Product
-            loading={loading}
             currentProduct={currentProduct}
             setCurrentProduct={setCurrentProduct}
             currentStyles={currentStyles}
             setCurrentStyles={setCurrentStyles}
           />
           <Related
-            currentProduct={currentProduct}
             handleRelatedChange={handleRelatedChange}
           />
-          <Question />
+          <QuestionProvider>
+            <Question className="question" />
+          </QuestionProvider>
           <Reviews />
         </>
         )}

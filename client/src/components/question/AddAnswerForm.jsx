@@ -1,12 +1,22 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable import/extensions */
 import React, { useContext, useState } from 'react';
-import { ApiContext } from '../../../contexts/api.context.jsx';
+import { ApiContext } from '../../contexts/api.context.jsx';
+import { QuestionContext } from './QuestionContext.jsx';
 
-const AddAnswerForm = ({ question_body,handleClose }) => {
+const AddAnswerForm = ({
+  answers, setAnswers, handleClose,
+}) => {
   const {
-    productNamegit , postRequest, end,
+    questionId,
+    productName, postRequest, getRequest, setQuestionId, end,
   } = useContext(ApiContext);
+  const {
+    question, questions,
+  } = useContext(QuestionContext);
 
   const [body, setAnswerBody] = useState();
   const [name, setAnswererName] = useState();
@@ -20,11 +30,16 @@ const AddAnswerForm = ({ question_body,handleClose }) => {
     photos,
   };
 
+  const addNewAnswer = () => {
+    getRequest(end.answersList, (data) => {
+      setAnswers(data.results);
+    });
+  };
+
   const handleAddAnswerSubmit = (e) => {
     e.preventDefault();
-    postRequest(end.answersList, postData);
-    // need a promise and alert that it has been submitted.
-
+    setQuestionId(question.question_id);
+    postRequest(end.answersList, postData, addNewAnswer);
     handleClose();
   };
 
@@ -32,7 +47,7 @@ const AddAnswerForm = ({ question_body,handleClose }) => {
     <div className="qaFormContainer">
       <h2>
         Submit your answer for:
-        <h3>{` '${productName}' : ${question_body}` }</h3>
+        {` '${productName}' : ${question.question_body}` }
       </h2>
       <form>
         <div id="answerFormBody">

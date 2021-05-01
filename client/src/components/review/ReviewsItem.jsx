@@ -1,76 +1,128 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Modal } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
 import ReviewsStars from './ReviewsStars.jsx';
+import formatDate from '../../helpers/formatDate.js';
 
-const formatDate = (string) => {
-  let formatted = '';
-  const year = string.substring(0, 4);
-  const month = string.substring(5, 7);
-  const day = string.substring(8, 10);
+const ReviewsItem = ({ review }) => {
+  const [open, setOpen] = useState(false);
+  const [currentModalImg, setCurrentModalImg] = useState();
 
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const monthNumber = Number(month);
-  const monthString = monthNames[monthNumber - 1];
+  const { end, putRequest, setReviewId } = useContext(ApiContext);
 
-  formatted = formatted.concat(monthString, ' ', day, ', ', year);
-
-  return formatted;
-};
-
-const ReviewsItem = (props) => {
-  const { end, putRequest } = useContext(ApiContext);
-
-  const putHelpfulness = () => {
+  const putHelpfulness = (e) => {
+    setReviewId(e.target.name);
     putRequest(end.reviewsHelpful, null);
   };
 
-  const putReportReview = () => {
+  const putReportReview = (e) => {
+    setReviewId(e.target.name);
     putRequest(end.reviewsReport, null);
   };
+
+  const handleOpen = (e) => {
+    const img = e.target.src;
+    setOpen(true);
+    setCurrentModalImg(img);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const useStyles = makeStyles({
+    reviewsModal: {
+      position: 'absolute',
+      top: '10%',
+      left: '10%',
+      overflow: 'scroll',
+      height: '700px',
+      width: 'auto',
+      display: 'block',
+    },
+  });
+
+  const classes = useStyles();
 
   return (
     <div id="reviewItem">
       <div id="reviewSubTitleStars">
-        <ReviewsStars rating={props.review.rating} />
+        <ReviewsStars rating={review.rating} />
       </div>
       <div id="reviewSubTitleUserDate">
-        {props.review.reviewer_name}
+        {review.reviewer_name}
         ,
         {' '}
-        {formatDate(props.review.date)}
+        {formatDate(review.date)}
       </div>
-      <h3 id="reviewTitle">{props.review.summary}</h3>
-      <p id="reviewBody">{props.review.body}</p>
-      {props.review.recommend
-      && (
-      <div id="reviewIsRecDiv">
-        <i className="fas fa-check" />
-        <div id="reviewIsRec">I recommend this product</div>
-      </div>
-      )}
-      {props.review.response
-      && (
-      <div id="reviewResponse">
-        <p id="reviewResponseTitle">Response: </p>
-        <p id="reviewResponseBody">{props.review.response}</p>
-      </div>
+      <h3 id="reviewTitle">{review.summary}</h3>
+      <p id="reviewBody">{review.body}</p>
+      {review.recommend
+        && (
+          <div id="reviewIsRecDiv">
+            <i className="fas fa-check" />
+            <div id="reviewIsRec">I recommend this product</div>
+          </div>
+        )}
+      {review.response
+        && (
+          <div id="reviewResponse">
+            <p id="reviewResponseTitle">Response: </p>
+            <p id="reviewResponseBody">{review.response}</p>
+          </div>
+        )}
+      {review.photos.length > 0 && (
+
+        <div id="reviewsPhotos">
+          {review.photos.map((photo) => (
+            <>
+              <div className="reviewsPhotoDiv">
+                <img
+                  className="reviewsImg"
+                  alt={review.name}
+                  name={review.review_id}
+                  onKeyDown={handleOpen}
+                  onClick={handleOpen}
+                  src={photo.url}
+                />
+              </div>
+              {open && (
+              <div className="reviewsModalImgDiv">
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="large-version-of-image"
+                  aria-describedby="simple-modal-description"
+                  container={() => document.getElementById('reviews')}
+                  className={classes.reviewsModal}
+                >
+                  <img
+                    className="reviewsModalImg"
+                    alt={review.name}
+                    name={review.review_id}
+                    onClick={review.photos[0].url}
+                    onKeyDown={review.photos[0].url}
+                    src={currentModalImg}
+                  />
+                </Modal>
+              </div>
+              )}
+            </>
+          ))}
+        </div>
       )}
       <div className="reviewHelpP" id="reviewHelpfulness">
         Helpful?
-        <button type="button" onClick={putHelpfulness} className="reviewHelpP">
+        <button type="button" className="reviewHelpP" name={review.review_id} onClick={putHelpfulness} onKeyDown={putHelpfulness}>
           Yes (
-          {props.review.helpfulness}
+          {review.helpfulness}
           ) |
         </button>
-        <button type="button" onClick={putReportReview} className="reviewHelpP">
+        <button type="button" className="reviewHelpP" name={review.review_id} onClick={putReportReview} onKeyDown={putHelpfulness}>
           {' '}
           Report
         </button>

@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 /* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import React, { useContext, useState } from 'react';
+import { Modal } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { ApiContext } from '../../contexts/api.context.jsx';
 import StarsReviewForm from './StarsReviewForm.jsx';
+import ReviewsAddPhotos from './ReviewsAddPhotos.jsx';
 
-const ReviewsForm = (props) => {
+const ReviewsForm = ({ metaData, setOpen }) => {
   const {
     productId, productName, postRequest, end,
   } = useContext(ApiContext);
@@ -29,7 +29,31 @@ const ReviewsForm = (props) => {
   const [email, setEmail] = useState('jackson11@email.com');
   const [characteristics, setCharacteristics] = useState({});
 
-  const chars = props.reviewsMetaData.characteristics;
+  const [photoOpen, setPhotoOpen] = useState(false);
+  const [uploadedPhotos, setUploadedPhotos] = useState([]);
+
+  const handlePhotoOpen = () => {
+    setPhotoOpen(true);
+  };
+
+  const handlePhotoClose = () => {
+    setPhotoOpen(false);
+  };
+
+  const useStyles = makeStyles({
+    reviewsModalPhoto: {
+      position: 'absolute',
+      top: '10%',
+      left: '10%',
+      overflow: 'scroll',
+      height: '100%',
+      display: 'block',
+    },
+  });
+
+  const classes = useStyles();
+
+  const chars = metaData.characteristics;
 
   const charsDescriptions = {
     size: {
@@ -123,11 +147,26 @@ const ReviewsForm = (props) => {
   };
 
   const postReview = () => {
-    props.setOpen(false);
-    console.log(bodyForPost);
-    console.log(postRequest);
-    console.log(typeof postRequest);
+    setOpen(false);
     postRequest(endpoint, bodyForPost);
+  };
+
+  const uploadedImage = React.useRef(null);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      current.file = file;
+      reader.onload = (e2) => {
+        current.src = e2.target.result;
+      };
+      reader.readAsDataURL(file);
+      const oldPhotos = uploadedPhotos.slice();
+      oldPhotos.push(file);
+      setUploadedPhotos(oldPhotos);
+    }
   };
 
   return (
@@ -301,6 +340,25 @@ const ReviewsForm = (props) => {
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormBody">
         <label htmlFor="body" className="reviewsFormLabelsMain" id="reviewsFormBodyTitle">Reviews Body</label>
         <input type="text" minLength="50" maxLength="1000" className="reviewsFormLabelsSm" id="body" value={body} onChange={(e) => setBody(e.target.value)} />
+      </div>
+
+      <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormPhoto">
+        <h3 className="reviewsFormLabelsMain" id="reviewsPhotoTitle">Share Your Style!</h3>
+        <p className="reviewsFormLabelsSm" id="reviewsPhotoSub">We`&apos;d love to see your product in action. Click the button to upload up to 5 images to share with others</p>
+        <button type="button" id="reviewsAddPhotos" onClick={handlePhotoOpen}>Upload Your Photos</button>
+        <Modal
+          open={photoOpen}
+          onClose={handlePhotoClose}
+          aria-labelledby="large-version-of-image"
+          aria-describedby="simple-modal-description"
+          container={() => document.getElementById('reviews')}
+          className={classes.reviewsModalPhoto}
+        >
+          <ReviewsAddPhotos
+            handleImageUpload={handleImageUpload}
+            uploadedPhotos={uploadedPhotos}
+          />
+        </Modal>
       </div>
 
       <div className="reviewsFormBorder reviewsFormLabelsMain" id="reviewsFormName">
