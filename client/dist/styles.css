@@ -25,17 +25,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 70px;
-  /* grid-template-areas: '. . .'
-                       'product product product'
-                       '. related .'
-                       '. question .'
-                       '. reviews .'
-                       '. . .';
-  grid-template-rows: 100px auto auto auto auto 100px;
-  grid-template-columns: 100px auto 100px; */
   margin: 200px 100px 100px 100px;
   padding-bottom: 100px;
-  /* width: calc(1000px/var(--size-divisor)); */
 }
 
 
@@ -87,24 +78,16 @@ i {
   margin: 0.5em;
 }
 
-/* Buttons */
-#testbutton {
-  position: absolute;
-  display: inline-block;
-  top: calc(200px/ var(--size-divisor));
-  left: calc(30px/ var(--size-divisor));
-}
-
 button {
   border-color:  393939;
   border-width: 1px;
   font-family: Arial, Helvetica, sans-serif;
   color: #393939;
-  padding: calc(20px/ var(--size-divisor));
-  margin: calc(10px/ var(--size-divisor));
+  padding: 20px;
+  margin: 10px;
   text-align: center;
   text-decoration: none;
-  font-size: calc(16px/ var(--size-divisor));
+  font-size: 16px;
   background-color: white;
 }
 
@@ -116,8 +99,18 @@ button :hover {
 
 .product {
   display: grid;
-  grid-template-rows: calc(5% 15% auto 10% 200px/ var(--size-divisor));
-  grid-template-columns: calc(100px 520px 20px 260px 100px/ var(--size-divisor));
+  grid-template-rows: auto auto;
+}
+
+#productFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: calc(1000px / var(--size-divisor));
+  flex: 1 0 auto;
 }
 
 .productGallery {
@@ -165,6 +158,11 @@ button :hover {
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
+}
+
+#productInfoFlex {
+  width: 150px;
+ flex: 1 0 auto;
 }
 
 .productStars {
@@ -377,10 +375,8 @@ button :hover {
 
 .productDescription {
   margin-top: 20px;
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 2;
-  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
   display: grid;
   grid-template-rows: 15% auto;
   grid-template-columns: 32.5% 32.5% 2.5% 32.5%;
