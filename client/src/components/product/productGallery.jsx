@@ -9,13 +9,9 @@ const ProductGallery = (props) => {
   const [mainImage, setMainImage] = useState();
   const [images, setImages] = useState();
 
-  // console.log(styleData);
-  // console.log(props.selectedStyle);
-
   useEffect(() => {
     styleData.map((data) => {
       if (data.style_id === props.selectedStyle) {
-        // console.log('Gallery Data: ', data.photos);
         setImages(data.photos);
         setMainImage(() => (
           <img

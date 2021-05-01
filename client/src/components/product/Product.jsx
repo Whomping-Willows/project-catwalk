@@ -16,7 +16,6 @@ const Product = ({
   const styleOptionClick = (e) => {
     e.preventDefault();
     e.persist();
-    // console.log('Click Event: ', e);
     setSelectedStyle(Number(e.target.alt));
   };
 

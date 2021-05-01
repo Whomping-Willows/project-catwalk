@@ -31,16 +31,12 @@ const ProductStyles = (props) => {
 
   useEffect(() => {
     setQuantOptions(() => {
-      // console.log('Current size: ', selectedSize);
       let totQuant = 0;
       styleData.map((data) => {
         if (data.style_id === props.selectedStyle) {
-          // console.log('first setquant conditional: ', data);
           const skus = Object.entries(data.skus);
           skus.map((sku) => {
-            // console.log('second setquant conditional: ', sku, sku[1].size);
             if (sku[1].size === selectedSize) {
-              // console.log('third setquant conditional: ', sku[1].size);
               totQuant += sku[1].quantity;
             }
           });
@@ -50,7 +46,6 @@ const ProductStyles = (props) => {
       for (let i = 1; i <= totQuant; i++) {
         result.push({ value: i, label: i });
       }
-      // console.log('Quantity array: ', result);
       return result;
     });
   }, [selectedSize]);
